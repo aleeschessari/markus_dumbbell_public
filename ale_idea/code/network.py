@@ -38,7 +38,8 @@ def input_leaf(U, s, n_window, Rn, eps, cut=1e-12):
     """A leaf U[n, a]/s_n as a train with the sites a, n_Rn, ..., n_1 (the order of the n bits of ghat).
 
     The weight 1/s_n goes into the leaf, so that the raw ghat can be truncated (App. H, item 1).
-    Rows with s_n < cut are set to zero, since there the coefficients of the data are rounding noise.
+    Rows with s_n < cut are set to zero: there 1/s_n would amplify the rounding errors of U. This
+    leaves the bubble unchanged and keeps the bonds of A and B small.
     """
     leaf = U / s[:, None]
     leaf[s < cut] = 0

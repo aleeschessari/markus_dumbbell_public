@@ -85,6 +85,7 @@ the table (34 instead of 35 in Y and chi). Before recompression the zip-ups of s
 298 instead of 368, because a left-to-right zip-up truncates closer to optimally when its input is
 right-canonical.
 
-`network.input_leaf` sets the rows of the leaves with s_n < 1e-12 to zero, where the coefficients
-of the data are rounding noise. The notes do not mention this yet. Without it the error is the same,
-1.7e-7, but the largest bond of A and B grows from 85 to 103.
+`network.input_leaf` sets the rows of the leaves with s_n < 1e-12 to zero (36 of the 192 modes,
+n <= -16 and n >= 141). There 1/s_n amplifies the rounding errors of the HOSVD factors: |U/s| reaches
+2e7, against at most 1e3 on the other modes. Without the cut the error is the same, 1.7e-7, but the
+largest bond of A and B grows from 86 to 103. The notes do not mention this yet.

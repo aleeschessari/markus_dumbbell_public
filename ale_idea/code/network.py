@@ -34,15 +34,13 @@ def input_train(ghat, n_window, Rq, Rn, eps):
     return tt_svd(np.transpose(T, order), eps), types
 
 
-def input_leaf(U, s, n_window, Rn, eps, cut=1e-12):
+def input_leaf(U, s, n_window, Rn, eps):
     """A leaf U[n, a]/s_n as a train with the sites a, n_Rn, ..., n_1 (the order of the n bits of ghat).
 
     The weight 1/s_n goes into the leaf, so that the raw ghat can be truncated (App. H, item 1).
-    Rows with s_n < cut are set to zero: there 1/s_n would amplify the rounding errors of U. This
-    leaves the bubble unchanged and keeps the bonds of A and B small.
+    On the window of Sec. III F, s_n >= 1e-8, so 1/s_n does not amplify the rounding errors of U.
     """
     leaf = U / s[:, None]
-    leaf[s < cut] = 0
     full = np.zeros((2**Rn, U.shape[1]), dtype=complex)
     full[np.mod(n_window, 2**Rn)] = leaf
     T = full.reshape([2] * Rn + [U.shape[1]])           # axes n_1 ... n_Rn, a

@@ -46,14 +46,22 @@ def mode_kernel(lam, mu, N, n_window, l_window, k_chunk=32):
     return kernel
 
 
-def coefficient_weights(n, lam, floor=1e-15):
+def coefficient_weights(n, lam):
     """The weights s_n of Eq. (C3): the worst-case size of the Fourier coefficient n of G on C_lam.
 
-    Positive modes decay at the rate ALPHA*lam, negative ones at ALPHA*(2 - lam); below the floor
-    the coefficients of double-precision data are rounding noise.
+    Positive modes decay at the rate ALPHA*lam, negative ones at ALPHA*(2 - lam).
     """
-    s = np.where(n >= 0, np.exp(-ALPHA * lam * n), np.exp(-ALPHA * (2 - lam) * np.abs(n)))
-    return np.maximum(s, floor)
+    return np.where(n >= 0, np.exp(-ALPHA * lam * n), np.exp(-ALPHA * (2 - lam) * np.abs(n)))
+
+
+def mode_window(lam, N, s_cut=1e-8):
+    """The input window of Sec. III F: the modes n in [-N/2, N/2) with s_n >= s_cut.
+
+    Below s_cut the modes cannot change chi at the tolerance of the kernel, and the HOSVD returns
+    their rows of U as rounding noise, which 1/s_n would amplify. For lam = 0.2 this is [-10, 93].
+    """
+    n = np.arange(-N // 2, N // 2)
+    return n[coefficient_weights(n, lam) >= s_cut]
 
 
 def truncated_hosvd(T, eps):

@@ -15,7 +15,7 @@ import numpy as np
 
 import qtt
 from dumbbell import chi_contour, fermi, phi_grid, quadrature_weights
-from kernel import compressed_kernel, fourier_coefficients
+from kernel import compressed_kernel, fourier_coefficients, mode_window
 from network import (attach_core, attach_output_leaf, chi_from_train, input_leaf, input_train,
                      output_leaf)
 
@@ -24,7 +24,7 @@ from network import (attach_core, attach_output_leaf, chi_from_train, input_leaf
 LAM, MU = 0.2, 0.4                     # levels of the two dumbbells
 R, RQ, RN = 9, 10, 8                   # bits of the contour points, of the momenta, of the modes n
 N, NQ = 2**R, 2**RQ
-N_WINDOW = np.arange(-32, 160)         # modes n of G kept (Sec. III F), in 2^RN = 256 slots
+N_WINDOW = mode_window(LAM, N)         # modes n of G with s_n >= 1e-8 (Sec. III F): [-10, 93]
 L_WINDOW = np.arange(-32, 96)          # modes l of chi kept, on the R bits of k
 TOL = dict(kernel=1e-8, input=1e-6, leaves=1e-10, dft=1e-12, intermediates=1e-9)
 
@@ -119,7 +119,7 @@ def main(run_subtractor):
     error = np.abs(chi_dense - exact)
     print(f'max error / max |chi| over all Q and k: {error.max() / np.abs(exact).max():.1e}')
     for m in [1, 16, 64, 160, 256, 512]:
-        print(f'    Q = 2 pi {m:3d}/1024: error {error[m].max() / np.abs(exact[m]).max():.0e},'
+        print(f'    Q = 2 pi {m:3d}/1024: error {error[m].max() / np.abs(exact[m]).max():.1e},'
               f' max |chi| {np.abs(exact[m]).max():.2g}')
 
 

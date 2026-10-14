@@ -22,7 +22,6 @@
 \DeclareMathOperator{\Real}{Re}
 \newcommand{\Zc}{\mathcal{Z}}
 \setlength{\emergencystretch}{1.5em}% fewer loose lines in the narrow columns
-\setcounter{secnumdepth}{3}% no "a.", "b." labels on the run-in paragraph headings
 
 \begin{document}
 \raggedbottom% no stretched gaps between paragraphs in the two columns
@@ -40,15 +39,14 @@ Given a Green function $G_q$ on a dumbbell contour $C_\lambda$, we compute the b
 
 The input is $G_q$ on the dumbbell $C_\lambda$, at the nodes $z_j=\omega_\lambda(\phi_j)$, $\phi_j=-1+8j/N$, $j=0,\ldots,N-1$, for the momenta $q=2\pi m/N_q$; it may be given as a quantics tensor train (QTT, Sec.~\ref{sec:qtt}). The output is the bubble $\chi_Q$ for all transfer momenta $Q$, on the dumbbell $C_\mu$ of $\chi$, at the points $w_k=\omega_\mu(\phi_k)$; here $\omega_\mu$ is the doubled map, around the band $[-6,6]$ of $\chi$. The method must work without analytic continuation and without evaluating $G$ away from $C_\lambda$, at a cost that does not depend on $N$. The maps $\omega_\lambda$, $\omega_\mu$ and the levels $\lambda$, $\mu$ are defined in Sec.~\ref{sec:dumbbell}.
 
-\begin{figure*}[p]
+\begin{figure}[t]
   \centering
-  \includegraphics[width=0.94\textwidth]{bubble_tn_dumbbells.pdf}
-  \caption{(a) The contour of $G$ ($\lambda=0.2$, blue) encloses the cut $[-3,3]$ and leaves out the poles of the Fermi function at $\pm i,\pm3i$. The contour of $\chi$ ($\mu=0.4$, purple) encloses the cut $[-6,6]$ of $\chi$ and leaves out the bosonic frequencies $\pm2i,\pm4i$.
-  (b) The bubble needs $G$ at the shifted points $z_j\pm w_k$, i.e.\ on the copies $C_\lambda\pm w_k$, drawn here for three points $w_k$ (stars) on $C_\mu$ (purple). The lowest dumbbell level reached by the copies is $\lambda'_{\min}=0.237>\lambda=0.2$.}
+  \includegraphics[width=\columnwidth]{bubble_tn_dumbbells.pdf}
+  \caption{The contour $C_\lambda$ of $G$ ($\lambda=0.2$, blue) encloses the cut $[-3,3]$ and leaves out the poles of the Fermi function at $\pm i,\pm3i$, which lie on the level-1 rays (dotted). The contour $C_\mu$ of $\chi$ ($\mu=0.4$, purple) encloses the cut $[-6,6]$ of $\chi$ and leaves out the bosonic frequencies $\pm2i,\pm4i$. Dots: every eighth of the $N=512$ nodes $z_j$ and points $w_k$.}
   \label{fig:dumbbells}
-\end{figure*}
+\end{figure}
 
-The bubble needs $G$ at the shifted points $z_j\pm w_k$, which lie on the copies $C_\lambda\pm w_k$ of the contour [Fig.~\ref{fig:dumbbells}(b)]. The two contours must be chosen so that these copies never touch the cut of $G$, which makes the contour formula equal to $\chi$ (Sec.~\ref{sec:contour}), and stay outside $C_\lambda$, so that $G$ there follows exactly from $G$ on $C_\lambda$ (Sec.~\ref{sec:cauchy}). In general the second condition requires $\lambda\lesssim\mu/2$. In the example the lowest dumbbell level reached by the copies is $\lambda'_{\min}=0.237$, above $\lambda=0.2$.
+The bubble needs $G$ at the shifted points $z_j\pm w_k$, which lie on the copies $C_\lambda\pm w_k$ of the contour. The two contours (Fig.~\ref{fig:dumbbells}) must be chosen so that these copies never touch the cut of $G$, which makes the contour formula equal to $\chi$ (Sec.~\ref{sec:contour}), and stay outside $C_\lambda$, so that $G$ there follows exactly from $G$ on $C_\lambda$ (Sec.~\ref{sec:cauchy}). In general the second condition requires $\lambda\lesssim\mu/2$. In the example the lowest dumbbell level reached by the copies is $\lambda'_{\min}=0.237$, above $\lambda=0.2$.
 
 \section{The model}
 \label{sec:model}
@@ -69,7 +67,7 @@ on the momentum grid $q=2\pi m/N_q$, $m=0,\ldots,N_q-1$, with $N_q=1024$, and at
 \subsection{The dumbbell family}
 \label{sec:dumbbell}
 
-\paragraph{The map.} Let $\kappa=3/\sqrt{10}$, $\kappa'=\sqrt{1-\kappa^2}=1/\sqrt{10}$, and let $K\equiv K(\kappa)$ and $K'\equiv K(\kappa')$ be the complete elliptic integrals of the first kind with parameter $m=\kappa^2=0.9$ and $m'=0.1$: $K=2.5781$, $K'=1.6124$. With the Jacobi function $\sd=\sn/\dn$,
+The contours are the images of horizontal lines under a map $\omega$ built from Jacobi elliptic functions. Let $\kappa=3/\sqrt{10}$, $\kappa'=\sqrt{1-\kappa^2}=1/\sqrt{10}$, and let $K\equiv K(\kappa)$ and $K'\equiv K(\kappa')$ be the complete elliptic integrals of the first kind with parameter $m=\kappa^2=0.9$ and $m'=0.1$: $K=2.5781$, $K'=1.6124$. With the Jacobi function $\sd=\sn/\dn$,
 \begin{equation}
   \begin{gathered}
   \omega(\zeta)=\kappa\,\sd\!\Big(\frac K2(\zeta+1)\;\Big|\;\kappa^2\Big),\qquad \zeta=\phi+i\tau\lambda,\\
@@ -87,16 +85,16 @@ We write $\omega_\lambda(\phi)=\omega(\phi+i\tau\lambda)$: $\phi$ is the positio
 \end{equation}
 In terms of $\phi$ and $\lambda$: period 8 in $\phi$; $\omega_\lambda(\phi+4)=-\omega_\lambda(\phi)$; and $\omega_\lambda(2-\phi)=\overline{\omega_\lambda(\phi)}$, so the lower half of every contour is the mirror image of its upper half.
 
-\paragraph{The contours.} For fixed $\lambda\in(0,1)$, $\phi\mapsto\omega_\lambda(\phi)$, $\phi\in[-1,7)$, traces a closed curve $C_\lambda$ once, the \emph{dumbbell at level $\lambda$} [Fig.~\ref{fig:dumbbells}(a)]. Its shape follows from the values at $\lambda\to0$ and $\lambda=1$:
+For fixed $\lambda\in(0,1)$, $\phi\mapsto\omega_\lambda(\phi)$, $\phi\in[-1,7)$, traces a closed curve $C_\lambda$ once, the \emph{dumbbell at level $\lambda$} (Fig.~\ref{fig:dumbbells}). Its shape follows from the values at $\lambda\to0$ and $\lambda=1$:
 \begin{itemize}
   \item $\lambda\to0^+$: $\omega$ is real and runs $0\to3\to0\to-3\to0$ for $\phi=-1\to1\to3\to5\to7$. The contour collapses onto the band $[-3,3]$: $\phi\in(-1,1)\cup(5,7)$ is the upper lip ($\Imag\omega>0$), $\phi\in(1,5)$ the lower lip. The \emph{tips} are $\phi=1$ and $\phi=5$ ($\omega=\pm3$), the \emph{pinches} $\phi=-1\equiv7$ and $\phi=3$ ($\omega=0$). In increasing $\phi$ the curve is traversed clockwise.
   \item $\lambda=1$: $\omega(\phi+i\tau)$ is purely imaginary with $\lvert\Imag\omega\rvert\ge1$ ($\omega(-1+i\tau)=i$, and $\omega\to\infty$ at $\phi=1,5$, where $\sd$ has its poles). The level-1 ``contour'' is the two rays $\{\Real z=0,\ \lvert\Imag z\rvert\ge1\}$.
 \end{itemize}
 Every level $0<\lambda<1$ lies between the band and the rays. The strip $0<\lambda<2$ is mapped by $\omega$ onto $\mathbb C\setminus[-3,3]$ (the level $2-\lambda$ gives the mirror image $-\overline{C_\lambda}$ of $C_\lambda$, the same curve), and $\lambda=2$ is the band again.
 
-\paragraph{Why $\beta=\pi$.} The Fermi function $f(z)=1/(e^{\beta z}+1)$ has its poles at the fermionic Matsubara frequencies $i\omega_n=i(2n+1)\pi/\beta$ (Sec.~\ref{sec:bubble}). The two closest to the real axis, $\pm i\pi/\beta$, sit at the ends $\pm i$ of the level-1 rays exactly when $\pi/\beta=1$, i.e.\ $\beta=\pi$, and then all poles lie on the rays. This is the choice of modulus of Lin, Lu, Ying and E, $L=\sqrt{1+(E\beta/\pi)^2}=\sqrt{10}$ for $E=3$; equivalently $\kappa/\kappa'=E\beta/\pi=3$. A different temperature needs a different $\kappa$ (then $\kappa^2=a^2/(1+a^2)$, $a=E\beta/\pi$, and the prefactor $\kappa$ in \eqref{eq:map} becomes $E\kappa'$); nothing else changes. Every contour $C_\lambda$ with $0<\lambda<1$ separates the band of $G$ from all poles of $f$.
+The map is tied to the temperature through the poles of the Fermi function $f(z)=1/(e^{\beta z}+1)$, at the fermionic Matsubara frequencies $i\omega_n=i(2n+1)\pi/\beta$ (Sec.~\ref{sec:bubble}). The two closest to the real axis, $\pm i\pi/\beta$, sit at the ends $\pm i$ of the level-1 rays exactly when $\pi/\beta=1$, i.e.\ at the temperature $\beta=\pi$ used here, and then all poles lie on the rays. This is the choice of modulus of Lin, Lu, Ying and E, $L=\sqrt{1+(E\beta/\pi)^2}=\sqrt{10}$ for $E=3$; equivalently $\kappa/\kappa'=E\beta/\pi=3$. A different temperature needs a different $\kappa$ (then $\kappa^2=a^2/(1+a^2)$, $a=E\beta/\pi$, and the prefactor $\kappa$ in \eqref{eq:map} becomes $E\kappa'$); nothing else changes. Every contour $C_\lambda$ with $0<\lambda<1$ separates the band of $G$ from all poles of $f$.
 
-\paragraph{Jacobian.} With $v=\frac K2(\zeta+1)$ and $\frac{d}{dv}\sd v=\cn v/\dn^2v$,
+The Jacobian of the map follows from $v=\frac K2(\zeta+1)$ and $\frac{d}{dv}\sd v=\cn v/\dn^2v$:
 \begin{equation}
   \begin{gathered}
   J(\zeta)\equiv\frac{\partial\omega}{\partial\phi}=\kappa\,\frac K2\,\frac{\cn v}{\dn^2v},\qquad
@@ -107,7 +105,7 @@ Every level $0<\lambda<1$ lies between the band and the rays. The strip $0<\lamb
 \end{equation}
 the second relation because $\omega$ is analytic in $\zeta=\phi+i\tau\lambda$, the third from $\dn^2v=1/(1+\omega^2)$ and $\cn^2v=\kappa'^2(9-\omega^2)/[\kappa^2(1+\omega^2)]$. We write $J_\lambda(\phi)=J(\phi+i\tau\lambda)$. For $0<\lambda<1$, $J_\lambda$ has no zeros on $C_\lambda$ ($\lvert J\rvert\in[0.64,2.08]$ at $\lambda=0.1$); on the band it is $J_0(\varepsilon)=\frac{K\kappa'}2\sqrt{(9-\varepsilon^2)(1+\varepsilon^2)}$, which vanishes like $\sqrt{3-\lvert\varepsilon\rvert}$ at the edges, so the nodes cluster at the band edges like Chebyshev points.
 
-\paragraph{The dumbbell of $\chi$.} The bubble $\chi_Q$ (Sec.~\ref{sec:bubble}) has its cut on $[-6,6]$ and its bosonic frequencies $i\nu_m=2\pi im/\beta=2im$ at $\lvert\Imag w\rvert\ge2$. Both are twice the corresponding sets of $G$, so the contour of $\chi$ at level $\mu$ is the doubled map
+The bubble $\chi_Q$ (Sec.~\ref{sec:bubble}) has its cut on $[-6,6]$ and its bosonic frequencies $i\nu_m=2\pi im/\beta=2im$ at $\lvert\Imag w\rvert\ge2$. Both are twice the corresponding sets of $G$, so the contour of $\chi$ at level $\mu$ is the doubled map
 \begin{equation}
   \begin{gathered}
   w=\omega_\mu(\phi)\equiv2\,\omega(\phi+i\tau\mu),\\
@@ -115,16 +113,16 @@ the second relation because $\omega$ is analytic in $\zeta=\phi+i\tau\lambda$, t
   \end{gathered}
   \label{eq:doubled}
 \end{equation}
-with the same $\tau$ and $\alpha$; the last relation is $\omega(\zeta+4)=-\omega(\zeta)$ with $\phi_{k+N/2}=\phi_k+4$. For $0<\mu<1$, $C_\mu$ encloses $[-6,6]$ and leaves out all $i\nu_m$, $m\ne0$ [Fig.~\ref{fig:dumbbells}(a)].
+with the same $\tau$ and $\alpha$; the last relation is $\omega(\zeta+4)=-\omega(\zeta)$ with $\phi_{k+N/2}=\phi_k+4$. For $0<\mu<1$, $C_\mu$ encloses $[-6,6]$ and leaves out all $i\nu_m$, $m\ne0$ (Fig.~\ref{fig:dumbbells}).
 
-\paragraph{Dumbbell coordinates of a point.} Every $z\in\mathbb C\setminus[-3,3]$ off the rays is $\omega(\zeta)$ for exactly one $\zeta=\phi+i\tau\lambda'$ with $\phi\in[-1,7)$, $\lambda'\in(0,1)$; on the rays the two parameter values with $\lambda'=1$ are identified. We call $\lambda(z)\equiv\lambda'$ the \emph{level} of $z$: the level of the dumbbell through $z$. Inverting \eqref{eq:map} with $\sn v=z/(\kappa\sqrt{1+z^2})$ gives the closed form
+Every $z\in\mathbb C\setminus[-3,3]$ off the rays is $\omega(\zeta)$ for exactly one $\zeta=\phi+i\tau\lambda'$ with $\phi\in[-1,7)$, $\lambda'\in(0,1)$, and $(\phi,\lambda')$ are the \emph{dumbbell coordinates} of $z$; on the rays the two parameter values with $\lambda'=1$ are identified. We call $\lambda(z)\equiv\lambda'$ the \emph{level} of $z$: the level of the dumbbell through $z$. Inverting \eqref{eq:map} with $\sn v=z/(\kappa\sqrt{1+z^2})$ gives the closed form
 \begin{equation}
   \Zc_0(z)=\frac2K\,F\!\Big(\arcsin\frac{z}{\kappa\sqrt{1+z^2}}\;\Big|\;\kappa^2\Big)-1
   \label{eq:inverse}
 \end{equation}
 ($F$ the incomplete elliptic integral of the first kind, principal branches). $\Zc_0$ returns $\Real\Zc_0\in(-3,1)$ and $\Imag\Zc_0/\tau\in(-1,1)$, and the representative in the fundamental domain is $\Zc(z)=\Zc_0(z)$ if $\Imag\Zc_0\ge0$, $\Zc(z)=2-\Zc_0(z)$ otherwise (by $\omega(2-\zeta)=\omega(\zeta)$), followed by $\Real\Zc\to((\Real\Zc+1)\bmod8)-1$. Newton's method on $\omega(\zeta)=z$ with the Jacobian \eqref{eq:jacobian} gives the same result. The inverse map is only needed for the geometry below; the method itself never uses it.
 
-\paragraph{The copies and $\lambda'_{\min}$.} The bubble needs $G$ at the shifted points $z_j\pm w_k$ [Sec.~\ref{sec:quadrature}, Eq.~\eqref{eq:direct}], which lie on the translated copies $C_\lambda\pm w_k$ of the contour [Fig.~\ref{fig:dumbbells}(b)]. Each shifted point has a level; the lowest one,
+The bubble needs $G$ at the shifted points $z_j\pm w_k$ [Sec.~\ref{sec:quadrature}, Eq.~\eqref{eq:direct}], which lie on the translated copies $C_\lambda\pm w_k$ of the contour. Each shifted point has a level; the lowest one,
 \begin{equation}
   \lambda'_{\min}(\lambda,\mu)=\min_{j,k}\ \lambda\big(z_j\pm w_k\big),
   \label{eq:lammin}
@@ -162,7 +160,7 @@ We define the bubble without a minus sign and with the average over the internal
 \end{equation}
 The Matsubara sum converges absolutely because the summand is $O(\omega_n^{-2})$.
 
-\paragraph{The sum as residues.} The Fermi function turns every term of the Matsubara sum into a residue. It has a simple pole wherever $e^{\beta z}=-1$, i.e.\ exactly at $z=i\omega_n$. Near such a point $e^{\beta z}=-e^{\beta(z-i\omega_n)}$, so $e^{\beta z}+1=1-e^{\beta(z-i\omega_n)}\approx-\beta(z-i\omega_n)$ and $f(z)\approx-1/[\beta(z-i\omega_n)]$: the residue is $-1/\beta$, as in \eqref{eq:fermi}. For any $h$ that is regular at the points $i\omega_n$, $\Res_{z=i\omega_n}[f(z)h(z)]=h(i\omega_n)\Res_{z=i\omega_n}f=-h(i\omega_n)/\beta$, hence
+The Fermi function turns every term of the Matsubara sum into a residue. It has a simple pole wherever $e^{\beta z}=-1$, i.e.\ exactly at $z=i\omega_n$. Near such a point $e^{\beta z}=-e^{\beta(z-i\omega_n)}$, so $e^{\beta z}+1=1-e^{\beta(z-i\omega_n)}\approx-\beta(z-i\omega_n)$ and $f(z)\approx-1/[\beta(z-i\omega_n)]$: the residue is $-1/\beta$, as in \eqref{eq:fermi}. For any $h$ that is regular at the points $i\omega_n$, $\Res_{z=i\omega_n}[f(z)h(z)]=h(i\omega_n)\Res_{z=i\omega_n}f=-h(i\omega_n)/\beta$, hence
 \begin{equation}
   \frac1\beta\sum_nh(i\omega_n)=-\sum_n\Res_{z=i\omega_n}\big[f(z)\,h(z)\big].
   \label{eq:matsum_residues}
@@ -179,7 +177,7 @@ Section~\ref{sec:contour} evaluates the right-hand side with a contour integral,
   \label{fig:contours}
 \end{figure}
 
-\paragraph{The sum as a contour integral.} Fix $q$, $Q$ and $m\neq0$, and put $h(z)=G_q(z)\,G_{q+Q}(z+i\nu_m)$. In the complex $z$-plane (Fig.~\ref{fig:contours}), $G_q(z)$ has its cut on the band $[-3,3]$ by \eqref{eq:lehmann}, and $G_{q+Q}(z+i\nu_m)$ has its cut where $z+i\nu_m\in[-3,3]$, that is on the segment $[-3,3]-i\nu_m=\{x-i\nu_m:\ -3\le x\le3\}$, a copy of the band moved down by $\nu_m$. Elsewhere $h$ is analytic, and $h=O(z^{-2})$ at infinity. The poles of $f$, at $i\omega_n=i(2n+1)\pi/\beta$, sit on the imaginary axis at odd multiples of $i\pi/\beta$, and the two cuts at the heights $0$ and $-\nu_m$, which are even multiples, so no pole lies on a cut. For $m=0$ the two cuts would coincide; that case is not needed here.
+Fix $q$, $Q$ and $m\neq0$, and put $h(z)=G_q(z)\,G_{q+Q}(z+i\nu_m)$. In the complex $z$-plane (Fig.~\ref{fig:contours}), $G_q(z)$ has its cut on the band $[-3,3]$ by \eqref{eq:lehmann}, and $G_{q+Q}(z+i\nu_m)$ has its cut where $z+i\nu_m\in[-3,3]$, that is on the segment $[-3,3]-i\nu_m=\{x-i\nu_m:\ -3\le x\le3\}$, a copy of the band moved down by $\nu_m$. Elsewhere $h$ is analytic, and $h=O(z^{-2})$ at infinity. The poles of $f$, at $i\omega_n=i(2n+1)\pi/\beta$, sit on the imaginary axis at odd multiples of $i\pi/\beta$, and the two cuts at the heights $0$ and $-\nu_m$, which are even multiples, so no pole lies on a cut. For $m=0$ the two cuts would coincide; that case is not needed here.
 
 Two closed contours enter, both traversed counterclockwise:
 \begin{itemize}
@@ -207,7 +205,7 @@ As $R\to\infty$ the left-hand side vanishes, because $h=O(z^{-2})$ and $f$ stays
 \end{equation}
 For the dumbbell $C_\lambda$ the poles are always outside, since they lie on the level-1 rays. The second cut is outside when the dumbbell is not too large: $C_{0.2}$ stays within $\lvert\mathrm{Im}\,z\rvert\le0.53$, while the second cut lies at the height $-\nu_m$, with $\lvert\nu_m\rvert\ge2\pi/\beta=2$. At larger levels the dumbbell grows ($\lvert\mathrm{Im}\,z\rvert$ up to 1.6 at $\lambda=0.5$ and 4.8 at $\lambda=0.8$) and can reach the second cut. This is condition (ii) below, at $w=i\nu_m$.
 
-\paragraph{Moving the second cut onto the first.} In the second integral of \eqref{eq:two_cuts}, write the points of $C-i\nu_m$ as $z-i\nu_m$ with $z$ on $C$, and use $f(z-i\nu_m)=f(z)$ from \eqref{eq:fermi}:
+Writing the points of $C-i\nu_m$ as $z-i\nu_m$ with $z$ on $C$ and using $f(z-i\nu_m)=f(z)$ from \eqref{eq:fermi} moves the second integral of \eqref{eq:two_cuts} onto $C$:
 \begin{equation}
   \begin{aligned}
   &\oint_{C-i\nu_m}f(z)\,G_q(z)\,G_{q+Q}(z+i\nu_m)\,dz\\
@@ -224,7 +222,7 @@ In this integral, now over $C$, relabel $q\to q-Q$ in the momentum average, whic
 \end{equation}
 Only one contour is left, and $f$ is evaluated only on it. Inside $C$ the integrand has only the cut of $G_q(z)$; the cuts of $G_{q+Q}(z+i\nu_m)$ and $G_{q-Q}(z-i\nu_m)$, at $[-3,3]-i\nu_m$ and $[-3,3]+i\nu_m$, are outside.
 
-\paragraph{Continuation to a complex frequency.} For $w\notin\mathbb R$ define
+For a complex frequency $w\notin\mathbb R$ define
 \begin{equation}
   \begin{aligned}
   X_Q(w)={}&\frac1{N_q}\sum_q\frac1{2\pi i}\oint_Cdz\;f(z)\,G_q(z)\\
@@ -248,12 +246,12 @@ This is the spectral (Lehmann) representation of the bubble. At $w=i\nu_m$ it eq
   \end{aligned}
   \label{eq:contour_w}
 \end{equation}
-for every $w\notin\mathbb R$ and every counterclockwise $C$ that (i) encloses $[-3,3]$ and no pole of $f$ and (ii) leaves out the shifted cuts $[-3,3]\mp w$. With the contour $C_\lambda$ and $w=w_k\in C_\mu$, (i) is $0<\lambda<1$, and (ii) says that the copies $C_\lambda\pm w_k$ of Fig.~\ref{fig:dumbbells}(b) do not meet the band: $\lambda'_{\min}>0$ in \eqref{eq:lammin}. If (ii) fails, the contour picks up part of a shifted cut and the result is wrong at every $N$.
+for every $w\notin\mathbb R$ and every counterclockwise $C$ that (i) encloses $[-3,3]$ and no pole of $f$ and (ii) leaves out the shifted cuts $[-3,3]\mp w$. With the contour $C_\lambda$ and $w=w_k\in C_\mu$, (i) is $0<\lambda<1$, and (ii) says that the copies $C_\lambda\pm w_k$ do not meet the band: $\lambda'_{\min}>0$ in \eqref{eq:lammin}. If (ii) fails, the contour picks up part of a shifted cut and the result is wrong at every $N$.
 
 \subsection{The dumbbell quadrature}
 \label{sec:quadrature}
 
-\paragraph{Weights.} Parametrize $C_\lambda$ by $\phi$: $z=\omega_\lambda(\phi)$, $dz=J_\lambda(\phi)\,d\phi$. The parametrization is clockwise, so for any $F$ analytic near the contour
+Parametrize $C_\lambda$ by $\phi$: $z=\omega_\lambda(\phi)$, $dz=J_\lambda(\phi)\,d\phi$. The parametrization is clockwise, so for any $F$ analytic near the contour
 \begin{equation}
   \frac1{2\pi i}\oint_{C_\lambda}F(z)\,dz=-\frac1{2\pi i}\int_{-1}^{7}d\phi\;J_\lambda(\phi)\,F\big(\omega_\lambda(\phi)\big).
 \end{equation}
@@ -278,7 +276,7 @@ which still needs $G$ at the shifted points $z_j\pm w$, off the contour. The $c_
 \subsection{The exterior Cauchy formula}
 \label{sec:cauchy}
 
-\paragraph{$G$ off the contour from $G$ on the contour.} Every Green function whose spectrum lies inside $C_\lambda$, interacting ones included, is analytic outside $C_\lambda$ and vanishes like $1/x$ at infinity. Let $x$ be outside $C_\lambda$ and apply Cauchy's integral formula to the region between $C_\lambda$ and a circle $C_R$, $R\to\infty$, both counterclockwise:
+Every Green function whose spectrum lies inside $C_\lambda$, interacting ones included, is analytic outside $C_\lambda$ and vanishes like $1/x$ at infinity, so its values outside $C_\lambda$ follow from those on $C_\lambda$. Let $x$ be outside $C_\lambda$ and apply Cauchy's integral formula to the region between $C_\lambda$ and a circle $C_R$, $R\to\infty$, both counterclockwise:
 \begin{equation}
   \begin{aligned}
   G(x)&=\frac1{2\pi i}\oint_{C_R}\frac{G(s)}{s-x}\,ds-\frac1{2\pi i}\oint_{C_\lambda}\frac{G(s)}{s-x}\,ds\\
@@ -292,7 +290,7 @@ because the $C_R$ integral is $O(1/R)$. The trapezoidal rule, $\frac1{2\pi i}\oi
 \end{equation}
 up to the trapezoidal error. For $x$ \emph{inside} $C_\lambda$ the same sum gives $0$ instead of $G(x)$: then $s\mapsto G(s)/(x-s)$ is analytic outside $C_\lambda$ and $O(s^{-2})$, so its integral over $C_\lambda$ equals its integral over $C_R$, which vanishes. The formula therefore applies only to shifted points outside the contour. Its convergence rate is \eqref{eq:rate} with $d=\min(\lambda,\lambda(x)-\lambda)$, because the integrand $G(\omega(\zeta))/(x-\omega(\zeta))$ has a pole at the level $\lambda(x)$ of $x$. The Cauchy kernel $1/(x-z_m)$ is bounded by the inverse distance of $x$ from the contour, so an error $\delta$ in the stored values of $G$ changes $G(x)$ by at most $\delta\sum_m\lvert d_m\rvert$ divided by that distance.
 
-\paragraph{The exterior-Cauchy form of the bubble.} Put $x=z_j\pm w_k$ in \eqref{eq:ext_cauchy} and insert it into \eqref{eq:direct}:
+Putting $x=z_j\pm w_k$ in \eqref{eq:ext_cauchy} and inserting the result into \eqref{eq:direct} gives the \emph{exterior-Cauchy form} of the bubble,
 \begin{equation}
 \begin{aligned}
 \chi_Q(w_k)={}&\frac1{N_q}\sum_q\sum_{j,m}c_j\,G_q(z_j)\,d_m\\
@@ -302,7 +300,7 @@ up to the trapezoidal error. For $x$ \emph{inside} $C_\lambda$ the same sum give
 \end{equation}
 Only the values of $G$ at the nodes of the stored contour enter. The formula needs no inverse map, no continuation and no mode cutoff, and its kernel $1/(z_j-z_m\pm w_k)$ is explicit and independent of $G$. In the continuum it is the double contour integral $\frac1{(2\pi i)^2}\oint\!\oint f(z)G_q(z)G_{q\pm Q}(s)/(z-s\pm w)\,dz\,ds$. Uncompressed, \eqref{eq:cauchy_form} agrees with the Lindhard sum \eqref{eq:lindhard} to $2.1\times10^{-12}$ for $(\lambda,\mu)=(0.2,0.4)$ at $N=512$ and to $1.1\times10^{-13}$ for $(0.1,0.2)$ at $N=1024$. At $N=256$ for $(0.2,0.4)$ the error is $2.1\times10^{-8}$, and the ratio of the two errors is the $e^{-\alpha N(\lambda'_{\min}-\lambda)}$ of \eqref{eq:rate}.
 
-\paragraph{The three conditions.}
+The method rests on three conditions:
 \begin{enumerate}
   \item $0<\lambda<1$: $C_\lambda$ leaves out the poles of $f$.
   \item $\lambda'_{\min}>0$: the copies $C_\lambda\pm w_k$ avoid the band, so the contour formula \eqref{eq:contour_w} is $\chi$.
@@ -313,7 +311,7 @@ The quadrature error of \eqref{eq:cauchy_form} is exponential in $N$, with the r
 \subsection{Mode space}
 \label{sec:modes}
 
-\paragraph{Fourier coefficients on the two dumbbells.} A function given on the $N$ nodes of $C_\lambda$ has the discrete Fourier representation
+A function given on the $N$ nodes of $C_\lambda$ has the discrete Fourier representation
 \begin{equation}
   \begin{aligned}
   G_q(z_j)&=\sum_{n}\hat g_{q,n}\,e^{i\pi n\phi_j/4},\\
@@ -330,7 +328,7 @@ where $n$ runs over any $N$ consecutive integers (we use the two's-complement ra
   \label{eq:chihat}
 \end{equation}
 
-\paragraph{The kernel.} Insert \eqref{eq:ghat} for $G_q(z_j)$ (index $n'$) and for $G_{q\pm Q}(z_m)$ (index $n$) into \eqref{eq:cauchy_form}. The momentum average factorizes from the geometry:
+Insert \eqref{eq:ghat} for $G_q(z_j)$ (index $n'$) and for $G_{q\pm Q}(z_m)$ (index $n$) into \eqref{eq:cauchy_form}. The momentum average factorizes from the geometry:
 \begin{equation}
   \begin{aligned}
   \chi_Q(w_k)&=\sum_{n',n}\Big[P^+_Q(n',n)\,K_{n'n}(w_k)\\
@@ -357,12 +355,12 @@ P^\pm_Q(n',n)&=\frac1{N_q}\sum_q\hat g_{q,n'}\,\hat g_{q\pm Q,n},
 \end{equation}
 This is the exterior-Cauchy form \eqref{eq:cauchy_form} in another basis, exact term by term. The kernel depends only on the two dumbbells and on $\beta$ (through $c_j$); all of $G$, model and momentum, is in $P^\pm_Q$. For each $k$ the inner double sum is a two-dimensional FFT over $(j,m)$ of the array $c_jd_m/(z_j-z_m+w_k)$, and the outer sum is an FFT over $k$: $O(N^3\log N)$ once, 9\,s at $N=512$ and 86\,s at $N=1024$ (Appendix~\ref{sec:lambda_indep} shows how to make $N$ small).
 
-\paragraph{The mode windows.} In exact arithmetic the sums in \eqref{eq:modes_bubble} run over all $N$ values of $n'$, $n$ and $\ell$. In practice only a window of each index matters, because the coefficients of $G$ and of $\chi$ decay exponentially (Appendix~\ref{sec:decay}) and are rounding noise below $\sim10^{-15}$ of their maximum. The windows used are $n',n\in[-32,159]$, $\ell\in[-32,95]$ for $(\lambda,\mu)=(0.2,0.4)$ at $N=512$, and $n',n\in[-32,319]$, $\ell\in[-32,159]$ for $(0.1,0.2)$ at $N=1024$; in quantics they are embedded in $2^{R_n}$ and $2^{R_\ell}$ slots (Sec.~\ref{sec:tensors}). The grid must resolve the window, $N\ge n_{\max}-n_{\min}$, which with the decay rate \eqref{eq:decay} means $N\gtrsim2\log(1/\varepsilon)/(\alpha\lambda)$.
+In exact arithmetic the sums in \eqref{eq:modes_bubble} run over all $N$ values of $n'$, $n$ and $\ell$. In practice only a window of each index matters, because the coefficients of $G$ and of $\chi$ decay exponentially (Appendix~\ref{sec:decay}) and are rounding noise below $\sim10^{-15}$ of their maximum. The windows used are $n',n\in[-32,159]$, $\ell\in[-32,95]$ for $(\lambda,\mu)=(0.2,0.4)$ at $N=512$, and $n',n\in[-32,319]$, $\ell\in[-32,159]$ for $(0.1,0.2)$ at $N=1024$; in quantics they are embedded in $2^{R_n}$ and $2^{R_\ell}$ slots (Sec.~\ref{sec:tensors}). The grid must resolve the window, $N\ge n_{\max}-n_{\min}$, which with the decay rate \eqref{eq:decay} means $N\gtrsim2\log(1/\varepsilon)/(\alpha\lambda)$.
 
 \subsection{Compressing the kernel}
 \label{sec:tucker}
 
-\paragraph{Tucker form and truncated HOSVD.} For a tensor $T_{n'n\ell}$ let $T_{(i)}$ be its mode-$i$ unfolding (the matrix with the $i$-th index as rows and the other two, combined, as columns). The higher-order SVD takes for $U^{(i)}$ the leading left singular vectors of $T_{(i)}$ and forms the core $C=T\times_1U^{(1)\dagger}\times_2U^{(2)\dagger}\times_3U^{(3)\dagger}$, i.e.
+The kernel is compressed into Tucker form by a truncated higher-order SVD (HOSVD). For a tensor $T_{n'n\ell}$ let $T_{(i)}$ be its mode-$i$ unfolding (the matrix with the $i$-th index as rows and the other two, combined, as columns). The HOSVD takes for $U^{(i)}$ the leading left singular vectors of $T_{(i)}$ and forms the core $C=T\times_1U^{(1)\dagger}\times_2U^{(2)\dagger}\times_3U^{(3)\dagger}$, i.e.
 \begin{equation}
   \begin{aligned}
   C_{abc}&=\sum_{n'n\ell}T_{n'n\ell}\,\overline{U^{(1)}_{n'a}}\,\overline{U^{(2)}_{nb}}\,\overline{U^{(3)}_{\ell c}},\\
@@ -377,7 +375,7 @@ s_{n'}\,s_n\,\widehat K_{n'n\ell}\approx\sum_{a,b,c}C_{abc}\,U^{(1)}_{n'a}\,U^{(
 \end{equation}
 at $\varepsilon=10^{-8}$ the ranks are $(r_1,r_2,r_3)=(31,33,44)$ for $(\lambda,\mu)=(0.2,0.4)$ and $(56,60,87)$ for $(0.1,0.2)$. The core has $r_1r_2r_3=45\,012$ entries in the example.
 
-\paragraph{The bubble in factorized form.} Insert \eqref{eq:kernel_tucker} into \eqref{eq:modes_bubble} and absorb the weights into the leaves, $\tilde U^{(i)}_{na}=U^{(i)}_{na}/s_n$. This is the formula the network computes:
+Inserting \eqref{eq:kernel_tucker} into \eqref{eq:modes_bubble} and absorbing the weights into the leaves, $\tilde U^{(i)}_{na}=U^{(i)}_{na}/s_n$, gives the bubble in factorized form, the formula the network computes:
 \begin{equation}
 \begin{aligned}
 A_{q,a}&=\sum_n\hat g_{q,n}\,\tilde U^{(1)}_{na},\qquad B_{q,b}=\sum_n\hat g_{q,n}\,\tilde U^{(2)}_{nb},\\
@@ -399,7 +397,7 @@ since $B_{q-Q,b}=B_{q+(-Q),b}$. The branch $Y^-$ therefore follows from $Y^+$ by
 \end{equation}
 that is, $Y^-(Q)=Y^+(Q)$ exactly on the grid. Then $\hat\chi_{Q,\ell}=[1+(-1)^\ell]\sum_cU^{(3)}_{\ell c}Y^+_c(Q)$: the odd modes vanish, which is the evenness $\chi_Q(-w)=\chi_Q(w)$ of the bubble of an even band. Computed by two separate zip-ups, each recompressed at $10^{-9}$, the two trains differ by $\lVert Y^--Y^+\rVert/\lVert Y^+\rVert=1.4\times10^{-11}$. The network does not use this symmetry: it computes both branches, as it must for a band that is not even.
 
-\paragraph{Why the ranks are small.} By \eqref{eq:spectral} the bubble is a trilinear form in $fA_q$, $A_{q+Q}$ and the output kernel $1/(w+\varepsilon-\varepsilon')$, and \eqref{eq:cauchy_form} is its discretization. The first $G$ enters only through $\sum_jc_jG_q(z_j)/(z_j-x)=\int f(\varepsilon)A_q(\varepsilon)\,d\varepsilon/(\varepsilon-x)$, the Cauchy transform of $fA_q$ at the points $x=z_m-w_k$; the second through the Cauchy transform of $A_{q\pm Q}$ at $z_j\pm w_k$; and the output is the Cauchy transform of a two-particle spectral function on $[-6,6]$, evaluated on $C_\mu$. So each leg of $\widetilde K$ is a Cauchy kernel $1/(x-\varepsilon)$ between a segment and a set at a positive distance from it, with $\Lambda(\mu,\beta)$ the lowest level of the set $[-3,3]\pm C_\mu$ in the dumbbell family of $G$ ($0.40$ for $\mu=0.4$ and $0.23$ for $\mu=0.2$ at $\beta=\pi$):
+The ranks are small because $G$ and $\chi$ enter only through Cauchy transforms. By \eqref{eq:spectral} the bubble is a trilinear form in $fA_q$, $A_{q+Q}$ and the output kernel $1/(w+\varepsilon-\varepsilon')$, and \eqref{eq:cauchy_form} is its discretization. The first $G$ enters only through $\sum_jc_jG_q(z_j)/(z_j-x)=\int f(\varepsilon)A_q(\varepsilon)\,d\varepsilon/(\varepsilon-x)$, the Cauchy transform of $fA_q$ at the points $x=z_m-w_k$; the second through the Cauchy transform of $A_{q\pm Q}$ at $z_j\pm w_k$; and the output is the Cauchy transform of a two-particle spectral function on $[-6,6]$, evaluated on $C_\mu$. So each leg of $\widetilde K$ is a Cauchy kernel $1/(x-\varepsilon)$ between a segment and a set at a positive distance from it, with $\Lambda(\mu,\beta)$ the lowest level of the set $[-3,3]\pm C_\mu$ in the dumbbell family of $G$ ($0.40$ for $\mu=0.4$ and $0.23$ for $\mu=0.2$ at $\beta=\pi$):
 \begin{center}\footnotesize
 \setlength{\tabcolsep}{3pt}
 \begin{tabular}{@{}lp{2.3cm}p{2.7cm}p{1.6cm}@{}}
@@ -422,7 +420,21 @@ for $\varepsilon=10^{-8}$ this gives $42$ and $31$ at $\mu=0.4$ (measured 44 and
 \section{Quantics tensor trains}
 \label{sec:qtt}
 
-\paragraph{Bits of an index.} An index $q\in\{0,\ldots,2^R-1\}$ is written in binary,
+\begin{figure*}[tp]
+  \centering
+  \includegraphics[width=0.82\textwidth]{ingredients.pdf}
+  \caption{The ingredients, with the bond dimensions of the run (tolerances in Sec.~\ref{sec:tensors}). Top: the Tucker tree of the weighted kernel, the core $C$ with the legs $a$, $b$, $c$ and the leaves $\tilde U^{(1)}$, $\tilde U^{(2)}$ over the bits $n_8\ldots n_1$ and $U^{(3)}$ over $\ell_9\ldots\ell_1$. Middle: the input $\hat g$, whose sites alternate between momentum bits and bits of $n$. Bottom: the adder, with the input legs $q_i$, $q'_i$ and the output legs $Q_i$; its bond is the carry.}
+  \label{fig:ingredients}
+\end{figure*}
+
+\begin{figure*}[tp]
+  \centering
+  \includegraphics[width=0.84\textwidth]{bubble_tn_contraction_modified_by_me.pdf}
+  \caption{The network, with the bond dimensions of the run; red legs are contracted. The dashed box $A$ holds $\hat g$ and the leaf $\tilde U^{(1)}$, contracted over the legs $n_i$ in step \stp1, and the box $B$ holds $\hat g$ and $\tilde U^{(2)}$, contracted in step \stp2. The grey dashed box is the network of step \stp4, whose result is the train $Y^\pm(Q;c)$: $A$ and $B$ joined by the adder over the legs $q_i$, $q'_i$, with the core $C$ on their legs $a$ and $b$. The output leaf $U^{(3)}$ is attached through $c$. Below the equals sign is the same network after step \stp4. The drawing shows $Y^+$. For $Y^-$ the adder is replaced by the subtractor ($q'=q-Q$, bond: the borrow) and $U^{(3)}$ carries the sign $(-1)^\ell=(-1)^{\ell_9}$; the bonds are the same. By \eqref{eq:yminus_identity}, the $Y^-$ network equals the $Y^+$ network read at $-Q$.}
+  \label{fig:contraction}
+\end{figure*}
+
+An index $q\in\{0,\ldots,2^R-1\}$ is written in binary,
 \begin{equation}
   q=\sum_{i=1}^Rq_i\,2^{R-i},\qquad q_i\in\{0,1\},
   \label{eq:bits}
@@ -434,7 +446,7 @@ with $q_1$ the most significant bit and $q_R$ the least significant one. A vecto
 \end{equation}
 so $n_1$ is the sign bit, and the nonnegative modes come first, followed by the negative ones, each $n<0$ at position $2^R+n$. This is the order in which an FFT returns its modes. ``Most significant first'' means the chain carries $q_1,q_2,\ldots,q_R$ in this order; ``least significant first'' the reverse.
 
-\paragraph{Tensor trains and bond dimension.} A tensor train (TT, or matrix-product state, MPS) writes a tensor with $L$ indices as a product of matrices, one per index (\emph{site}),
+A tensor train (TT, or matrix-product state, MPS) writes a tensor with $L$ indices as a product of matrices, one per index (\emph{site}),
 \begin{equation}
   \begin{gathered}
   v(\sigma_1,\ldots,\sigma_L)=M^{[1]}_{\sigma_1}M^{[2]}_{\sigma_2}\cdots M^{[L]}_{\sigma_L},\\
@@ -444,9 +456,9 @@ so $n_1$ is the sign bit, and the nonnegative modes come first, followed by the 
 \end{equation}
 The $\chi_i$ are the \emph{bond dimensions} (``bonds''); the train stores $\sum_id\,\chi_{i-1}\chi_i$ numbers instead of $d^L$. A tensor with an additional dense index (the Tucker indices $a$, $b$, $c$ below) is a train whose first or last core carries that index, so that $\chi_0$ or $\chi_L$ equals its dimension. The smallest bond $\chi_i$ that represents the tensor exactly depends only on the tensor and the site order: it is the rank of the \emph{unfolding} matrix whose rows are indexed by $(\sigma_1,\ldots,\sigma_i)$ and whose columns by $(\sigma_{i+1},\ldots,\sigma_L)$. A matrix-product operator (MPO) is the same object for a linear map, $W(\sigma'_1\ldots\sigma'_L;\sigma_1\ldots\sigma_L)=W^{[1]}_{\sigma'_1\sigma_1}\cdots W^{[L]}_{\sigma'_L\sigma_L}$, with cores carrying an input and an output bit. Applying an MPO of bond $D_W$ to a train of bond $\chi$ gives, before any compression, a train of bond $D_W\chi$.
 
-\paragraph{Bit orders.} For a function of two variables the bit strings are concatenated, and the order matters because the bonds are ranks of unfoldings. \emph{Sequential} order puts all bits of one variable before those of the other ($n_1\ldots n_R\,q_1\ldots q_{R_q}$); \emph{interleaved} order alternates them ($q_1n_1q_2n_2\ldots$), possibly with one variable reversed ($q_1n_Rq_2n_{R-1}\ldots$). Bits that interact should sit next to each other. A smooth function of two variables is best sequential: the single matrix coupling them has low rank, and interleaving spreads it over many bonds. A Fourier-type coupling $e^{2\pi i\,nq/2^R}$ is best interleaved with one variable reversed, because the bit $q_i$ couples only to the bits $n_j$ with $i+j>R$ (Appendix~\ref{app:qft}). For this reason the input $\hat g_{q,n}$ of the method is interleaved, with $n$ least significant first, and the output $\hat\chi_{Q,\ell}$ is sequential (Appendix~\ref{sec:choices}).
+For a function of two variables the bit strings are concatenated, and the order matters because the bonds are ranks of unfoldings. \emph{Sequential} order puts all bits of one variable before those of the other ($n_1\ldots n_R\,q_1\ldots q_{R_q}$); \emph{interleaved} order alternates them ($q_1n_1q_2n_2\ldots$), possibly with one variable reversed ($q_1n_Rq_2n_{R-1}\ldots$). Bits that interact should sit next to each other. A smooth function of two variables is best sequential: the single matrix coupling them has low rank, and interleaving spreads it over many bonds. A Fourier-type coupling $e^{2\pi i\,nq/2^R}$ is best interleaved with one variable reversed, because the bit $q_i$ couples only to the bits $n_j$ with $i+j>R$ (Appendix~\ref{app:qft}). For this reason the input $\hat g_{q,n}$ of the method is interleaved, with $n$ least significant first, and the output $\hat\chi_{Q,\ell}$ is sequential (Appendix~\ref{sec:choices}).
 
-\paragraph{The adder and the subtractor.} The cyclic correlation $\frac1{N_q}\sum_qA_qB_{q+Q}$ over the momentum grid, $N_q=2^{R_q}$, is the contraction of $A(q)$ and $B(q')$ with the tensor $\delta_{q',\,(q+Q)\bmod N_q}$, which is an MPO of bond dimension 2 over the bits of $q$, $q'$ and $Q$. Binary addition propagates a carry $c\in\{0,1\}$ from the least significant bit upward; the local tensor at bit $i$ is
+The cyclic correlation $\frac1{N_q}\sum_qA_qB_{q+Q}$ over the momentum grid, $N_q=2^{R_q}$, is the contraction of $A(q)$ and $B(q')$ with the tensor $\delta_{q',\,(q+Q)\bmod N_q}$, the \emph{adder}, which is an MPO of bond dimension 2 over the bits of $q$, $q'$ and $Q$. Binary addition propagates a carry $c\in\{0,1\}$ from the least significant bit upward; the local tensor at bit $i$ is
 \begin{equation}
   \begin{aligned}
   \big[W^{[i]}\big]_{c_{\rm in}c_{\rm out}}(q_i,Q_i,q'_i)={}&\delta\big(q'_i,\ q_i\oplus Q_i\oplus c_{\rm in}\big)\\
@@ -454,23 +466,42 @@ The $\chi_i$ are the \emph{bond dimensions} (``bonds''); the train stores $\sum_
   \end{aligned}
   \label{eq:adder}
 \end{equation}
-with $\oplus$ the sum modulo 2, $c_{\rm in}=0$ at the least significant bit and the carry out of the most significant bit discarded (addition modulo $N_q$: momenta are periodic). The bond index is the carry, so the bond is exactly $D_W=2$ at every site, for any $R_q$ and with no truncation. The subtractor $\delta_{q',\,(q-Q)\bmod N_q}$ has the same form with a borrow, $q'_i=q_i\oplus Q_i\oplus b_{\rm in}$ and $b_{\rm out}=1$ iff $q_i-Q_i-b_{\rm in}<0$; equivalently, it is the adder with the roles of $q$ and $q'$ exchanged ($q=q'+Q$). In the network (Sec.~\ref{sec:contraction}) the legs $q_i$ and $q'_i$ are contracted with the two input branches and the legs $Q_i$ remain open, so one contraction gives the correlation for all $N_q$ transfer momenta at once.
+with $\oplus$ the sum modulo 2, $c_{\rm in}=0$ at the least significant bit and the carry out of the most significant bit discarded (addition modulo $N_q$: momenta are periodic). The bond index is the carry, so the bond is exactly $D_W=2$ at every site, for any $R_q$ and with no truncation. The \emph{subtractor} $\delta_{q',\,(q-Q)\bmod N_q}$ has the same form with a borrow, $q'_i=q_i\oplus Q_i\oplus b_{\rm in}$ and $b_{\rm out}=1$ iff $q_i-Q_i-b_{\rm in}<0$; equivalently, it is the adder with the roles of $q$ and $q'$ exchanged ($q=q'+Q$). In the network (Sec.~\ref{sec:contraction}) the legs $q_i$ and $q'_i$ are contracted with the two input branches and the legs $Q_i$ remain open, so one contraction gives the correlation for all $N_q$ transfer momenta at once.
 
-\paragraph{The reflection.} The reflection $Q\to-Q\bmod N_q$ (two's-complement negation: complement every bit, then add 1) is also an MPO of bond 2: a bitwise NOT followed by the ``$+1$'' tensor $P[c_{\rm out},{\rm out},{\rm in},c_{\rm in}]=1$ iff ${\rm out}={\rm in}\oplus c_{\rm in}$ and $c_{\rm out}={\rm in}\wedge c_{\rm in}$, with $c_{\rm in}=1$ at the least significant bit and the final carry discarded.
+The reflection $Q\to-Q\bmod N_q$ (two's-complement negation: complement every bit, then add 1) is also an MPO of bond 2: a bitwise NOT followed by the ``$+1$'' tensor $P[c_{\rm out},{\rm out},{\rm in},c_{\rm in}]=1$ iff ${\rm out}={\rm in}\oplus c_{\rm in}$ and $c_{\rm out}={\rm in}\wedge c_{\rm in}$, with $c_{\rm in}=1$ at the least significant bit and the final carry discarded.
 
-\paragraph{Recompression.} A train produced by an operation (an MPO applied to a train, a sum as in Appendix~\ref{app:sum}, a contraction) in general has bonds larger than needed. A QR sweep followed by a sweep of truncated SVDs brings them down to what the tolerance requires, with the error bound of TT-SVD (Appendix~\ref{app:recomp}). Every intermediate of the contraction is recompressed this way at relative tolerance $10^{-9}$.
+A train produced by an operation (an MPO applied to a train, a sum as in Appendix~\ref{app:sum}, a contraction) in general has bonds larger than needed. A QR sweep followed by a sweep of truncated SVDs, the \emph{recompression}, brings them down to what the tolerance requires, with the error bound of TT-SVD (Appendix~\ref{app:recomp}). Every intermediate of the contraction is recompressed this way at relative tolerance $10^{-9}$.
 
-\paragraph{Zip-up.} To apply an MPO of bond $D_W$ to a train of bond $\chi$, one can form the product train (bond $D_W\chi$) and recompress it, at a cost $O(Ld\,(D_W\chi)^3)$ that is prohibitive when $D_W\chi$ reaches $10^4$ (it would be $\approx14\,800$ in step \stp4 below). The zip-up contracts and truncates site by site in a single sweep. At site $i$ the carried matrix, whose rows are the truncated bond $\chi'_{i-1}$, is contracted with the $i$-th MPO and train cores, which produces a matrix with $d\chi'_{i-1}$ rows (the truncated bond and the output leg of site $i$) and $D_W\chi$ columns (the right bonds of the MPO and of the train); a truncated SVD factors it, $U$ becomes the finished core $i$, and $SV^\dagger$ is carried to site $i+1$. The product of bond $D_W\chi$ is never formed: the largest matrix has one side of size $d\chi'$ and the other $D_W\chi$ (the largest SVD of the run is $552\times6048$). Since the truncation at site $i$ does not yet know the sites to its right, it is slightly suboptimal; a final recompression sweep removes the excess (the two rows of bonds in Table~\ref{tab:steps}). The same scheme contracts two trains over shared physical legs: in steps \stp1 and \stp2 the leaf train is zipped along $\hat g$ over the legs $n_i$, with an SVD after every $q$ site, and in step \stp4 the adder sits between $A$ and $B'$, the legs $q_i$, $q'_i$ are summed and $Q_i$ stays open.
+To apply an MPO of bond $D_W$ to a train of bond $\chi$, one can form the product train (bond $D_W\chi$) and recompress it, at a cost $O(Ld\,(D_W\chi)^3)$ that is prohibitive when $D_W\chi$ reaches $10^4$ (it would be $\approx14\,800$ in step \stp4 below). The \emph{zip-up} contracts and truncates site by site in a single sweep. At site $i$ the carried matrix, whose rows are the truncated bond $\chi'_{i-1}$, is contracted with the $i$-th MPO and train cores, which produces a matrix with $d\chi'_{i-1}$ rows (the truncated bond and the output leg of site $i$) and $D_W\chi$ columns (the right bonds of the MPO and of the train); a truncated SVD factors it, $U$ becomes the finished core $i$, and $SV^\dagger$ is carried to site $i+1$. The product of bond $D_W\chi$ is never formed: the largest matrix has one side of size $d\chi'$ and the other $D_W\chi$ (the largest SVD of the run is $552\times6048$). Since the truncation at site $i$ does not yet know the sites to its right, it is slightly suboptimal; a final recompression sweep removes the excess (the two rows of bonds in Table~\ref{tab:steps}). The same scheme contracts two trains over shared physical legs: in steps \stp1 and \stp2 the leaf train is zipped along $\hat g$ over the legs $n_i$, with an SVD after every $q$ site, and in step \stp4 the adder sits between $A$ and $B'$, the legs $q_i$, $q'_i$ are summed and $Q_i$ stays open.
 
 \section{The tensors}
 \label{sec:tensors}
 
 \begin{figure*}[tp]
   \centering
-  \includegraphics[width=0.82\textwidth]{ingredients.pdf}
-  \caption{The ingredients, with the bond dimensions of the run (tolerances in Sec.~\ref{sec:tensors}). Top: the Tucker tree of the weighted kernel, the core $C$ with the legs $a$, $b$, $c$ and the leaves $\tilde U^{(1)}$, $\tilde U^{(2)}$ over the bits $n_8\ldots n_1$ and $U^{(3)}$ over $\ell_9\ldots\ell_1$. Middle: the input $\hat g$, whose sites alternate between momentum bits and bits of $n$. Bottom: the adder, with the input legs $q_i$, $q'_i$ and the output legs $Q_i$; its bond is the carry.}
-  \label{fig:ingredients}
+  \includegraphics[width=\textwidth]{intermediate_steps.pdf}
+  \caption{The intermediate trains after recompression, with the bond dimensions of the run: $A(q;a)$ from step \stp1, $B(q';b)$ from step \stp2, and $Y^\pm(Q;c)$ from step \stp4, the same for both signs. Their bonds are the second rows of Table~\ref{tab:steps}.}
+  \label{fig:intermediate}
 \end{figure*}
+
+\begin{table*}[t]
+\caption{The contraction, step by step. For every step the bonds of the result are given before recompression (first row) and after it (second row). The first, second and fourth steps are zip-ups (Sec.~\ref{sec:qtt}), so their bonds before recompression are those left by the zip-up. In the cost column $\chi$ is the bond dimension of every train and the dimension of the Tucker legs $a$, $b$, $c$; $d=2$ is the physical dimension of the legs $q_i$, $q'_i$, $Q_i$, $n_i$, $\ell_i$, $k_i$; $D_W=2$ is the bond of the adder; $D=11$ is the bond dimension of the DFT MPO; $L$ is the number of sites.}
+\label{tab:steps}
+\centering\footnotesize
+\setlength{\tabcolsep}{3pt}
+\begin{tabular}{@{}cp{2.3cm}p{2.3cm}p{2.1cm}p{7.6cm}p{2.0cm}@{}}
+\toprule
+step & \rr contract & \rr over & \rr result & \rr bonds before recompression\newline $\to$ after recompression & \rr cost \\
+\midrule
+\stp1 & \rr $\hat g$ with $\tilde U^{(1)}$ & \rr $n_1\ldots n_8$ (zip-up, SVD after every $q$ site) & \rr $A$: $a$, $q_1\ldots q_{10}$ & \rr 31, 59, 118, 227, 368, 190, 58, 19, 4, 2\newline $\to$ 31, 46, 84, 86, 56, 29, 15, 8, 4, 2 & \rr $O(Ld^2\chi^4)$ \\
+\stp2 & \rr $\hat g$ with $\tilde U^{(2)}$ & \rr $n_1\ldots n_8$ (zip-up) & \rr $B$: $b$, $q_1\ldots q_{10}$ & \rr 33, 60, 118, 228, 379, 190, 58, 19, 4, 2\newline $\to$ 33, 47, 86, 83, 54, 29, 15, 8, 4, 2 & \rr $O(Ld^2\chi^4)$ \\
+\stp3 & \rr $C$ with the first site of $B$ & \rr $b$ & \rr $B'$: $(a,c)$, $q_1\ldots q_{10}$ & \rr unchanged, no recompression & \rr $O(\chi^4)$ \\
+\stp4 & \rr $A$, adder (or subtractor), $B'$ & \rr $a$, $q_i$, $q'_i$ (zip-up, SVD after every site) & \rr $Y^\pm$: $c$, $Q_1\ldots Q_{10}$ & \rr 44, 88, 173, 276, 210, 102, 47, 26, 13, 7\newline $\to$ 27, 35, 26, 18, 12, 9, 7, 6, 4, 2 & \rr $O(LD_Wd^2\chi^4)$ for each sign \\
+\stp5 & \rr $U^{(3)}$ with $Y^+$ and with $Y^-$, then add & \rr $c$; sign $(-1)^\ell$ on $\ell_9$ & \rr $\hat\chi$: $\ell_1\ldots\ell_9$, $Q_1\ldots Q_{10}$ & \rr 4, 4, 6, 8, 16, 28, 50, 90, 54, 70, 52, 36, 24, 18, 14, 12, 8, 4\newline $\to$ 2, 2, 2, 3, 5, 9, 16, 24, 24, 35, 26, 18, 12, 9, 7, 6, 4, 2 & \rr $O(Ld\chi^3)$ \\
+\stp6 & \rr $F$ with $\hat\chi$ & \rr $\ell_1\ldots\ell_9$ & \rr $\chi$: $k_9\ldots k_1$, $Q_1\ldots Q_{10}$ & \rr 4, 8, 16, 33, 55, 72, 64, 48, 24, 35, 26, 18, 12, 9, 7, 6, 4, 2\newline $\to$ 2, 4, 7, 8, 11, 16, 20, 24, 24, 35, 26, 18, 12, 9, 7, 6, 4, 2 & \rr $O(LdD^3\chi^3)$ \\
+\bottomrule
+\end{tabular}
+\end{table*}
 
 In Fig.~\ref{fig:ingredients} and below, all bits are written with the most significant bit first unless stated otherwise; $n$ and $\ell$ are in two's complement, i.e.\ FFT order \eqref{eq:twos}, and bond dimensions are listed from left to right. The input $\hat g_{q,n}$ is the raw array \eqref{eq:ghat} as a train; Appendix~\ref{sec:choices} explains why the raw array is truncated and the weight $1/s_n$ is put into the leaves. The leaves are the Tucker factors of \eqref{eq:kernel_tucker} written as trains over the bits of $n$ or $\ell$, with the Tucker index attached at the least significant bit, where the leaf bonds stay below the Tucker rank. Every tensor is computed to a relative tolerance $\varepsilon$, in the sense of Sec.~\ref{sec:tucker} for the HOSVD and of Appendix~\ref{app:ttsvd} for the trains:
 \begin{center}\footnotesize
@@ -493,44 +524,11 @@ In Fig.~\ref{fig:ingredients} and below, all bits are written with the most sign
 \section{The contraction}
 \label{sec:contraction}
 
-\begin{figure*}[tp]
-  \centering
-  \includegraphics[width=0.84\textwidth]{bubble_tn_contraction_modified_by_me.pdf}
-  \caption{The network, with the bond dimensions of the run; red legs are contracted. The dashed box $A$ holds $\hat g$ and the leaf $\tilde U^{(1)}$, contracted over the legs $n_i$ in step \stp1, and the box $B$ holds $\hat g$ and $\tilde U^{(2)}$, contracted in step \stp2. The grey dashed box is the network of step \stp4, whose result is the train $Y^\pm(Q;c)$: $A$ and $B$ joined by the adder over the legs $q_i$, $q'_i$, with the core $C$ on their legs $a$ and $b$. The output leaf $U^{(3)}$ is attached through $c$. Below the equals sign is the same network after step \stp4. The drawing shows $Y^+$. For $Y^-$ the adder is replaced by the subtractor ($q'=q-Q$, bond: the borrow) and $U^{(3)}$ carries the sign $(-1)^\ell=(-1)^{\ell_9}$; the bonds are the same. By \eqref{eq:yminus_identity}, the $Y^-$ network equals the $Y^+$ network read at $-Q$.}
-  \label{fig:contraction}
-\end{figure*}
-
-\begin{figure*}[tp]
-  \centering
-  \includegraphics[width=\textwidth]{intermediate_steps.pdf}
-  \caption{The intermediate trains after recompression, with the bond dimensions of the run: $A(q;a)$ from step \stp1, $B(q';b)$ from step \stp2, and $Y^\pm(Q;c)$ from step \stp4, the same for both signs. Their bonds are the second rows of Table~\ref{tab:steps}.}
-  \label{fig:intermediate}
-\end{figure*}
-
 Step \stp1 contracts $\hat g$ with the leaf $\tilde U^{(1)}$ over the legs $n_1\ldots n_8$, and step \stp2 contracts it with $\tilde U^{(2)}$; these are the dashed boxes $A$ and $B$ of Fig.~\ref{fig:contraction}, with the contracted legs in red. The core $C$ is then contracted with the first site of $B$ over $b$ (step \stp3), which gives $B'$. The grey dashed box is the network of step \stp4: $A$ and $B'$ joined by the adder (for $Y^+$) or the subtractor (for $Y^-$) over the legs $q_i$ and $q'_i$, with only $c$ and $Q_1\ldots Q_{10}$ left open. Its result is the train $Y^\pm(Q;c)$, drawn below the equals sign, still attached to the output leaf $U^{(3)}$ through $c$. Step \stp5 does this last contraction for both signs, with the sign $(-1)^\ell$ on $\ell_9$ for $Y^-$, and adds the two branches. Step \stp6, the inverse DFT $\ell\to k$ (Appendix~\ref{app:qft}), is not drawn. Figure~\ref{fig:intermediate} shows the recompressed trains $A$, $B$ and $Y^\pm$, and Table~\ref{tab:steps} gives the bonds and the cost of every step.
-
-\begin{table*}[t]
-\caption{The contraction, step by step. For every step the bonds of the result are given before recompression (first row) and after it (second row). The first, second and fourth steps are zip-ups (Sec.~\ref{sec:qtt}), so their bonds before recompression are those left by the zip-up. In the cost column $\chi$ is the bond dimension of every train and the dimension of the Tucker legs $a$, $b$, $c$; $d=2$ is the physical dimension of the legs $q_i$, $q'_i$, $Q_i$, $n_i$, $\ell_i$, $k_i$; $D_W=2$ is the bond of the adder; $D=11$ is the bond dimension of the DFT MPO; $L$ is the number of sites.}
-\label{tab:steps}
-\centering\footnotesize
-\setlength{\tabcolsep}{3pt}
-\begin{tabular}{@{}cp{2.3cm}p{2.3cm}p{2.1cm}p{7.6cm}p{2.0cm}@{}}
-\toprule
-step & \rr contract & \rr over & \rr result & \rr bonds before recompression\newline $\to$ after recompression & \rr cost \\
-\midrule
-\stp1 & \rr $\hat g$ with $\tilde U^{(1)}$ & \rr $n_1\ldots n_8$ (zip-up, SVD after every $q$ site) & \rr $A$: $a$, $q_1\ldots q_{10}$ & \rr 31, 59, 118, 227, 368, 190, 58, 19, 4, 2\newline $\to$ 31, 46, 84, 86, 56, 29, 15, 8, 4, 2 & \rr $O(Ld^2\chi^4)$ \\
-\stp2 & \rr $\hat g$ with $\tilde U^{(2)}$ & \rr $n_1\ldots n_8$ (zip-up) & \rr $B$: $b$, $q_1\ldots q_{10}$ & \rr 33, 60, 118, 228, 379, 190, 58, 19, 4, 2\newline $\to$ 33, 47, 86, 83, 54, 29, 15, 8, 4, 2 & \rr $O(Ld^2\chi^4)$ \\
-\stp3 & \rr $C$ with the first site of $B$ & \rr $b$ & \rr $B'$: $(a,c)$, $q_1\ldots q_{10}$ & \rr unchanged, no recompression & \rr $O(\chi^4)$ \\
-\stp4 & \rr $A$, adder (or subtractor), $B'$ & \rr $a$, $q_i$, $q'_i$ (zip-up, SVD after every site) & \rr $Y^\pm$: $c$, $Q_1\ldots Q_{10}$ & \rr 44, 88, 173, 276, 210, 102, 47, 26, 13, 7\newline $\to$ 27, 35, 26, 18, 12, 9, 7, 6, 4, 2 & \rr $O(LD_Wd^2\chi^4)$ for each sign \\
-\stp5 & \rr $U^{(3)}$ with $Y^+$ and with $Y^-$, then add & \rr $c$; sign $(-1)^\ell$ on $\ell_9$ & \rr $\hat\chi$: $\ell_1\ldots\ell_9$, $Q_1\ldots Q_{10}$ & \rr 4, 4, 6, 8, 16, 28, 50, 90, 54, 70, 52, 36, 24, 18, 14, 12, 8, 4\newline $\to$ 2, 2, 2, 3, 5, 9, 16, 24, 24, 35, 26, 18, 12, 9, 7, 6, 4, 2 & \rr $O(Ld\chi^3)$ \\
-\stp6 & \rr $F$ with $\hat\chi$ & \rr $\ell_1\ldots\ell_9$ & \rr $\chi$: $k_9\ldots k_1$, $Q_1\ldots Q_{10}$ & \rr 4, 8, 16, 33, 55, 72, 64, 48, 24, 35, 26, 18, 12, 9, 7, 6, 4, 2\newline $\to$ 2, 4, 7, 8, 11, 16, 20, 24, 24, 35, 26, 18, 12, 9, 7, 6, 4, 2 & \rr $O(LdD^3\chi^3)$ \\
-\bottomrule
-\end{tabular}
-\end{table*}
 
 With both zip-ups of step \stp4, 31\,s each, the contraction takes about 67\,s. The largest bond after recompression is 86, in $A$ and $B$; from the core on, every bond is at most 35, the bond of the result itself. Three objects are never formed: the weighted input $\hat g/s$, which is incompressible; the correlation $M(Q;a,b)$, whose leg has dimension 1023; and the uncompressed products inside the zip-ups, whose bond would reach $\approx14\,800$ in step \stp4.
 
-\paragraph{$Y^-$ without a second zip-up.} By \eqref{eq:yminus_identity}, $Y^-(Q)=Y^+(-Q\bmod N_q)$: the subtractor version of Fig.~\ref{fig:contraction} is the adder version read at the reflected momentum. The reflection $Q\to-Q$ is the bitwise NOT on every $Q$ bit followed by the exact ``$+1$'' MPO of bond 2 (Sec.~\ref{sec:qtt}), applied to the train $Y^+(Q;c)$. The reflection takes 0.01\,s, and the reflected $Y^+$ agrees with $Y^-$ from the subtractor zip-up to $3.1\times10^{-10}$. We therefore recommend one zip-up for $Y^+$ (31\,s) followed by the reflection; the whole contraction then takes about 35\,s instead of 67\,s.
+The branch $Y^-$ does not need its own zip-up. By \eqref{eq:yminus_identity}, $Y^-(Q)=Y^+(-Q\bmod N_q)$: the subtractor version of Fig.~\ref{fig:contraction} is the adder version read at the reflected momentum. The reflection $Q\to-Q$ is the bitwise NOT on every $Q$ bit followed by the exact ``$+1$'' MPO of bond 2 (Sec.~\ref{sec:qtt}), applied to the train $Y^+(Q;c)$. The reflection takes 0.01\,s, and the reflected $Y^+$ agrees with $Y^-$ from the subtractor zip-up to $3.1\times10^{-10}$. We therefore recommend one zip-up for $Y^+$ (31\,s) followed by the reflection; the whole contraction then takes about 35\,s instead of 67\,s.
 
 \section{Accuracy}
 \label{sec:accuracy}
@@ -560,6 +558,7 @@ $m$ & error & $\max_k\lvert\chi_{\rm exact}\rvert$ \\
 \end{tabular}
 \end{table}
 
+\clearpage
 \appendix
 
 \section{The Lindhard function}
@@ -612,7 +611,7 @@ For the direct formula \eqref{eq:direct} the singularities of $F$ are the shifte
 \section{Decay of the coefficients and the weighted kernel}
 \label{sec:decay}
 
-\paragraph{Strip analyticity and the multiplier.} The function $g(\zeta)=G_q(\omega(\zeta))$ is 8-periodic in $\Real\zeta$ and analytic in the open strip $0<\Imag\zeta<2\tau$, i.e.\ $0<\lambda<2$: $\omega$ maps the strip into $\mathbb C\setminus[-3,3]$, where $G_q$ is analytic, and at the two poles of $\omega$ (at $\zeta=1+i\tau$ and $5+i\tau$) $G_q(\omega)\to0$ is still analytic. The lines $\lambda=0$ and $\lambda=2$ are the boundary, where $\omega$ is on the band. The coefficients at level $\lambda$ are $\hat g_n(\lambda)=\frac18\int_{-1}^7g(\phi+i\tau\lambda)e^{-i\pi n\phi/4}d\phi$ (the continuum version of \eqref{eq:ghat}). Shifting the line of integration from height $\tau\lambda_0$ to $\tau\lambda$ inside the strip is allowed by Cauchy's theorem (the vertical sides cancel by periodicity) and gives
+The function $g(\zeta)=G_q(\omega(\zeta))$ is 8-periodic in $\Real\zeta$ and analytic in the open strip $0<\Imag\zeta<2\tau$, i.e.\ $0<\lambda<2$: $\omega$ maps the strip into $\mathbb C\setminus[-3,3]$, where $G_q$ is analytic, and at the two poles of $\omega$ (at $\zeta=1+i\tau$ and $5+i\tau$) $G_q(\omega)\to0$ is still analytic. The lines $\lambda=0$ and $\lambda=2$ are the boundary, where $\omega$ is on the band. The coefficients at level $\lambda$ are $\hat g_n(\lambda)=\frac18\int_{-1}^7g(\phi+i\tau\lambda)e^{-i\pi n\phi/4}d\phi$ (the continuum version of \eqref{eq:ghat}). Shifting the line of integration from height $\tau\lambda_0$ to $\tau\lambda$ inside the strip is allowed by Cauchy's theorem (the vertical sides cancel by periodicity) and gives
 \begin{equation}
   \begin{gathered}
   \hat g_n(\lambda)=e^{-\alpha(\lambda-\lambda_0)n}\,\hat g_n(\lambda_0),\\
@@ -630,7 +629,7 @@ Changing the level is a diagonal operation on the Fourier modes. Because $\hat g
 \end{equation}
 positive modes ``see'' the band at level 0, negative modes its image at level 2. At $\lambda=0.2$ the rates are $0.196$ and $1.77$ per mode, so the coefficients reach $10^{-15}$ of their maximum at $n\approx176$ and $n\approx-20$; smaller coefficients are rounding noise of the double-precision data. The same holds for $\chi$ on $C_\mu$ with $\mu$ in place of $\lambda$, which sets the $\ell$ window.
 
-\paragraph{The weights.} The worst case among all admissible $G$ is a pole on the band, whose coefficients saturate \eqref{eq:decay}. Define
+The worst case among all admissible $G$ is a pole on the band, whose coefficients saturate \eqref{eq:decay}. Define the \emph{weights}
 \begin{equation}
   s_n=\begin{cases}\max\big(e^{-\alpha\lambda n},\,10^{-15}\big),&n\ge0,\\[2pt]
   \max\big(e^{-\alpha(2-\lambda)\lvert n\rvert},\,10^{-15}\big),&n<0,\end{cases}
@@ -638,9 +637,8 @@ positive modes ``see'' the band at level 0, negative modes its image at level 2.
 \end{equation}
 and write the bubble as $\hat\chi_{Q,\ell}=\sum_{n'n}\widetilde K_{n'n\ell}\widetilde P^\pm_Q(n',n)$ with the \emph{weighted kernel} $\widetilde K_{n'n\ell}=s_{n'}s_n\widehat K_{n'n\ell}$ and $\widetilde P=P/(s_{n'}s_n)$. For every $G$ whose coefficients are bounded by the worst case, $\lvert\hat g_{q,n}\rvert\le c\,s_n$, the entries of $\widetilde P$ are bounded by $c^2$, so an error $\delta\widetilde K$ of the weighted kernel gives $\lvert\delta\hat\chi_{Q,\ell}\rvert\le c^2\sum_{n'n}\lvert\delta\widetilde K_{n'n\ell}\rvert$. A relative truncation error $\varepsilon$ of $\widetilde K$ is therefore directly an error $\approx\varepsilon$ of $\hat\chi$, uniformly over the admissible $G$. Compressing the unweighted $\widehat K$ would spend rank on the high modes, which never carry signal, and would give no error control. The floor $10^{-15}$ is needed because below it the data are noise: without it, $1/s_n$ reaches $10^{25}$, the noise is amplified, and the compressed kernel gives errors of $10^{-6}$ to $10^{-5}$ at any tolerance.
 
-\paragraph{The weighted kernel does not depend on $\lambda$.}
-\label{sec:lambda_indep}
-By \eqref{eq:multiplier}, the ratios $a_{q,n}\equiv\hat g_{q,n}(\lambda)/s_n(\lambda)$ are the coefficients at level 0 for $n\ge0$ and at level 2 for $n<0$ (the floor aside): level-free Laurent coefficients of $G_q$, independent of $\lambda$. The bubble is $\hat\chi_{Q,\ell}=\sum_{n'n}\widetilde K_{n'n\ell}\frac1{N_q}\sum_q[a_{q,n'}a_{q+Q,n}+(-1)^\ell a_{q,n'}a_{q-Q,n}]$, and neither $\hat\chi$ (a contour integral, independent of the contour) nor the $a$'s depend on $\lambda$. Hence $\widetilde K$ is the same trilinear form for every forward-safe $\lambda$, up to the quadrature error $e^{-\alpha N(\lambda'_{\min}-\lambda)}$. Measured at $\mu=0.4$, the weighted kernels built at $\lambda=0.2$ and $\lambda=0.1$ (both $N=512$) differ by $1.7\times10^{-11}$ of their maximum. Consequently the ranks of the compressed kernel depend on $\mu$, $\beta$ and $\varepsilon$ only, not on $\lambda$ or $N$, and the kernel can be built at the cheapest $(\lambda,N)$ and applied to data at another $\lambda$. A small $\lambda$ makes the margin $\lambda'_{\min}-\lambda$ large, so $N$ is set by the window alone, with the window cut at the target $\varepsilon$. For $\mu=0.4$ this means $\lambda=0.1$, $N=256$ and 2\,s instead of 10\,s; for $\mu=0.2$, $\lambda=0.05$, $N=512$ and 29\,s plus 19\,s of HOSVD instead of 108\,s plus 120\,s, with identical ranks and errors.
+\label{sec:lambda_indep}%
+The weighted kernel does not depend on $\lambda$. By \eqref{eq:multiplier}, the ratios $a_{q,n}\equiv\hat g_{q,n}(\lambda)/s_n(\lambda)$ are the coefficients at level 0 for $n\ge0$ and at level 2 for $n<0$ (the floor aside): level-free Laurent coefficients of $G_q$, independent of $\lambda$. The bubble is $\hat\chi_{Q,\ell}=\sum_{n'n}\widetilde K_{n'n\ell}\frac1{N_q}\sum_q[a_{q,n'}a_{q+Q,n}+(-1)^\ell a_{q,n'}a_{q-Q,n}]$, and neither $\hat\chi$ (a contour integral, independent of the contour) nor the $a$'s depend on $\lambda$. Hence $\widetilde K$ is the same trilinear form for every forward-safe $\lambda$, up to the quadrature error $e^{-\alpha N(\lambda'_{\min}-\lambda)}$. Measured at $\mu=0.4$, the weighted kernels built at $\lambda=0.2$ and $\lambda=0.1$ (both $N=512$) differ by $1.7\times10^{-11}$ of their maximum. Consequently the ranks of the compressed kernel depend on $\mu$, $\beta$ and $\varepsilon$ only, not on $\lambda$ or $N$, and the kernel can be built at the cheapest $(\lambda,N)$ and applied to data at another $\lambda$. A small $\lambda$ makes the margin $\lambda'_{\min}-\lambda$ large, so $N$ is set by the window alone, with the window cut at the target $\varepsilon$. For $\mu=0.4$ this means $\lambda=0.1$, $N=256$ and 2\,s instead of 10\,s; for $\mu=0.2$, $\lambda=0.05$, $N=512$ and 29\,s plus 19\,s of HOSVD instead of 108\,s plus 120\,s, with identical ranks and errors.
 
 \section{TT-SVD and the truncation criterion}
 \label{app:ttsvd}
@@ -693,7 +691,7 @@ A train is recompressed in two sweeps. (i)~A QR sweep from left to right: reshap
   \item Contract the core into $B$ before the adder. Correlating $A$ and $B$ first creates $M(Q;a,b)$, with a front leg of 1023; its zip-up swells to bonds of 600 to 2600, and capping them costs 3 to 13\,\% accuracy.
   \item Put $\ell$ on the same bits as $k$. The inverse DFT is then the square, QFT-type transform \eqref{eq:dft_bits}, with bond at most 11. Keeping only the 128 window modes on 7 bits gives a rectangular map with bond 32.
   \item Compute $Y^-$ by reflecting $Y^+$ (Sec.~\ref{sec:contraction}): one zip-up instead of two, 35\,s instead of 67\,s.
-  \item Choose $\lambda\lesssim\mu/2$, so that the copies of Fig.~\ref{fig:dumbbells}(b) stay outside $C_\lambda$ (the three conditions of Sec.~\ref{sec:cauchy}), and set the tolerances to $10^{-8}$ for the kernel, $10^{-6}$ for the input, $10^{-10}$ for the leaves, $10^{-12}$ for the DFT and $10^{-9}$ for the recompression. The kernel ranks grow like $\log(1/\varepsilon)$ and like $1/\mu$ (and with $\beta$), as in \eqref{eq:ranklaw}. They do not grow with $N$ or $\lambda$, and the kernel may be built at a smaller $N$ than the data's (Appendix~\ref{sec:decay}).
+  \item Choose $\lambda\lesssim\mu/2$, so that the copies $C_\lambda\pm w_k$ stay outside $C_\lambda$ (the three conditions of Sec.~\ref{sec:cauchy}), and set the tolerances to $10^{-8}$ for the kernel, $10^{-6}$ for the input, $10^{-10}$ for the leaves, $10^{-12}$ for the DFT and $10^{-9}$ for the recompression. The kernel ranks grow like $\log(1/\varepsilon)$ and like $1/\mu$ (and with $\beta$), as in \eqref{eq:ranklaw}. They do not grow with $N$ or $\lambda$, and the kernel may be built at a smaller $N$ than the data's (Appendix~\ref{sec:decay}).
 \end{enumerate}
 
 \end{document}

@@ -162,15 +162,8 @@ The Fermi function turns every term of the Matsubara sum into a residue. It has 
   \frac1\beta\sum_nh(i\omega_n)=-\sum_n\Res_{z=i\omega_n}\big[f(z)\,h(z)\big].
   \label{eq:matsum_residues}
 \end{equation}
-For two simple poles $a$ and $b$, neither of them a Matsubara frequency, the sum is elementary, Eq.~\eqref{eq:two_poles} of Appendix~\ref{app:lindhard}: $\frac1\beta\sum_n[(i\omega_n-a)(i\omega_n-b)]^{-1}=[f(a)-f(b)]/(a-b)$. Insert the spectral representation \eqref{eq:lehmann} of both Green functions into \eqref{eq:bubble_def}. Each pair of poles, $a=\varepsilon$ and $b=\varepsilon'-i\nu_m$, gives this sum, and $f(\varepsilon'-i\nu_m)=f(\varepsilon')$ by \eqref{eq:fermi}. The bubble at $z=i\nu_m$ is therefore
-\begin{equation}
-  \begin{aligned}
-  \chi_Q(z)={}&\frac1{N_q}\sum_q\int\!\!\int d\varepsilon\,d\varepsilon'\,A_q(\varepsilon)\,A_{q+Q}(\varepsilon')\\
-  &\times\frac{f(\varepsilon)-f(\varepsilon')}{z+\varepsilon-\varepsilon'} .
-  \end{aligned}
-  \label{eq:spectral}
-\end{equation}
-The frequency enters only through the denominator. For any $z\notin\mathbb R$ the right-hand side is analytic, it decays like $1/z$, and it equals the bubble at every $i\nu_m$. It is the only such function (Baym and Mermin), so \eqref{eq:spectral}, the spectral (Lehmann) representation, is the analytic continuation of the bubble to complex frequencies. Replacing $i\nu_m$ by $z$ in the Matsubara sum \eqref{eq:bubble_def} gives a different function, with a cut at every height $\Imag z=-\omega_n$. The method computes $\chi_Q(w)$ at the points $w_k$ of the dumbbell $C_\mu$ of $\chi$ (Fig.~\ref{fig:contours}). For the model \eqref{eq:model}, \eqref{eq:spectral} is the Lindhard function \eqref{eq:lindhard} of Appendix~\ref{app:lindhard}, the reference for all accuracies quoted below.
+Take $h(z)=G_q(z)\,G_{q+Q}(z+i\nu_m)$ in \eqref{eq:matsum_residues}. By \eqref{eq:lehmann} it is a superposition, with the weights $A_q(\varepsilon)A_{q+Q}(\varepsilon')$, of the functions $1/[(z-\varepsilon)(z+i\nu_m-\varepsilon')]$, whose two simple poles $z=\varepsilon$ and $z=\varepsilon'-i\nu_m$ are not Matsubara frequencies. For each of them the residues at the $i\omega_n$ can be traded for those at its two poles, Eq.~\eqref{eq:two_poles} of Appendix~\ref{app:lindhard}, and with $f(\varepsilon'-i\nu_m)=f(\varepsilon')$ from \eqref{eq:fermi},
+$\frac1\beta\sum_n[(i\omega_n-\varepsilon)(i\omega_n+i\nu_m-\varepsilon')]^{-1}=[f(\varepsilon)-f(\varepsilon')]/(i\nu_m+\varepsilon-\varepsilon')$. The bubble \eqref{eq:bubble_def} is the average of this pair result over $q$, $\varepsilon$ and $\varepsilon'$ with the weights $A_q(\varepsilon)A_{q+Q}(\varepsilon')$, and the frequency enters only through the denominator. With $i\nu_m$ replaced by any $w\notin\mathbb R$, the average is analytic off the real axis, decays like $1/w$, and equals the bubble at every $i\nu_m$. It is the only such function (Baym and Mermin), so this replacement gives the analytic continuation $\chi_Q(w)$ of the bubble to complex frequencies. Replacing $i\nu_m$ by $w$ in the Matsubara sum \eqref{eq:bubble_def} instead gives a different function, with a cut at every height $\Imag w=-\omega_n$. The method computes $\chi_Q(w)$ at the points $w_k$ of the dumbbell $C_\mu$ of $\chi$ (Fig.~\ref{fig:contours}). For the model \eqref{eq:model}, where $A_q(\varepsilon)=\delta(\varepsilon-\varepsilon_q)$, the average is the Lindhard function \eqref{eq:lindhard} of Appendix~\ref{app:lindhard}, the reference for all accuracies quoted below.
 
 \subsection{The contour formula}
 \label{sec:contour}
@@ -182,7 +175,15 @@ The frequency enters only through the denominator. For any $z\notin\mathbb R$ th
   \label{fig:contours}
 \end{figure}
 
-Let $w\notin\mathbb R$, and let $C$ be a counterclockwise contour that (i) encloses the band $[-3,3]$ and no pole of $f$ and (ii) leaves out the shifted cuts $[-3,3]\mp w$ of $G_{q\pm Q}(z\pm w)$ (Fig.~\ref{fig:contours}). Then
+Let $w\notin\mathbb R$, and let $C$ be a counterclockwise contour that (i) encloses the band $[-3,3]$ and no pole of $f$ and (ii) leaves out the shifted cuts $[-3,3]\mp w$ (Fig.~\ref{fig:contours}). Each Fermi factor of the continued pair result $[f(\varepsilon)-f(\varepsilon')]/(w+\varepsilon-\varepsilon')$ is then a residue on $C$. For $\varepsilon$ and $\varepsilon'$ in the band, $f(z)/[(z-\varepsilon)(z+w-\varepsilon')]$ has inside $C$ only the pole $z=\varepsilon$: $f$ has no pole there, and $z=\varepsilon'-w$ lies on the shifted cut $[-3,3]-w$, outside. In the same way $f(z)/[(z-\varepsilon')(z-w-\varepsilon)]$ has inside $C$ only the pole $z=\varepsilon'$, while $z=\varepsilon+w$ lies on $[-3,3]+w$. The residue theorem gives
+\begin{equation}
+  \begin{aligned}
+  \frac{f(\varepsilon)-f(\varepsilon')}{w+\varepsilon-\varepsilon'}=\frac1{2\pi i}\oint_Cdz\;f(z)\bigg[&\frac1{(z-\varepsilon)(z+w-\varepsilon')}\\
+  &+\frac1{(z-\varepsilon')(z-w-\varepsilon)}\bigg].
+  \end{aligned}
+  \label{eq:fermi_residue}
+\end{equation}
+Average this with the weights $A_q(\varepsilon)A_{q+Q}(\varepsilon')$, as in Sec.~\ref{sec:bubble}. By \eqref{eq:lehmann} the integrals over $\varepsilon$ and $\varepsilon'$ turn the first term into $G_q(z)\,G_{q+Q}(z+w)$ and the second into $G_{q+Q}(z)\,G_q(z-w)$, which becomes $G_q(z)\,G_{q-Q}(z-w)$ when $q$ is relabelled $q-Q$ in the momentum average. Hence
 \begin{equation}
   \begin{aligned}
   \chi_Q(w)={}&\frac1{N_q}\sum_q\frac1{2\pi i}\oint_Cdz\;f(z)\,G_q(z)\\
@@ -190,7 +191,7 @@ Let $w\notin\mathbb R$, and let $C$ be a counterclockwise contour that (i) enclo
   \end{aligned}
   \label{eq:contour_w}
 \end{equation}
-To check it, insert \eqref{eq:lehmann} for both Green functions and do the $z$-integral by residues. In the first term the integrand $f(z)/[(z-\varepsilon)(z+w-\varepsilon')]$ has only the pole $z=\varepsilon$ inside $C$ ($z=\varepsilon'-w$ is on the shifted cut, outside), with residue $f(\varepsilon)/(w+\varepsilon-\varepsilon')$. In the second term the pole $z=\varepsilon$ gives $f(\varepsilon)/(\varepsilon-w-\varepsilon')$; relabelling $q\to q+Q$ and exchanging $\varepsilon\leftrightarrow\varepsilon'$ turns it into $-f(\varepsilon')/(w+\varepsilon-\varepsilon')$ multiplying $A_q(\varepsilon)A_{q+Q}(\varepsilon')$. The two terms together give \eqref{eq:spectral} at $z=w$. Inside $C$ the integrand has only the cut of $G_q(z)$, and the Fermi function is evaluated only on $C$.
+Inside $C$ the integrand has only the cut of $G_q(z)$, and the Fermi function is evaluated only on $C$.
 
 With the contour $C_\lambda$ and $w=w_k\in C_\mu$, (i) is $0<\lambda<1$, since the poles of $f$ lie on the level-1 rays, and (ii) says that the copies $C_\lambda\pm w_k$ of the contour do not meet the band: $\lambda'_{\min}>0$ in \eqref{eq:lammin}. In Fig.~\ref{fig:contours}, $C_{0.2}$ stays within $\lvert\Imag z\rvert\le0.53$, while the shifted cuts lie at the heights $\mp1.45$. If (ii) fails, the contour picks up part of a shifted cut and the result is wrong at every $N$.
 
@@ -345,7 +346,7 @@ since $B_{q-Q,b}=B_{q+(-Q),b}$. The branch $Y^-$ therefore follows from $Y^+$ by
 \end{equation}
 that is, $Y^-(Q)=Y^+(Q)$ exactly on the grid. Then $\hat\chi_{Q,\ell}=[1+(-1)^\ell]\sum_cU^{(3)}_{\ell c}Y^+_c(Q)$: the odd modes vanish, which is the evenness $\chi_Q(-w)=\chi_Q(w)$ of the bubble of an even band. Computed by two separate zip-ups, each recompressed at $10^{-9}$, the two trains differ by $\lVert Y^--Y^+\rVert/\lVert Y^+\rVert=1.6\times10^{-11}$. The network does not use this symmetry: it computes both branches, as it must for a band that is not even.
 
-The ranks are small because $G$ and $\chi$ enter only through Cauchy transforms. By \eqref{eq:spectral} the bubble is a trilinear form in $fA_q$, $A_{q+Q}$ and the output kernel $1/(w+\varepsilon-\varepsilon')$, and \eqref{eq:cauchy_form} is its discretization. The first $G$ enters only through $\sum_jc_jG_q(z_j)/(z_j-x)=\int f(\varepsilon)A_q(\varepsilon)\,d\varepsilon/(\varepsilon-x)$, the Cauchy transform of $fA_q$ at the points $x=z_m-w_k$; the second through the Cauchy transform of $A_{q\pm Q}$ at $z_j\pm w_k$; and the output is the Cauchy transform of a two-particle spectral function on $[-6,6]$, evaluated on $C_\mu$. So each leg of $\widetilde K$ is a Cauchy kernel $1/(x-\varepsilon)$ between a segment and a set at a positive distance from it, with $\Lambda(\mu,\beta)$ the lowest level of the set $[-3,3]\pm C_\mu$ in the dumbbell family of $G$ ($0.40$ for $\mu=0.4$ and $0.23$ for $\mu=0.2$ at $\beta=\pi$):
+The ranks are small because $G$ and $\chi$ enter only through Cauchy transforms. By Sec.~\ref{sec:bubble} the bubble is a trilinear form in $fA_q$, $A_{q+Q}$ and the output kernel $1/(w+\varepsilon-\varepsilon')$, and \eqref{eq:cauchy_form} is its discretization. The first $G$ enters only through $\sum_jc_jG_q(z_j)/(z_j-x)=\int f(\varepsilon)A_q(\varepsilon)\,d\varepsilon/(\varepsilon-x)$, the Cauchy transform of $fA_q$ at the points $x=z_m-w_k$; the second through the Cauchy transform of $A_{q\pm Q}$ at $z_j\pm w_k$; and the output is the Cauchy transform of a two-particle spectral function on $[-6,6]$, evaluated on $C_\mu$. So each leg of $\widetilde K$ is a Cauchy kernel $1/(x-\varepsilon)$ between a segment and a set at a positive distance from it, with $\Lambda(\mu,\beta)$ the lowest level of the set $[-3,3]\pm C_\mu$ in the dumbbell family of $G$ ($0.40$ for $\mu=0.4$ and $0.23$ for $\mu=0.2$ at $\beta=\pi$):
 \begin{center}\footnotesize
 \setlength{\tabcolsep}{3pt}
 \begin{tabular}{@{}lp{2.3cm}p{2.7cm}p{1.6cm}@{}}
@@ -536,7 +537,7 @@ an infinite sum, whose terms fall like $1/n^2$, replaced by two terms. With $a=1
   \chi_Q(i\nu_m)=\frac1{N_q}\sum_q\frac{f(\varepsilon_q)-f(\varepsilon_{q+Q})}{i\nu_m+\varepsilon_q-\varepsilon_{q+Q}} .
   \label{eq:lindhard}
 \end{equation}
-The right-hand side is a rational function of $i\nu_m$; replacing $i\nu_m$ by any $w\notin\mathbb R$ gives the analytic continuation of $\chi_Q$ off the real axis, as \eqref{eq:spectral} does in general (Sec.~\ref{sec:bubble}).
+The right-hand side is a rational function of $i\nu_m$; replacing $i\nu_m$ by any $w\notin\mathbb R$ gives the analytic continuation of $\chi_Q$ off the real axis, as in Sec.~\ref{sec:bubble} for a general $G$.
 
 \section{Convergence of the dumbbell quadrature}
 \label{app:trap}

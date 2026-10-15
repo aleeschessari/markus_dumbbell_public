@@ -42,11 +42,11 @@ The input is $G_q$ on the dumbbell $C_\lambda$, at the nodes $z_j=\omega_\lambda
 \begin{figure}[t]
   \centering
   \includegraphics[width=\columnwidth]{bubble_tn_dumbbells.pdf}
-  \caption{The contour $C_\lambda$ of $G$ ($\lambda=0.2$, blue) encloses the cut $[-3,3]$ and leaves out the poles of the Fermi function at $\pm i,\pm3i$, which lie on the level-1 rays (dotted). The contour $C_\mu$ of $\chi$ ($\mu=0.4$, purple) encloses the cut $[-6,6]$ of $\chi$ and leaves out the bosonic frequencies $\pm2i,\pm4i$. Dots: every eighth of the $N=512$ nodes $z_j$ and points $w_k$.}
+  \caption{The dumbbell family. (a) The strip $\zeta=\phi+i\tau\lambda$ with the levels $\lambda=0.1,\ldots,0.6$ (colored lines) and the grid $\phi_j=-1+8j/N$ for $N=32$ (dots); the tips are at $\phi=1,5$ and the pinches at $\phi=-1,3,7$. (b) Its image under $\omega$: the dumbbells $C_\lambda$ (same colors) around the band $[-3,3]$ ($\lambda=0$), the nodes $z_j=\omega_\lambda(\phi_j)$, and in grey the lines of constant $\phi$. The poles of the Fermi function at $\pm i,\pm3i$ ($\beta=\pi$) lie on the level-1 rays (dotted).}
   \label{fig:dumbbells}
 \end{figure}
 
-The bubble needs $G$ at the shifted points $z_j\pm w_k$, which lie on the copies $C_\lambda\pm w_k$ of the contour. The two contours (Fig.~\ref{fig:dumbbells}) must be chosen so that these copies never touch the cut of $G$, which makes the contour formula equal to $\chi$ (Sec.~\ref{sec:contour}), and stay outside $C_\lambda$, so that $G$ there follows exactly from $G$ on $C_\lambda$ (Sec.~\ref{sec:cauchy}). In general the second condition requires $\lambda\lesssim\mu/2$. In the example the lowest dumbbell level reached by the copies is $\lambda'_{\min}=0.237$, above $\lambda=0.2$.
+The bubble needs $G$ at the shifted points $z_j\pm w_k$, which lie on the copies $C_\lambda\pm w_k$ of the contour. The two contours (Fig.~\ref{fig:contours}) must be chosen so that these copies never touch the cut of $G$, which makes the contour formula equal to $\chi$ (Sec.~\ref{sec:contour}), and stay outside $C_\lambda$, so that $G$ there follows exactly from $G$ on $C_\lambda$ (Sec.~\ref{sec:cauchy}). In general the second condition requires $\lambda\lesssim\mu/2$. In the example the lowest dumbbell level reached by the copies is $\lambda'_{\min}=0.237$, above $\lambda=0.2$.
 
 \section{The model}
 \label{sec:model}
@@ -67,7 +67,7 @@ on the momentum grid $q=2\pi m/N_q$, $m=0,\ldots,N_q-1$, with $N_q=1024$, and at
 \subsection{The dumbbell family}
 \label{sec:dumbbell}
 
-The contours are the images of horizontal lines under a map $\omega$ built from Jacobi elliptic functions. Let $\kappa=3/\sqrt{10}$, $\kappa'=\sqrt{1-\kappa^2}=1/\sqrt{10}$, and let $K\equiv K(\kappa)$ and $K'\equiv K(\kappa')$ be the complete elliptic integrals of the first kind with parameter $m=\kappa^2=0.9$ and $m'=0.1$: $K=2.5781$, $K'=1.6124$. With the Jacobi function $\sd=\sn/\dn$,
+Each contour is the image of a horizontal line [Fig.~\ref{fig:dumbbells}(a)] under a map $\omega$ built from Jacobi elliptic functions [Fig.~\ref{fig:dumbbells}(b)]. Let $\kappa=3/\sqrt{10}$, $\kappa'=\sqrt{1-\kappa^2}=1/\sqrt{10}$, and let $K\equiv K(\kappa)$ and $K'\equiv K(\kappa')$ be the complete elliptic integrals of the first kind with parameter $m=\kappa^2=0.9$ and $m'=0.1$: $K=2.5781$, $K'=1.6124$. With the Jacobi function $\sd=\sn/\dn$,
 \begin{equation}
   \begin{gathered}
   \omega(\zeta)=\kappa\,\sd\!\Big(\frac K2(\zeta+1)\;\Big|\;\kappa^2\Big),\qquad \zeta=\phi+i\tau\lambda,\\
@@ -85,7 +85,7 @@ We write $\omega_\lambda(\phi)=\omega(\phi+i\tau\lambda)$: $\phi$ is the positio
 \end{equation}
 In terms of $\phi$ and $\lambda$: period 8 in $\phi$; $\omega_\lambda(\phi+4)=-\omega_\lambda(\phi)$; and $\omega_\lambda(2-\phi)=\overline{\omega_\lambda(\phi)}$, so the lower half of every contour is the mirror image of its upper half.
 
-For fixed $\lambda\in(0,1)$, $\phi\mapsto\omega_\lambda(\phi)$, $\phi\in[-1,7)$, traces a closed curve $C_\lambda$ once, the \emph{dumbbell at level $\lambda$} (Fig.~\ref{fig:dumbbells}). Its shape follows from the values at $\lambda\to0$ and $\lambda=1$:
+For fixed $\lambda\in(0,1)$, $\phi\mapsto\omega_\lambda(\phi)$, $\phi\in[-1,7)$, traces a closed curve $C_\lambda$ once, the \emph{dumbbell at level $\lambda$}. Its shape follows from the values at $\lambda\to0$ and $\lambda=1$:
 \begin{itemize}
   \item $\lambda\to0^+$: $\omega$ is real and runs $0\to3\to0\to-3\to0$ for $\phi=-1\to1\to3\to5\to7$. The contour collapses onto the band $[-3,3]$: $\phi\in(-1,1)\cup(5,7)$ is the upper lip ($\Imag\omega>0$), $\phi\in(1,5)$ the lower lip. The \emph{tips} are $\phi=1$ and $\phi=5$ ($\omega=\pm3$), the \emph{pinches} $\phi=-1\equiv7$ and $\phi=3$ ($\omega=0$). In increasing $\phi$ the curve is traversed clockwise.
   \item $\lambda=1$: $\omega(\phi+i\tau)$ is purely imaginary with $\lvert\Imag\omega\rvert\ge1$ ($\omega(-1+i\tau)=i$, and $\omega\to\infty$ at $\phi=1,5$, where $\sd$ has its poles). The level-1 ``contour'' is the two rays $\{\Real z=0,\ \lvert\Imag z\rvert\ge1\}$.
@@ -103,7 +103,7 @@ The Jacobian of the map follows from $v=\frac K2(\zeta+1)$ and $\frac{d}{dv}\sd 
   \end{gathered}
   \label{eq:jacobian}
 \end{equation}
-the second relation because $\omega$ is analytic in $\zeta=\phi+i\tau\lambda$, the third from $\dn^2v=1/(1+\omega^2)$ and $\cn^2v=\kappa'^2(9-\omega^2)/[\kappa^2(1+\omega^2)]$. We write $J_\lambda(\phi)=J(\phi+i\tau\lambda)$. For $0<\lambda<1$, $J_\lambda$ has no zeros on $C_\lambda$ ($\lvert J\rvert\in[0.64,2.08]$ at $\lambda=0.1$); on the band it is $J_0(\varepsilon)=\frac{K\kappa'}2\sqrt{(9-\varepsilon^2)(1+\varepsilon^2)}$, which vanishes like $\sqrt{3-\lvert\varepsilon\rvert}$ at the edges, so the nodes cluster at the band edges like Chebyshev points.
+the second relation because $\omega$ is analytic in $\zeta=\phi+i\tau\lambda$, the third from $\dn^2v=1/(1+\omega^2)$ and $\cn^2v=\kappa'^2(9-\omega^2)/[\kappa^2(1+\omega^2)]$. We write $J_\lambda(\phi)=J(\phi+i\tau\lambda)$. For $0<\lambda<1$, $J_\lambda$ has no zeros on $C_\lambda$ ($\lvert J\rvert\in[0.64,2.08]$ at $\lambda=0.1$); on the band it is $J_0(\varepsilon)=\frac{K\kappa'}2\sqrt{(9-\varepsilon^2)(1+\varepsilon^2)}$, which vanishes like $\sqrt{3-\lvert\varepsilon\rvert}$ at the edges, so the nodes cluster at the band edges like Chebyshev points [Fig.~\ref{fig:dumbbells}(b)].
 
 The bubble $\chi_Q$ (Sec.~\ref{sec:bubble}) has its cut on $[-6,6]$ and its bosonic frequencies $i\nu_m=2\pi im/\beta=2im$ at $\lvert\Imag w\rvert\ge2$. Both are twice the corresponding sets of $G$, so the contour of $\chi$ at level $\mu$ is the doubled map
 \begin{equation}
@@ -113,7 +113,7 @@ The bubble $\chi_Q$ (Sec.~\ref{sec:bubble}) has its cut on $[-6,6]$ and its boso
   \end{gathered}
   \label{eq:doubled}
 \end{equation}
-with the same $\tau$ and $\alpha$; the last relation is $\omega(\zeta+4)=-\omega(\zeta)$ with $\phi_{k+N/2}=\phi_k+4$. For $0<\mu<1$, $C_\mu$ encloses $[-6,6]$ and leaves out all $i\nu_m$, $m\ne0$ (Fig.~\ref{fig:dumbbells}).
+with the same $\tau$ and $\alpha$; the last relation is $\omega(\zeta+4)=-\omega(\zeta)$ with $\phi_{k+N/2}=\phi_k+4$. For $0<\mu<1$, $C_\mu$ encloses $[-6,6]$ and leaves out all $i\nu_m$, $m\ne0$ (Fig.~\ref{fig:contours}).
 
 Every $z\in\mathbb C\setminus[-3,3]$ off the rays is $\omega(\zeta)$ for exactly one $\zeta=\phi+i\tau\lambda'$ with $\phi\in[-1,7)$, $\lambda'\in(0,1)$, and $(\phi,\lambda')$ are the \emph{dumbbell coordinates} of $z$; on the rays the two parameter values with $\lambda'=1$ are identified. We call $\lambda(z)\equiv\lambda'$ the \emph{level} of $z$: the level of the dumbbell through $z$. Inverting \eqref{eq:map} with $\sn v=z/(\kappa\sqrt{1+z^2})$ gives the closed form
 \begin{equation}
@@ -165,88 +165,37 @@ The Fermi function turns every term of the Matsubara sum into a residue. It has 
   \frac1\beta\sum_nh(i\omega_n)=-\sum_n\Res_{z=i\omega_n}\big[f(z)\,h(z)\big].
   \label{eq:matsum_residues}
 \end{equation}
-Section~\ref{sec:contour} evaluates the right-hand side with a contour integral, for any $G$. For the model \eqref{eq:model} it can also be summed in closed form, which gives the Lindhard function, Eq.~\eqref{eq:lindhard} of Appendix~\ref{app:lindhard}. All accuracies quoted below are comparisons with \eqref{eq:lindhard} at $w=w_k$.
+For two simple poles $a$ and $b$, neither of them a Matsubara frequency, the sum is elementary, Eq.~\eqref{eq:two_poles} of Appendix~\ref{app:lindhard}: $\frac1\beta\sum_n[(i\omega_n-a)(i\omega_n-b)]^{-1}=[f(a)-f(b)]/(a-b)$. Insert the spectral representation \eqref{eq:lehmann} of both Green functions into \eqref{eq:bubble_def}. Each pair of poles, $a=\varepsilon$ and $b=\varepsilon'-i\nu_m$, gives this sum, and $f(\varepsilon'-i\nu_m)=f(\varepsilon')$ by \eqref{eq:fermi}. The bubble at $z=i\nu_m$ is therefore
+\begin{equation}
+  \begin{aligned}
+  \chi_Q(z)={}&\frac1{N_q}\sum_q\int\!\!\int d\varepsilon\,d\varepsilon'\,A_q(\varepsilon)\,A_{q+Q}(\varepsilon')\\
+  &\times\frac{f(\varepsilon)-f(\varepsilon')}{z+\varepsilon-\varepsilon'} .
+  \end{aligned}
+  \label{eq:spectral}
+\end{equation}
+The frequency enters only through the denominator. For any $z\notin\mathbb R$ the right-hand side is analytic, it decays like $1/z$, and it equals the bubble at every $i\nu_m$. It is the only such function (Baym and Mermin), so \eqref{eq:spectral}, the spectral (Lehmann) representation, is the analytic continuation of the bubble to complex frequencies. Replacing $i\nu_m$ by $z$ in the Matsubara sum \eqref{eq:bubble_def} gives a different function, with a cut at every height $\Imag z=-\omega_n$. The method computes $\chi_Q(w)$ at the points $w_k$ of the dumbbell $C_\mu$ of $\chi$ (Fig.~\ref{fig:contours}). For the model \eqref{eq:model}, \eqref{eq:spectral} is the Lindhard function \eqref{eq:lindhard} of Appendix~\ref{app:lindhard}, the reference for all accuracies quoted below.
 
-\subsection{From the Matsubara sum to the contour formula}
+\subsection{The contour formula}
 \label{sec:contour}
 
 \begin{figure}[t]
   \centering
   \includegraphics[width=\columnwidth]{contours_C.pdf}
-  \caption{The contours of Sec.~\ref{sec:contour} in the complex $z$-plane, for $\beta=\pi$ (poles of $f$ at $\pm i,\pm3i$) and $m=1$ ($\nu_1=2$). The cut of $G_q(z)$ is the band; the cut of $G_{q+Q}(z+i\nu_m)$ is the band moved down by $\nu_m$. The contour $C$, drawn as the dumbbell $C_{0.2}$, encloses the first cut, its copy $C-i\nu_m$ the second, and the large circle $C_R$ of the residue argument encloses both and the poles of $f$. All contours run counterclockwise.}
+  \caption{The contour formula \eqref{eq:contour_w} in the complex $z$-plane, for $\beta=\pi$, $\lambda=0.2$ and $\mu=0.4$. The bubble is evaluated at the points $w$ of the dumbbell $C_\mu$ of $\chi$ (purple), which encloses the cut $[-6,6]$ of $\chi$ and leaves out the bosonic frequencies $\pm2i,\pm4i$. For each $w$, here $w=1.35+1.45i$ (star), $G_q(z)$ has its cut on the band, and $G_{q\pm Q}(z\pm w)$ on the band shifted by $\mp w$ (orange). The contour $C$, drawn as the dumbbell $C_{0.2}$ (blue, counterclockwise), encloses the band and leaves out the shifted cuts and the poles of $f$ at $\pm i,\pm3i$.}
   \label{fig:contours}
 \end{figure}
 
-Fix $q$, $Q$ and $m\neq0$, and put $h(z)=G_q(z)\,G_{q+Q}(z+i\nu_m)$. In the complex $z$-plane (Fig.~\ref{fig:contours}), $G_q(z)$ has its cut on the band $[-3,3]$ by \eqref{eq:lehmann}, and $G_{q+Q}(z+i\nu_m)$ has its cut where $z+i\nu_m\in[-3,3]$, that is on the segment $[-3,3]-i\nu_m=\{x-i\nu_m:\ -3\le x\le3\}$, a copy of the band moved down by $\nu_m$. Elsewhere $h$ is analytic, and $h=O(z^{-2})$ at infinity. The poles of $f$, at $i\omega_n=i(2n+1)\pi/\beta$, sit on the imaginary axis at odd multiples of $i\pi/\beta$, and the two cuts at the heights $0$ and $-\nu_m$, which are even multiples, so no pole lies on a cut. For $m=0$ the two cuts would coincide; that case is not needed here.
-
-Two closed contours enter, both traversed counterclockwise:
-\begin{itemize}
-  \item $C$ encloses the band $[-3,3]$ and nothing else: no pole of $f$ and no point of the second cut.
-  \item $C-i\nu_m=\{z-i\nu_m:\ z\in C\}$ is the same contour moved down by $\nu_m$. It encloses the second cut and, like $C$, no pole of $f$, because a shift by $i\nu_m$, an even multiple of $i\pi/\beta$, maps the set of poles onto itself.
-\end{itemize}
-Because $C-i\nu_m$ is an exact copy of $C$, the second integral can later be moved onto $C$.
-
-By \eqref{eq:matsum_residues}, the Matsubara sum is minus the sum of the residues of $fh$ at the poles of $f$. Let $C_R$ be the circle $\lvert z\rvert=R$, also counterclockwise, with $R$ halfway between two poles of $f$. Inside $C_R$, $fh$ is analytic except at the poles of $f$ and on the two cuts, so by the residue theorem
-\begin{equation}
-  \begin{aligned}
-  \frac1{2\pi i}\oint_{C_R}f\,h\,dz={}&\sum_{\lvert\omega_n\rvert<R}\Res_{z=i\omega_n}(fh)\\
-  &+\frac1{2\pi i}\oint_Cf\,h\,dz\\
-  &+\frac1{2\pi i}\oint_{C-i\nu_m}f\,h\,dz .
-  \end{aligned}
-  \label{eq:residues_cuts}
-\end{equation}
-As $R\to\infty$ the left-hand side vanishes, because $h=O(z^{-2})$ and $f$ stays bounded on $C_R$, and the sum runs over all $n$. Then \eqref{eq:residues_cuts} says that the residues at the poles of $f$ add up to minus the two contour integrals, and \eqref{eq:matsum_residues} turns this into
-\begin{equation}
-  \begin{aligned}
-  \frac1\beta\sum_nh(i\omega_n)={}&\frac1{2\pi i}\oint_Cf\,h\,dz\\
-  &+\frac1{2\pi i}\oint_{C-i\nu_m}f\,h\,dz .
-  \end{aligned}
-  \label{eq:two_cuts}
-\end{equation}
-For the dumbbell $C_\lambda$ the poles are always outside, since they lie on the level-1 rays. The second cut is outside when the dumbbell is not too large: $C_{0.2}$ stays within $\lvert\mathrm{Im}\,z\rvert\le0.53$, while the second cut lies at the height $-\nu_m$, with $\lvert\nu_m\rvert\ge2\pi/\beta=2$. At larger levels the dumbbell grows ($\lvert\mathrm{Im}\,z\rvert$ up to 1.6 at $\lambda=0.5$ and 4.8 at $\lambda=0.8$) and can reach the second cut. This is condition (ii) below, at $w=i\nu_m$.
-
-Writing the points of $C-i\nu_m$ as $z-i\nu_m$ with $z$ on $C$ and using $f(z-i\nu_m)=f(z)$ from \eqref{eq:fermi} moves the second integral of \eqref{eq:two_cuts} onto $C$:
-\begin{equation}
-  \begin{aligned}
-  &\oint_{C-i\nu_m}f(z)\,G_q(z)\,G_{q+Q}(z+i\nu_m)\,dz\\
-  &\quad=\oint_Cf(z)\,G_q(z-i\nu_m)\,G_{q+Q}(z)\,dz .
-  \end{aligned}
-\end{equation}
-In this integral, now over $C$, relabel $q\to q-Q$ in the momentum average, which turns $G_q(z-i\nu_m)G_{q+Q}(z)$ into $G_{q-Q}(z-i\nu_m)G_q(z)$. Hence
-\begin{equation}
-  \begin{aligned}
-  \chi_Q(i\nu_m)={}&\frac1{N_q}\sum_q\frac1{2\pi i}\oint_Cdz\;f(z)\,G_q(z)\\
-  &\times\Big[G_{q+Q}(z+i\nu_m)+G_{q-Q}(z-i\nu_m)\Big].
-  \end{aligned}
-  \label{eq:contour_matsubara}
-\end{equation}
-Only one contour is left, and $f$ is evaluated only on it. Inside $C$ the integrand has only the cut of $G_q(z)$; the cuts of $G_{q+Q}(z+i\nu_m)$ and $G_{q-Q}(z-i\nu_m)$, at $[-3,3]-i\nu_m$ and $[-3,3]+i\nu_m$, are outside.
-
-For a complex frequency $w\notin\mathbb R$ define
-\begin{equation}
-  \begin{aligned}
-  X_Q(w)={}&\frac1{N_q}\sum_q\frac1{2\pi i}\oint_Cdz\;f(z)\,G_q(z)\\
-  &\times\Big[G_{q+Q}(z+w)+G_{q-Q}(z-w)\Big],
-  \end{aligned}
-  \label{eq:XQ}
-\end{equation}
-with $C$ enclosing $[-3,3]$ and no pole of $f$, and leaving the shifted cuts $[-3,3]\mp w$ outside. Insert \eqref{eq:lehmann} for both Green functions and do the $z$-integral by residues. In the first term the integrand $f(z)/[(z-\varepsilon)(z+w-\varepsilon')]$ has only the pole $z=\varepsilon$ inside $C$ ($z=\varepsilon'-w$ is on the shifted cut, outside), with residue $f(\varepsilon)/(w+\varepsilon-\varepsilon')$. In the second term the pole $z=\varepsilon$ gives $f(\varepsilon)/(\varepsilon-w-\varepsilon')$; relabelling $q\to q+Q$ and exchanging $\varepsilon\leftrightarrow\varepsilon'$ turns it into $-f(\varepsilon')/(w+\varepsilon-\varepsilon')$ multiplying $A_q(\varepsilon)A_{q+Q}(\varepsilon')$. Together,
-\begin{equation}
-  \begin{aligned}
-  X_Q(w)={}&\frac1{N_q}\sum_q\int\!\!\int d\varepsilon\,d\varepsilon'\,A_q(\varepsilon)\,A_{q+Q}(\varepsilon')\\
-  &\times\frac{f(\varepsilon)-f(\varepsilon')}{w+\varepsilon-\varepsilon'} .
-  \end{aligned}
-  \label{eq:spectral}
-\end{equation}
-This is the spectral (Lehmann) representation of the bubble. At $w=i\nu_m$ it equals \eqref{eq:contour_matsubara}, i.e.\ $\chi_Q(i\nu_m)$. Since it is also analytic in $w$ off the real axis and decays like $1/w$, it is the analytic continuation of $\chi_Q$ to complex frequencies, and \eqref{eq:XQ} evaluates it exactly at any such $w$:
+Let $w\notin\mathbb R$, and let $C$ be a counterclockwise contour that (i) encloses the band $[-3,3]$ and no pole of $f$ and (ii) leaves out the shifted cuts $[-3,3]\mp w$ of $G_{q\pm Q}(z\pm w)$ (Fig.~\ref{fig:contours}). Then
 \begin{equation}
   \begin{aligned}
   \chi_Q(w)={}&\frac1{N_q}\sum_q\frac1{2\pi i}\oint_Cdz\;f(z)\,G_q(z)\\
-  &\times\Big[G_{q+Q}(z+w)+G_{q-Q}(z-w)\Big]
+  &\times\Big[G_{q+Q}(z+w)+G_{q-Q}(z-w)\Big].
   \end{aligned}
   \label{eq:contour_w}
 \end{equation}
-for every $w\notin\mathbb R$ and every counterclockwise $C$ that (i) encloses $[-3,3]$ and no pole of $f$ and (ii) leaves out the shifted cuts $[-3,3]\mp w$. With the contour $C_\lambda$ and $w=w_k\in C_\mu$, (i) is $0<\lambda<1$, and (ii) says that the copies $C_\lambda\pm w_k$ do not meet the band: $\lambda'_{\min}>0$ in \eqref{eq:lammin}. If (ii) fails, the contour picks up part of a shifted cut and the result is wrong at every $N$.
+To check it, insert \eqref{eq:lehmann} for both Green functions and do the $z$-integral by residues. In the first term the integrand $f(z)/[(z-\varepsilon)(z+w-\varepsilon')]$ has only the pole $z=\varepsilon$ inside $C$ ($z=\varepsilon'-w$ is on the shifted cut, outside), with residue $f(\varepsilon)/(w+\varepsilon-\varepsilon')$. In the second term the pole $z=\varepsilon$ gives $f(\varepsilon)/(\varepsilon-w-\varepsilon')$; relabelling $q\to q+Q$ and exchanging $\varepsilon\leftrightarrow\varepsilon'$ turns it into $-f(\varepsilon')/(w+\varepsilon-\varepsilon')$ multiplying $A_q(\varepsilon)A_{q+Q}(\varepsilon')$. The two terms together give \eqref{eq:spectral} at $z=w$. Inside $C$ the integrand has only the cut of $G_q(z)$, and the Fermi function is evaluated only on $C$.
+
+With the contour $C_\lambda$ and $w=w_k\in C_\mu$, (i) is $0<\lambda<1$, since the poles of $f$ lie on the level-1 rays, and (ii) says that the copies $C_\lambda\pm w_k$ of the contour do not meet the band: $\lambda'_{\min}>0$ in \eqref{eq:lammin}. In Fig.~\ref{fig:contours}, $C_{0.2}$ stays within $\lvert\Imag z\rvert\le0.53$, while the shifted cuts lie at the heights $\mp1.45$. If (ii) fails, the contour picks up part of a shifted cut and the result is wrong at every $N$.
 
 \subsection{The dumbbell quadrature}
 \label{sec:quadrature}
@@ -263,7 +212,7 @@ The integrand is 8-periodic in $\phi$, and the trapezoidal rule on the uniform g
   \end{gathered}
   \label{eq:weights}
 \end{equation}
-For every $F$ that is analytic outside $C_\lambda$ and $O(z^{-2})$ at infinity, $\sum_jc_jF(z_j)\approx\beta^{-1}\sum_nF(i\omega_n)$: the $N$ nodes with the weights $c_j$ replace the Matsubara frequencies. As a check of \eqref{eq:weights}, $\sum_jc_jG_q(z_j)=f(\varepsilon_q)$ to $4\times10^{-15}$ at $\lambda=0.1$, $N=2^{10}$. Applied to \eqref{eq:contour_w}, the weights give the \emph{direct dumbbell formula},
+For every $F$ that is analytic outside $C_\lambda$ and $O(z^{-2})$ at infinity, the residue theorem between $C_\lambda$ and a large circle, as in Appendix~\ref{app:lindhard}, gives $\sum_jc_jF(z_j)\approx\beta^{-1}\sum_nF(i\omega_n)$: the $N$ nodes with the weights $c_j$ replace the Matsubara frequencies. As a check of \eqref{eq:weights}, $\sum_jc_jG_q(z_j)=f(\varepsilon_q)$ to $4\times10^{-15}$ at $\lambda=0.1$, $N=2^{10}$. Applied to \eqref{eq:contour_w}, the weights give the \emph{direct dumbbell formula},
 \begin{equation}
   \begin{aligned}
   \chi_Q(w)\approx{}&\frac1{N_q}\sum_q\sum_jc_j\,G_q(z_j)\\
@@ -276,7 +225,7 @@ which still needs $G$ at the shifted points $z_j\pm w$, off the contour. The $c_
 \subsection{The exterior Cauchy formula}
 \label{sec:cauchy}
 
-Every Green function whose spectrum lies inside $C_\lambda$, interacting ones included, is analytic outside $C_\lambda$ and vanishes like $1/x$ at infinity, so its values outside $C_\lambda$ follow from those on $C_\lambda$. Let $x$ be outside $C_\lambda$ and apply Cauchy's integral formula to the region between $C_\lambda$ and a circle $C_R$, $R\to\infty$, both counterclockwise:
+The data are the values of $G$ at the nodes of $C_\lambda$, and the method evaluates $G$ only there. The direct formula \eqref{eq:direct}, however, needs $G$ at the shifted points $z_j\pm w$, off the contour. Cauchy's formula supplies these values from the data alone, with no model of $G$ and no analytic continuation: every Green function whose spectrum lies inside $C_\lambda$, interacting ones included, is analytic outside $C_\lambda$ and vanishes like $1/x$ at infinity, so its values outside $C_\lambda$ follow from those on $C_\lambda$. Let $x$ be outside $C_\lambda$ and apply Cauchy's integral formula to the region between $C_\lambda$ and a circle $C_R$, $R\to\infty$, both counterclockwise:
 \begin{equation}
   \begin{aligned}
   G(x)&=\frac1{2\pi i}\oint_{C_R}\frac{G(s)}{s-x}\,ds-\frac1{2\pi i}\oint_{C_\lambda}\frac{G(s)}{s-x}\,ds\\
@@ -308,7 +257,7 @@ The method rests on three conditions:
 \end{enumerate}
 The quadrature error of \eqref{eq:cauchy_form} is exponential in $N$, with the rate set by the smaller of $\lambda$ and $\lambda'_{\min}-\lambda$. For a smaller $\mu$ than the forward-safe condition allows, the same formula works with the $m$-sum taken on a second, lower contour $C_{\lambda_2}$, $\lambda_2<\lambda'_{\min}$.
 
-\subsection{Mode space}
+\subsection{Fourier modes}
 \label{sec:modes}
 
 A function given on the $N$ nodes of $C_\lambda$ has the discrete Fourier representation
@@ -539,7 +488,7 @@ Compared with the Lindhard bubble \eqref{eq:lindhard} at all 1024 transfer momen
 \end{equation}
 Table~\ref{tab:accuracy} gives the error per transfer momentum $Q=2\pi m/1024$, $\max_k\lvert\chi-\chi_{\rm exact}\rvert/\max_k\lvert\chi_{\rm exact}\rvert$. The absolute error is about $10^{-8}$ at every $Q$; the relative error grows at small $Q$ only because $\chi_Q$ itself vanishes there. The contraction adds no error above $10^{-9}$: the MPS result and the same factors contracted densely agree to that level. The error comes from the compressions, mainly that of the kernel at $10^{-8}$; by Appendix~\ref{sec:decay}, a relative truncation of the weighted kernel is directly an error of $\hat\chi$.
 
-\begin{table}[t]
+\begin{table*}[tp]
 \caption{Error per transfer momentum $Q=2\pi m/1024$.}
 \label{tab:accuracy}
 \centering\small
@@ -556,7 +505,7 @@ $m$ & error & $\max_k\lvert\chi_{\rm exact}\rvert$ \\
 512 & $1.7\times10^{-7}$ & 0.22 \\
 \bottomrule
 \end{tabular}
-\end{table}
+\end{table*}
 
 \clearpage
 \appendix
@@ -588,7 +537,7 @@ an infinite sum, whose terms fall like $1/n^2$, replaced by two terms. With $a=1
   \chi_Q(i\nu_m)=\frac1{N_q}\sum_q\frac{f(\varepsilon_q)-f(\varepsilon_{q+Q})}{i\nu_m+\varepsilon_q-\varepsilon_{q+Q}} .
   \label{eq:lindhard}
 \end{equation}
-The right-hand side is a rational function of $i\nu_m$; replacing $i\nu_m$ by any $w\notin\mathbb R$ gives the unique analytic continuation of $\chi_Q$ off the real axis (Sec.~\ref{sec:contour}).
+The right-hand side is a rational function of $i\nu_m$; replacing $i\nu_m$ by any $w\notin\mathbb R$ gives the analytic continuation of $\chi_Q$ off the real axis, as \eqref{eq:spectral} does in general (Sec.~\ref{sec:bubble}).
 
 \section{Convergence of the dumbbell quadrature}
 \label{app:trap}

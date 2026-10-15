@@ -90,7 +90,7 @@ def main(run_subtractor):
     report('4  Y+(Q;c), zip-up', raw, qtt.recompress(Y_plus, tol), time.perf_counter() - t0)
 
     t0 = time.perf_counter()
-    Y_minus = qtt.apply_mpo(qtt.reflection_mpo(RQ), Y_plus, 1)       # Y-(Q) = Y+(-Q), Eq. (34)
+    Y_minus = qtt.apply_mpo(qtt.reflection_mpo(RQ), Y_plus, 1)       # Y-(Q) = Y+(-Q), Eq. (29)
     raw = qtt.bonds(Y_minus)
     report('   Y-(Q;c), reflection', raw, qtt.recompress(Y_minus, tol), time.perf_counter() - t0)
 

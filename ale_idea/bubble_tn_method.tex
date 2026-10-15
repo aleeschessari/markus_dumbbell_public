@@ -46,7 +46,7 @@ The input is $G_q$ on the dumbbell $C_\lambda$, at the nodes $z_j=\omega_\lambda
   \label{fig:dumbbells}
 \end{figure}
 
-The bubble needs $G$ at the shifted points $z_j\pm w_k$, which lie on the copies $C_\lambda\pm w_k$ of the contour. The two contours (Fig.~\ref{fig:contours}) must be chosen so that these copies never touch the cut of $G$, which makes the contour formula equal to $\chi$ (Sec.~\ref{sec:contour}), and stay outside $C_\lambda$, so that $G$ there follows exactly from $G$ on $C_\lambda$ (Sec.~\ref{sec:cauchy}). In general the second condition requires $\lambda\lesssim\mu/2$. In the example the lowest dumbbell level reached by the copies is $\lambda'_{\min}=0.237$, above $\lambda=0.2$.
+The bubble needs $G$ at the shifted points $z_j\pm w_k$, which lie on the copies $C_\lambda\pm w_k$ of the contour. The two contours (Fig.~\ref{fig:contours}) must be chosen so that these copies never touch the cut of $G$, which makes the contour formula equal to $\chi$ (Sec.~\ref{sec:contour}), and stay outside $C_\lambda$, so that $G$ there follows exactly from $G$ on $C_\lambda$ (Sec.~\ref{sec:contour}). In general the second condition requires $\lambda\lesssim\mu/2$. In the example the lowest dumbbell level reached by the copies is $\lambda'_{\min}=0.237$, above $\lambda=0.2$.
 
 \section{The model}
 \label{sec:model}
@@ -59,7 +59,7 @@ All numerical results are for a tight-binding chain with nearest-neighbour hoppi
   \end{gathered}
   \label{eq:model}
 \end{equation}
-on the momentum grid $q=2\pi m/N_q$, $m=0,\ldots,N_q-1$, with $N_q=1024$, and at inverse temperature $\beta=\pi$ (Sec.~\ref{sec:dumbbell} gives the reason for this value). The band is $[-3,3]$, and the bubble has its cut on $[-6,6]$. $G$ is stored on the dumbbell $C_\lambda$ with $\lambda=0.2$ at $N=512$ nodes, and $\chi$ is computed at the $N=512$ points of $C_\mu$ with $\mu=0.4$; in bits, the momenta take $R_q=10$ and the contour points $R=9$. For this model the bubble is the Lindhard function \eqref{eq:lindhard}, the reference for every accuracy quoted. The method itself uses only the analyticity of $G_q$ off the band and its decay like $1/z$ (Sec.~\ref{sec:cauchy}), so interacting Green functions with their spectrum in $[-3,3]$ are treated in the same way.
+on the momentum grid $q=2\pi m/N_q$, $m=0,\ldots,N_q-1$, with $N_q=1024$, and at inverse temperature $\beta=\pi$ (Sec.~\ref{sec:dumbbell} gives the reason for this value). The band is $[-3,3]$, and the bubble has its cut on $[-6,6]$. $G$ is stored on the dumbbell $C_\lambda$ with $\lambda=0.2$ at $N=512$ nodes, and $\chi$ is computed at the $N=512$ points of $C_\mu$ with $\mu=0.4$; in bits, the momenta take $R_q=10$ and the contour points $R=9$. For this model the bubble is the Lindhard function \eqref{eq:lindhard}, the reference for every accuracy quoted. The method itself uses only the analyticity of $G_q$ off the band and its decay like $1/z$ (Sec.~\ref{sec:contour}), so interacting Green functions with their spectrum in $[-3,3]$ are treated in the same way.
 
 \section{The formula behind the network}
 \label{sec:formula}
@@ -122,7 +122,7 @@ Every $z\in\mathbb C\setminus[-3,3]$ off the rays is $\omega(\zeta)$ for exactly
 \end{equation}
 ($F$ the incomplete elliptic integral of the first kind, principal branches). $\Zc_0$ returns $\Real\Zc_0\in(-3,1)$ and $\Imag\Zc_0/\tau\in(-1,1)$, and the representative in the fundamental domain is $\Zc(z)=\Zc_0(z)$ if $\Imag\Zc_0\ge0$, $\Zc(z)=2-\Zc_0(z)$ otherwise (by $\omega(2-\zeta)=\omega(\zeta)$), followed by $\Real\Zc\to((\Real\Zc+1)\bmod8)-1$. Newton's method on $\omega(\zeta)=z$ with the Jacobian \eqref{eq:jacobian} gives the same result. The inverse map is only needed for the geometry below; the method itself never uses it.
 
-The bubble needs $G$ at the shifted points $z_j\pm w_k$ [Sec.~\ref{sec:quadrature}, Eq.~\eqref{eq:direct}], which lie on the translated copies $C_\lambda\pm w_k$ of the contour. Each shifted point has a level; the lowest one,
+The contour formula \eqref{eq:contour_w} on the nodes $z_j$ needs $G$ at the shifted points $z_j\pm w_k$, which lie on the translated copies $C_\lambda\pm w_k$ of the contour. Each shifted point has a level; the lowest one,
 \begin{equation}
   \lambda'_{\min}(\lambda,\mu)=\min_{j,k}\ \lambda\big(z_j\pm w_k\big),
   \label{eq:lammin}
@@ -194,10 +194,27 @@ To check it, insert \eqref{eq:lehmann} for both Green functions and do the $z$-i
 
 With the contour $C_\lambda$ and $w=w_k\in C_\mu$, (i) is $0<\lambda<1$, since the poles of $f$ lie on the level-1 rays, and (ii) says that the copies $C_\lambda\pm w_k$ of the contour do not meet the band: $\lambda'_{\min}>0$ in \eqref{eq:lammin}. In Fig.~\ref{fig:contours}, $C_{0.2}$ stays within $\lvert\Imag z\rvert\le0.53$, while the shifted cuts lie at the heights $\mp1.45$. If (ii) fails, the contour picks up part of a shifted cut and the result is wrong at every $N$.
 
+Formula \eqref{eq:contour_w} needs $G_{q\pm Q}$ at the shifted points $z\pm w$, off the contour, while the data are the values of $G$ on the dumbbell $C_\lambda$, and the method evaluates $G$ only there. Cauchy's formula relates $G$ outside the dumbbell to $G$ on it, with no model of $G$ and no analytic continuation. Every Green function whose spectrum lies inside $C_\lambda$, interacting ones included, is analytic outside $C_\lambda$ and vanishes like $1/x$ at infinity. Let $x$ be outside $C_\lambda$ and apply Cauchy's integral formula to the region between $C_\lambda$ and a circle $C_R$, $R\to\infty$, both counterclockwise:
+\begin{equation}
+  \begin{aligned}
+  G(x)&=\frac1{2\pi i}\oint_{C_R}\frac{G(s)}{s-x}\,ds-\frac1{2\pi i}\oint_{C_\lambda}\frac{G(s)}{s-x}\,ds\\
+  &\xrightarrow{R\to\infty}\;\frac1{2\pi i}\oint_{C_\lambda}\frac{G(s)}{x-s}\,ds ,
+  \end{aligned}
+  \label{eq:cauchy_continuum}
+\end{equation}
+because the $C_R$ integral is $O(1/R)$. For $x$ \emph{inside} $C_\lambda$ the same integral gives $0$ instead of $G(x)$: then $s\mapsto G(s)/(x-s)$ is analytic outside $C_\lambda$ and $O(s^{-2})$, so its integral over $C_\lambda$ equals its integral over $C_R$, which vanishes. The shifted points must therefore lie outside $C_\lambda$, condition (iii) of Sec.~\ref{sec:cauchy}. With the contour $C_\lambda$ in \eqref{eq:contour_w} and $x=z\pm w$, the bubble becomes a double integral over the dumbbell, in which $G$ enters only on $C_\lambda$:
+\begin{equation}
+  \begin{aligned}
+  \chi_Q(w)={}&\frac1{N_q}\sum_q\frac1{(2\pi i)^2}\oint_{C_\lambda}dz\oint_{C_\lambda}ds\;f(z)\,G_q(z)\\
+  &\times\left[\frac{G_{q+Q}(s)}{z-s+w}+\frac{G_{q-Q}(s)}{z-s-w}\right].
+  \end{aligned}
+  \label{eq:double_contour}
+\end{equation}
+
 \subsection{The dumbbell quadrature}
 \label{sec:quadrature}
 
-Parametrize $C_\lambda$ by $\phi$: $z=\omega_\lambda(\phi)$, $dz=J_\lambda(\phi)\,d\phi$. The parametrization is clockwise, so for any $F$ analytic near the contour
+Both integrals of \eqref{eq:double_contour} run over $C_\lambda$. Parametrize $C_\lambda$ by $\phi$: $z=\omega_\lambda(\phi)$, $dz=J_\lambda(\phi)\,d\phi$. The parametrization is clockwise, so for any $F$ analytic near the contour
 \begin{equation}
   \frac1{2\pi i}\oint_{C_\lambda}F(z)\,dz=-\frac1{2\pi i}\int_{-1}^{7}d\phi\;J_\lambda(\phi)\,F\big(\omega_\lambda(\phi)\big).
 \end{equation}
@@ -209,34 +226,12 @@ The integrand is 8-periodic in $\phi$, and the trapezoidal rule on the uniform g
   \end{gathered}
   \label{eq:weights}
 \end{equation}
-For every $F$ that is analytic outside $C_\lambda$ and $O(z^{-2})$ at infinity, the residue theorem between $C_\lambda$ and a large circle, as in Appendix~\ref{app:lindhard}, gives $\sum_jc_jF(z_j)\approx\beta^{-1}\sum_nF(i\omega_n)$: the $N$ nodes with the weights $c_j$ replace the Matsubara frequencies. As a check of \eqref{eq:weights}, $\sum_jc_jG_q(z_j)=f(\varepsilon_q)$ to $4\times10^{-15}$ at $\lambda=0.1$, $N=2^{10}$. Applied to \eqref{eq:contour_w}, the weights give the \emph{direct dumbbell formula},
-\begin{equation}
-  \begin{aligned}
-  \chi_Q(w)\approx{}&\frac1{N_q}\sum_q\sum_jc_j\,G_q(z_j)\\
-  &\times\Big[G_{q+Q}(z_j+w)+G_{q-Q}(z_j-w)\Big],
-  \end{aligned}
-  \label{eq:direct}
-\end{equation}
-which still needs $G$ at the shifted points $z_j\pm w$, off the contour. The $c_j$ depend on $j$, $\lambda$ and $\beta$ only, never on $w$, $q$ or $G$, and the Fermi function is evaluated only at the nodes of $C_\lambda$. Both sets of weights are smooth in $\phi_j$ (QTT rank 6 to 8). The quadrature error falls exponentially with $N$, like $e^{-\alpha Nd}$ \eqref{eq:rate}, where $d$ is the distance in level from $C_\lambda$ to the nearest singularity of the integrand (Appendix~\ref{app:trap}).
-
-\subsection{The exterior Cauchy formula}
-\label{sec:cauchy}
-
-The data are the values of $G$ at the nodes of $C_\lambda$, and the method evaluates $G$ only there. The direct formula \eqref{eq:direct}, however, needs $G$ at the shifted points $z_j\pm w$, off the contour. Cauchy's formula supplies these values from the data alone, with no model of $G$ and no analytic continuation: every Green function whose spectrum lies inside $C_\lambda$, interacting ones included, is analytic outside $C_\lambda$ and vanishes like $1/x$ at infinity, so its values outside $C_\lambda$ follow from those on $C_\lambda$. Let $x$ be outside $C_\lambda$ and apply Cauchy's integral formula to the region between $C_\lambda$ and a circle $C_R$, $R\to\infty$, both counterclockwise:
-\begin{equation}
-  \begin{aligned}
-  G(x)&=\frac1{2\pi i}\oint_{C_R}\frac{G(s)}{s-x}\,ds-\frac1{2\pi i}\oint_{C_\lambda}\frac{G(s)}{s-x}\,ds\\
-  &\xrightarrow{R\to\infty}\;\frac1{2\pi i}\oint_{C_\lambda}\frac{G(s)}{x-s}\,ds ,
-  \end{aligned}
-\end{equation}
-because the $C_R$ integral is $O(1/R)$. The trapezoidal rule, $\frac1{2\pi i}\oint_{C_\lambda}F\,dz\approx\sum_md_m\,F(z_m)$ with the weights $d_m$ of \eqref{eq:weights}, turns this into a sum over the nodes:
+For every $F$ that is analytic outside $C_\lambda$ and $O(z^{-2})$ at infinity, the residue theorem between $C_\lambda$ and a large circle, as in Appendix~\ref{app:lindhard}, gives $\sum_jc_jF(z_j)\approx\beta^{-1}\sum_nF(i\omega_n)$: the $N$ nodes with the weights $c_j$ replace the Matsubara frequencies. As a check of \eqref{eq:weights}, $\sum_jc_jG_q(z_j)=f(\varepsilon_q)$ to $4\times10^{-15}$ at $\lambda=0.1$, $N=2^{10}$. Without the Fermi function the rule reads $\frac1{2\pi i}\oint_{C_\lambda}F\,dz\approx\sum_md_m\,F(z_m)$, and it turns the Cauchy formula \eqref{eq:cauchy_continuum} into a sum over the nodes,
 \begin{equation}
   G(x)=\sum_{m=0}^{N-1}d_m\,\frac{G(z_m)}{x-z_m}\qquad(x\ \text{outside }C_\lambda),
   \label{eq:ext_cauchy}
 \end{equation}
-up to the trapezoidal error. For $x$ \emph{inside} $C_\lambda$ the same sum gives $0$ instead of $G(x)$: then $s\mapsto G(s)/(x-s)$ is analytic outside $C_\lambda$ and $O(s^{-2})$, so its integral over $C_\lambda$ equals its integral over $C_R$, which vanishes. The formula therefore applies only to shifted points outside the contour. Its convergence rate is \eqref{eq:rate} with $d=\min(\lambda,\lambda(x)-\lambda)$, because the integrand $G(\omega(\zeta))/(x-\omega(\zeta))$ has a pole at the level $\lambda(x)$ of $x$. The Cauchy kernel $1/(x-z_m)$ is bounded by the inverse distance of $x$ from the contour, so an error $\delta$ in the stored values of $G$ changes $G(x)$ by at most $\delta\sum_m\lvert d_m\rvert$ divided by that distance.
-
-Putting $x=z_j\pm w_k$ in \eqref{eq:ext_cauchy} and inserting the result into \eqref{eq:direct} gives the \emph{exterior-Cauchy form} of the bubble,
+up to the trapezoidal error. The two rules applied to \eqref{eq:double_contour}, $c_j$ for the integral over $z$ and $d_m$ for the integral over $s$, give the \emph{exterior-Cauchy form} of the bubble,
 \begin{equation}
 \begin{aligned}
 \chi_Q(w_k)={}&\frac1{N_q}\sum_q\sum_{j,m}c_j\,G_q(z_j)\,d_m\\
@@ -244,13 +239,20 @@ Putting $x=z_j\pm w_k$ in \eqref{eq:ext_cauchy} and inserting the result into \e
 \end{aligned}
 \label{eq:cauchy_form}
 \end{equation}
-Only the values of $G$ at the nodes of the stored contour enter. The formula needs no inverse map, no continuation and no mode cutoff, and its kernel $1/(z_j-z_m\pm w_k)$ is explicit and independent of $G$. In the continuum it is the double contour integral $\frac1{(2\pi i)^2}\oint\!\oint f(z)G_q(z)G_{q\pm Q}(s)/(z-s\pm w)\,dz\,ds$. Uncompressed, \eqref{eq:cauchy_form} agrees with the Lindhard sum \eqref{eq:lindhard} to $2.1\times10^{-12}$ for $(\lambda,\mu)=(0.2,0.4)$ at $N=512$ and to $1.1\times10^{-13}$ for $(0.1,0.2)$ at $N=1024$. At $N=256$ for $(0.2,0.4)$ the error is $2.1\times10^{-8}$, and the ratio of the two errors is the $e^{-\alpha N(\lambda'_{\min}-\lambda)}$ of \eqref{eq:rate}.
+The $c_j$ depend on $j$, $\lambda$ and $\beta$ only, never on $w$, $q$ or $G$, and the Fermi function is evaluated only at the nodes of $C_\lambda$. Both sets of weights are smooth in $\phi_j$ (QTT rank 6 to 8). The quadrature error falls exponentially with $N$, like $e^{-\alpha Nd}$ \eqref{eq:rate}, where $d$ is the distance in level from $C_\lambda$ to the nearest singularity of the integrand (Appendix~\ref{app:trap}).
+
+\subsection{Accuracy and conditions}
+\label{sec:cauchy}
+
+Only the values of $G$ at the nodes of the stored contour enter \eqref{eq:cauchy_form}. The formula needs no inverse map, no continuation and no mode cutoff, and its kernel $1/(z_j-z_m\pm w_k)$ is explicit and independent of $G$. Uncompressed, \eqref{eq:cauchy_form} agrees with the Lindhard sum \eqref{eq:lindhard} to $2.1\times10^{-12}$ for $(\lambda,\mu)=(0.2,0.4)$ at $N=512$ and to $1.1\times10^{-13}$ for $(0.1,0.2)$ at $N=1024$. At $N=256$ for $(0.2,0.4)$ the error is $2.1\times10^{-8}$, and the ratio of the two errors is the $e^{-\alpha N(\lambda'_{\min}-\lambda)}$ of \eqref{eq:rate}.
+
+The node sum \eqref{eq:ext_cauchy} converges at the rate \eqref{eq:rate} with $d=\min(\lambda,\lambda(x)-\lambda)$, because the integrand $G(\omega(\zeta))/(x-\omega(\zeta))$ has a pole at the level $\lambda(x)$ of $x$. The Cauchy kernel $1/(x-z_m)$ is bounded by the inverse distance of $x$ from the contour, so an error $\delta$ in the stored values of $G$ changes $G(x)$ by at most $\delta\sum_m\lvert d_m\rvert$ divided by that distance.
 
 The method rests on three conditions:
 \begin{enumerate}
   \item $0<\lambda<1$: $C_\lambda$ leaves out the poles of $f$.
   \item $\lambda'_{\min}>0$: the copies $C_\lambda\pm w_k$ avoid the band, so the contour formula \eqref{eq:contour_w} is $\chi$.
-  \item $\lambda'_{\min}>\lambda$: the shifted points lie outside $C_\lambda$, so the exterior Cauchy formula \eqref{eq:ext_cauchy} applies to them (the \emph{forward-safe} condition, roughly $\lambda\lesssim\mu/2$).
+  \item $\lambda'_{\min}>\lambda$: the shifted points lie outside $C_\lambda$, so the Cauchy formula \eqref{eq:cauchy_continuum} applies to them (the \emph{forward-safe} condition, roughly $\lambda\lesssim\mu/2$).
 \end{enumerate}
 The quadrature error of \eqref{eq:cauchy_form} is exponential in $N$, with the rate set by the smaller of $\lambda$ and $\lambda'_{\min}-\lambda$. For a smaller $\mu$ than the forward-safe condition allows, the same formula works with the $m$-sum taken on a second, lower contour $C_{\lambda_2}$, $\lambda_2<\lambda'_{\min}$.
 
@@ -552,7 +554,7 @@ For the integrands of \eqref{eq:weights}, $\Phi(\phi)=J(\zeta)F(\omega(\zeta))f(
   \varepsilon_{\rm trap}\approx e^{-\alpha Nd}.
   \label{eq:rate}
 \end{equation}
-For the direct formula \eqref{eq:direct} the singularities of $F$ are the shifted cuts, at level distance $\approx\lambda'_{\min}$ (near the band the level is locally proportional to the height, so the level of $z_j\pm w_k$ above the band equals the level distance of $z_j$ from the shifted cut), hence $d=\min(\lambda,\lambda'_{\min})$. The estimate $e^{-\alpha N\min(\lambda,\lambda'_{\min})}$ matches the measured errors: for $\mu=0.2$, $\lambda=0.12$ and $N=2^8$ it gives $e^{-28.6}=4\times10^{-13}$, and $\lambda=0.2$, $N=2^8$ gives $e^{-7.8}=4\times10^{-4}$. The two distances are balanced at $\lambda\approx\mu/2$, so the levels are chosen in that ratio.
+For the integral over $z$ in \eqref{eq:contour_w}, $F=G_q(z)[G_{q+Q}(z+w)+G_{q-Q}(z-w)]$, and the singularities of $F$ outside the band are the shifted cuts, at level distance $\approx\lambda'_{\min}$ (near the band the level is locally proportional to the height, so the level of $z_j\pm w_k$ above the band equals the level distance of $z_j$ from the shifted cut), hence $d=\min(\lambda,\lambda'_{\min})$. The estimate $e^{-\alpha N\min(\lambda,\lambda'_{\min})}$ matches the measured errors: for $\mu=0.2$, $\lambda=0.12$ and $N=2^8$ it gives $e^{-28.6}=4\times10^{-13}$, and $\lambda=0.2$, $N=2^8$ gives $e^{-7.8}=4\times10^{-4}$. The two distances are balanced at $\lambda\approx\mu/2$, so the levels are chosen in that ratio.
 
 \section{Decay of the coefficients and the weighted kernel}
 \label{sec:decay}

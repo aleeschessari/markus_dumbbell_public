@@ -28,6 +28,7 @@ build.
 | `qtt.py` | Sec. IV, Apps. D to G | TT-SVD, recompression, sum of trains, adder, reflection, DFT MPO, the two zip-ups |
 | `network.py` | Secs. V, VI | the input train, the leaves, steps 3 and 5 |
 | `run_bubble.py` | Secs. II, VI, VII | the example end to end, Tables I and II |
+| `bits_study.py` | Secs. III G, V | the legs of the core C and the bonds of ghat against the number of bits of n and l (about 25 min) |
 
 The zip-up is the algorithm of Stoudenmire and White [New J. Phys. 12, 055026 (2010)] for applying
 an MPO to an MPS. Steps 1 and 2 apply a Tucker leaf, padded with identities on the q sites, to the

@@ -422,14 +422,14 @@ for $\varepsilon=10^{-8}$ this gives $42$ and $31$ at $\mu=0.4$ (measured 44 and
 
 \begin{figure*}[tp]
   \centering
-  \includegraphics[width=0.82\textwidth]{ingredients.pdf}
+  \includegraphics[width=0.82\textwidth]{ingredients_v2.pdf}
   \caption{The ingredients, with the bond dimensions of the run (tolerances in Sec.~\ref{sec:tensors}). Top: the Tucker tree of the weighted kernel, the core $C$ with the legs $a$, $b$, $c$ and the leaves $\tilde U^{(1)}$, $\tilde U^{(2)}$ over the bits $n_8\ldots n_1$ and $U^{(3)}$ over $\ell_9\ldots\ell_1$. Middle: the input $\hat g$, whose sites alternate between momentum bits and bits of $n$. Bottom: the adder, with the input legs $q_i$, $q'_i$ and the output legs $Q_i$; its bond is the carry.}
   \label{fig:ingredients}
 \end{figure*}
 
 \begin{figure*}[tp]
   \centering
-  \includegraphics[width=0.84\textwidth]{bubble_tn_contraction_modified_by_me.pdf}
+  \includegraphics[width=0.84\textwidth]{bubble_tn_contraction_modified_by_me_v2.pdf}
   \caption{The network, with the bond dimensions of the run; red legs are contracted. The dashed box $A$ holds $\hat g$ and the leaf $\tilde U^{(1)}$, contracted over the legs $n_i$ in step \stp1, and the box $B$ holds $\hat g$ and $\tilde U^{(2)}$, contracted in step \stp2. The grey dashed box is the network of step \stp4, whose result is the train $Y^\pm(Q;c)$: $A$ and $B$ joined by the adder over the legs $q_i$, $q'_i$, with the core $C$ on their legs $a$ and $b$. The output leaf $U^{(3)}$ is attached through $c$. Below the equals sign is the same network after step \stp4. The drawing shows $Y^+$. For $Y^-$ the adder is replaced by the subtractor ($q'=q-Q$, bond: the borrow) and $U^{(3)}$ carries the sign $(-1)^\ell=(-1)^{\ell_9}$; the bonds are the same. By \eqref{eq:yminus_identity}, the $Y^-$ network equals the $Y^+$ network read at $-Q$.}
   \label{fig:contraction}
 \end{figure*}
@@ -479,7 +479,7 @@ To apply an MPO of bond $D_W$ to a train of bond $\chi$, one can form the produc
 
 \begin{figure*}[tp]
   \centering
-  \includegraphics[width=\textwidth]{intermediate_steps.pdf}
+  \includegraphics[width=\textwidth]{intermediate_steps_v2.pdf}
   \caption{The intermediate trains after recompression, with the bond dimensions of the run: $A(q;a)$ from step \stp1, $B(q';b)$ from step \stp2, and $Y^\pm(Q;c)$ from step \stp4, the same for both signs. Their bonds are the second rows of Table~\ref{tab:steps}.}
   \label{fig:intermediate}
 \end{figure*}

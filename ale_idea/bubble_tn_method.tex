@@ -138,13 +138,14 @@ Momenta are on the grid $q=2\pi m/N_q$ of Sec.~\ref{sec:model}, and all momentum
   \label{eq:matsubara}
 \end{equation}
 and the Fermi function is
-\begin{equation}
-  \begin{gathered}
-  f(z)=\frac1{e^{\beta z}+1},\qquad f(z+i\nu_m)=f(z),\\
-  \Res_{z=i\omega_n}f=-\frac1\beta .
-  \end{gathered}
-  \label{eq:fermi}
-\end{equation}
+\begin{subequations}
+\label{eq:fermi}
+\begin{gather}
+  f(z)=\frac1{e^{\beta z}+1},\label{eq:fermi_def}\\
+  f(z+i\nu_m)=f(z),\label{eq:fermi_periodic}\\
+  \Res_{z=i\omega_n}f=-\frac1\beta .\label{eq:fermi_res}
+\end{gather}
+\end{subequations}
 The one-particle Green function $G_q(z)$ is analytic off the real axis and has its spectrum in the band $[-E,E]$ with $E=3$. In terms of its spectral function $A_q$, supported in $[-3,3]$,
 \begin{equation}
   G_q(z)=\int_{-3}^{3}d\varepsilon\,\frac{A_q(\varepsilon)}{z-\varepsilon},\qquad G_q(z)\sim\frac1z\ \ (z\to\infty).
@@ -163,24 +164,31 @@ with
   h(z)=G_q(z)\,G_{q+Q}(z+i\nu_m).
   \label{eq:h}
 \end{equation}
-The Matsubara sum converges absolutely because the summand is $O(\omega_n^{-2})$. The function $h$ is singular only where $G_q(z)$ and $G_{q+Q}(z+i\nu_m)$ have their cuts \eqref{eq:lehmann}: on the band $[-3,3]$ of the real axis and on the band moved down by $\nu_m$. These lie at the heights $0$ and $-\nu_m$, even multiples of $\pi/\beta$, while the poles $i\omega_n$ of $f$ lie at odd multiples. So $h$ is regular at the poles of $f$, and with the residue $-1/\beta$ of $f$ in \eqref{eq:fermi}, $\Res_{z=i\omega_n}[f(z)h(z)]=-h(i\omega_n)/\beta$. Hence
+The Matsubara sum converges absolutely because the summand is $O(\omega_n^{-2})$. The function $h$ is singular only where $G_q(z)$ and $G_{q+Q}(z+i\nu_m)$ have their cuts \eqref{eq:lehmann}: on the band $[-3,3]$ of the real axis and on the band moved down by $\nu_m$. These lie at the heights $0$ and $-\nu_m$, even multiples of $\pi/\beta$, while the poles $i\omega_n$ of $f$ lie at odd multiples. So $h$ is regular at the poles of $f$, and with the residue $-1/\beta$ of $f$ in \eqref{eq:fermi_res}, $\Res_{z=i\omega_n}[f(z)h(z)]=-h(i\omega_n)/\beta$. Hence
 \begin{equation}
   \frac1\beta\sum_nh(i\omega_n)=-\sum_n\Res_{z=i\omega_n}\big[f(z)\,h(z)\big].
   \label{eq:matsum_residues}
 \end{equation}
-Section~\ref{sec:contour} turns this sum into a contour integral, for any $G$. For the model \eqref{eq:model} it can also be summed in closed form, which gives the Lindhard function \eqref{eq:lindhard} of Appendix~\ref{app:lindhard}, the reference for all accuracies quoted below.
-
 \subsection{The contour formula}
 \label{sec:contour}
 
 \begin{figure}[t]
   \centering
   \includegraphics[width=\columnwidth]{contours_C.pdf}
-  \caption{The contour formula \eqref{eq:contour_w} in the complex $z$-plane, for $\beta=\pi$, $\lambda=0.2$ and $\mu=0.4$. The bubble is evaluated at the points $w$ of the dumbbell $C_\mu$ of $\chi$ (purple), which encloses the cut $[-6,6]$ of $\chi$ and leaves out the bosonic frequencies $\pm2i,\pm4i$. For each $w$, here $w=1.35+1.45i$ (star), $G_q(z)$ has its cut on the band, and $G_{q\pm Q}(z\pm w)$ on the band shifted by $\mp w$ (orange). The contour $C$, drawn as the dumbbell $C_{0.2}$ (blue, counterclockwise), encloses the band and leaves out the shifted cuts and the poles of $f$ at $\pm i,\pm3i$.}
+  \caption{The contour formula \eqref{eq:contour_w} in the complex $z$-plane, for $\beta=\pi$, $\lambda=0.2$ and $\mu=0.4$. The bubble is evaluated at the points $w$ of the dumbbell $C_\mu$ of $\chi$ (purple), which encloses the cut $[-6,6]$ of $\chi$ and leaves out the bosonic frequencies $\pm2i,\pm4i,\ldots$ For each $w$, here $w=1.35+1.45i$ (star), $G_q(z)$ has its cut on the band, and $G_{q\pm Q}(z\pm w)$ on the band shifted by $\mp w$ (orange). The contour $C$, drawn as the dumbbell $C_{0.2}$ (blue, counterclockwise), encloses the band and leaves out the shifted cuts and the poles of $f$ at $\pm i,\pm3i,\ldots$ The circle $C_R$ (grey, counterclockwise) of the residue theorem \eqref{eq:residues_cuts} encloses the poles of $f$ and both cuts.}
   \label{fig:contours}
 \end{figure}
 
-Take $m\neq0$, so that the two cuts of $h$ are distinct, and let $C$ be a counterclockwise contour that encloses the band and leaves out the poles of $f$ and the shifted cut (Fig.~\ref{fig:contours} shows this for a complex $w$ in place of $i\nu_m$). Its copy $C-i\nu_m$, moved down by $\nu_m$, encloses the shifted cut and no pole of $f$, since the shift by $i\nu_m$ maps the poles of $f$ onto themselves. On a large circle through the midpoint between two poles of $f$, the integral of $fh$ vanishes as the radius grows, because $h=O(z^{-2})$ and $f$ stays bounded there. The residue theorem then says that the residues of $fh$ at the poles of $f$ add up to minus its integrals over $C$ and $C-i\nu_m$. In the second integral, write the points as $z-i\nu_m$ with $z$ on $C$ and use $f(z-i\nu_m)=f(z)$; relabelling $q\to q-Q$ in the momentum average turns it into $\frac1{2\pi i}\oint_Cf(z)\,G_q(z)\,G_{q-Q}(z-i\nu_m)\,dz$. With \eqref{eq:bubble_def} and \eqref{eq:matsum_residues}, the bubble at $w=i\nu_m$ is therefore
+Let $C_R$ be the circle $\lvert z\rvert=R$, counterclockwise, with $R$ halfway between two poles of $f$. For large $R$ it contains the poles of $f$ with $\lvert\omega_n\rvert<R$ and both cuts of $h$, and elsewhere inside it $fh$ is analytic. Let $C$ be a counterclockwise contour around the band that leaves out the poles of $f$ and the shifted cut, for $m\neq0$, where the two cuts of $h$ are distinct, and let $C-i\nu_m$ be its copy moved down by $\nu_m$. The copy encloses the shifted cut and no pole of $f$, since the shift by $i\nu_m$ maps the poles of $f$ onto themselves (Fig.~\ref{fig:contours} shows $C_R$, the cuts and $C$ for a complex $w$ in place of $i\nu_m$). By the residue theorem
+\begin{equation}
+  \begin{aligned}
+  \frac1{2\pi i}\oint_{C_R}f\,h\,dz={}&\sum_{\lvert\omega_n\rvert<R}\Res_{z=i\omega_n}(fh)\\
+  &+\frac1{2\pi i}\oint_Cf\,h\,dz\\
+  &+\frac1{2\pi i}\oint_{C-i\nu_m}f\,h\,dz .
+  \end{aligned}
+  \label{eq:residues_cuts}
+\end{equation}
+As $R\to\infty$ the left-hand side vanishes, because $h=O(z^{-2})$ and $f$ stays bounded on $C_R$, and the sum runs over all $n$. By \eqref{eq:matsum_residues} the Matsubara sum is then the sum of the two contour integrals. In the second, write the points as $z-i\nu_m$ with $z$ on $C$ and use $f(z-i\nu_m)=f(z)$ from \eqref{eq:fermi_periodic}; relabelling $q\to q-Q$ in the momentum average turns it into $\frac1{2\pi i}\oint_Cf(z)\,G_q(z)\,G_{q-Q}(z-i\nu_m)\,dz$. With \eqref{eq:bubble_def}, the bubble at $w=i\nu_m$ is therefore
 \begin{equation}
   \begin{aligned}
   \chi_Q(w)={}&\frac1{N_q}\sum_q\frac1{2\pi i}\oint_Cdz\;f(z)\,G_q(z)\\
@@ -485,7 +493,7 @@ Compared with the Lindhard bubble \eqref{eq:lindhard} at all 1024 transfer momen
 \end{equation}
 Table~\ref{tab:accuracy} gives the error per transfer momentum $Q=2\pi m/1024$, $\max_k\lvert\chi-\chi_{\rm exact}\rvert/\max_k\lvert\chi_{\rm exact}\rvert$. The absolute error is about $10^{-8}$ at every $Q$; the relative error grows at small $Q$ only because $\chi_Q$ itself vanishes there. The contraction adds no error above $10^{-9}$: the MPS result and the same factors contracted densely agree to that level. The error comes from the compressions, mainly that of the kernel at $10^{-8}$; by Appendix~\ref{sec:decay}, a relative truncation of the weighted kernel is directly an error of $\hat\chi$.
 
-\begin{table*}[tp]
+\begin{table}[!htb]
 \caption{Error per transfer momentum $Q=2\pi m/1024$.}
 \label{tab:accuracy}
 \centering\small
@@ -502,7 +510,7 @@ $m$ & error & $\max_k\lvert\chi_{\rm exact}\rvert$ \\
 512 & $1.7\times10^{-7}$ & 0.22 \\
 \bottomrule
 \end{tabular}
-\end{table*}
+\end{table}
 
 \clearpage
 \appendix

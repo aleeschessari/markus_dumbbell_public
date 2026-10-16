@@ -42,7 +42,7 @@ The input is $G_q$ on the dumbbell $C_\lambda$, at the nodes $z_j=\omega_\lambda
 \begin{figure}[t]
   \centering
   \includegraphics[width=\columnwidth]{bubble_tn_dumbbells.pdf}
-  \caption{The dumbbell family. (a) The strip $\zeta=\phi+i\tau\lambda$: the levels $\lambda=0.1,\ldots,0.9$ (colored lines) between the band ($\lambda=0$, black) and the rays ($\lambda=1$, dotted), and the grid $\phi_j=-1+8j/N$ for $N=32$ (dots); the tips are at $\phi=1,5$ and the pinches at $\phi=-1,3,7$. (b) Its image under $\omega$: the dumbbells $C_\lambda$ (same colors) around the band $[-3,3]$ ($\lambda=0$), the nodes $z_j=\omega_\lambda(\phi_j)$, and in grey the lines of constant $\phi$. The poles of the Fermi function at $\pm i,\pm3i$ ($\beta=\pi$) lie on the level-1 rays (dotted).}
+  \caption{The dumbbell family. (a) The strip $\zeta=\phi+i\tau\lambda$: the levels $\lambda=0.1,\ldots,0.9$ (colored lines) between the band ($\lambda=0$, black) and the rays ($\lambda=1$, dotted), the grid $\phi_j=-1+8j/N$ for $N=32$ (dots) and, in grey, the lines of constant $\phi$ through it. (b) Its image under $\omega$: the dumbbells $C_\lambda$ (same colors) around the band $[-3,3]$, the nodes $z_j=\omega_\lambda(\phi_j)$ and the images of the grey lines. The poles of the Fermi function at $\pm i,\pm3i$ ($\beta=\pi$) lie on the level-1 rays (dotted).}
   \label{fig:dumbbells}
 \end{figure}
 
@@ -152,10 +152,18 @@ The one-particle Green function $G_q(z)$ is analytic off the real axis and has i
 \end{equation}
 We define the bubble without a minus sign and with the average over the internal momentum,
 \begin{equation}
-  \chi_Q(i\nu_m)=\frac1{N_q\beta}\sum_{q,n}G_q(i\omega_n)\,G_{q+Q}(i\omega_n+i\nu_m).
+  \begin{aligned}
+  \chi_Q(i\nu_m)&=\frac1{N_q\beta}\sum_{q,n}G_q(i\omega_n)\,G_{q+Q}(i\omega_n+i\nu_m)\\
+  &=\frac1{N_q}\sum_q\frac1\beta\sum_nh(i\omega_n),
+  \end{aligned}
   \label{eq:bubble_def}
 \end{equation}
-The Matsubara sum converges absolutely because the summand is $O(\omega_n^{-2})$. For fixed $q$ and $Q$ put $h(z)=G_q(z)\,G_{q+Q}(z+i\nu_m)$, so that the inner sum of \eqref{eq:bubble_def} is $\frac1\beta\sum_nh(i\omega_n)$. By \eqref{eq:lehmann}, $h$ is analytic except on two cuts, the band $[-3,3]$ of $G_q(z)$ and the band moved down by $\nu_m$, $[-3,3]-i\nu_m$, of $G_{q+Q}(z+i\nu_m)$, and $h=O(z^{-2})$ at infinity. The cuts lie at the heights $0$ and $-\nu_m$, even multiples of $\pi/\beta$, while the points $i\omega_n$ lie on the imaginary axis at odd multiples, so $h$ is regular at every $i\omega_n$.
+with
+\begin{equation}
+  h(z)=G_q(z)\,G_{q+Q}(z+i\nu_m).
+  \label{eq:h}
+\end{equation}
+The Matsubara sum converges absolutely because the summand is $O(\omega_n^{-2})$. By \eqref{eq:lehmann}, $h$ is analytic except on two cuts, the band $[-3,3]$ of $G_q(z)$ and the band moved down by $\nu_m$, $[-3,3]-i\nu_m$, of $G_{q+Q}(z+i\nu_m)$, and $h=O(z^{-2})$ at infinity. The cuts lie at the heights $0$ and $-\nu_m$, even multiples of $\pi/\beta$, while the points $i\omega_n$ lie on the imaginary axis at odd multiples, so $h$ is regular at every $i\omega_n$.
 
 The Fermi function turns every term of the Matsubara sum into a residue. It has a simple pole wherever $e^{\beta z}=-1$, i.e.\ exactly at $z=i\omega_n$. Near such a point $e^{\beta z}=-e^{\beta(z-i\omega_n)}$, so $e^{\beta z}+1=1-e^{\beta(z-i\omega_n)}\approx-\beta(z-i\omega_n)$ and $f(z)\approx-1/[\beta(z-i\omega_n)]$: the residue is $-1/\beta$, as in \eqref{eq:fermi}. Since $h$ is regular at the points $i\omega_n$, $\Res_{z=i\omega_n}[f(z)h(z)]=h(i\omega_n)\Res_{z=i\omega_n}f=-h(i\omega_n)/\beta$, hence
 \begin{equation}

@@ -46,15 +46,12 @@ The spectrum of the Green function is a segment of the real axis, and the Fermi 
 
 On every contour $\phi$ is a periodic coordinate, so a function analytic in the region has Fourier coefficients in $\phi$ that decay exponentially, and the trapezoidal rule on a uniform grid in $\phi$ converges exponentially (Appendix~\ref{app:trap}). Moving from one contour to another is a shift of the strip by $i\tau\Delta\lambda$, which multiplies the $n$-th Fourier coefficient by $e^{-\alpha n\Delta\lambda}$, with $\alpha=\pi\tau/4$ [Eq.~\eqref{eq:multiplier}, Appendix~\ref{sec:decay}], so a change of level is diagonal in Fourier space. For the Green function the segment is its band and the poles are those of the Fermi function, at the fermionic frequencies. The bubble has a cut twice as long, and the poles of the Bose function at the nonzero bosonic frequencies lie twice as far out, so the same geometry, doubled, gives its contours $C_\mu$ [Eq.~\eqref{eq:doubled}]. The temperature fixes the map through the first poles, which sit at the ends of the rays.
 
-As an example we consider in Fig.~\ref{fig:dumbbells} a tight-binding chain with nearest-neighbour hopping,
+For a segment $[-E,E]$ and the inverse temperature $\beta$, the map is
 \begin{equation}
-  \begin{gathered}
-  \varepsilon_q=3\cos q,\qquad G_q(z)=\frac1{z-\varepsilon_q},\\
-  A_q(\varepsilon)=\delta(\varepsilon-\varepsilon_q),
-  \end{gathered}
-  \label{eq:model}
+  \omega(\zeta)=E\kappa'\,\sd\!\Big(\frac K2(\zeta+1)\;\Big|\;\kappa^2\Big),\qquad \tau=\frac{2K'}{K},
+  \label{eq:map}
 \end{equation}
-on the momentum grid $q=2\pi m/N_q$, $m=0,\ldots,N_q-1$, at the inverse temperature $\beta=\pi$. The band is $[-3,3]$, the bubble has its cut on $[-6,6]$, and the poles of the Fermi function closest to the band are $\pm i$. Unless stated otherwise, the numbers are for $N_q=1024$, with $G$ stored on the dumbbell $C_\lambda$ with $\lambda=0.2$ at the $N=512$ nodes $z_j=\omega_\lambda(\phi_j)$, $\phi_j=-1+8j/N$, and $\chi$ computed at the $N=512$ points $w_k$ of $C_\mu$ with $\mu=0.4$; in bits, the momenta take $R_q=10$ and the contour points $R=9$. For this model the bubble is the Lindhard function \eqref{eq:lindhard}, the reference for every accuracy quoted. The method uses only the analyticity of $G_q$ off the band and its decay like $1/z$, so interacting Green functions with their spectrum in $[-3,3]$ are treated in the same way.
+with $\kappa/\kappa'=E\beta/\pi$, $\kappa'=\sqrt{1-\kappa^2}$, $\sd=\sn/\dn$, and $K$ and $K'$ the complete elliptic integrals of the first kind with parameters $\kappa^2$ and $\kappa'^2$. As an example, Fig.~\ref{fig:dumbbells} shows the dumbbell family for $E=3$ and $\beta=\pi$, that is $\kappa=3/\sqrt{10}$, at the levels $\lambda=0.1,\ldots,0.9$. This family avoids the poles at the fermionic Matsubara frequencies and encloses the segment $[-3,3]$. For $\lambda\to0$ it reduces to the segment of the real axis, and for $\lambda\to1$ to the imaginary axis beyond the first poles $\pm i$.
 
 \begin{figure}[t]
   \centering
@@ -63,15 +60,11 @@ on the momentum grid $q=2\pi m/N_q$, $m=0,\ldots,N_q-1$, at the inverse temperat
   \label{fig:dumbbells}
 \end{figure}
 
-The map is built from Jacobi elliptic functions. For the example, let $\kappa=3/\sqrt{10}$, $\kappa'=\sqrt{1-\kappa^2}=1/\sqrt{10}$, and let $K\equiv K(\kappa)$ and $K'\equiv K(\kappa')$ be the complete elliptic integrals of the first kind with parameter $m=\kappa^2=0.9$ and $m'=0.1$: $K=2.5781$, $K'=1.6124$. With the Jacobi function $\sd=\sn/\dn$,
-\begin{equation}
-  \begin{gathered}
-  \omega(\zeta)=\kappa\,\sd\!\Big(\frac K2(\zeta+1)\;\Big|\;\kappa^2\Big),\qquad \zeta=\phi+i\tau\lambda,\\
-  \tau=\frac{2K'}{K}=1.2509,\qquad \alpha=\frac{\pi\tau}4=0.9824 .
-  \end{gathered}
-  \label{eq:map}
-\end{equation}
-We write $\omega_\lambda(\phi)=\omega(\phi+i\tau\lambda)$: $\phi$ is the position along a contour and $\lambda$ its \emph{level}. ($\tau$ equals $K'(k)/K(k)$ for the modulus $k=(L-1)/(L+1)$, $L=\sqrt{10}$, which is the descending Landen transform of $\kappa$.) The function $\sd$ satisfies $\sd(u+2K)=-\sd(u)$, $\sd(u+2iK')=-\sd(u)$ and $\sd(-u)=-\sd(u)$, and its Taylor coefficients are real, so
+\subsection{Properties of the dumbbell map}
+\label{sec:dumbbell_map}
+
+For the example, $E\kappa'=\kappa=3/\sqrt{10}$.
+We write $\omega_\lambda(\phi)=\omega(\phi+i\tau\lambda)$: $\phi$ is the position along a contour and $\lambda$ its \emph{level}. ($\tau$ equals $K'(k)/K(k)$ for the modulus $k=(L-1)/(L+1)$, $L=\sqrt{1+(E\beta/\pi)^2}$, which is the descending Landen transform of $\kappa$.) The function $\sd$ satisfies $\sd(u+2K)=-\sd(u)$, $\sd(u+2iK')=-\sd(u)$ and $\sd(-u)=-\sd(u)$, and its Taylor coefficients are real, so
 \begin{equation}
   \begin{gathered}
   \omega(\zeta+8)=\omega(\zeta),\qquad \omega(\zeta+4)=-\omega(\zeta),\\
@@ -88,7 +81,7 @@ For fixed $\lambda\in(0,1)$, $\phi\mapsto\omega_\lambda(\phi)$, $\phi\in[-1,7)$,
 \end{itemize}
 Every level $0<\lambda<1$ lies between the band and the rays. The strip $0<\lambda<2$ is mapped by $\omega$ onto $\mathbb C\setminus[-3,3]$ (the level $2-\lambda$ gives the mirror image $-\overline{C_\lambda}$ of $C_\lambda$, the same curve), and $\lambda=2$ is the band again.
 
-The map is tied to the temperature through the poles of the Fermi function $f(z)=1/(e^{\beta z}+1)$, at the fermionic Matsubara frequencies $i\omega_n=i(2n+1)\pi/\beta$ (Sec.~\ref{sec:bubble}). The two closest to the real axis, $\pm i\pi/\beta$, sit at the ends $\pm i$ of the level-1 rays exactly when $\pi/\beta=1$, i.e.\ at the temperature $\beta=\pi$ used here, and then all poles lie on the rays. This is the choice of modulus of Lin, Lu, Ying and E, $L=\sqrt{1+(E\beta/\pi)^2}=\sqrt{10}$ for $E=3$; equivalently $\kappa/\kappa'=E\beta/\pi=3$. A different temperature needs a different $\kappa$ (then $\kappa^2=a^2/(1+a^2)$, $a=E\beta/\pi$, and the prefactor $\kappa$ in \eqref{eq:map} becomes $E\kappa'$); nothing else changes. Every contour $C_\lambda$ with $0<\lambda<1$ separates the band of $G$ from all poles of $f$.
+The map is tied to the temperature through the poles of the Fermi function $f(z)=1/(e^{\beta z}+1)$, at the fermionic Matsubara frequencies $i\omega_n=i(2n+1)\pi/\beta$ (Sec.~\ref{sec:bubble}). With $\kappa/\kappa'=E\beta/\pi$ the two closest to the real axis, $\pm i\pi/\beta$, sit at the ends of the level-1 rays, and then all poles lie on the rays. This is the choice of modulus of Lin, Lu, Ying and E, $L=\sqrt{1+(E\beta/\pi)^2}$. Every contour $C_\lambda$ with $0<\lambda<1$ separates the band of $G$ from all poles of $f$.
 
 The Jacobian of the map follows from $v=\frac K2(\zeta+1)$ and $\frac{d}{dv}\sd v=\cn v/\dn^2v$:
 \begin{equation}
@@ -99,9 +92,9 @@ The Jacobian of the map follows from $v=\frac K2(\zeta+1)$ and $\frac{d}{dv}\sd 
   \end{gathered}
   \label{eq:jacobian}
 \end{equation}
-the second relation because $\omega$ is analytic in $\zeta=\phi+i\tau\lambda$, the third from $\dn^2v=1/(1+\omega^2)$ and $\cn^2v=\kappa'^2(9-\omega^2)/[\kappa^2(1+\omega^2)]$. We write $J_\lambda(\phi)=J(\phi+i\tau\lambda)$. For $0<\lambda<1$, $J_\lambda$ has no zeros on $C_\lambda$ ($\lvert J\rvert\in[0.64,2.08]$ at $\lambda=0.1$); on the band it is $J_0(\varepsilon)=\frac{K\kappa'}2\sqrt{(9-\varepsilon^2)(1+\varepsilon^2)}$, which vanishes like $\sqrt{3-\lvert\varepsilon\rvert}$ at the edges, so the nodes cluster at the band edges like Chebyshev points [Fig.~\ref{fig:dumbbells}(b)].
+the second relation because $\omega$ is analytic in $\zeta=\phi+i\tau\lambda$, the third from $\dn^2v=1/(1+\omega^2)$ and $\cn^2v=\kappa'^2(9-\omega^2)/[\kappa^2(1+\omega^2)]$. We write $J_\lambda(\phi)=J(\phi+i\tau\lambda)$. For $0<\lambda<1$, $J_\lambda$ has no zeros on $C_\lambda$; on the band it is $J_0(\varepsilon)=\frac{K\kappa'}2\sqrt{(9-\varepsilon^2)(1+\varepsilon^2)}$, which vanishes like $\sqrt{3-\lvert\varepsilon\rvert}$ at the edges, so the nodes cluster at the band edges like Chebyshev points [Fig.~\ref{fig:dumbbells}(b)].
 
-The bubble $\chi_Q$ (Sec.~\ref{sec:bubble}) has its cut on $[-6,6]$ and its bosonic frequencies $i\nu_m=2\pi im/\beta=2im$ at $\lvert\Imag w\rvert\ge2$. Both are twice the corresponding sets of $G$, so the contour of $\chi$ at level $\mu$ is the doubled map
+The bubble $\chi_Q$ (Sec.~\ref{sec:bubble}) has its cut on $[-2E,2E]$ and its bosonic frequencies $i\nu_m=2\pi im/\beta$, $m\ne0$, at $\lvert\Imag w\rvert\ge2\pi/\beta$. Both are twice the corresponding sets of $G$, so the contour of $\chi$ at level $\mu$ is the doubled map
 \begin{equation}
   \begin{gathered}
   w=\omega_\mu(\phi)\equiv2\,\omega(\phi+i\tau\mu),\\
@@ -109,7 +102,7 @@ The bubble $\chi_Q$ (Sec.~\ref{sec:bubble}) has its cut on $[-6,6]$ and its boso
   \end{gathered}
   \label{eq:doubled}
 \end{equation}
-with the same $\tau$ and $\alpha$; the last relation is $\omega(\zeta+4)=-\omega(\zeta)$ with $\phi_{k+N/2}=\phi_k+4$. For $0<\mu<1$, $C_\mu$ encloses $[-6,6]$ and leaves out all $i\nu_m$, $m\ne0$ (Fig.~\ref{fig:contours}).
+with the same $\tau$ and $\alpha$, on the grid $\phi_k=-1+8k/N$ of $N$ points; the last relation is $\omega(\zeta+4)=-\omega(\zeta)$ with $\phi_{k+N/2}=\phi_k+4$. For $0<\mu<1$, $C_\mu$ encloses $[-2E,2E]$ and leaves out all $i\nu_m$, $m\ne0$.
 
 Every $z\in\mathbb C\setminus[-3,3]$ off the rays is $\omega(\zeta)$ for exactly one $\zeta=\phi+i\tau\lambda'$ with $\phi\in[-1,7)$, $\lambda'\in(0,1)$, and $(\phi,\lambda')$ are the \emph{dumbbell coordinates} of $z$; on the rays the two parameter values with $\lambda'=1$ are identified. We call $\lambda(z)\equiv\lambda'$ the \emph{level} of $z$: the level of the dumbbell through $z$. Inverting \eqref{eq:map} with $\sn v=z/(\kappa\sqrt{1+z^2})$ gives the closed form
 \begin{equation}
@@ -118,19 +111,17 @@ Every $z\in\mathbb C\setminus[-3,3]$ off the rays is $\omega(\zeta)$ for exactly
 \end{equation}
 ($F$ the incomplete elliptic integral of the first kind, principal branches). $\Zc_0$ returns $\Real\Zc_0\in(-3,1)$ and $\Imag\Zc_0/\tau\in(-1,1)$, and the representative in the fundamental domain is $\Zc(z)=\Zc_0(z)$ if $\Imag\Zc_0\ge0$, $\Zc(z)=2-\Zc_0(z)$ otherwise (by $\omega(2-\zeta)=\omega(\zeta)$), followed by $\Real\Zc\to((\Real\Zc+1)\bmod8)-1$. Newton's method on $\omega(\zeta)=z$ with the Jacobian \eqref{eq:jacobian} gives the same result. The inverse map is only needed for the geometry below; the method itself never uses it.
 
-The height of $C_\lambda$, the largest $\Imag z$ on it, follows from \eqref{eq:jacobian}. Along $C_\lambda$ the tangent $J=\partial\omega/\partial\phi$ is horizontal where $J^2$ is real and positive. Since $J^2\propto(1+\omega^2)(9-\omega^2)=9+8\omega^2-\omega^4$, for $\omega=x+iy$ the imaginary part of $J^2$ is proportional to $4xy(4-x^2+y^2)$. Off the axes it vanishes on the hyperbola $x^2-y^2=4$, where $J^2\propto25+4x^2y^2>0$; on the imaginary axis lies the pinch, a minimum of the upper lip. The highest point of a dumbbell of height $H$ is therefore $\sqrt{4+H^2}+iH$, and since the dumbbells are nested, $C_\lambda$ stays within $\lvert\Imag z\rvert<H$ exactly when $\lambda<\lambda^*(H)\equiv\lambda\big(\sqrt{4+H^2}+iH\big)$, with the level given by \eqref{eq:inverse}. For example, $\lambda^*(2)=\lambda(2\sqrt2+2i)=0.576$. The pinch of $C_\mu$ lies at the height $p_\mu=\Imag\omega_\mu(-1)=2\kappa\,\sd(K'\mu\,|\,\kappa'^2)$, by \eqref{eq:doubled} and $\sd(iy\,|\,\kappa^2)=i\,\sd(y\,|\,\kappa'^2)$; it is $0.305$, $0.603$, $0.889$ and $1.155$ for $\mu=0.1$, $0.2$, $0.3$ and $0.4$.
-
 The contour formula \eqref{eq:contour_w} on the nodes $z_j$ needs $G$ at the shifted points $z_j\pm w_k$, which lie on the translated copies $C_\lambda\pm w_k$ of the contour. Each shifted point has a level; the lowest one,
 \begin{equation}
   \lambda'_{\min}(\lambda,\mu)=\min_{j,k}\ \lambda\big(z_j\pm w_k\big),
   \label{eq:lammin}
 \end{equation}
-measures how close the copies come to the band ($\lambda'_{\min}>0$) and whether they stay outside $C_\lambda$ ($\lambda'_{\min}>\lambda$). By the symmetry $w_{k+N/2}=-w_k$ the sets $\{z_j+w_k\}$ and $\{z_j-w_k\}$ coincide. For the example $\lambda'_{\min}(0.2,0.4)=0.237$; for $(\lambda,\mu)=(0.1,0.2)$ it is $0.134$. The copies come closest to the band when $w_k$ is at a pinch of $C_\mu$ and $z_j$ at the highest or lowest point of $C_\lambda$ ($\Real z=\pm2.07$ for $\lambda=0.2$). Raising $\mu$ or lowering $\lambda$ raises $\lambda'_{\min}$, and $\lambda'_{\min}>\lambda$ holds for $\mu$ above a threshold $\mu_{\rm fwd}(\lambda)$, which is $0.17$, $0.36$ and $0.62$ for $\lambda=0.1$, $0.2$ and $0.3$: roughly for $\lambda\lesssim\mu/2$.
+measures how close the copies come to the band ($\lambda'_{\min}>0$) and whether they stay outside $C_\lambda$ ($\lambda'_{\min}>\lambda$). By the symmetry $w_{k+N/2}=-w_k$ the sets $\{z_j+w_k\}$ and $\{z_j-w_k\}$ coincide. The copies come closest to the band when $w_k$ is at a pinch of $C_\mu$ and $z_j$ at the highest or lowest point of $C_\lambda$. Raising $\mu$ or lowering $\lambda$ raises $\lambda'_{\min}$, and $\lambda'_{\min}>\lambda$ holds for $\mu$ above a threshold $\mu_{\rm fwd}(\lambda)$, roughly for $\lambda\lesssim\mu/2$.
 
 \subsection{The bubble}
 \label{sec:bubble}
 
-Momenta are on the grid $q=2\pi m/N_q$ of Sec.~\ref{sec:dumbbell}, and all momentum sums and shifts are modulo $2\pi$. The temperature is $1/\beta$; the fermionic and bosonic Matsubara frequencies are
+Momenta are on the grid $q=2\pi m/N_q$, $m=0,\ldots,N_q-1$, and all momentum sums and shifts are modulo $2\pi$. The temperature is $1/\beta$; the fermionic and bosonic Matsubara frequencies are
 \begin{equation}
   \omega_n=\frac{(2n+1)\pi}{\beta},\qquad \nu_m=\frac{2\pi m}{\beta},\qquad n,m\in\mathbb Z,
   \label{eq:matsubara}
@@ -149,6 +140,16 @@ The one-particle Green function $G_q(z)$ is analytic off the real axis and has i
   G_q(z)=\int_{-3}^{3}d\varepsilon\,\frac{A_q(\varepsilon)}{z-\varepsilon},\qquad G_q(z)\sim\frac1z\ \ (z\to\infty).
   \label{eq:lehmann}
 \end{equation}
+As an example we take a tight-binding chain with nearest-neighbour hopping,
+\begin{equation}
+  \begin{gathered}
+  \varepsilon_q=3\cos q,\qquad G_q(z)=\frac1{z-\varepsilon_q},\\
+  A_q(\varepsilon)=\delta(\varepsilon-\varepsilon_q),
+  \end{gathered}
+  \label{eq:model}
+\end{equation}
+at the inverse temperature $\beta=\pi$; its band is $[-3,3]$, and the bubble has its cut on $[-6,6]$. Unless stated otherwise, the numbers are for $N_q=1024$, with $G$ stored on $C_\lambda$ with $\lambda=0.2$ at the $N=512$ nodes $z_j=\omega_\lambda(\phi_j)$, $\phi_j=-1+8j/N$, and $\chi$ computed at the $N=512$ points $w_k$ of $C_\mu$ with $\mu=0.4$; in bits, the momenta take $R_q=10$ and the contour points $R=9$. For this model the bubble is the Lindhard function \eqref{eq:lindhard}, the reference for every accuracy quoted. The method uses only the analyticity of $G_q$ off the band and its decay like $1/z$, so interacting Green functions with their spectrum in $[-3,3]$ are treated in the same way.
+
 We define the bubble without a minus sign and with the average over the internal momentum,
 \begin{equation}
   \begin{aligned}
@@ -185,7 +186,7 @@ Let $C_R$ be the counterclockwise circle centred at the origin with radius $R$, 
   \end{aligned}
   \label{eq:residues_cuts}
 \end{equation}
-For $\lambda<\lambda^*(\nu_m)$ the dumbbell $C_\lambda$ stays within $\lvert\Imag z\rvert<\nu_m$ (Sec.~\ref{sec:dumbbell}), so it leaves out the shifted band $[-3,3]-i\nu_m$, and by its symmetry under $z\to\bar z$ \eqref{eq:symmetries} the band lies outside $C_\lambda-i\nu_m$. The contour integrals over $C_3$ and $C_1$ can then be deformed into integrals over $C_\lambda$ and $C_\lambda-i\nu_m$ (dashed lines in Fig.~\ref{fig:contours}) without crossing a singularity of $fh$. At $\beta=\pi$, $\lambda^*(\nu_1)=0.576$, so $\lambda<0.576$ covers every $m>0$. By the change of variables $z\to z-i\nu_m$ in the integral over $C_\lambda-i\nu_m$ and by \eqref{eq:fermi_periodic}, we have, at $w=i\nu_m$,
+The contour integrals over $C_3$ and $C_1$ can be deformed into integrals over the dumbbells $C_\lambda$ and $C_\lambda-i\nu_m$ (dashed lines in Fig.~\ref{fig:contours}) as long as $C_\lambda$ leaves out the shifted band $[-3,3]-i\nu_m$; by the symmetry of $C_\lambda$ under $z\to\bar z$ \eqref{eq:symmetries}, the band then lies outside $C_\lambda-i\nu_m$. How large $\lambda$ can be follows from the height of $C_\lambda$, the largest $\Imag z$ on it. Along $C_\lambda$ the tangent $J=\partial\omega/\partial\phi$ is horizontal where $J^2$ is real and positive. By \eqref{eq:jacobian}, $J^2\propto(1+\omega^2)(9-\omega^2)=9+8\omega^2-\omega^4$, whose imaginary part for $\omega=x+iy$ is $4xy(4-x^2+y^2)$. Off the axes it vanishes on the hyperbola $x^2-y^2=4$, where $J^2\propto25+4x^2y^2>0$; on the imaginary axis lies the pinch, a minimum of the upper lip. The highest point of a dumbbell of height $H$ is therefore $\sqrt{4+H^2}+iH$, and since the dumbbells are nested, $C_\lambda$ stays within $\lvert\Imag z\rvert<H$ exactly when $\lambda<\lambda^*(H)\equiv\lambda\big(\sqrt{4+H^2}+iH\big)$, with the level $\lambda(z)$ of \eqref{eq:inverse}. The deformations are therefore safe for $\lambda<\lambda^*(\nu_m)$, and since $\nu_m\ge\nu_1$, the bound for $m=1$ covers every $m>0$. By the change of variables $z\to z-i\nu_m$ in the integral over $C_\lambda-i\nu_m$ and by \eqref{eq:fermi_periodic}, we have, at $w=i\nu_m$,
 \begin{equation}
   \begin{aligned}
   \chi_Q(w)={}&\frac1{N_q}\sum_q\frac1{2\pi i}\oint_{C_\lambda}dz\;f(z)\,G_q(z)\\
@@ -207,7 +208,7 @@ which at $w=i\nu_m$ is the Matsubara sum \eqref{eq:bubble_def}, by \eqref{eq:two
   \label{fig:cloud}
 \end{figure}
 
-Now let $w$ be a general complex number. The same steps give \eqref{eq:spectral} as long as $C_\lambda$ leaves out the shifted cuts $[-3,3]\mp w$, where $G_{q\pm Q}(z\pm w)$ is singular. For $w=w_k\in C_\mu$ the shifted cuts sweep the set $[-3,3]\pm C_\mu$, the ``cloud'' (Fig.~\ref{fig:cloud}). Equation \eqref{eq:spectral} does not depend on $\lambda$, is analytic in $w$ off the interval $[-6,6]$ of the differences $\varepsilon'-\varepsilon$ and vanishes as $\lvert w\rvert\to\infty$, so \eqref{eq:contour_w} then gives the analytic continuation $\chi_Q(w)$ of the bubble; for the model \eqref{eq:model} it is the Lindhard function \eqref{eq:lindhard} with $i\nu_m$ replaced by $w$. The lowest level $\Lambda(\mu,\beta)$ of the cloud is reached for $w_k$ at a pinch of $C_\mu$, at the height $p_\mu=2\kappa\,\sd(K'\mu\,|\,\kappa'^2)$ of Sec.~\ref{sec:dumbbell} ($1.155$ for $\mu=0.4$), so $\Lambda(\mu,\beta)=\lambda^*(p_\mu)$, the bound of the Matsubara frequencies with $\nu_m$ replaced by $p_\mu$. The condition for all $w_k$ is therefore $\lambda<\Lambda(\mu,\beta)$: the pinch of $C_\mu$ must lie above the highest point of $C_\lambda$ (Fig.~\ref{fig:cloud}). Since $p_\mu$ grows with $\mu$, this is a lower bound on $\mu$, which at $\beta=\pi$ is $\mu>0.084$, $0.173$ and $0.275$ for $\lambda=0.1$, $0.2$ and $0.3$, roughly $\mu\gtrsim\lambda$; $\Lambda=0.40$ for $\mu=0.4$ and $0.23$ for $\mu=0.2$. The copies $C_\lambda\pm w_k$ then avoid the band, $\lambda'_{\min}>0$ in \eqref{eq:lammin}, because a copy meets the band exactly when $C_\lambda$ meets a shifted cut. The forward-safe condition $\lambda'_{\min}>\lambda$ of Sec.~\ref{sec:dumbbell} is stronger and needs $\mu>\mu_{\rm fwd}(\lambda)$, roughly $\mu\gtrsim2\lambda$. Below the threshold $C_\lambda$ encloses part of a shifted cut, and \eqref{eq:contour_w} is wrong at every $N$: for $\lambda=0.2$, $\mu=0.1$ and $Q=\pi/2$ it gives $-0.25$ instead of $-0.14$ at the pinch $w=0.30i$ of $C_\mu$, at $N=512$ and $N=2048$ alike.
+Now let $w$ be a general complex number. The same steps give \eqref{eq:spectral} as long as $C_\lambda$ leaves out the shifted cuts $[-3,3]\mp w$, where $G_{q\pm Q}(z\pm w)$ is singular. For $w=w_k\in C_\mu$ the shifted cuts sweep the set $[-3,3]\pm C_\mu$, the ``cloud'' (Fig.~\ref{fig:cloud}). Equation \eqref{eq:spectral} does not depend on $\lambda$, is analytic in $w$ off the interval $[-6,6]$ of the differences $\varepsilon'-\varepsilon$ and vanishes as $\lvert w\rvert\to\infty$, so \eqref{eq:contour_w} then gives the analytic continuation $\chi_Q(w)$ of the bubble; for the model \eqref{eq:model} it is the Lindhard function \eqref{eq:lindhard} with $i\nu_m$ replaced by $w$. The lowest level $\Lambda(\mu,\beta)$ of the cloud is reached for $w_k$ at a pinch of $C_\mu$, at the height $p_\mu=\Imag\omega_\mu(-1)=2\kappa\,\sd(K'\mu\,|\,\kappa'^2)$, by \eqref{eq:doubled} and $\sd(iy\,|\,\kappa^2)=i\,\sd(y\,|\,\kappa'^2)$, so $\Lambda(\mu,\beta)=\lambda^*(p_\mu)$, the bound of the Matsubara frequencies with $\nu_m$ replaced by $p_\mu$. The condition for all $w_k$ is therefore $\lambda<\Lambda(\mu,\beta)$: the pinch of $C_\mu$ must lie above the highest point of $C_\lambda$ (Fig.~\ref{fig:cloud}). Since $p_\mu$ grows with $\mu$, this is a lower bound on $\mu$, roughly $\mu\gtrsim\lambda$. The copies $C_\lambda\pm w_k$ then avoid the band, $\lambda'_{\min}>0$ in \eqref{eq:lammin}, because a copy meets the band exactly when $C_\lambda$ meets a shifted cut. The forward-safe condition $\lambda'_{\min}>\lambda$ of Sec.~\ref{sec:dumbbell_map} is stronger and needs $\mu>\mu_{\rm fwd}(\lambda)$, roughly $\mu\gtrsim2\lambda$. Below the threshold $C_\lambda$ encloses part of a shifted cut, and \eqref{eq:contour_w} is wrong at every $N$.
 
 \begin{figure}[t]
   \centering

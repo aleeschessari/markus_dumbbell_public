@@ -10,7 +10,7 @@ The contour of chi uses the doubled map 2*omega, around [-6, 6].
 import numpy as np
 from scipy.special import ellipj, ellipk, ellipkm1
 
-# ---------------- constants of the map (Eq. 2) ---------------- #
+# ---------------- constants of the map (Eq. 1) ---------------- #
 
 KAPPA2 = 0.9                    # parameter m = kappa^2 of the elliptic functions
 KAPPA = np.sqrt(KAPPA2)         # 3/sqrt(10)
@@ -40,7 +40,7 @@ def jacobi_sn_cn_dn(u, m):
 
 
 def omega(zeta):
-    """The map omega(zeta) (Eq. 2) and its Jacobian J = d omega / d phi (Eq. 4)."""
+    """The map omega(zeta) (Eq. 1) and its Jacobian J = d omega / d phi (Eq. 3)."""
     v = (K / 2) * (np.asarray(zeta, dtype=complex) + 1)
     sn, cn, dn = jacobi_sn_cn_dn(v, KAPPA2)
     return KAPPA * sn / dn, KAPPA * (K / 2) * cn / dn**2
@@ -64,7 +64,7 @@ def g_contour(lam, N):
 
 
 def chi_contour(mu, N):
-    """Points w_k = 2 omega_mu(phi_k) of the dumbbell of chi (the doubled map, Eq. 5)."""
+    """Points w_k = 2 omega_mu(phi_k) of the dumbbell of chi (the doubled map, Eq. 4)."""
     return 2 * omega(phi_grid(N) + 1j * TAU * mu)[0]
 
 

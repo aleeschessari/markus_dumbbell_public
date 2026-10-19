@@ -246,21 +246,6 @@ up to the trapezoidal error. The two rules applied to \eqref{eq:double_contour},
 \end{equation}
 The $c_j$ depend on $j$, $\lambda$ and $\beta$ only, never on $w$, $q$ or $G$, and the Fermi function is evaluated only at the nodes of $C_\lambda$. Both sets of weights are smooth in $\phi_j$ (QTT rank 6 to 8). The quadrature error falls exponentially with $N$, like $e^{-\alpha Nd}$ \eqref{eq:rate}, where $d$ is the distance in level from $C_\lambda$ to the nearest singularity of the integrand (Appendix~\ref{app:trap}).
 
-\subsection{Accuracy and conditions}
-\label{sec:cauchy}
-
-Only the values of $G$ at the nodes of the stored contour enter \eqref{eq:cauchy_form}. The formula needs no inverse map, no continuation and no mode cutoff, and its kernel $1/(z_j-z_m\pm w_k)$ is explicit and independent of $G$. Uncompressed, \eqref{eq:cauchy_form} agrees with the Lindhard sum \eqref{eq:lindhard} to $2.1\times10^{-12}$ for $(\lambda,\mu)=(0.2,0.4)$ at $N=512$ and to $1.1\times10^{-13}$ for $(0.1,0.2)$ at $N=1024$. At $N=256$ for $(0.2,0.4)$ the error is $2.1\times10^{-8}$, and the ratio of the two errors is the $e^{-\alpha N(\lambda'_{\min}-\lambda)}$ of \eqref{eq:rate}.
-
-The node sum \eqref{eq:ext_cauchy} converges at the rate \eqref{eq:rate} with $d=\min(\lambda,\lambda(x)-\lambda)$, because the integrand $G(\omega(\zeta))/(x-\omega(\zeta))$ has a pole at the level $\lambda(x)$ of $x$. The Cauchy kernel $1/(x-z_m)$ is bounded by the inverse distance of $x$ from the contour, so an error $\delta$ in the stored values of $G$ changes $G(x)$ by at most $\delta\sum_m\lvert d_m\rvert$ divided by that distance.
-
-The method rests on three conditions:
-\begin{enumerate}
-  \item $0<\lambda<1$: $C_\lambda$ leaves out the poles of $f$.
-  \item $\lambda'_{\min}>0$: the copies $C_\lambda\pm w_k$ avoid the band, so the contour formula \eqref{eq:contour_w} is $\chi$.
-  \item $\lambda'_{\min}>\lambda$: the shifted points lie outside $C_\lambda$, so the Cauchy formula \eqref{eq:cauchy_continuum} applies to them (the \emph{forward-safe} condition, roughly $\lambda\lesssim\mu/2$).
-\end{enumerate}
-The quadrature error of \eqref{eq:cauchy_form} is exponential in $N$, with the rate set by the smaller of $\lambda$ and $\lambda'_{\min}-\lambda$. For a smaller $\mu$ than the forward-safe condition allows, the same formula works with the $m$-sum taken on a second, lower contour $C_{\lambda_2}$, $\lambda_2<\lambda'_{\min}$.
-
 \subsection{Fourier modes}
 \label{sec:modes}
 
@@ -310,10 +295,25 @@ This is the exterior-Cauchy form \eqref{eq:cauchy_form} in another basis, exact 
 
 In exact arithmetic the sums in \eqref{eq:modes_bubble} run over all $N$ values of $n'$, $n$ and $\ell$. In practice only a window of each index matters, because the coefficients of $G$ and of $\chi$ decay exponentially (Appendix~\ref{sec:decay}). The input window holds the modes with $s_n\ge10^{-8}$, where $s_n$ is the worst-case size \eqref{eq:sn} of the coefficients: $n',n\in[-10,93]$ for $(\lambda,\mu)=(0.2,0.4)$ at $N=512$, and $[-9,187]$ for $(0.1,0.2)$ at $N=1024$. Appendix~\ref{sec:decay} explains the threshold. The output window holds the modes of $\chi$ above about $10^{-15}$ of the largest, $\ell\in[-32,95]$ and $[-32,159]$. In quantics the windows are embedded in $2^{R_n}$ and $2^{R_\ell}$ slots (Sec.~\ref{sec:tensors}). The grid must resolve the window, $N\ge n_{\max}-n_{\min}$, which with the decay rate \eqref{eq:decay} means $N\gtrsim2\log(1/\varepsilon)/(\alpha\lambda)$.
 
+\subsection{Accuracy and conditions}
+\label{sec:cauchy}
+
+Only the values of $G$ at the nodes of the stored contour enter \eqref{eq:cauchy_form}. The formula needs no inverse map, no continuation and no mode cutoff, and its kernel $1/(z_j-z_m\pm w_k)$ is explicit and independent of $G$. Uncompressed, \eqref{eq:cauchy_form} agrees with the Lindhard sum \eqref{eq:lindhard} to $2.1\times10^{-12}$ for $(\lambda,\mu)=(0.2,0.4)$ at $N=512$ and to $1.1\times10^{-13}$ for $(0.1,0.2)$ at $N=1024$. At $N=256$ for $(0.2,0.4)$ the error is $2.1\times10^{-8}$, and the ratio of the two errors is the $e^{-\alpha N(\lambda'_{\min}-\lambda)}$ of \eqref{eq:rate}.
+
+The node sum \eqref{eq:ext_cauchy} converges at the rate \eqref{eq:rate} with $d=\min(\lambda,\lambda(x)-\lambda)$, because the integrand $G(\omega(\zeta))/(x-\omega(\zeta))$ has a pole at the level $\lambda(x)$ of $x$. The Cauchy kernel $1/(x-z_m)$ is bounded by the inverse distance of $x$ from the contour, so an error $\delta$ in the stored values of $G$ changes $G(x)$ by at most $\delta\sum_m\lvert d_m\rvert$ divided by that distance.
+
+The method rests on three conditions:
+\begin{enumerate}
+  \item $0<\lambda<1$: $C_\lambda$ leaves out the poles of $f$.
+  \item $\lambda'_{\min}>0$: the copies $C_\lambda\pm w_k$ avoid the band, so the contour formula \eqref{eq:contour_w} is $\chi$.
+  \item $\lambda'_{\min}>\lambda$: the shifted points lie outside $C_\lambda$, so the Cauchy formula \eqref{eq:cauchy_continuum} applies to them (the \emph{forward-safe} condition, roughly $\lambda\lesssim\mu/2$).
+\end{enumerate}
+The quadrature error of \eqref{eq:cauchy_form} is exponential in $N$, with the rate set by the smaller of $\lambda$ and $\lambda'_{\min}-\lambda$. For a smaller $\mu$ than the forward-safe condition allows, the same formula works with the $m$-sum taken on a second, lower contour $C_{\lambda_2}$, $\lambda_2<\lambda'_{\min}$.
+
 \subsection{Compressing the kernel}
 \label{sec:tucker}
 
-The kernel is compressed into Tucker form by a truncated higher-order SVD (HOSVD). For a tensor $T_{n'n\ell}$ let $T_{(i)}$ be its mode-$i$ unfolding (the matrix with the $i$-th index as rows and the other two, combined, as columns). The HOSVD takes for $U^{(i)}$ the leading left singular vectors of $T_{(i)}$ and forms the core $C=T\times_1U^{(1)\dagger}\times_2U^{(2)\dagger}\times_3U^{(3)\dagger}$, i.e.
+The kernel \eqref{eq:kernel} is compressed into Tucker form by a truncated higher-order SVD (HOSVD). For a tensor $T_{n'n\ell}$ let $T_{(i)}$ be its mode-$i$ unfolding (the matrix with the $i$-th index as rows and the other two, combined, as columns). The HOSVD takes for $U^{(i)}$ the leading left singular vectors of $T_{(i)}$ and forms the core $C=T\times_1U^{(1)\dagger}\times_2U^{(2)\dagger}\times_3U^{(3)\dagger}$, i.e.
 \begin{equation}
   \begin{aligned}
   C_{abc}&=\sum_{n'n\ell}T_{n'n\ell}\,\overline{U^{(1)}_{n'a}}\,\overline{U^{(2)}_{nb}}\,\overline{U^{(3)}_{\ell c}},\\

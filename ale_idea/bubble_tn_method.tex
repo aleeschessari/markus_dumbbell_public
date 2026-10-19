@@ -189,7 +189,7 @@ Let $C_R$ be the counterclockwise circle centred at the origin with radius $R$, 
   \end{aligned}
   \label{eq:residues_cuts}
 \end{equation}
-For $\lambda<\lambda^*(\nu_m)$ the dumbbell $C_\lambda$ stays within $\lvert\Imag z\rvert<\nu_m$ (Sec.~\ref{sec:dumbbell}), so it leaves out the shifted band $[-3,3]-i\nu_m$, and by its symmetry under $z\to\bar z$ \eqref{eq:symmetries} the band lies outside $C_\lambda-i\nu_m$. The contour integrals over $C_3$ and $C_1$ can then be deformed into integrals over $C_\lambda$ and $C_\lambda-i\nu_m$ (dashed lines in Fig.~\ref{fig:contours}) without crossing a singularity of $fh$. At $\beta=\pi$, $\lambda^*(\nu_1)=0.576$, and $\lambda^*(\nu_m)$ grows with $m$ ($0.765$ and $0.840$ for $m=2$ and $3$), so $\lambda<0.576$ covers every $m>0$. By the change of variables $z\to z-i\nu_m$ in the integral over $C_\lambda-i\nu_m$ and by \eqref{eq:fermi_periodic}, we have, at $w=i\nu_m$,
+For $\lambda<\lambda^*(\nu_m)$ the dumbbell $C_\lambda$ stays within $\lvert\Imag z\rvert<\nu_m$ (Sec.~\ref{sec:dumbbell}), so it leaves out the shifted band $[-3,3]-i\nu_m$, and by its symmetry under $z\to\bar z$ \eqref{eq:symmetries} the band lies outside $C_\lambda-i\nu_m$. The contour integrals over $C_3$ and $C_1$ can then be deformed into integrals over $C_\lambda$ and $C_\lambda-i\nu_m$ (dashed lines in Fig.~\ref{fig:contours}) without crossing a singularity of $fh$. At $\beta=\pi$, $\lambda^*(\nu_1)=0.576$, so $\lambda<0.576$ covers every $m>0$. By the change of variables $z\to z-i\nu_m$ in the integral over $C_\lambda-i\nu_m$ and by \eqref{eq:fermi_periodic}, we have, at $w=i\nu_m$,
 \begin{equation}
   \begin{aligned}
   \chi_Q(w)={}&\frac1{N_q}\sum_q\frac1{2\pi i}\oint_{C_\lambda}dz\;f(z)\,G_q(z)\\
@@ -494,24 +494,6 @@ In Fig.~\ref{fig:ingredients} and below, all bits are written with the most sign
 \end{center}
 
 
-\section{The contraction}
-\label{sec:contraction}
-
-Step \stp1 contracts $\hat g$ with the leaf $\tilde U^{(1)}$ over the legs $n_1\ldots n_8$, and step \stp2 contracts it with $\tilde U^{(2)}$; these are the dashed boxes $A$ and $B$ of Fig.~\ref{fig:contraction}, with the contracted legs in red. The core $C$ is then contracted with the first site of $B$ over $b$ (step \stp3), which gives $B'$. The grey dashed box is the network of step \stp4: $A$ and $B'$ joined by the adder (for $Y^+$) or the subtractor (for $Y^-$) over the legs $q_i$ and $q'_i$, with only $c$ and $Q_1\ldots Q_{10}$ left open. Its result is the train $Y^\pm(Q;c)$, drawn below the equals sign, still attached to the output leaf $U^{(3)}$ through $c$. Step \stp5 does this last contraction for both signs, with the sign $(-1)^\ell$ on $\ell_9$ for $Y^-$, and adds the two branches. Step \stp6, the inverse DFT $\ell\to k$ (Appendix~\ref{app:qft}), is not drawn. Figure~\ref{fig:intermediate} shows the recompressed trains $A$, $B$ and $Y^\pm$, and Table~\ref{tab:steps} gives the bonds and the cost of every step.
-
-With both zip-ups of step \stp4, 29\,s each, the contraction takes about 60\,s. The largest bond after recompression is 84, in $B$; from the core on, every bond is at most 34, the bond of the result itself. Three objects are never formed: the weighted input $\hat g/s$, which is incompressible; the correlation $M(Q;a,b)$, whose leg has dimension 1023; and the uncompressed products inside the zip-ups, whose bond would reach $\approx13\,800$ in step \stp4.
-
-The branch $Y^-$ does not need its own zip-up. By \eqref{eq:yminus_identity}, $Y^-(Q)=Y^+(-Q\bmod N_q)$: the subtractor version of Fig.~\ref{fig:contraction} is the adder version read at the reflected momentum. The reflection $Q\to-Q$ is the bitwise NOT on every $Q$ bit followed by the exact ``$+1$'' MPO of bond 2 (Sec.~\ref{sec:qtt}), applied to the train $Y^+(Q;c)$. The reflection takes 0.01\,s, and the reflected $Y^+$ agrees with $Y^-$ from the subtractor zip-up to $1.7\times10^{-10}$. We therefore recommend one zip-up for $Y^+$ (29\,s) followed by the reflection; the whole contraction then takes about 31\,s instead of 60\,s.
-
-\section{Accuracy}
-\label{sec:accuracy}
-
-Compared with the Lindhard bubble \eqref{eq:lindhard} at all 1024 transfer momenta and all 512 points of $C_\mu$, the network gives
-\begin{equation}
-\max_{Q,k}\lvert\chi-\chi_{\rm exact}\rvert\Big/\max_{Q,k}\lvert\chi_{\rm exact}\rvert=1.7\times10^{-7}.
-\end{equation}
-Table~\ref{tab:accuracy} gives the error per transfer momentum $Q=2\pi m/1024$, $\max_k\lvert\chi-\chi_{\rm exact}\rvert/\max_k\lvert\chi_{\rm exact}\rvert$. The absolute error is about $10^{-8}$ at every $Q$; the relative error grows at small $Q$ only because $\chi_Q$ itself vanishes there. The contraction adds no error above $10^{-9}$: the MPS result and the same factors contracted densely agree to that level. The error comes from the compressions, mainly that of the kernel at $10^{-8}$; by Appendix~\ref{sec:decay}, a relative truncation of the weighted kernel is directly an error of $\hat\chi$.
-
 \begin{table*}[t]
 \caption{Error per transfer momentum $Q=2\pi m/1024$.}
 \label{tab:accuracy}
@@ -530,6 +512,24 @@ $m$ & error & $\max_k\lvert\chi_{\rm exact}\rvert$ \\
 \bottomrule
 \end{tabular}
 \end{table*}
+
+\section{The contraction}
+\label{sec:contraction}
+
+Step \stp1 contracts $\hat g$ with the leaf $\tilde U^{(1)}$ over the legs $n_1\ldots n_8$, and step \stp2 contracts it with $\tilde U^{(2)}$; these are the dashed boxes $A$ and $B$ of Fig.~\ref{fig:contraction}, with the contracted legs in red. The core $C$ is then contracted with the first site of $B$ over $b$ (step \stp3), which gives $B'$. The grey dashed box is the network of step \stp4: $A$ and $B'$ joined by the adder (for $Y^+$) or the subtractor (for $Y^-$) over the legs $q_i$ and $q'_i$, with only $c$ and $Q_1\ldots Q_{10}$ left open. Its result is the train $Y^\pm(Q;c)$, drawn below the equals sign, still attached to the output leaf $U^{(3)}$ through $c$. Step \stp5 does this last contraction for both signs, with the sign $(-1)^\ell$ on $\ell_9$ for $Y^-$, and adds the two branches. Step \stp6, the inverse DFT $\ell\to k$ (Appendix~\ref{app:qft}), is not drawn. Figure~\ref{fig:intermediate} shows the recompressed trains $A$, $B$ and $Y^\pm$, and Table~\ref{tab:steps} gives the bonds and the cost of every step.
+
+With both zip-ups of step \stp4, 29\,s each, the contraction takes about 60\,s. The largest bond after recompression is 84, in $B$; from the core on, every bond is at most 34, the bond of the result itself. Three objects are never formed: the weighted input $\hat g/s$, which is incompressible; the correlation $M(Q;a,b)$, whose leg has dimension 1023; and the uncompressed products inside the zip-ups, whose bond would reach $\approx13\,800$ in step \stp4.
+
+The branch $Y^-$ does not need its own zip-up. By \eqref{eq:yminus_identity}, $Y^-(Q)=Y^+(-Q\bmod N_q)$: the subtractor version of Fig.~\ref{fig:contraction} is the adder version read at the reflected momentum. The reflection $Q\to-Q$ is the bitwise NOT on every $Q$ bit followed by the exact ``$+1$'' MPO of bond 2 (Sec.~\ref{sec:qtt}), applied to the train $Y^+(Q;c)$. The reflection takes 0.01\,s, and the reflected $Y^+$ agrees with $Y^-$ from the subtractor zip-up to $1.7\times10^{-10}$. We therefore recommend one zip-up for $Y^+$ (29\,s) followed by the reflection; the whole contraction then takes about 31\,s instead of 60\,s.
+
+\section{Accuracy}
+\label{sec:accuracy}
+
+Compared with the Lindhard bubble \eqref{eq:lindhard} at all 1024 transfer momenta and all 512 points of $C_\mu$, the network gives
+\begin{equation}
+\max_{Q,k}\lvert\chi-\chi_{\rm exact}\rvert\Big/\max_{Q,k}\lvert\chi_{\rm exact}\rvert=1.7\times10^{-7}.
+\end{equation}
+Table~\ref{tab:accuracy} gives the error per transfer momentum $Q=2\pi m/1024$, $\max_k\lvert\chi-\chi_{\rm exact}\rvert/\max_k\lvert\chi_{\rm exact}\rvert$. The absolute error is about $10^{-8}$ at every $Q$; the relative error grows at small $Q$ only because $\chi_Q$ itself vanishes there. The contraction adds no error above $10^{-9}$: the MPS result and the same factors contracted densely agree to that level. The error comes from the compressions, mainly that of the kernel at $10^{-8}$; by Appendix~\ref{sec:decay}, a relative truncation of the weighted kernel is directly an error of $\hat\chi$.
 
 \clearpage
 \appendix

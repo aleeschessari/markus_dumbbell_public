@@ -108,7 +108,7 @@ def adder_tensor(sign=+1):
 
     W[c_out, q', q, Q, c_in] = 1 when the bits obey binary addition (subtraction) with the carry
     (borrow) c_in coming from the less significant bit and c_out passed to the more significant
-    one (Eq. 37). The carry is the bond of the MPO, so the bond is exactly 2.
+    one (Eq. 35). The carry is the bond of the MPO, so the bond is exactly 2.
     """
     W = np.zeros((2, 2, 2, 2, 2))
     for q in (0, 1):

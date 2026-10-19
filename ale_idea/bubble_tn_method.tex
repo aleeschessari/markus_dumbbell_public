@@ -41,7 +41,7 @@
 
 The spectrum of the Green function is a segment of the real axis, and the Fermi function, or the Bose function for bosons, has its poles at the Matsubara frequencies, on the imaginary axis at distances from the origin set by the temperature. Between the segment and the poles the integrands are analytic. We take the contours from the level curves of a conformal map $\omega$ that sends a strip, periodic in the coordinate $\phi$ along it and with the coordinate $\lambda$ across it, $\zeta=\phi+i\tau\lambda$, onto the region between the segment and the two rays of the imaginary axis that carry the poles: the line $\lambda=0$ goes to the segment and the line $\lambda=1$ to the rays [Fig.~\ref{fig:dumbbells}(a)]. Every horizontal line in between goes to a closed curve $C_\lambda$ around the segment that leaves out every pole, the contour at level $\lambda$ [Fig.~\ref{fig:dumbbells}(b)]. The rays pinch the region at the imaginary axis, so the curves are narrow there and bulge on either side, like dumbbells.
 
-On every contour $\phi$ is a periodic coordinate, so a function analytic in the region has Fourier coefficients in $\phi$ that decay exponentially, and the trapezoidal rule on a uniform grid in $\phi$ converges exponentially (Appendix~\ref{app:trap}). Moving from one contour to another is a shift of the strip by $i\tau\Delta\lambda$, which multiplies the $n$-th Fourier coefficient by $e^{-\alpha n\Delta\lambda}$, with $\alpha=\pi\tau/4$ [Eq.~\eqref{eq:multiplier}, Appendix~\ref{sec:decay}], so a change of level is diagonal in Fourier space. For the Green function the segment is its band and the poles are those of the Fermi function, at the fermionic frequencies. The bubble has a cut twice as long, and the poles of the Bose function at the nonzero bosonic frequencies lie twice as far out, so the same geometry, doubled, gives its contours $C_\mu$ [Eq.~\eqref{eq:doubled}]. The temperature fixes the map through the first poles, which sit at the ends of the rays.
+On every contour $\phi$ is a periodic coordinate, so a function analytic in the region has Fourier coefficients in $\phi$ that decay exponentially, and the trapezoidal rule on a uniform grid in $\phi$ converges exponentially (Appendix~\ref{app:trap}). Moving from one contour to another is a shift of the strip by $i\tau\Delta\lambda$, which multiplies the $n$-th Fourier coefficient by $e^{-\alpha n\Delta\lambda}$, with $\alpha=\pi\tau/4$ [Eq.~\eqref{eq:multiplier}, Appendix~\ref{sec:decay}], so a change of level is diagonal in Fourier space. For the Green function the segment is its band and the poles are those of the Fermi function, at the fermionic frequencies. The bubble has a cut twice as long, and the poles of the Bose function at the nonzero bosonic frequencies lie twice as far out, so the same geometry, doubled, gives its contours $C_\mu$, traced by $\omega_\mu(\phi)\equiv2\,\omega(\phi+i\tau\mu)$. The temperature fixes the map through the first poles, which sit at the ends of the rays.
 
 For a segment $[-E,E]$ and the inverse temperature $\beta$, the map is
 \begin{equation}
@@ -90,22 +90,7 @@ The Jacobian of the map follows from $v=\frac K2(\zeta+1)$ and $\frac{d}{dv}\sd 
 \end{equation}
 the second relation because $\omega$ is analytic in $\zeta=\phi+i\tau\lambda$, the third from $\dn^2v=1/(1+\beta^2\omega^2/\pi^2)$ and $\cn^2v=(1-\omega^2/E^2)/(1+\beta^2\omega^2/\pi^2)$. We write $J_\lambda(\phi)=J(\phi+i\tau\lambda)$. For $0<\lambda<1$, $J_\lambda$ has no zeros on $C_\lambda$; on the segment it is $J_0(\varepsilon)=\frac{K\kappa'\beta}{2\pi}\sqrt{(E^2-\varepsilon^2)(\pi^2/\beta^2+\varepsilon^2)}$, which vanishes like $\sqrt{E-\lvert\varepsilon\rvert}$ at the edges, so the nodes cluster at the edges of the segment like Chebyshev points [Fig.~\ref{fig:dumbbells}(b)].
 
-The bubble $\chi_Q$ (Sec.~\ref{sec:bubble}) has its cut on $[-2E,2E]$ and its bosonic frequencies $i\nu_m=2\pi im/\beta$, $m\ne0$, at $\lvert\Imag w\rvert\ge2\pi/\beta$. Both are twice the corresponding sets of $G$, so the contour of $\chi$ at level $\mu$ is the doubled map
-\begin{equation}
-  \begin{gathered}
-  w=\omega_\mu(\phi)\equiv2\,\omega(\phi+i\tau\mu),\\
-  w_k=\omega_\mu(\phi_k),\qquad w_{k+N/2}=-w_k ,
-  \end{gathered}
-  \label{eq:doubled}
-\end{equation}
-with the same $\tau$ and $\alpha$, on the grid $\phi_k=-1+8k/N$ of $N$ points; the last relation is $\omega(\zeta+4)=-\omega(\zeta)$ with $\phi_{k+N/2}=\phi_k+4$. For $0<\mu<1$, $C_\mu$ encloses $[-2E,2E]$ and leaves out all $i\nu_m$, $m\ne0$.
-
-Every $z\in\mathbb C\setminus[-E,E]$ off the rays is $\omega(\zeta)$ for exactly one $\zeta=\phi+i\tau\lambda'$ with $\phi\in[-1,7)$, $\lambda'\in(0,1)$, and $(\phi,\lambda')$ are the \emph{dumbbell coordinates} of $z$; on the rays the two parameter values with $\lambda'=1$ are identified. We call $\lambda(z)\equiv\lambda'$ the \emph{level} of $z$: the level of the dumbbell through $z$. Inverting \eqref{eq:map} with $\sn v=z/(E\kappa'\sqrt{1+\beta^2z^2/\pi^2})$ gives the closed form
-\begin{equation}
-  \Zc_0(z)=\frac2K\,F\!\Big(\arcsin\frac{z}{E\kappa'\sqrt{1+\beta^2z^2/\pi^2}}\;\Big|\;\kappa^2\Big)-1
-  \label{eq:inverse}
-\end{equation}
-($F$ the incomplete elliptic integral of the first kind, principal branches). $\Zc_0$ returns $\Real\Zc_0\in(-3,1)$ and $\Imag\Zc_0/\tau\in(-1,1)$, and the representative in the fundamental domain is $\Zc(z)=\Zc_0(z)$ if $\Imag\Zc_0\ge0$, $\Zc(z)=2-\Zc_0(z)$ otherwise (by $\omega(2-\zeta)=\omega(\zeta)$), followed by $\Real\Zc\to((\Real\Zc+1)\bmod8)-1$. Newton's method on $\omega(\zeta)=z$ with the Jacobian \eqref{eq:jacobian} gives the same result. The inverse map is only needed for the geometry below; the method itself never uses it.
+Every $z$ off the segment and the rays lies on exactly one dumbbell $C_{\lambda'}$, and we call $\lambda(z)\equiv\lambda'$ the \emph{level} of $z$.
 
 The pinches of $C_\lambda$ lie on the imaginary axis, at $\omega_\lambda(-1)=iE\kappa'\,\sd(K'\lambda\,|\,\kappa'^2)$ and $\omega_\lambda(3)=-\omega_\lambda(-1)$, by $\sd(iy\,|\,\kappa^2)=i\,\sd(y\,|\,\kappa'^2)$; they are the lowest point of the upper lip and the highest point of the lower lip. The highest and lowest points of $C_\lambda$ follow from \eqref{eq:jacobian} (Fig.~\ref{fig:height}). Along $C_\lambda$ the tangent $J$ is horizontal where $J^2$ is real and positive. Since $J^2\propto(\pi^2/\beta^2+\omega^2)(E^2-\omega^2)$, the imaginary part of $J^2$ for $\omega=x+iy$ is proportional to $2xy[E^2-\pi^2/\beta^2-2(x^2-y^2)]$, which off the axes vanishes on the hyperbola $x^2-y^2=c^2$, $c^2=(E^2-\pi^2/\beta^2)/2$, where $J^2$ is positive. The highest and lowest points of a dumbbell of height $H$ are therefore
 \[
@@ -160,7 +145,7 @@ As an example we take a tight-binding chain with nearest-neighbour hopping,
   \end{gathered}
   \label{eq:model}
 \end{equation}
-at the inverse temperature $\beta=\pi$; its band is $[-3,3]$, and the bubble has its cut on $[-6,6]$. Unless stated otherwise, the numbers are for $N_q=1024$, with $G$ stored on $C_\lambda$ with $\lambda=0.2$ at the $N=512$ nodes $z_j=\omega_\lambda(\phi_j)$, $\phi_j=-1+8j/N$, and $\chi$ computed at the $N=512$ points $w_k$ of $C_\mu$ with $\mu=0.4$; in bits, the momenta take $R_q=10$ and the contour points $R=9$. For this model the bubble is the Lindhard function \eqref{eq:lindhard}, the reference for every accuracy quoted. The method uses only the analyticity of $G_q$ off the band and its decay like $1/z$, so interacting Green functions with their spectrum in $[-3,3]$ are treated in the same way.
+at the inverse temperature $\beta=\pi$; its band is $[-3,3]$, and the bubble has its cut on $[-6,6]$. Unless stated otherwise, the numbers are for $N_q=1024$, with $G$ stored on $C_\lambda$ with $\lambda=0.2$ at the $N=512$ nodes $z_j=\omega_\lambda(\phi_j)$, $\phi_j=-1+8j/N$, and $\chi$ computed at the $N=512$ points $w_k=\omega_\mu(\phi_k)$ of $C_\mu$ with $\mu=0.4$; in bits, the momenta take $R_q=10$ and the contour points $R=9$. For this model the bubble is the Lindhard function \eqref{eq:lindhard}, the reference for every accuracy quoted. The method uses only the analyticity of $G_q$ off the band and its decay like $1/z$, so interacting Green functions with their spectrum in $[-3,3]$ are treated in the same way.
 
 We define the bubble without a minus sign and with the average over the internal momentum,
 \begin{equation}
@@ -216,7 +201,7 @@ which at $w=i\nu_m$ is the Matsubara sum \eqref{eq:bubble_def}, by \eqref{eq:two
 \begin{figure}[t]
   \centering
   \includegraphics[width=\columnwidth]{cloud_condition.pdf}
-  \caption{The condition $\lambda<\Lambda(\mu,\beta)$ for $\lambda=0.2$ at $\beta=\pi$. The thin lines are the shifted cuts $[-3,3]\pm w$ for points $w$ on $C_\mu$ (dots); for all $w$ on $C_\mu$ they sweep the cloud $[-3,3]\pm C_\mu$ (shaded), the zone that $C_\lambda$ must avoid. Near the band its edge is formed by the cuts $[-3,3]\pm ip_\mu$ (thick lines) for $w$ at the pinches $\pm ip_\mu$ of $C_\mu$, and the dot on $C_\lambda$ is its highest point. (a) $\mu=0.4$: $p_\mu=1.16$ lies above the highest point of $C_\lambda$, at the height $0.525$, so $C_\lambda$ lies in the hole of the cloud and \eqref{eq:contour_w} gives $\chi_Q(w_k)$. (b) $\mu=0.1$, with the vertical scale stretched three times: $p_\mu=0.30$ lies below it, the cloud crosses $C_\lambda$, and $C_\lambda$ encloses the red parts of the cuts, so \eqref{eq:contour_w} is wrong at every $N$.}
+  \caption{The condition $\lambda<\Lambda(\mu,\beta)$ for $\lambda=0.2$, $\mu=0.4$ and $\beta=\pi$. The thin lines are the shifted cuts $[-3,3]\pm w$ for points $w$ on $C_\mu$ (dots); for all $w$ on $C_\mu$ they sweep the cloud $[-3,3]\pm C_\mu$ (shaded), the zone that $C_\lambda$ must avoid. Near the band its edge comes from the pinches $\pm ip_\mu$ of $C_\mu$, and the dot on $C_\lambda$ is its highest point. The pinch lies above the highest point of $C_\lambda$, so $C_\lambda$ lies in the hole of the cloud and \eqref{eq:contour_w} gives $\chi_Q(w_k)$.}
   \label{fig:cloud}
 \end{figure}
 
@@ -306,7 +291,7 @@ Insert \eqref{eq:ghat} for $G_q(z_j)$ (index $n'$) and for $G_{q\pm Q}(z_m)$ (in
   P^\pm_Q(n',n)&=\frac1{N_q}\sum_q\hat g_{q,n'}\hat g_{q\pm Q,n},
   \end{aligned}
 \end{equation}
-with the kernel $K_{n'n}$ and the momentum correlations $P^\pm_Q$. By \eqref{eq:doubled}, $-w_k=w_{k+N/2}$, so the second term is the first kernel read at $k+N/2$. Project on the output modes with \eqref{eq:chihat}; for the second term substitute $k'=k+N/2$ and use $\phi_k=\phi_{k'}-4$, which produces $e^{i\pi\ell}=(-1)^\ell$:
+with the kernel $K_{n'n}$ and the momentum correlations $P^\pm_Q$. Since $\phi_{k+N/2}=\phi_k+4$ and $\omega(\zeta+4)=-\omega(\zeta)$ \eqref{eq:symmetries}, $-w_k=w_{k+N/2}$, so the second term is the first kernel read at $k+N/2$. Project on the output modes with \eqref{eq:chihat}; for the second term substitute $k'=k+N/2$ and use $\phi_k=\phi_{k'}-4$, which produces $e^{i\pi\ell}=(-1)^\ell$:
 \begin{equation}
 \begin{aligned}
 \hat\chi_{Q,\ell}&=\sum_{n',n}\widehat K_{n'n\ell}\Big[P^+_Q(n',n)\\

@@ -11,7 +11,7 @@ from dumbbell import ALPHA, phi_grid, chi_contour, quadrature_weights
 
 
 def fourier_coefficients(values):
-    """Fourier coefficients on a dumbbell along axis 0 (Eq. 23), in FFT order n = 0, 1, ..., -1.
+    """Fourier coefficients on a dumbbell along axis 0 (Eq. 21), in FFT order n = 0, 1, ..., -1.
 
     values[j] = sum_n ghat_n exp(i pi n phi_j / 4) with phi_j = -1 + 8j/N, hence
     ghat_n = exp(i pi n / 4) / N * FFT(values)_n.
@@ -23,7 +23,7 @@ def fourier_coefficients(values):
 
 
 def mode_kernel(lam, mu, N, n_window, l_window, k_chunk=32):
-    """The kernel Khat[n', n, l] of Eq. (27) for n', n in n_window and l in l_window.
+    """The kernel Khat[n', n, l] of Eq. (25) for n', n in n_window and l in l_window.
 
     For every output point w_k the double sum over the nodes (j, m) is a two-dimensional FFT of
     c_j d_m / (z_j - z_m + w_k); the sum over k then projects on the output modes l.
@@ -65,7 +65,7 @@ def mode_window(lam, N, s_cut=1e-8):
 
 
 def truncated_hosvd(T, eps):
-    """Truncated higher-order SVD of a three-index tensor (Eq. 28).
+    """Truncated higher-order SVD of a three-index tensor (Eq. 26).
 
     Each factor keeps the leading left singular vectors of the mode unfolding, as few as allowed by
     a discarded weight of at most eps^2/3 of |T|^2, so the total relative error is at most eps.

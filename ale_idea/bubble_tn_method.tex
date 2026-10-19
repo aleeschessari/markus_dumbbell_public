@@ -67,7 +67,9 @@ on the momentum grid $q=2\pi m/N_q$, $m=0,\ldots,N_q-1$, with $N_q=1024$, and at
 \subsection{The dumbbell family}
 \label{sec:dumbbell}
 
-Each contour is the image of a horizontal line [Fig.~\ref{fig:dumbbells}(a)] under a map $\omega$ built from Jacobi elliptic functions [Fig.~\ref{fig:dumbbells}(b)]. Let $\kappa=3/\sqrt{10}$, $\kappa'=\sqrt{1-\kappa^2}=1/\sqrt{10}$, and let $K\equiv K(\kappa)$ and $K'\equiv K(\kappa')$ be the complete elliptic integrals of the first kind with parameter $m=\kappa^2=0.9$ and $m'=0.1$: $K=2.5781$, $K'=1.6124$. With the Jacobi function $\sd=\sn/\dn$,
+The method needs two closed contours: $C_\lambda$ around the band $[-3,3]$ of $G$, on which $G_q$ is stored, and $C_\mu$ around the band $[-6,6]$ of $\chi$, on which the bubble is computed. Besides the band, the integrands of Sec.~\ref{sec:contour} contain the Fermi function, whose poles $i\omega_n$ lie on the imaginary axis at $\lvert\Imag z\rvert\ge\pi/\beta$. The contour $C_\lambda$ is therefore taken in the region between the band and the two rays $\{\Real z=0,\ \lvert\Imag z\rvert\ge\pi/\beta\}$ that carry these poles. We take the contours from a family of nested closed curves that fill this region, the level curves of a conformal map $\omega$ from a strip onto it. The strip is $\zeta=\phi+i\tau\lambda$ with $0<\lambda<1$ and $\phi$ periodic, and the horizontal line at the level $\lambda$ [Fig.~\ref{fig:dumbbells}(a)] is mapped onto the closed curve $C_\lambda$ [Fig.~\ref{fig:dumbbells}(b)]. As $\lambda\to0$ the curve collapses onto the band, and as $\lambda\to1$ it approaches the rays. The rays pinch the region at the imaginary axis, so the curves are narrow there and bulge on either side, like dumbbells. The coordinate $\phi$ along a contour is periodic, so the integral over $C_\lambda$ of a function analytic near it is an integral of a periodic analytic function of $\phi$, and the trapezoidal rule on a uniform grid in $\phi$ converges exponentially (Appendix~\ref{app:trap}). The contour of $\chi$ belongs to the same family, scaled by $2$ [Eq.~\eqref{eq:doubled}].
+
+The map is built from Jacobi elliptic functions. Let $\kappa=3/\sqrt{10}$, $\kappa'=\sqrt{1-\kappa^2}=1/\sqrt{10}$, and let $K\equiv K(\kappa)$ and $K'\equiv K(\kappa')$ be the complete elliptic integrals of the first kind with parameter $m=\kappa^2=0.9$ and $m'=0.1$: $K=2.5781$, $K'=1.6124$. With the Jacobi function $\sd=\sn/\dn$,
 \begin{equation}
   \begin{gathered}
   \omega(\zeta)=\kappa\,\sd\!\Big(\frac K2(\zeta+1)\;\Big|\;\kappa^2\Big),\qquad \zeta=\phi+i\tau\lambda,\\
@@ -501,25 +503,6 @@ In Fig.~\ref{fig:ingredients} and below, all bits are written with the most sign
 \end{center}
 
 
-\begin{table*}[t]
-\caption{Error per transfer momentum $Q=2\pi m/1024$.}
-\label{tab:accuracy}
-\centering\small
-\setlength{\tabcolsep}{6pt}
-\begin{tabular}{@{}rcc@{}}
-\toprule
-$m$ & error & $\max_k\lvert\chi_{\rm exact}\rvert$ \\
-\midrule
-1 & $2\times10^{-4}$ & $3\times10^{-5}$ \\
-16 & $8\times10^{-7}$ & $6\times10^{-3}$ \\
-64 & $5\times10^{-8}$ & 0.05 \\
-160 & $9\times10^{-9}$ & 0.10 \\
-256 & $5\times10^{-9}$ & 0.13 \\
-512 & $1.7\times10^{-7}$ & 0.22 \\
-\bottomrule
-\end{tabular}
-\end{table*}
-
 \section{The contraction}
 \label{sec:contraction}
 
@@ -537,6 +520,25 @@ Compared with the Lindhard bubble \eqref{eq:lindhard} at all 1024 transfer momen
 \max_{Q,k}\lvert\chi-\chi_{\rm exact}\rvert\Big/\max_{Q,k}\lvert\chi_{\rm exact}\rvert=1.7\times10^{-7}.
 \end{equation}
 Table~\ref{tab:accuracy} gives the error per transfer momentum $Q=2\pi m/1024$, $\max_k\lvert\chi-\chi_{\rm exact}\rvert/\max_k\lvert\chi_{\rm exact}\rvert$. The absolute error is about $10^{-8}$ at every $Q$; the relative error grows at small $Q$ only because $\chi_Q$ itself vanishes there. The contraction adds no error above $10^{-9}$: the MPS result and the same factors contracted densely agree to that level. The error comes from the compressions, mainly that of the kernel at $10^{-8}$; by Appendix~\ref{sec:decay}, a relative truncation of the weighted kernel is directly an error of $\hat\chi$.
+
+\begin{table}[!htb]
+\caption{Error per transfer momentum $Q=2\pi m/1024$.}
+\label{tab:accuracy}
+\centering\small
+\setlength{\tabcolsep}{6pt}
+\begin{tabular}{@{}rcc@{}}
+\toprule
+$m$ & error & $\max_k\lvert\chi_{\rm exact}\rvert$ \\
+\midrule
+1 & $2\times10^{-4}$ & $3\times10^{-5}$ \\
+16 & $8\times10^{-7}$ & $6\times10^{-3}$ \\
+64 & $5\times10^{-8}$ & 0.05 \\
+160 & $9\times10^{-9}$ & 0.10 \\
+256 & $5\times10^{-9}$ & 0.13 \\
+512 & $1.7\times10^{-7}$ & 0.22 \\
+\bottomrule
+\end{tabular}
+\end{table}
 
 \clearpage
 \appendix

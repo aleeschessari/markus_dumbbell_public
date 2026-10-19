@@ -27,17 +27,34 @@
 \raggedbottom% no stretched gaps between paragraphs in the two columns
 
 \title{The bubble on the dumbbell as a quantics tensor network}
+\author{\ldots}
+\affiliation{TU Wien}
 
 \begin{abstract}
-Given a Green function $G_q$ on a dumbbell contour $C_\lambda$, we compute the bubble $\chi_Q$ on a second dumbbell $C_\mu$, for all transfer momenta at once, as a quantics tensor network. The exterior Cauchy formula gives $G$ at the shifted points from its values on $C_\lambda$, so no analytic continuation is needed. In Fourier-mode space the geometry enters only through a three-index kernel that does not depend on $G$; weighted and compressed by a truncated HOSVD at $10^{-8}$, it has ranks $(31,33,44)$. The contraction takes about 60\,s, or 31\,s if the second of its two branches is obtained by reflecting the first, and its result agrees with the Lindhard function to $1.7\times10^{-7}$ of its maximum. We derive every formula we use. All numbers are for $\lambda=0.2$, $\mu=0.4$, $\beta=\pi$, $N=512$ contour points, $N_q=1024$ momenta and $G_q(z)=1/(z-3\cos q)$.
+\ldots
 \end{abstract}
 
 \maketitle
 
-\section{The problem}
-\label{sec:problem}
+\section{The formula behind the network}
+\label{sec:formula}
 
-The input is $G_q$ on the dumbbell $C_\lambda$, at the nodes $z_j=\omega_\lambda(\phi_j)$, $\phi_j=-1+8j/N$, $j=0,\ldots,N-1$, for the momenta $q=2\pi m/N_q$; it may be given as a quantics tensor train (QTT, Sec.~\ref{sec:qtt}). The output is the bubble $\chi_Q$ for all transfer momenta $Q$, on the dumbbell $C_\mu$ of $\chi$, at the points $w_k=\omega_\mu(\phi_k)$; here $\omega_\mu$ is the doubled map, around the band $[-6,6]$ of $\chi$. The method must work without analytic continuation and without evaluating $G$ away from $C_\lambda$, at a cost that does not depend on $N$. The maps $\omega_\lambda$, $\omega_\mu$ and the levels $\lambda$, $\mu$ are defined in Sec.~\ref{sec:dumbbell}.
+\subsection{The dumbbell family}
+\label{sec:dumbbell}
+
+The spectrum of the Green function is a segment of the real axis, and the Fermi function, or the Bose function for bosons, has its poles at the Matsubara frequencies, on the imaginary axis at distances from the origin set by the temperature. Between the segment and the poles the integrands are analytic. We take the contours from the level curves of a conformal map $\omega$ that sends a strip, periodic in the coordinate $\phi$ along it and with the coordinate $\lambda$ across it, $\zeta=\phi+i\tau\lambda$, onto the region between the segment and the two rays of the imaginary axis that carry the poles: the line $\lambda=0$ goes to the segment and the line $\lambda=1$ to the rays [Fig.~\ref{fig:dumbbells}(a)]. Every horizontal line in between goes to a closed curve $C_\lambda$ around the segment that leaves out every pole, the contour at level $\lambda$ [Fig.~\ref{fig:dumbbells}(b)]. The rays pinch the region at the imaginary axis, so the curves are narrow there and bulge on either side, like dumbbells.
+
+On every contour $\phi$ is a periodic coordinate, so a function analytic in the region has Fourier coefficients in $\phi$ that decay exponentially, and the trapezoidal rule on a uniform grid in $\phi$ converges exponentially (Appendix~\ref{app:trap}). Moving from one contour to another is a shift of the strip by $i\tau\Delta\lambda$, which multiplies the $n$-th Fourier coefficient by $e^{-\alpha n\Delta\lambda}$, with $\alpha=\pi\tau/4$ [Eq.~\eqref{eq:multiplier}, Appendix~\ref{sec:decay}], so a change of level is diagonal in Fourier space. For the Green function the segment is its band and the poles are those of the Fermi function, at the fermionic frequencies. The bubble has a cut twice as long, and the poles of the Bose function at the nonzero bosonic frequencies lie twice as far out, so the same geometry, doubled, gives its contours $C_\mu$ [Eq.~\eqref{eq:doubled}]. The temperature fixes the map through the first poles, which sit at the ends of the rays.
+
+As an example we consider in Fig.~\ref{fig:dumbbells} a tight-binding chain with nearest-neighbour hopping,
+\begin{equation}
+  \begin{gathered}
+  \varepsilon_q=3\cos q,\qquad G_q(z)=\frac1{z-\varepsilon_q},\\
+  A_q(\varepsilon)=\delta(\varepsilon-\varepsilon_q),
+  \end{gathered}
+  \label{eq:model}
+\end{equation}
+on the momentum grid $q=2\pi m/N_q$, $m=0,\ldots,N_q-1$, at the inverse temperature $\beta=\pi$. The band is $[-3,3]$, the bubble has its cut on $[-6,6]$, and the poles of the Fermi function closest to the band are $\pm i$. Unless stated otherwise, the numbers are for $N_q=1024$, with $G$ stored on the dumbbell $C_\lambda$ with $\lambda=0.2$ at the $N=512$ nodes $z_j=\omega_\lambda(\phi_j)$, $\phi_j=-1+8j/N$, and $\chi$ computed at the $N=512$ points $w_k$ of $C_\mu$ with $\mu=0.4$; in bits, the momenta take $R_q=10$ and the contour points $R=9$. For this model the bubble is the Lindhard function \eqref{eq:lindhard}, the reference for every accuracy quoted. The method uses only the analyticity of $G_q$ off the band and its decay like $1/z$, so interacting Green functions with their spectrum in $[-3,3]$ are treated in the same way.
 
 \begin{figure}[t]
   \centering
@@ -46,30 +63,7 @@ The input is $G_q$ on the dumbbell $C_\lambda$, at the nodes $z_j=\omega_\lambda
   \label{fig:dumbbells}
 \end{figure}
 
-The bubble needs $G$ at the shifted points $z_j\pm w_k$, which lie on the copies $C_\lambda\pm w_k$ of the contour. The two contours (Fig.~\ref{fig:contours}) must be chosen so that these copies never touch the cut of $G$, which makes the contour formula equal to $\chi$ (Sec.~\ref{sec:contour}), and stay outside $C_\lambda$, so that $G$ there follows exactly from $G$ on $C_\lambda$ (Sec.~\ref{sec:contour}). In general the second condition requires $\lambda\lesssim\mu/2$. In the example the lowest dumbbell level reached by the copies is $\lambda'_{\min}=0.237$, above $\lambda=0.2$.
-
-\section{The model}
-\label{sec:model}
-
-All numerical results are for a tight-binding chain with nearest-neighbour hopping,
-\begin{equation}
-  \begin{gathered}
-  \varepsilon_q=3\cos q,\qquad G_q(z)=\frac1{z-\varepsilon_q},\\
-  A_q(\varepsilon)=\delta(\varepsilon-\varepsilon_q),
-  \end{gathered}
-  \label{eq:model}
-\end{equation}
-on the momentum grid $q=2\pi m/N_q$, $m=0,\ldots,N_q-1$, with $N_q=1024$, and at inverse temperature $\beta=\pi$ (Sec.~\ref{sec:dumbbell} gives the reason for this value). The band is $[-3,3]$, and the bubble has its cut on $[-6,6]$. $G$ is stored on the dumbbell $C_\lambda$ with $\lambda=0.2$ at $N=512$ nodes, and $\chi$ is computed at the $N=512$ points of $C_\mu$ with $\mu=0.4$; in bits, the momenta take $R_q=10$ and the contour points $R=9$. For this model the bubble is the Lindhard function \eqref{eq:lindhard}, the reference for every accuracy quoted. The method itself uses only the analyticity of $G_q$ off the band and its decay like $1/z$ (Sec.~\ref{sec:contour}), so interacting Green functions with their spectrum in $[-3,3]$ are treated in the same way.
-
-\section{The formula behind the network}
-\label{sec:formula}
-
-\subsection{The dumbbell family}
-\label{sec:dumbbell}
-
-The method needs two closed contours: $C_\lambda$ around the band $[-3,3]$ of $G$, on which $G_q$ is stored, and $C_\mu$ around the band $[-6,6]$ of $\chi$, on which the bubble is computed. Besides the band, the integrands of Sec.~\ref{sec:contour} contain the Fermi function, whose poles $i\omega_n$ lie on the imaginary axis at $\lvert\Imag z\rvert\ge\pi/\beta$. The contour $C_\lambda$ is therefore taken in the region between the band and the two rays $\{\Real z=0,\ \lvert\Imag z\rvert\ge\pi/\beta\}$ that carry these poles. We take the contours from a family of nested closed curves that fill this region, the level curves of a conformal map $\omega$ from a strip onto it. The strip is $\zeta=\phi+i\tau\lambda$ with $0<\lambda<1$ and $\phi$ periodic, and the horizontal line at the level $\lambda$ [Fig.~\ref{fig:dumbbells}(a)] is mapped onto the closed curve $C_\lambda$ [Fig.~\ref{fig:dumbbells}(b)]. As $\lambda\to0$ the curve collapses onto the band, and as $\lambda\to1$ it approaches the rays. The rays pinch the region at the imaginary axis, so the curves are narrow there and bulge on either side, like dumbbells. The coordinate $\phi$ along a contour is periodic, so the integral over $C_\lambda$ of a function analytic near it is an integral of a periodic analytic function of $\phi$, and the trapezoidal rule on a uniform grid in $\phi$ converges exponentially (Appendix~\ref{app:trap}). The contour of $\chi$ belongs to the same family, scaled by $2$ [Eq.~\eqref{eq:doubled}].
-
-The map is built from Jacobi elliptic functions. Let $\kappa=3/\sqrt{10}$, $\kappa'=\sqrt{1-\kappa^2}=1/\sqrt{10}$, and let $K\equiv K(\kappa)$ and $K'\equiv K(\kappa')$ be the complete elliptic integrals of the first kind with parameter $m=\kappa^2=0.9$ and $m'=0.1$: $K=2.5781$, $K'=1.6124$. With the Jacobi function $\sd=\sn/\dn$,
+The map is built from Jacobi elliptic functions. For the example, let $\kappa=3/\sqrt{10}$, $\kappa'=\sqrt{1-\kappa^2}=1/\sqrt{10}$, and let $K\equiv K(\kappa)$ and $K'\equiv K(\kappa')$ be the complete elliptic integrals of the first kind with parameter $m=\kappa^2=0.9$ and $m'=0.1$: $K=2.5781$, $K'=1.6124$. With the Jacobi function $\sd=\sn/\dn$,
 \begin{equation}
   \begin{gathered}
   \omega(\zeta)=\kappa\,\sd\!\Big(\frac K2(\zeta+1)\;\Big|\;\kappa^2\Big),\qquad \zeta=\phi+i\tau\lambda,\\
@@ -136,7 +130,7 @@ measures how close the copies come to the band ($\lambda'_{\min}>0$) and whether
 \subsection{The bubble}
 \label{sec:bubble}
 
-Momenta are on the grid $q=2\pi m/N_q$ of Sec.~\ref{sec:model}, and all momentum sums and shifts are modulo $2\pi$. The temperature is $1/\beta$; the fermionic and bosonic Matsubara frequencies are
+Momenta are on the grid $q=2\pi m/N_q$ of Sec.~\ref{sec:dumbbell}, and all momentum sums and shifts are modulo $2\pi$. The temperature is $1/\beta$; the fermionic and bosonic Matsubara frequencies are
 \begin{equation}
   \omega_n=\frac{(2n+1)\pi}{\beta},\qquad \nu_m=\frac{2\pi m}{\beta},\qquad n,m\in\mathbb Z,
   \label{eq:matsubara}
@@ -268,7 +262,7 @@ up to the trapezoidal error. The two rules applied to \eqref{eq:double_contour},
 \end{aligned}
 \label{eq:cauchy_form}
 \end{equation}
-The $c_j$ depend on $j$, $\lambda$ and $\beta$ only, never on $w$, $q$ or $G$, and the Fermi function is evaluated only at the nodes of $C_\lambda$. Both sets of weights are smooth in $\phi_j$ (QTT rank 6 to 8). The quadrature error falls exponentially with $N$, like $e^{-\alpha Nd}$ \eqref{eq:rate}, where $d$ is the distance in level from $C_\lambda$ to the nearest singularity of the integrand (Appendix~\ref{app:trap}).
+The $c_j$ depend on $j$, $\lambda$ and $\beta$ only, never on $w$, $q$ or $G$, and the Fermi function is evaluated only at the nodes of $C_\lambda$. Both sets of weights are smooth in $\phi_j$ (rank 6 to 8 as quantics tensor trains, Sec.~\ref{sec:qtt}). The quadrature error falls exponentially with $N$, like $e^{-\alpha Nd}$ \eqref{eq:rate}, where $d$ is the distance in level from $C_\lambda$ to the nearest singularity of the integrand (Appendix~\ref{app:trap}).
 
 \subsection{Fourier modes}
 \label{sec:modes}
@@ -483,6 +477,26 @@ step & \rr contract & \rr over & \rr result & \rr bonds before recompression\new
 \stp6 & \rr $F$ with $\hat\chi$ & \rr $\ell_1\ldots\ell_9$ & \rr $\chi$: $k_9\ldots k_1$, $Q_1\ldots Q_{10}$ & \rr 4, 8, 16, 33, 55, 72, 64, 48, 24, 34, 26, 18, 12, 9, 7, 6, 4, 2\newline $\to$ 2, 4, 7, 8, 11, 16, 20, 24, 24, 34, 26, 18, 12, 9, 7, 6, 4, 2 & \rr $O(LdD^3\chi^3)$ \\
 \bottomrule
 \end{tabular}
+
+\vspace{1.5em}
+\begin{minipage}{0.48\textwidth}
+\caption{Error per transfer momentum $Q=2\pi m/1024$.}
+\label{tab:accuracy}
+\centering\small
+\setlength{\tabcolsep}{6pt}
+\begin{tabular}{@{}rcc@{}}
+\toprule
+$m$ & error & $\max_k\lvert\chi_{\rm exact}\rvert$ \\
+\midrule
+1 & $2\times10^{-4}$ & $3\times10^{-5}$ \\
+16 & $8\times10^{-7}$ & $6\times10^{-3}$ \\
+64 & $5\times10^{-8}$ & 0.05 \\
+160 & $9\times10^{-9}$ & 0.10 \\
+256 & $5\times10^{-9}$ & 0.13 \\
+512 & $1.7\times10^{-7}$ & 0.22 \\
+\bottomrule
+\end{tabular}
+\end{minipage}
 \end{table*}
 
 In Fig.~\ref{fig:ingredients} and below, all bits are written with the most significant bit first unless stated otherwise; $n$ and $\ell$ are in two's complement, i.e.\ FFT order \eqref{eq:twos}, and bond dimensions are listed from left to right. The input $\hat g_{q,n}$ is the raw array \eqref{eq:ghat} as a train; Appendix~\ref{sec:choices} explains why the raw array is truncated and the weight $1/s_n$ is put into the leaves. The leaves are the Tucker factors of \eqref{eq:kernel_tucker} written as trains over the bits of $n$ or $\ell$, with the Tucker index attached at the least significant bit, where the leaf bonds stay below the Tucker rank. Every tensor is computed to a relative tolerance $\varepsilon$, in the sense of Sec.~\ref{sec:tucker} for the HOSVD and of Appendix~\ref{app:ttsvd} for the trains:
@@ -520,25 +534,6 @@ Compared with the Lindhard bubble \eqref{eq:lindhard} at all 1024 transfer momen
 \max_{Q,k}\lvert\chi-\chi_{\rm exact}\rvert\Big/\max_{Q,k}\lvert\chi_{\rm exact}\rvert=1.7\times10^{-7}.
 \end{equation}
 Table~\ref{tab:accuracy} gives the error per transfer momentum $Q=2\pi m/1024$, $\max_k\lvert\chi-\chi_{\rm exact}\rvert/\max_k\lvert\chi_{\rm exact}\rvert$. The absolute error is about $10^{-8}$ at every $Q$; the relative error grows at small $Q$ only because $\chi_Q$ itself vanishes there. The contraction adds no error above $10^{-9}$: the MPS result and the same factors contracted densely agree to that level. The error comes from the compressions, mainly that of the kernel at $10^{-8}$; by Appendix~\ref{sec:decay}, a relative truncation of the weighted kernel is directly an error of $\hat\chi$.
-
-\begin{table}[!htb]
-\caption{Error per transfer momentum $Q=2\pi m/1024$.}
-\label{tab:accuracy}
-\centering\small
-\setlength{\tabcolsep}{6pt}
-\begin{tabular}{@{}rcc@{}}
-\toprule
-$m$ & error & $\max_k\lvert\chi_{\rm exact}\rvert$ \\
-\midrule
-1 & $2\times10^{-4}$ & $3\times10^{-5}$ \\
-16 & $8\times10^{-7}$ & $6\times10^{-3}$ \\
-64 & $5\times10^{-8}$ & 0.05 \\
-160 & $9\times10^{-9}$ & 0.10 \\
-256 & $5\times10^{-9}$ & 0.13 \\
-512 & $1.7\times10^{-7}$ & 0.22 \\
-\bottomrule
-\end{tabular}
-\end{table}
 
 \clearpage
 \appendix

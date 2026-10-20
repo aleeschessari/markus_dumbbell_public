@@ -132,9 +132,9 @@ and the Fermi function is
   \Res_{z=i\omega_n}f&=-\frac1\beta .\label{eq:fermi_res}
 \end{align}
 \end{subequations}
-The one-particle Green function $G_q(z)$ is analytic off the real axis and has its spectrum in the band $[-E,E]$ with $E=3$. In terms of its spectral function $A_q$, supported in $[-3,3]$,
+The one-particle Green function $G_q(z)$ is analytic off the real axis and has its spectrum in the band $[-E,E]$. In terms of its spectral function $A_q$, supported in $[-E,E]$,
 \begin{equation}
-  G_q(z)=\int_{-3}^{3}d\varepsilon\,\frac{A_q(\varepsilon)}{z-\varepsilon},\qquad G_q(z)\sim\frac1z\ \ (z\to\infty).
+  G_q(z)=\int_{-E}^{E}d\varepsilon\,\frac{A_q(\varepsilon)}{z-\varepsilon},\qquad G_q(z)\sim\frac1z\ \ (z\to\infty).
   \label{eq:lehmann}
 \end{equation}
 As an example we take a tight-binding chain with nearest-neighbour hopping,
@@ -145,7 +145,7 @@ As an example we take a tight-binding chain with nearest-neighbour hopping,
   \end{gathered}
   \label{eq:model}
 \end{equation}
-at the inverse temperature $\beta=\pi$; its band is $[-3,3]$, and the bubble has its cut on $[-6,6]$. Unless stated otherwise, the numbers are for $N_q=1024$, with $G$ stored on $C_\lambda$ with $\lambda=0.2$ at the $N=512$ nodes $z_j=\omega_\lambda(\phi_j)$, $\phi_j=-1+8j/N$, and $\chi$ computed at the $N=512$ points $w_k=\omega_\mu(\phi_k)$ of $C_\mu$ with $\mu=0.4$; in bits, the momenta take $R_q=10$ and the contour points $R=9$. For this model the bubble is the Lindhard function \eqref{eq:lindhard}, the reference for every accuracy quoted. The method uses only the analyticity of $G_q$ off the band and its decay like $1/z$, so interacting Green functions with their spectrum in $[-3,3]$ are treated in the same way.
+at the inverse temperature $\beta=\pi$; its band is $[-3,3]$, and the bubble has its cut on $[-6,6]$. Unless stated otherwise, the numbers are for $N_q=1024$, with $G$ stored on $C_\lambda$ with $\lambda=0.2$ at the $N=512$ nodes $z_j=\omega_\lambda(\phi_j)$, $\phi_j=-1+8j/N$, and $\chi$ computed at the $N=512$ points $w_k=\omega_\mu(\phi_k)$ of $C_\mu$ with $\mu=0.4$; in bits, the momenta take $R_q=10$ and the contour points $R=9$. For this model the bubble is the Lindhard function \eqref{eq:lindhard}, the reference for every accuracy quoted. The method uses only the analyticity of $G_q$ off the band and its decay like $1/z$, so interacting Green functions with their spectrum in $[-E,E]$ are treated in the same way.
 
 We define the bubble without a minus sign and with the average over the internal momentum,
 \begin{equation}
@@ -160,7 +160,7 @@ with
   h(z)=G_q(z)\,G_{q+Q}(z+i\nu_m).
   \label{eq:h}
 \end{equation}
-The Matsubara sum converges absolutely because the summand is $O(\omega_n^{-2})$. By \eqref{eq:lehmann} the poles of $h$, which merge into cuts for a continuous spectrum, lie on the band $[-3,3]$ of the real axis, from $G_q(z)$, and on the band moved down by $\nu_m$, from $G_{q+Q}(z+i\nu_m)$. These lie at the heights $0$ and $-\nu_m$, even multiples of $\pi/\beta$, while the poles $i\omega_n$ of $f$ lie at odd multiples. So $h$ is regular at the poles of $f$, and with the residue $-1/\beta$ of $f$ in \eqref{eq:fermi_res}, $\Res_{z=i\omega_n}[f(z)h(z)]=-h(i\omega_n)/\beta$. Hence
+The Matsubara sum converges absolutely because the summand is $O(\omega_n^{-2})$. By \eqref{eq:lehmann} the poles of $h$, which merge into cuts for a continuous spectrum, lie on the band $[-E,E]$ of the real axis, from $G_q(z)$, and on the band moved down by $\nu_m$, from $G_{q+Q}(z+i\nu_m)$. These lie at the heights $0$ and $-\nu_m$, even multiples of $\pi/\beta$, while the poles $i\omega_n$ of $f$ lie at odd multiples. So $h$ is regular at the poles of $f$, and with the residue $-1/\beta$ of $f$ in \eqref{eq:fermi_res}, $\Res_{z=i\omega_n}[f(z)h(z)]=-h(i\omega_n)/\beta$. Hence
 \begin{equation}
   \frac1\beta\sum_nh(i\omega_n)=-\sum_n\Res_{z=i\omega_n}\big[f(z)\,h(z)\big].
   \label{eq:matsum_residues}
@@ -183,7 +183,7 @@ Let $C_R$ be the counterclockwise circle centred at the origin with radius $R$, 
   \end{aligned}
   \label{eq:residues_cuts}
 \end{equation}
-The contour integrals over $C_3$ and $C_1$ can be deformed into integrals over the dumbbells $C_\lambda$ and $C_\lambda-i\nu_m$ (dashed lines in Fig.~\ref{fig:contours}) as long as $C_\lambda$ leaves out the shifted band $[-3,3]-i\nu_m$. The dumbbell $C_\lambda$ stays within $\lvert\Imag z\rvert<\nu_m$ for $\lambda<\lambda^*(\nu_m)$ (Sec.~\ref{sec:dumbbell_map}), so the deformations are safe for $\lambda<\lambda^*(\nu_m)$, and since $\nu_m\ge\nu_1$, the bound for $m=1$ covers every $m>0$. By the change of variables $z\to z-i\nu_m$ in the integral over $C_\lambda-i\nu_m$ and by \eqref{eq:fermi_periodic}, we have, at $w=i\nu_m$,
+The contour integrals over $C_3$ and $C_1$ can be deformed into integrals over the dumbbells $C_\lambda$ and $C_\lambda-i\nu_m$ (dashed lines in Fig.~\ref{fig:contours}) as long as $C_\lambda$ leaves out the shifted band $[-E,E]-i\nu_m$. The dumbbell $C_\lambda$ stays within $\lvert\Imag z\rvert<\nu_m$ for $\lambda<\lambda^*(\nu_m)$ (Sec.~\ref{sec:dumbbell_map}), so the deformations are safe for $\lambda<\lambda^*(\nu_m)$, and since $\nu_m\ge\nu_1$, the bound for $m=1$ covers every $m>0$. By the change of variables $z\to z-i\nu_m$ in the integral over $C_\lambda-i\nu_m$ and by \eqref{eq:fermi_periodic}, we have, at $w=i\nu_m$,
 \begin{equation}
   \begin{aligned}
   \chi_Q(w)={}&\frac1{N_q}\sum_q\frac1{2\pi i}\oint_{C_\lambda}dz\;f(z)\,G_q(z)\\
@@ -194,12 +194,12 @@ The contour integrals over $C_3$ and $C_1$ can be deformed into integrals over t
 At $w=i\nu_m$ and for $\lambda<\lambda^*(\nu_m)$, the factors $f(z)\,G_{q\pm Q}(z\pm w)$ are analytic inside and on $C_\lambda$. Inserting \eqref{eq:lehmann}, Cauchy's formula turns \eqref{eq:contour_w} into
 \begin{equation}
   \begin{aligned}
-  \chi_Q(w)={}&\frac1{N_q}\sum_q\int_{-3}^{3}\!d\varepsilon\int_{-3}^{3}\!d\varepsilon'\,A_q(\varepsilon)\,A_{q+Q}(\varepsilon')\\
+  \chi_Q(w)={}&\frac1{N_q}\sum_q\int_{-E}^{E}\!d\varepsilon\int_{-E}^{E}\!d\varepsilon'\,A_q(\varepsilon)\,A_{q+Q}(\varepsilon')\\
   &\times\frac{f(\varepsilon)-f(\varepsilon')}{w+\varepsilon-\varepsilon'} ,
   \end{aligned}
   \label{eq:spectral}
 \end{equation}
-with $w=i\nu_m$. Equation \eqref{eq:spectral} does not depend on $\lambda$, is analytic in $w$ off the interval $[-6,6]$ of the differences $\varepsilon'-\varepsilon$ and vanishes as $\lvert w\rvert\to\infty$, so it is the analytic continuation $\chi_Q(w)$ of the bubble.
+with $w=i\nu_m$. Equation \eqref{eq:spectral} does not depend on $\lambda$, is analytic in $w$ off the interval $[-2E,2E]$ of the differences $\varepsilon'-\varepsilon$ and vanishes as $\lvert w\rvert\to\infty$, so it is the analytic continuation $\chi_Q(w)$ of the bubble.
 
 \begin{figure}[t]
   \centering
@@ -208,7 +208,7 @@ with $w=i\nu_m$. Equation \eqref{eq:spectral} does not depend on $\lambda$, is a
   \label{fig:cloud}
 \end{figure}
 
-Now let $w$ be a general complex number. The same steps give \eqref{eq:spectral} as long as $C_\lambda$ leaves out the shifted cuts $[-3,3]\mp w$, where $G_{q\pm Q}(z\pm w)$ is singular. For $w=w_k\in C_\mu$ the shifted cuts sweep the set $[-3,3]\pm C_\mu$, the ``cloud'' in Fig.~\ref{fig:cloud}, so \eqref{eq:contour_w} holds on $C_\mu$ when the cloud lies outside $C_\lambda$. This happens when $H_\lambda<p_\mu$, with $p_\mu=\Imag\omega_\mu(-1)=2E\kappa'\,\sd(K'\mu\,|\,\kappa'^2)$ the height of the pinch of $C_\mu$ (Sec.~\ref{sec:dumbbell_map}), that is, when the pinch of $C_\mu$ lies above the top of $C_\lambda$ (Fig.~\ref{fig:cloud}). In terms of levels this reads $\lambda<\Lambda(\mu,\beta)$, where $\Lambda(\mu,\beta)=\lambda^*(p_\mu)=\lambda\big(\sqrt{c^2+p_\mu^2}+ip_\mu\big)$.
+Now let $w$ be a general complex number. The same steps give \eqref{eq:spectral} as long as $C_\lambda$ leaves out the shifted cuts $[-E,E]\mp w$, where $G_{q\pm Q}(z\pm w)$ is singular. For $w=w_k\in C_\mu$ the shifted cuts sweep the set $[-E,E]\pm C_\mu$, the ``cloud'' in Fig.~\ref{fig:cloud}, so \eqref{eq:contour_w} holds on $C_\mu$ when the cloud lies outside $C_\lambda$. This happens when $H_\lambda<p_\mu$, with $p_\mu=\Imag\omega_\mu(-1)=2E\kappa'\,\sd(K'\mu\,|\,\kappa'^2)$ the height of the pinch of $C_\mu$ (Sec.~\ref{sec:dumbbell_map}), that is, when the pinch of $C_\mu$ lies above the top of $C_\lambda$ (Fig.~\ref{fig:cloud}). In terms of levels this reads $\lambda<\Lambda(\mu,\beta)$, where $\Lambda(\mu,\beta)=\lambda^*(p_\mu)=\lambda\big(\sqrt{c^2+p_\mu^2}+ip_\mu\big)$.
 
 \begin{figure}[t]
   \centering
@@ -329,7 +329,7 @@ The node sum \eqref{eq:ext_cauchy} converges at the rate \eqref{eq:rate} with $d
 The method rests on three conditions:
 \begin{enumerate}[label=(\roman*)]
   \item $0<\lambda<1$: $C_\lambda$ leaves out the poles of $f$.
-  \item $\lambda<\Lambda(\mu,\beta)$: the shifted cuts $[-3,3]\mp w_k$ lie outside $C_\lambda$, so the contour formula \eqref{eq:contour_w} is $\chi$ (roughly $\mu\gtrsim\lambda$). The copies $C_\lambda\pm w_k$ then avoid the band, $\lambda'_{\min}>0$.
+  \item $\lambda<\Lambda(\mu,\beta)$: the shifted cuts $[-E,E]\mp w_k$ lie outside $C_\lambda$, so the contour formula \eqref{eq:contour_w} is $\chi$ (roughly $\mu\gtrsim\lambda$). The copies $C_\lambda\pm w_k$ then avoid the band, $\lambda'_{\min}>0$.
   \item $\lambda'_{\min}>\lambda$: the shifted points lie outside $C_\lambda$, so the Cauchy formula \eqref{eq:cauchy_continuum} applies to them (the \emph{forward-safe} condition, roughly $\lambda\lesssim\mu/2$).
 \end{enumerate}
 The quadrature error of \eqref{eq:cauchy_form} is exponential in $N$, with the rate set by the smaller of $\lambda$ and $\lambda'_{\min}-\lambda$. For a smaller $\mu$ than the forward-safe condition allows, the same formula works with the $m$-sum taken on a second, lower contour $C_{\lambda_2}$, $\lambda_2<\lambda'_{\min}$.
@@ -374,16 +374,16 @@ since $B_{q-Q,b}=B_{q+(-Q),b}$. The branch $Y^-$ therefore follows from $Y^+$ by
 \end{equation}
 that is, $Y^-(Q)=Y^+(Q)$ exactly on the grid. Then $\hat\chi_{Q,\ell}=[1+(-1)^\ell]\sum_cU^{(3)}_{\ell c}Y^+_c(Q)$: the odd modes vanish, which is the evenness $\chi_Q(-w)=\chi_Q(w)$ of the bubble of an even band. Computed by two separate zip-ups, each recompressed at $10^{-9}$, the two trains differ by $\lVert Y^--Y^+\rVert/\lVert Y^+\rVert=1.6\times10^{-11}$. The network does not use this symmetry: it computes both branches, as it must for a band that is not even.
 
-The ranks are small because $G$ and $\chi$ enter only through Cauchy transforms. Equation \eqref{eq:spectral} writes the bubble as the average of $[f(\varepsilon)-f(\varepsilon')]/(w+\varepsilon-\varepsilon')$ with the weights $A_q(\varepsilon)A_{q+Q}(\varepsilon')$: a trilinear form in $fA_q$, $A_{q+Q}$ and the output kernel $1/(w+\varepsilon-\varepsilon')$, and \eqref{eq:cauchy_form} is its discretization. The first $G$ enters only through $\sum_jc_jG_q(z_j)/(z_j-x)=\int f(\varepsilon)A_q(\varepsilon)\,d\varepsilon/(\varepsilon-x)$, the Cauchy transform of $fA_q$ at the points $x=z_m-w_k$; the second through the Cauchy transform of $A_{q\pm Q}$ at $z_j\pm w_k$; and the output is the Cauchy transform of a two-particle spectral function on $[-6,6]$, evaluated on $C_\mu$. So each leg of $\widetilde K$ is a Cauchy kernel $1/(x-\varepsilon)$ between a segment and a set at a positive distance from it, with $\Lambda(\mu,\beta)$ the lowest level of the cloud $[-3,3]\pm C_\mu$ (Sec.~\ref{sec:contour}):
+The ranks are small because $G$ and $\chi$ enter only through Cauchy transforms. Equation \eqref{eq:spectral} writes the bubble as the average of $[f(\varepsilon)-f(\varepsilon')]/(w+\varepsilon-\varepsilon')$ with the weights $A_q(\varepsilon)A_{q+Q}(\varepsilon')$: a trilinear form in $fA_q$, $A_{q+Q}$ and the output kernel $1/(w+\varepsilon-\varepsilon')$, and \eqref{eq:cauchy_form} is its discretization. The first $G$ enters only through $\sum_jc_jG_q(z_j)/(z_j-x)=\int f(\varepsilon)A_q(\varepsilon)\,d\varepsilon/(\varepsilon-x)$, the Cauchy transform of $fA_q$ at the points $x=z_m-w_k$; the second through the Cauchy transform of $A_{q\pm Q}$ at $z_j\pm w_k$; and the output is the Cauchy transform of a two-particle spectral function on $[-2E,2E]$, evaluated on $C_\mu$. So each leg of $\widetilde K$ is a Cauchy kernel $1/(x-\varepsilon)$ between a segment and a set at a positive distance from it, with $\Lambda(\mu,\beta)$ the lowest level of the cloud $[-E,E]\pm C_\mu$ (Sec.~\ref{sec:contour}):
 \begin{center}\footnotesize
 \setlength{\tabcolsep}{3pt}
 \begin{tabular}{@{}lp{2.3cm}p{2.7cm}p{1.6cm}@{}}
 \toprule
 leg & \rr source segment & \rr target set & \rr lowest level of the target \\
 \midrule
-1 ($n'$) & \rr $[-3,3]$, weight $fA$ & \rr $[-3,3]-C_\mu$ (the ``cloud'') & \rr $\Lambda(\mu,\beta)$ \\
-2 ($n$) & \rr $[-3,3]$, weight $A$ & \rr $[-3,3]+C_\mu$ (the same set) & \rr $\Lambda(\mu,\beta)$ \\
-3 ($\ell$) & \rr $[-6,6]$ (doubled family, level 0) & \rr $C_\mu$ & \rr $\mu$ \\
+1 ($n'$) & \rr $[-E,E]$, weight $fA$ & \rr $[-E,E]-C_\mu$ (the ``cloud'') & \rr $\Lambda(\mu,\beta)$ \\
+2 ($n$) & \rr $[-E,E]$, weight $A$ & \rr $[-E,E]+C_\mu$ (the same set) & \rr $\Lambda(\mu,\beta)$ \\
+3 ($\ell$) & \rr $[-2E,2E]$ (doubled family, level 0) & \rr $C_\mu$ & \rr $\mu$ \\
 \bottomrule
 \end{tabular}
 \end{center}
@@ -588,7 +588,7 @@ For the integral over $z$ in \eqref{eq:contour_w}, $F=G_q(z)[G_{q+Q}(z+w)+G_{q-Q
 \section{Decay of the coefficients and the weighted kernel}
 \label{sec:decay}
 
-The function $g(\zeta)=G_q(\omega(\zeta))$ is 8-periodic in $\Real\zeta$ and analytic in the open strip $0<\Imag\zeta<2\tau$, i.e.\ $0<\lambda<2$: $\omega$ maps the strip into $\mathbb C\setminus[-3,3]$, where $G_q$ is analytic, and at the two poles of $\omega$ (at $\zeta=1+i\tau$ and $5+i\tau$) $G_q(\omega)\to0$ is still analytic. The lines $\lambda=0$ and $\lambda=2$ are the boundary, where $\omega$ is on the band. The coefficients at level $\lambda$ are $\hat g_n(\lambda)=\frac18\int_{-1}^7g(\phi+i\tau\lambda)e^{-i\pi n\phi/4}d\phi$ (the continuum version of \eqref{eq:ghat}). Shifting the line of integration from height $\tau\lambda_0$ to $\tau\lambda$ inside the strip is allowed by Cauchy's theorem (the vertical sides cancel by periodicity) and gives
+The function $g(\zeta)=G_q(\omega(\zeta))$ is 8-periodic in $\Real\zeta$ and analytic in the open strip $0<\Imag\zeta<2\tau$, i.e.\ $0<\lambda<2$: $\omega$ maps the strip into $\mathbb C\setminus[-E,E]$, where $G_q$ is analytic, and at the two poles of $\omega$ (at $\zeta=1+i\tau$ and $5+i\tau$) $G_q(\omega)\to0$ is still analytic. The lines $\lambda=0$ and $\lambda=2$ are the boundary, where $\omega$ is on the band. The coefficients at level $\lambda$ are $\hat g_n(\lambda)=\frac18\int_{-1}^7g(\phi+i\tau\lambda)e^{-i\pi n\phi/4}d\phi$ (the continuum version of \eqref{eq:ghat}). Shifting the line of integration from height $\tau\lambda_0$ to $\tau\lambda$ inside the strip is allowed by Cauchy's theorem (the vertical sides cancel by periodicity) and gives
 \begin{equation}
   \begin{gathered}
   \hat g_n(\lambda)=e^{-\alpha(\lambda-\lambda_0)n}\,\hat g_n(\lambda_0),\\

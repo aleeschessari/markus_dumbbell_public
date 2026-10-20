@@ -314,29 +314,7 @@ P^\pm_Q(n',n)&=\frac1{N_q}\sum_q\hat g_{q,n'}\,\hat g_{q\pm Q,n},
 \end{aligned}
 \label{eq:kernel}
 \end{equation}
-This is the exterior-Cauchy form \eqref{eq:cauchy_form} in another basis, exact term by term.
-
-\subsection{The kernel \texorpdfstring{$\widehat K_{n'n\ell}$}{K}}
-\label{sec:kernel}
-
-The kernel depends only on the two dumbbells and on $\beta$ (through $c_j$); all of $G$, model and momentum, is in $P^\pm_Q$. For each $k$ the inner double sum is a two-dimensional FFT over $(j,m)$ of the array $c_jd_m/(z_j-z_m+w_k)$, and the outer sum is an FFT over $k$: $O(N^3\log N)$ once, 9\,s at $N=512$ and 86\,s at $N=1024$ (Appendix~\ref{sec:lambda_indep} shows how to make $N$ small).
-
-In exact arithmetic the sums in \eqref{eq:modes_bubble} run over all $N$ values of $n'$, $n$ and $\ell$. In practice only a window of each index matters, because the coefficients of $G$ and of $\chi$ decay exponentially (Appendix~\ref{sec:decay}). The input window holds the modes with $s_n\ge10^{-8}$, where $s_n$ is the worst-case size \eqref{eq:sn} of the coefficients: $n',n\in[-10,93]$ for $(\lambda,\mu)=(0.2,0.4)$ at $N=512$, and $[-9,187]$ for $(0.1,0.2)$ at $N=1024$. Appendix~\ref{sec:decay} explains the threshold. The output window holds the modes of $\chi$ above about $10^{-15}$ of the largest, $\ell\in[-32,95]$ and $[-32,159]$. In quantics the windows are embedded in $2^{R_n}$ and $2^{R_\ell}$ slots (Sec.~\ref{sec:tensors}). The grid must resolve the window, $N\ge n_{\max}-n_{\min}$, which with the decay rate \eqref{eq:decay} means $N\gtrsim2\log(1/\varepsilon)/(\alpha\lambda)$.
-
-\subsection{Accuracy and conditions}
-\label{sec:cauchy}
-
-Only the values of $G$ at the nodes of the stored contour enter \eqref{eq:cauchy_form}. The formula needs no inverse map, no continuation and no mode cutoff, and its kernel $1/(z_j-z_m\pm w_k)$ is explicit and independent of $G$. Uncompressed, \eqref{eq:cauchy_form} agrees with the Lindhard sum \eqref{eq:lindhard} to $2.1\times10^{-12}$ for $(\lambda,\mu)=(0.2,0.4)$ at $N=512$ and to $1.1\times10^{-13}$ for $(0.1,0.2)$ at $N=1024$. At $N=256$ for $(0.2,0.4)$ the error is $2.1\times10^{-8}$, and the ratio of the two errors is the $e^{-\alpha N(\lambda'_{\min}-\lambda)}$ of \eqref{eq:rate}.
-
-The node sum \eqref{eq:ext_cauchy} converges at the rate \eqref{eq:rate} with $d=\min(\lambda,\lambda(x)-\lambda)$, because the integrand $G(\omega(\zeta))/(x-\omega(\zeta))$ has a pole at the level $\lambda(x)$ of $x$. The Cauchy kernel $1/(x-z_m)$ is bounded by the inverse distance of $x$ from the contour, so an error $\delta$ in the stored values of $G$ changes $G(x)$ by at most $\delta\sum_m\lvert d_m\rvert$ divided by that distance.
-
-The method rests on three conditions:
-\begin{enumerate}[label=(\roman*)]
-  \item $0<\lambda<1$: $C_\lambda$ leaves out the poles of $f$.
-  \item $\lambda<\Lambda(\mu,\beta)$: the shifted cuts $[-E,E]\mp w_k$ lie outside $C_\lambda$, so the contour formula \eqref{eq:contour_w} is $\chi$ (roughly $\mu\gtrsim\lambda$). The copies $C_\lambda\pm w_k$ then avoid the band, $\lambda'_{\min}>0$.
-  \item $\lambda'_{\min}>\lambda$: the shifted points lie outside $C_\lambda$, so the Cauchy formula \eqref{eq:cauchy_continuum} applies to them (the \emph{forward-safe} condition, roughly $\lambda\lesssim\mu/2$).
-\end{enumerate}
-The quadrature error of \eqref{eq:cauchy_form} is exponential in $N$, with the rate set by the smaller of $\lambda$ and $\lambda'_{\min}-\lambda$. For a smaller $\mu$ than the forward-safe condition allows, the same formula works with the $m$-sum taken on a second, lower contour $C_{\lambda_2}$, $\lambda_2<\lambda'_{\min}$.
+This is the exterior-Cauchy form \eqref{eq:cauchy_form}, where the kernel depends only on the two dumbbells and on $\beta$ (through $c_j$); all of $G$, model and momentum, is in $P^\pm_Q$. For each $k$ the inner double sum is a two-dimensional FFT over $(j,m)$ of the array $c_jd_m/(z_j-z_m+w_k)$, and the outer sum is an FFT over $k$. In exact arithmetic the sums in \eqref{eq:modes_bubble} run over all $N$ values of $n'$, $n$ and $\ell$. In practice only a window of each index matters, because the coefficients of $G$ and of $\chi$ decay exponentially (Appendix~\ref{sec:decay}).
 
 \subsection{Compressing the kernel}
 \label{sec:tucker}
@@ -672,7 +650,7 @@ A train is recompressed in two sweeps. (i)~A QR sweep from left to right: reshap
   \item Contract the core into $B$ before the adder. Correlating $A$ and $B$ first creates $M(Q;a,b)$, with a front leg of 1023; its zip-up swells to bonds of 600 to 2600, and capping them costs 3 to 13\,\% accuracy.
   \item Put $\ell$ on the same bits as $k$. The inverse DFT is then the square, QFT-type transform \eqref{eq:dft_bits}, with bond at most 11. Keeping only the 128 window modes on 7 bits gives a rectangular map with bond 32.
   \item Compute $Y^-$ by reflecting $Y^+$ (Sec.~\ref{sec:contraction}): one zip-up instead of two, 31\,s instead of 60\,s.
-  \item Choose $\lambda\lesssim\mu/2$, so that the copies $C_\lambda\pm w_k$ stay outside $C_\lambda$ (the three conditions of Sec.~\ref{sec:cauchy}), keep the input modes with $s_n\ge10^{-8}$ (Appendix~\ref{sec:decay}), and set the tolerances to $10^{-8}$ for the kernel, $10^{-6}$ for the input, $10^{-10}$ for the leaves, $10^{-12}$ for the DFT and $10^{-9}$ for the recompression. The kernel ranks grow like $\log(1/\varepsilon)$ and like $1/\mu$ (and with $\beta$), as in \eqref{eq:ranklaw}. They do not grow with $N$ or $\lambda$, and the kernel may be built at a smaller $N$ than the data's (Appendix~\ref{sec:decay}).
+  \item Choose $\lambda\lesssim\mu/2$, so that the copies $C_\lambda\pm w_k$ stay outside $C_\lambda$ ($\lambda'_{\min}>\lambda$, Sec.~\ref{sec:dumbbell_map}), keep the input modes with $s_n\ge10^{-8}$ (Appendix~\ref{sec:decay}), and set the tolerances to $10^{-8}$ for the kernel, $10^{-6}$ for the input, $10^{-10}$ for the leaves, $10^{-12}$ for the DFT and $10^{-9}$ for the recompression. The kernel ranks grow like $\log(1/\varepsilon)$ and like $1/\mu$ (and with $\beta$), as in \eqref{eq:ranklaw}. They do not grow with $N$ or $\lambda$, and the kernel may be built at a smaller $N$ than the data's (Appendix~\ref{sec:decay}).
 \end{enumerate}
 
 \end{document}

@@ -145,7 +145,7 @@ As an example we take a tight-binding chain with nearest-neighbour hopping,
   \end{gathered}
   \label{eq:model}
 \end{equation}
-at the inverse temperature $\beta=\pi$; its band is $[-3,3]$, and the bubble has its cut on $[-6,6]$. Unless stated otherwise, the numbers are for $N_q=1024$, with $G$ stored on $C_\lambda$ with $\lambda=0.2$ at the $N=512$ nodes $z_j=\omega_\lambda(\phi_j)$, $\phi_j=-1+8j/N$, and $\chi$ computed at the $N=512$ points $w_k=2\,\omega(\phi_k+i\tau\mu)$ of $C_\mu$ with $\mu=0.4$; in bits, the momenta take $R_q=10$ and the contour points $R=9$. For this model the bubble is the Lindhard function \eqref{eq:lindhard}, the reference for every accuracy quoted. The method uses only the analyticity of $G_q$ off the band and its decay like $1/z$, so interacting Green functions with their spectrum in $[-E,E]$ are treated in the same way.
+at the inverse temperature $\beta=\pi$; its band is $[-3,3]$, and the bubble has its cut on $[-6,6]$. For this model the bubble is the Lindhard function \eqref{eq:lindhard}, the reference for every accuracy quoted.
 
 We define the bubble without a minus sign and with the average over the internal momentum,
 \begin{equation}
@@ -246,7 +246,7 @@ Both integrals of \eqref{eq:double_contour} run over $C_\lambda$. Parametrize $C
 \begin{equation}
   \frac1{2\pi i}\oint_{C_\lambda}F(z)\,dz=-\frac1{2\pi i}\int_{-1}^{7}d\phi\;J_\lambda(\phi)\,F\big(\omega_\lambda(\phi)\big).
 \end{equation}
-The integrand is 8-periodic in $\phi$, and the trapezoidal rule on the uniform grid $\phi_j$ is $\Delta\phi\sum_j$, $\Delta\phi=8/N$. With the Fermi function in the integrand it gives
+The integrand is 8-periodic in $\phi$, and the trapezoidal rule on the uniform grid $\phi_j=-1+j\,\Delta\phi$, $j=0,\ldots,N-1$, with $\Delta\phi=8/N$, is $\Delta\phi\sum_j$. The nodes are $z_j=\omega_\lambda(\phi_j)$, and the bubble is computed at the points $w_k=2\,\omega(\phi_k+i\tau\mu)$ of $C_\mu$ on the same grid. With the Fermi function in the integrand it gives
 \begin{equation}
   \begin{gathered}
   \frac1{2\pi i}\oint_{C_\lambda}f\,F\,dz\approx\sum_{j=0}^{N-1}c_j\,F(z_j),\\
@@ -504,7 +504,7 @@ $m$ & error & $\max_k\lvert\chi_{\rm exact}\rvert$ \\
 \end{minipage}
 \end{table*}
 
-In Fig.~\ref{fig:ingredients} and below, all bits are written with the most significant bit first unless stated otherwise; $n$ and $\ell$ are in two's complement, i.e.\ FFT order \eqref{eq:twos}, and bond dimensions are listed from left to right. The input $\hat g_{q,n}$ is the raw array \eqref{eq:ghat} as a train; Appendix~\ref{sec:choices} explains why the raw array is truncated and the weight $1/s_n$ is put into the leaves. The leaves are the Tucker factors of \eqref{eq:kernel_tucker} written as trains over the bits of $n$ or $\ell$, with the Tucker index attached at the least significant bit, where the leaf bonds stay below the Tucker rank. Every tensor is computed to a relative tolerance $\varepsilon$, in the sense of Sec.~\ref{sec:tucker} for the HOSVD and of Appendix~\ref{app:ttsvd} for the trains:
+The numbers in this and the following sections are for $N_q=1024$ momenta and $N=512$ contour points, that is $R_q=10$ and $R=9$ bits, with $\lambda=0.2$ and $\mu=0.4$. In Fig.~\ref{fig:ingredients} and below, all bits are written with the most significant bit first unless stated otherwise; $n$ and $\ell$ are in two's complement, i.e.\ FFT order \eqref{eq:twos}, and bond dimensions are listed from left to right. The input $\hat g_{q,n}$ is the raw array \eqref{eq:ghat} as a train; Appendix~\ref{sec:choices} explains why the raw array is truncated and the weight $1/s_n$ is put into the leaves. The leaves are the Tucker factors of \eqref{eq:kernel_tucker} written as trains over the bits of $n$ or $\ell$, with the Tucker index attached at the least significant bit, where the leaf bonds stay below the Tucker rank. Every tensor is computed to a relative tolerance $\varepsilon$, in the sense of Sec.~\ref{sec:tucker} for the HOSVD and of Appendix~\ref{app:ttsvd} for the trains:
 \begin{center}\footnotesize
 \setlength{\tabcolsep}{4pt}
 \begin{tabular}{@{}p{2.9cm}p{3.1cm}l@{}}

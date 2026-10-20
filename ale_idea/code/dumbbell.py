@@ -64,7 +64,7 @@ def g_contour(lam, N):
 
 
 def chi_contour(mu, N):
-    """Points w_k = 2 omega_mu(phi_k) of the dumbbell of chi (the doubled map of Sec. I)."""
+    """Points w_k = 2 omega(phi_k + i tau mu) of the dumbbell of chi (Sec. II A)."""
     return 2 * omega(phi_grid(N) + 1j * TAU * mu)[0]
 
 

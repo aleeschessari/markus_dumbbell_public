@@ -245,20 +245,12 @@ Take $w$ on $C_\mu$ with $\Imag w>H_\lambda$, so that $\Imag(z+w)>0$ and $\Imag(
   \end{aligned}
   \label{eq:time_bubble}
 \end{equation}
-with the occupied real-time Green function
-\begin{equation}
-  \begin{aligned}
-  g_q(t)&=\frac1{2\pi i}\oint_{C_\lambda}dz\,f(z)\,G_q(z)\,e^{izt}\\
-  &=\int_{-E}^{E}d\varepsilon\,f(\varepsilon)\,A_q(\varepsilon)\,e^{i\varepsilon t}.
-  \end{aligned}
-  \label{eq:gt}
-\end{equation}
-Both real-time functions are contour integrals of the data on $C_\lambda$, so $G$ is never needed off the contour. On the lower half of $C_\mu$ the bubble follows from $\chi_Q(\bar w)=\chi_Q(w)^*$. The points of $C_\mu$ with $\lvert\Imag w\rvert\le H_\lambda$, near its tips, are not reached; there the Cauchy route of Appendix~\ref{app:cauchy} applies.
+with the occupied real-time Green function $g_q(t)=\frac1{2\pi i}\oint_{C_\lambda}dz\,f(z)\,G_q(z)\,e^{izt}$. Both real-time functions are contour integrals of the data on $C_\lambda$, so $G$ is never needed off the contour. On the lower half of $C_\mu$ the bubble follows from $\chi_Q(\bar w)=\chi_Q(w)^*$. The points of $C_\mu$ with $\lvert\Imag w\rvert\le H_\lambda$, near its tips, are not reached; there the Cauchy route of Appendix~\ref{app:cauchy} applies.
 
 \subsection{The time domain on the nodes}
 \label{sec:quadrature}
 
-The real-time functions \eqref{eq:gbar} and \eqref{eq:gt} are integrals over $C_\lambda$. Parametrize $C_\lambda$ by $\phi$: $z=\omega_\lambda(\phi)$, $dz=J_\lambda(\phi)\,d\phi$. The parametrization is clockwise, so for any $F$ analytic near the contour
+The real-time functions $g_q$ and $\bar g_q$ are integrals over $C_\lambda$. Parametrize $C_\lambda$ by $\phi$: $z=\omega_\lambda(\phi)$, $dz=J_\lambda(\phi)\,d\phi$. The parametrization is clockwise, so for any $F$ analytic near the contour
 \begin{equation}
   \frac1{2\pi i}\oint_{C_\lambda}F(z)\,dz=-\frac1{2\pi i}\int_{-1}^{7}d\phi\;J_\lambda(\phi)\,F\big(\omega_\lambda(\phi)\big).
 \end{equation}
@@ -272,7 +264,7 @@ The integrand is 8-periodic in $\phi$, and the trapezoidal rule on the uniform g
 \end{equation}
 For every $F$ that is analytic outside $C_\lambda$ and $O(z^{-2})$ at infinity, the residue theorem between $C_\lambda$ and a large circle, as in Sec.~\ref{sec:contour}, gives $\sum_jc_jF(z_j)\approx\beta^{-1}\sum_nF(i\omega_n)$: the $N$ nodes with the weights $c_j$ replace the Matsubara frequencies. Without the Fermi function the rule reads $\frac1{2\pi i}\oint_{C_\lambda}F\,dz\approx\sum_md_m\,F(z_m)$. The $c_j$ depend on $j$, $\lambda$ and $\beta$ only, never on $w$, $q$ or $G$, and the Fermi function is evaluated only at the nodes of $C_\lambda$. Both sets of weights are smooth in $\phi_j$ (rank 6 to 8 as quantics tensor trains, Appendix~\ref{sec:qtt}). The quadrature error falls exponentially with $N$, like $e^{-\alpha Nd}$ \eqref{eq:rate}, where $d$ is the distance in level from $C_\lambda$ to the nearest singularity of the integrand (Appendix~\ref{app:trap}).
 
-The two rules applied to \eqref{eq:gt} and \eqref{eq:gbar} give the real-time functions from the data,
+The two rules applied to $g_q$ and $\bar g_q$ give the real-time functions from the data,
 \begin{equation}
   \begin{aligned}
   g_q(t)&\approx\sum_jc_j\,G_q(z_j)\,e^{iz_jt},\\

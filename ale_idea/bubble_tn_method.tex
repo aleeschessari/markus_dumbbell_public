@@ -144,7 +144,15 @@ The one-particle Green function $G_q(z)$ is analytic off the band $[-E,E]$, and 
   \frac1{2\pi i}\oint_{C_\lambda}ds\,G_q(s)\,\psi(s)=\int_{-E}^{E}d\varepsilon\,A_q(\varepsilon)\,\psi(\varepsilon),
   \label{eq:shrink}
 \end{equation}
-with the spectral function $A_q(\varepsilon)=[G_q(\varepsilon-i0^+)-G_q(\varepsilon+i0^+)]/2\pi i=-\pi^{-1}\Imag G_q(\varepsilon+i0^+)$, the jump of $G_q$ across the band. For $z$ outside $C_\lambda$, $\psi(s)=1/(z-s)$ gives the spectral representation
+with the spectral function
+\begin{equation}
+  \begin{aligned}
+  A_q(\varepsilon)&=\frac{G_q(\varepsilon-i0^+)-G_q(\varepsilon+i0^+)}{2\pi i}\\
+  &=-\frac1\pi\Imag G_q(\varepsilon+i0^+),
+  \end{aligned}
+  \label{eq:specfn}
+\end{equation}
+the jump of $G_q$ across the band. For $z$ outside $C_\lambda$, $\psi(s)=1/(z-s)$ gives the spectral representation
 \begin{equation}
   G_q(z)=\frac1{2\pi i}\oint_{C_\lambda}ds\,\frac{G_q(s)}{z-s}=\int_{-E}^{E}d\varepsilon\,\frac{A_q(\varepsilon)}{z-\varepsilon},
   \label{eq:lehmann}

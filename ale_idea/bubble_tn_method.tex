@@ -224,20 +224,7 @@ In terms of levels this reads $\lambda<\Lambda(\mu,\beta)$, where $\Lambda(\mu,\
   \label{fig:time_network}
 \end{figure*}
 
-The data are the values of $G$ on $C_\lambda$, while \eqref{eq:contour_w} needs $G_{q\pm Q}$ at the shifted points $z\pm w$, off the contour. A time representation moves the shift from $G$ into an exponential. For $\Imag x>0$, $1/x=-i\int_0^\infty dt\,e^{ixt}$, and for $\Imag x<0$, $1/x=i\int_0^\infty dt\,e^{-ixt}$, so by \eqref{eq:lehmann}
-\begin{equation}
-  \begin{aligned}
-  G_q(x)&=-i\int_0^\infty dt\,e^{ixt}\,\bar g_q(t)\qquad(\Imag x>0),\\
-  G_q(x)&=i\int_0^\infty dt\,e^{-ixt}\,\bar g_q(t)^*\qquad(\Imag x<0),
-  \end{aligned}
-  \label{eq:time_rep}
-\end{equation}
-with the real-time Green function
-\begin{equation}
-  \bar g_q(t)=\int_{-E}^{E}d\varepsilon\,A_q(\varepsilon)\,e^{-i\varepsilon t}=\frac1{2\pi i}\oint_{C_\lambda}ds\,G_q(s)\,e^{-ist}.
-  \label{eq:gbar}
-\end{equation}
-Take $w$ on $C_\mu$ with $\Imag w>H_\lambda$, so that $\Imag(z+w)>0$ and $\Imag(z-w)<0$ for every $z$ on $C_\lambda$. Inserting \eqref{eq:time_rep} into \eqref{eq:contour_w}, doing the $z$-integral first and relabelling $q\to q+Q$ in the second term turns the bubble into a product in time,
+The data are the values of $G$ on $C_\lambda$, while \eqref{eq:contour_w} needs $G_{q\pm Q}$ at the shifted points $z\pm w$, off the contour. A time representation of \eqref{eq:spectral} avoids them. For $\Imag w>0$, $1/(w+\varepsilon-\varepsilon')=-i\int_0^\infty dt\,e^{i(w+\varepsilon-\varepsilon')t}$, since $\varepsilon$ and $\varepsilon'$ are real. Inserted into \eqref{eq:spectral}, this turns the bubble into a product in time,
 \begin{equation}
   \begin{aligned}
   \chi_Q(w)={}&-\frac{i}{N_q}\sum_q\int_0^\infty dt\,e^{iwt}\\
@@ -245,7 +232,12 @@ Take $w$ on $C_\mu$ with $\Imag w>H_\lambda$, so that $\Imag(z+w)>0$ and $\Imag(
   \end{aligned}
   \label{eq:time_bubble}
 \end{equation}
-with the occupied real-time Green function $g_q(t)=\frac1{2\pi i}\oint_{C_\lambda}dz\,f(z)\,G_q(z)\,e^{izt}$. Both real-time functions are contour integrals of the data on $C_\lambda$, so $G$ is never needed off the contour. On the lower half of $C_\mu$ the bubble follows from $\chi_Q(\bar w)=\chi_Q(w)^*$. The points of $C_\mu$ with $\lvert\Imag w\rvert\le H_\lambda$, near its tips, are not reached; there the Cauchy route of Appendix~\ref{app:cauchy} applies.
+with the real-time Green function
+\begin{equation}
+  \bar g_q(t)=\int_{-E}^{E}d\varepsilon\,A_q(\varepsilon)\,e^{-i\varepsilon t}=\frac1{2\pi i}\oint_{C_\lambda}ds\,G_q(s)\,e^{-ist}.
+  \label{eq:gbar}
+\end{equation}
+and the occupied real-time Green function $g_q(t)=\int_{-E}^{E}d\varepsilon\,f(\varepsilon)\,A_q(\varepsilon)\,e^{i\varepsilon t}=\frac1{2\pi i}\oint_{C_\lambda}dz\,f(z)\,G_q(z)\,e^{izt}$. The contour forms follow from \eqref{eq:lehmann} and the residue theorem, so $G$ is never needed off the contour. On the lower half of $C_\mu$ the bubble follows from $\chi_Q(\bar w)=\chi_Q(w)^*$. Near the tips of $C_\mu$, where $\Imag w\to0$, the time integral needs long times, and the contour sums for $g_q$ and $\bar g_q$, whose terms grow like $e^{H_\lambda t}$, lose accuracy; there the Cauchy route of Appendix~\ref{app:cauchy} applies.
 
 \subsection{The time domain on the nodes}
 \label{sec:quadrature}
@@ -309,7 +301,7 @@ and only a window of modes $n$ matters, because the coefficients decay exponenti
 \section{The Cauchy route}
 \label{app:cauchy}
 
-In this appendix $G_{q\pm Q}$ at the shifted points $z\pm w$ is obtained from its values on $C_\lambda$ with Cauchy's formula, instead of the time representation \eqref{eq:time_rep}. This route covers all of $C_\mu$, its tips included, when the shifted points lie outside $C_\lambda$, that is $\lambda'_{\min}>\lambda$ in \eqref{eq:lammin}. Appendices~\ref{sec:qtt} to~\ref{sec:accuracy} build its tensor network and test it.
+In this appendix $G_{q\pm Q}$ at the shifted points $z\pm w$ is obtained from its values on $C_\lambda$ with Cauchy's formula, instead of the time representation of Sec.~\ref{sec:time}. This route covers all of $C_\mu$, its tips included, when the shifted points lie outside $C_\lambda$, that is $\lambda'_{\min}>\lambda$ in \eqref{eq:lammin}. Appendices~\ref{sec:qtt} to~\ref{sec:accuracy} build its tensor network and test it.
 
 \begin{figure}[t]
   \centering

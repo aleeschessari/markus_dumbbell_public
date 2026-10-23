@@ -11,7 +11,7 @@ from qtt import contract, cores, to_dense, train, tt_svd
 # ---------------- the tensors (Sec. V) ---------------- #
 
 def input_train(ghat, n_window, Rq, Rn, eps):
-    """The input ghat[q, n] as a quantics train, from the raw Fourier coefficients (Eq. 22).
+    """The input ghat[q, n] as a quantics train, from the raw Fourier coefficients (Eq. 21).
 
     ghat[n, q] holds the coefficients of G_q on the window of modes n. The modes go into 2^Rn
     slots in two's complement, and the bits are interleaved as q_1 n_Rn q_2 n_Rn-1 ...:

@@ -3,7 +3,7 @@
 With R bits a mode index covers its two's-complement range [-2^(R-1), 2^(R-1)). The kernel is built
 once on all N = 512 modes (9 bits for n and for l) and restricted to each pair of windows (R_n, R_l);
 the leg dimensions (r1, r2, r3) of the core C are the Tucker ranks of the weighted kernel at 1e-8
-(Sec. III G). The input ghat is compressed as in the network (interleaved bits, TT-SVD) for R_n up
+(App. A 3). The input ghat is compressed as in the network (interleaved bits, TT-SVD) for R_n up
 to 11 bits, from the data on N = 2048 nodes.
 
     python bits_study.py        # about 10 min; writes bits_study.json and bits_study.{png,pdf}

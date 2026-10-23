@@ -5,7 +5,7 @@
 
 G_q(z) = 1/(z - 3 cos q) is given on the dumbbell C_lam (lam = 0.2, N = 512 nodes) for N_q = 1024
 momenta; chi_Q is computed on the dumbbell C_mu (mu = 0.4) for all transfer momenta at once and
-compared with the Lindhard function (Eq. A3). The script prints the bonds of every step before and
+compared with the Lindhard function (Eq. F3). The script prints the bonds of every step before and
 after recompression (Table I) and the error per transfer momentum (Table II).
 """
 import argparse
@@ -19,18 +19,18 @@ from kernel import compressed_kernel, fourier_coefficients, mode_window
 from network import (attach_core, attach_output_leaf, chi_from_train, input_leaf, input_train,
                      output_leaf)
 
-# ---------------- parameters of the example (Sec. II) ---------------- #
+# ---------------- parameters of the example (Sec. II A, App. C) ---------------- #
 
 LAM, MU = 0.2, 0.4                     # levels of the two dumbbells
 R, RQ, RN = 9, 10, 8                   # bits of the contour points, of the momenta, of the modes n
 N, NQ = 2**R, 2**RQ
-N_WINDOW = mode_window(LAM, N)         # modes n of G with s_n >= 1e-8 (Sec. III F): [-10, 93]
+N_WINDOW = mode_window(LAM, N)         # modes n of G with s_n >= 1e-8 (App. H): [-10, 93]
 L_WINDOW = np.arange(-32, 96)          # modes l of chi kept, on the R bits of k
 TOL = dict(kernel=1e-8, input=1e-6, leaves=1e-10, dft=1e-12, intermediates=1e-9)
 
 
 def lindhard(eps_q, w):
-    """The Lindhard bubble (Eq. A3) at the complex frequencies w, for every transfer momentum: [Q, k]."""
+    """The Lindhard bubble (Eq. F3) at the complex frequencies w, for every transfer momentum: [Q, k]."""
     f = fermi(eps_q)
     out = np.empty((len(eps_q), len(w)), dtype=complex)
     for Q in range(len(eps_q)):
@@ -55,7 +55,7 @@ def main(run_subtractor):
     core, U1, U2, U3, s = compressed_kernel(LAM, MU, N, N_WINDOW, L_WINDOW, TOL['kernel'])
     print(f'kernel and HOSVD: ranks {core.shape}, {time.perf_counter() - t0:.1f} s')
 
-    # ---------------- the tensors (Sec. V) ---------------- #
+    # ---------------- the tensors (App. C) ---------------- #
     t0 = time.perf_counter()
     ghat_tt, site_types = input_train(ghat, N_WINDOW, RQ, RN, TOL['input'])
     leaf1 = input_leaf(U1, s, N_WINDOW, RN, TOL['leaves'])
@@ -66,7 +66,7 @@ def main(run_subtractor):
     print(f'    ghat {qtt.bonds(ghat_tt)}\n    U1/s {qtt.bonds(leaf1)}\n    U2/s {qtt.bonds(leaf2)}'
           f'\n    U3   {qtt.bonds(leaf3)}\n    DFT  {[W.shape[3] for W in dft[:-1]]}')
 
-    # ---------------- the contraction (Sec. VI, Table I) ---------------- #
+    # ---------------- the contraction (App. D, Table I) ---------------- #
     tol = TOL['intermediates']
     start = time.perf_counter()
 
@@ -90,7 +90,7 @@ def main(run_subtractor):
     report('4  Y+(Q;c), zip-up', raw, qtt.recompress(Y_plus, tol), time.perf_counter() - t0)
 
     t0 = time.perf_counter()
-    Y_minus = qtt.apply_mpo(qtt.reflection_mpo(RQ), Y_plus, 1)       # Y-(Q) = Y+(-Q), Eq. (A12)
+    Y_minus = qtt.apply_mpo(qtt.reflection_mpo(RQ), Y_plus, 1)       # Y-(Q) = Y+(-Q), Eq. (A11)
     raw = qtt.bonds(Y_minus)
     report('   Y-(Q;c), reflection', raw, qtt.recompress(Y_minus, tol), time.perf_counter() - t0)
 
@@ -113,7 +113,7 @@ def main(run_subtractor):
     report('6  chi(Q;k)', raw, qtt.recompress(chi, tol), time.perf_counter() - t0)
     print(f'contraction: {time.perf_counter() - start:.1f} s')
 
-    # ---------------- accuracy (Sec. VII, Table II) ---------------- #
+    # ---------------- accuracy (App. E, Table II) ---------------- #
     chi_dense = chi_from_train(chi, R, RQ)                          # [Q, k]
     exact = lindhard(eps_q, w)
     error = np.abs(chi_dense - exact)

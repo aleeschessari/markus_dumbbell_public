@@ -1,4 +1,4 @@
-"""The tensors of the network (Sec. V of the notes) and the contraction steps (Sec. VI).
+"""The tensors of the network (App. C of the notes) and the contraction steps (App. D).
 
 All bits are most significant first unless stated otherwise; the modes n and l are stored in
 two's complement, i.e. in FFT order.
@@ -8,14 +8,14 @@ import numpy as np
 from qtt import contract, cores, to_dense, train, tt_svd
 
 
-# ---------------- the tensors (Sec. V) ---------------- #
+# ---------------- the tensors (App. C) ---------------- #
 
 def input_train(ghat, n_window, Rq, Rn, eps):
-    """The input ghat[q, n] as a quantics train, from the raw Fourier coefficients (Eq. 22).
+    """The input ghat[q, n] as a quantics train, from the raw Fourier coefficients (Eq. 24).
 
     ghat[n, q] holds the coefficients of G_q on the window of modes n. The modes go into 2^Rn
     slots in two's complement, and the bits are interleaved as q_1 n_Rn q_2 n_Rn-1 ...:
-    momentum bits most significant first, mode bits least significant first (Sec. IV).
+    momentum bits most significant first, mode bits least significant first (App. B).
 
     Returns:
         the train and the list of its site types ('q' or 'n').
@@ -37,8 +37,8 @@ def input_train(ghat, n_window, Rq, Rn, eps):
 def input_leaf(U, s, n_window, Rn, eps):
     """A leaf U[n, a]/s_n as a train with the sites a, n_Rn, ..., n_1 (the order of the n bits of ghat).
 
-    The weight 1/s_n goes into the leaf, so that the raw ghat can be truncated (App. H, item 1).
-    On the window of Sec. III F, s_n >= 1e-8, so 1/s_n does not amplify the rounding errors of U.
+    The weight 1/s_n goes into the leaf, so that the raw ghat can be truncated (App. M, item 1).
+    On the window of App. H, s_n >= 1e-8, so 1/s_n does not amplify the rounding errors of U.
     """
     leaf = U / s[:, None]
     full = np.zeros((2**Rn, U.shape[1]), dtype=complex)
@@ -54,7 +54,7 @@ def output_leaf(U3, l_window, R, eps):
     return tt_svd(full.reshape([2] * R + [U3.shape[1]]), eps)
 
 
-# ---------------- the contraction steps (Sec. VI) ---------------- #
+# ---------------- the contraction steps (App. D) ---------------- #
 
 def attach_core(B, core):
     """Step 3: contract the core C[a, b, c] into the first site of B over b.

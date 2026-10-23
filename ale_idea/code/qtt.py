@@ -1,4 +1,4 @@
-"""Quantics tensor trains with xfac (Sec. IV and Apps. D to G of the notes).
+"""Quantics tensor trains with xfac (App. B and Apps. I to L of the notes).
 
 A train is an xfacpy.TensorTrain_complex. Its cores are numpy arrays of shape
 (left bond, physical dimension, right bond); an MPO core has shape (left, out, in, right).
@@ -56,10 +56,10 @@ def rank_for_tolerance(sv, fraction):
 # ---------------- TT-SVD, recompression, sum (Apps. D, F, G) ---------------- #
 
 def recompress(tt, eps):
-    """Recompress a train to relative tolerance eps (App. G), with the criterion of Eq. (D1).
+    """Recompress a train to relative tolerance eps (App. L), with the criterion of Eq. (I1).
 
     xfac's compressSVD(reltol) keeps at every bond the smallest rank whose discarded weight is at
-    most reltol^2 |v|^2. Eq. (D1) allows eps^2/(L-1) per bond, so reltol = eps/sqrt(L-1), and the
+    most reltol^2 |v|^2. Eq. (I1) allows eps^2/(L-1) per bond, so reltol = eps/sqrt(L-1), and the
     total relative error stays below eps.
     """
     L = len(tt.core)
@@ -69,10 +69,10 @@ def recompress(tt, eps):
 
 
 def tt_svd(array, eps):
-    """TT-SVD (App. D): the train of a dense tensor, one site per axis, at relative tolerance eps.
+    """TT-SVD (App. I): the train of a dense tensor, one site per axis, at relative tolerance eps.
 
     The exact train is built by successive QR decompositions and then truncated by xfac's SVD
-    sweep with the criterion of Eq. (D1).
+    sweep with the criterion of Eq. (I1).
     """
     dims = array.shape
     exact, rest, left = [], np.asarray(array, dtype=complex), 1
@@ -85,7 +85,7 @@ def tt_svd(array, eps):
 
 
 def add(tt1, tt2):
-    """Sum of two trains with the same sites: the direct sum of the cores (App. F); the bonds add."""
+    """Sum of two trains with the same sites: the direct sum of the cores (App. K); the bonds add."""
     A, B = cores(tt1), cores(tt2)
     out = []
     for i, (a, b) in enumerate(zip(A, B)):
@@ -101,7 +101,7 @@ def add(tt1, tt2):
     return train(out)
 
 
-# ---------------- MPOs: adder, reflection, DFT (Sec. IV, App. E) ---------------- #
+# ---------------- MPOs: adder, reflection, DFT (App. B, App. J) ---------------- #
 
 def adder_tensor(sign=+1):
     """Local tensor of the adder (sign=+1, q' = q + Q) or of the subtractor (sign=-1, q' = q - Q).
@@ -157,7 +157,7 @@ def dft_mpo(phi, eps, sweeps=10, max_bond=64):
     """The inverse DFT F(k, l) = exp(i pi l phi_k / 4) as an MPO, by tensor cross interpolation.
 
     Site i carries the bit pair (k_{R+1-i}, l_i): l most significant first and k least
-    significant first, so that the phases couple nearby sites only (App. E). The local index is
+    significant first, so that the phases couple nearby sites only (App. J). The local index is
     2*k_bit + l_bit, as for the QFT in the finance project. The interpolation runs a fixed number
     of sweeps (stopping on a small pivot error alone can miss part of an oscillating function),
     is recompressed to eps and checked on random entries.
@@ -189,7 +189,7 @@ def dft_mpo(phi, eps, sweeps=10, max_bond=64):
     return [core.reshape(core.shape[0], 2, 2, core.shape[2]) for core in cores(tt)]
 
 
-# ---------------- zip-up contractions (Sec. IV) ---------------- #
+# ---------------- zip-up contractions (App. B) ---------------- #
 
 def zip_up_with_leaf(ghat, site_types, leaf, eps):
     """Contract the input train with a Tucker leaf over the legs n, by the zip-up algorithm.

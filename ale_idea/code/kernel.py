@@ -11,7 +11,7 @@ from dumbbell import ALPHA, phi_grid, chi_contour, quadrature_weights
 
 
 def fourier_coefficients(values):
-    """Fourier coefficients on a dumbbell along axis 0 (Eq. 22), in FFT order n = 0, 1, ..., -1.
+    """Fourier coefficients on a dumbbell along axis 0 (Eq. 23), in FFT order n = 0, 1, ..., -1.
 
     values[j] = sum_n ghat_n exp(i pi n phi_j / 4) with phi_j = -1 + 8j/N, hence
     ghat_n = exp(i pi n / 4) / N * FFT(values)_n.

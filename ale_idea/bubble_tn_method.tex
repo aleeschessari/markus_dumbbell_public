@@ -162,7 +162,16 @@ where the first equality is Cauchy's formula on the contour $\Gamma$ of Fig.~\re
   \bar g_q(t)=\frac1{2\pi i}\oint_{C_\lambda}ds\,G_q(s)\,e^{-ist}=\int_{-E}^{E}d\varepsilon\,A_q(\varepsilon)\,e^{-i\varepsilon t}.
   \label{eq:gbar}
 \end{equation}
-Conversely, writing $1/(z-\varepsilon)$ in \eqref{eq:lehmann} as a time integral, as in \eqref{eq:laplace}, gives $G_q$ in terms of $\bar g_q$,
+Conversely, since $\varepsilon$ is real, $1/(z-\varepsilon)$ is a time integral,
+\begin{equation}
+  \frac1{z-\varepsilon}=
+  \begin{cases}
+  -i\displaystyle\int_0^\infty dt\,e^{i(z-\varepsilon)t}, & \Imag z>0,\\[8pt]
+  i\displaystyle\int_0^\infty dt\,e^{-i(z-\varepsilon)t}, & \Imag z<0,
+  \end{cases}
+  \label{eq:laplace_z}
+\end{equation}
+and inserting it into \eqref{eq:lehmann} gives $G_q$ in terms of $\bar g_q$,
 \begin{equation}
   G_q(z)=
   \begin{cases}

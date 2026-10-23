@@ -132,11 +132,12 @@ and the Fermi function is
   \Res_{z=i\omega_n}f&=-\frac1\beta .\label{eq:fermi_res}
 \end{align}
 \end{subequations}
-The one-particle Green function $G_q(z)$ is analytic off the real axis and has its spectrum in the band $[-E,E]$. In terms of its spectral function $A_q(\varepsilon)=-\pi^{-1}\Imag G_q(\varepsilon+i0^+)$, supported in $[-E,E]$,
+The one-particle Green function $G_q(z)$ is analytic off the band $[-E,E]$ and vanishes at infinity. Cauchy's formula on the region between a large circle and a contour around the band, as in \eqref{eq:cauchy_continuum}, expresses $G_q(z)$ through its values on that contour. Shrinking the contour onto the band, where it runs along $\varepsilon-i0^+$ from left to right and back along $\varepsilon+i0^+$, gives
 \begin{equation}
-  G_q(z)=\int_{-E}^{E}d\varepsilon\,\frac{A_q(\varepsilon)}{z-\varepsilon},\qquad G_q(z)\sim\frac1z\ \ (z\to\infty).
+  G_q(z)=\int_{-E}^{E}d\varepsilon\,\frac{A_q(\varepsilon)}{z-\varepsilon},\qquad G_q(z)\sim\frac1z\ \ (z\to\infty),
   \label{eq:lehmann}
 \end{equation}
+with the spectral function $A_q(\varepsilon)=[G_q(\varepsilon-i0^+)-G_q(\varepsilon+i0^+)]/2\pi i=-\pi^{-1}\Imag G_q(\varepsilon+i0^+)$, the jump of $G_q$ across the band.
 As an example we take a tight-binding chain with nearest-neighbour hopping,
 \begin{equation}
   \begin{gathered}
@@ -246,7 +247,7 @@ and the occupied real-time Green function $g_q(t)$, obtained from $\bar g_q(-t)$
   \end{aligned}
   \label{eq:time_bubble}
 \end{equation}
-The contour forms of $\bar g_q$ and $g_q$ follow from \eqref{eq:lehmann} and the residue theorem, so $G$ is never needed off the contour. On the lower half of $C_\mu$ the second line of \eqref{eq:laplace} gives the same with all functions conjugated, $\chi_Q(w)=\chi_Q(\bar w)^*$. Near the tips of $C_\mu$, where $\Imag w\to0$, the time integral needs long times, and the contour sums for $g_q$ and $\bar g_q$, whose terms grow like $e^{H_\lambda t}$, lose accuracy; there the Cauchy route of Appendix~\ref{app:cauchy} applies.
+Since $e^{-ist}$ and $f(s)\,e^{ist}$ are analytic inside $C_\lambda$, the contour forms of $\bar g_q$ and $g_q$ follow by shrinking $C_\lambda$ onto the band, as for \eqref{eq:lehmann}, so $G$ is never needed off the contour. On the lower half of $C_\mu$ the second line of \eqref{eq:laplace} gives the same with all functions conjugated, $\chi_Q(w)=\chi_Q(\bar w)^*$. Near the tips of $C_\mu$, where $\Imag w\to0$, the time integral needs long times, and the contour sums for $g_q$ and $\bar g_q$, whose terms grow like $e^{H_\lambda t}$, lose accuracy; there the Cauchy route of Appendix~\ref{app:cauchy} applies.
 
 \subsection{The time domain on the nodes}
 \label{sec:quadrature}

@@ -64,12 +64,12 @@ def g_contour(lam, N):
 
 
 def chi_contour(mu, N):
-    """Points w_k = 2 omega(phi_k + i tau mu) of the dumbbell of chi (Sec. II A)."""
+    """Points w_k = 2 omega(phi_k + i tau mu) of the dumbbell of chi (Sec. II D)."""
     return 2 * omega(phi_grid(N) + 1j * TAU * mu)[0]
 
 
 def quadrature_weights(lam, N):
-    """Nodes and trapezoidal weights of the dumbbell quadrature (Eq. 18).
+    """Nodes and trapezoidal weights of the dumbbell quadrature (Eq. 20).
 
     With d_j = -(dphi / 2 pi i) J_lam(phi_j), the sum over j of d_j F(z_j) approximates the
     counterclockwise contour integral of F over C_lam divided by 2 pi i (the parametrization in phi

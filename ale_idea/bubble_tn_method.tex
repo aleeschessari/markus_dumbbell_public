@@ -224,7 +224,17 @@ In terms of levels this reads $\lambda<\Lambda(\mu,\beta)$, where $\Lambda(\mu,\
   \label{fig:time_network}
 \end{figure*}
 
-The data are the values of $G$ on $C_\lambda$, while \eqref{eq:contour_w} needs $G_{q\pm Q}$ at the shifted points $z\pm w$, off the contour. A time representation of \eqref{eq:spectral} avoids them. For $\Imag w>0$, $1/(w+\varepsilon-\varepsilon')=-i\int_0^\infty dt\,e^{i(w+\varepsilon-\varepsilon')t}$, since $\varepsilon$ and $\varepsilon'$ are real. Inserted into \eqref{eq:spectral}, this turns the bubble into a product in time,
+The data are the values of $G$ on $C_\lambda$, while \eqref{eq:contour_w} needs $G_{q\pm Q}$ at the shifted points $z\pm w$, off the contour. A time representation of \eqref{eq:spectral} avoids them. For $\Imag w>0$, since $\varepsilon$ and $\varepsilon'$ are real,
+\begin{equation}
+  \frac1{w+\varepsilon-\varepsilon'}=-i\int_0^\infty dt\,e^{i(w+\varepsilon-\varepsilon')t}.
+  \label{eq:laplace}
+\end{equation}
+Inserted into \eqref{eq:spectral}, it makes the integrals over $\varepsilon$ and $\varepsilon'$ factorize into the real-time Green function
+\begin{equation}
+  \bar g_q(t)=\int_{-E}^{E}d\varepsilon\,A_q(\varepsilon)\,e^{-i\varepsilon t}=\frac1{2\pi i}\oint_{C_\lambda}ds\,G_q(s)\,e^{-ist}.
+  \label{eq:gbar}
+\end{equation}
+and the occupied real-time Green function $g_q(t)$, obtained from $\bar g_q(-t)$ by replacing $A_q$ with $fA_q$ and $G_q$ with $fG_q$. The term with $f(\varepsilon)$ gives $g_q(t)\,\bar g_{q+Q}(t)$, and the term with $f(\varepsilon')$ gives $\bar g_q(t)^*\,g_{q+Q}(t)^*$, so the bubble becomes a product in time,
 \begin{equation}
   \begin{aligned}
   \chi_Q(w)={}&-\frac{i}{N_q}\sum_q\int_0^\infty dt\,e^{iwt}\\
@@ -232,12 +242,7 @@ The data are the values of $G$ on $C_\lambda$, while \eqref{eq:contour_w} needs 
   \end{aligned}
   \label{eq:time_bubble}
 \end{equation}
-with the real-time Green function
-\begin{equation}
-  \bar g_q(t)=\int_{-E}^{E}d\varepsilon\,A_q(\varepsilon)\,e^{-i\varepsilon t}=\frac1{2\pi i}\oint_{C_\lambda}ds\,G_q(s)\,e^{-ist}.
-  \label{eq:gbar}
-\end{equation}
-and the occupied real-time Green function $g_q(t)$, obtained from $\bar g_q(-t)$ by replacing $A_q$ with $fA_q$ and $G_q$ with $fG_q$. The contour forms follow from \eqref{eq:lehmann} and the residue theorem, so $G$ is never needed off the contour. On the lower half of $C_\mu$ the bubble follows from $\chi_Q(\bar w)=\chi_Q(w)^*$. Near the tips of $C_\mu$, where $\Imag w\to0$, the time integral needs long times, and the contour sums for $g_q$ and $\bar g_q$, whose terms grow like $e^{H_\lambda t}$, lose accuracy; there the Cauchy route of Appendix~\ref{app:cauchy} applies.
+The contour forms of $\bar g_q$ and $g_q$ follow from \eqref{eq:lehmann} and the residue theorem, so $G$ is never needed off the contour. On the lower half of $C_\mu$ the bubble follows from $\chi_Q(\bar w)=\chi_Q(w)^*$. Near the tips of $C_\mu$, where $\Imag w\to0$, the time integral needs long times, and the contour sums for $g_q$ and $\bar g_q$, whose terms grow like $e^{H_\lambda t}$, lose accuracy; there the Cauchy route of Appendix~\ref{app:cauchy} applies.
 
 \subsection{The time domain on the nodes}
 \label{sec:quadrature}

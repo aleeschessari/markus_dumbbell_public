@@ -164,20 +164,12 @@ where the first equality is Cauchy's formula on the contour $\Gamma$ of Fig.~\re
 \end{equation}
 Conversely, since $\varepsilon$ is real, $1/(z-\varepsilon)$ is a time integral,
 \begin{equation}
-  \frac1{z-\varepsilon}=
-  \begin{cases}
-  -i\displaystyle\int_0^\infty dt\,e^{i(z-\varepsilon)t}, & \Imag z>0,\\[8pt]
-  i\displaystyle\int_0^\infty dt\,e^{-i(z-\varepsilon)t}, & \Imag z<0,
-  \end{cases}
+  \frac1{z-\varepsilon}=-i\sigma\int_0^\infty dt\,e^{i\sigma(z-\varepsilon)t},\qquad\sigma=\operatorname{sgn}\Imag z,
   \label{eq:laplace_z}
 \end{equation}
 and inserting it into \eqref{eq:lehmann} gives $G_q$ in terms of $\bar g_q$,
 \begin{equation}
-  G_q(z)=
-  \begin{cases}
-  -i\displaystyle\int_0^\infty dt\,e^{izt}\,\bar g_q(t), & \Imag z>0,\\[8pt]
-  i\displaystyle\int_0^\infty dt\,e^{-izt}\,\bar g_q(t)^*, & \Imag z<0,
-  \end{cases}
+  G_q(z)=-i\sigma\int_0^\infty dt\,e^{i\sigma zt}\,\bar g_q(\sigma t),
   \label{eq:ginv}
 \end{equation}
 where $\bar g_q(-t)=\bar g_q(t)^*$ because $A_q$ is real. The integrals converge for every $z$ off the real axis, since $\lvert\bar g_q(t)\rvert\le\int d\varepsilon\,\lvert A_q(\varepsilon)\rvert$. In the upper half-plane $G_q$ is the Fourier transform of the retarded Green function $-i\theta(t)\,\bar g_q(t)$. With $\psi(s)=f(s)\,e^{ist}$, \eqref{eq:shrink} gives the occupied real-time Green function $g_q(t)$, obtained from $\bar g_q(-t)$ by replacing $G_q$ with $fG_q$ and $A_q$ with $fA_q$.

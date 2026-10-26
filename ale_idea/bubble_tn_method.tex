@@ -416,6 +416,152 @@ The time network gives the bubble to $4.6\times10^{-14}$ of its maximum at $\mu=
 
 The bonds of the result $\chi$ are those of the Cauchy route, 40 against 38 at $\mu=0.4$, since the two routes represent the same tensor. The intermediate trains carry the time leg and are larger: the Laplace train has rank 176 over $(p,k)$ at $\mu=0.4$, against the 44 output modes of the Cauchy route, and the largest bonds of $A$ and $Y$ are 70 and 55 against 46 and 40. The core, however, is diagonal: the time leg sits at the first site of $A$, $B$ and $Y$, where the Cauchy route carries its Tucker legs, and the adder step carries a leg of 1024 points instead of the leg $(a,c)$ of $B'$, of dimension $r_1r_3=1364$. No HOSVD and no Cauchy sums over the nodes are needed. With the input on the window $s_n\ge10^{-10}$, 131 modes, the error is $4.7\times10^{-14}$, and on $s_n\ge10^{-6}$, 78 modes, it is $4.6\times10^{-9}$ ($1.5\times10^{-8}$ at $\mu=0.25$), so the input window follows the target accuracy. A smooth partition, with weights proportional to the square of the margin above $m_0=0.3$ or $0.5$, gives the same accuracy with the longer windows $T_a\le57$ or $43$ and a Laplace train of rank 205 or 187.
 
+\section{Toward a GW scheme on contours}
+\label{sec:gw}
+
+The bubble is the first step of a GW scheme in which every frequency-dependent quantity, $G$, $\chi$, the screened interaction $W$ and the self-energy $\Sigma$, is stored on a contour, and every step is a tensor-network operation with a controlled error. This section gives the equations of such a loop, the conditions on its contours, the self-energy in the form of Sec.~\ref{sec:time}, and the order in which the pieces can be built and tested. The numbers come from the dense tests of Sec.~\ref{sec:gw_tests}.
+
+\subsection{The loop}
+\label{sec:gw_loop}
+
+For electrons with two spin directions and an interaction $v_Q$, the polarization is $\Pi_Q=2\chi_Q$, with $\chi_Q$ the bubble \eqref{eq:bubble_def} of the current $G$, and the screened interaction and its screened part are
+\begin{equation}
+  \begin{aligned}
+  W_Q&=\frac{v_Q}{1-v_Q\Pi_Q},\\
+  \tilde W_Q&=W_Q-v_Q=\frac{v_Q^2\,\Pi_Q}{1-v_Q\Pi_Q}.
+  \end{aligned}
+  \label{eq:screening}
+\end{equation}
+The self-energy is $\Sigma_q(z)=\Sigma^{\rm H}+\Sigma^{\rm x}_q+\Sigma^{\rm c}_q(z)$. The Hartree term $\Sigma^{\rm H}=v_0\rho$ shifts the chemical potential, and the exchange and correlation terms are
+\begin{equation}
+  \begin{aligned}
+  \Sigma^{\rm x}_q&=-\frac1{N_q}\sum_Qv_Q\,\rho_{q-Q},\\
+  \Sigma^{\rm c}_q(i\omega_n)&=-\frac1{N_q\beta}\sum_{Q,m}G_{q-Q}(i\omega_n-i\nu_m)\,\tilde W_Q(i\nu_m),
+  \end{aligned}
+  \label{eq:sigma_def}
+\end{equation}
+where $\rho_q=\sum_jc_jG_q(z_j)=\int d\varepsilon\,f(\varepsilon)A_q(\varepsilon)$ is the occupation, a node sum with the weights \eqref{eq:weights} that needs no convergence factor, and $\rho=(2/N_q)\sum_q\rho_q$ is the density. Dyson's equation $G_q(z)=1/[z-\varepsilon_q-\Sigma_q(z)]$, with $\varepsilon_q$ measured from the chemical potential, closes the loop, and the chemical potential is fixed by $\rho$. In G0W0 the chain $G_0\to\chi\to W\to\Sigma\to G$ runs once. In GW0 $W$ is kept and $\Sigma$ and $G$ are iterated, and in self-consistent GW (scGW) the bubble is recomputed from the dressed $G$ as well.
+
+\subsection{Supports and contours}
+\label{sec:gw_contours}
+
+Each object is stored on a contour around its support. The support of $G$ is a segment $[-E_G,E_G]$, the band at the start, which grows with the support of $\Sigma$. That of $\chi$ is $[-2E_G,2E_G]$, and that of $\tilde W_Q$ is $[-\Omega_W,\Omega_W]$, which also covers the poles of $W$ outside the particle-hole continuum, at the zeros of $1-v_Q\Pi_Q$ on the real axis. On a finite lattice such a zero exists above every continuum. For an even band and $v_Q>0$ its position $\omega$ satisfies $\omega^2\le4E_G^2+2v_Qc_2$, with $c_2$ of \eqref{eq:c2}, and the coefficient of $w^{-2}$ in $\tilde W_Q$, $2v_Q^2c_2$, detects weight left outside the segment. The support of $\Sigma^{\rm c}$ is $[-E_G-\Omega_W,E_G+\Omega_W]$. In the iterated schemes $G$ and $\Sigma$ share one fermionic family on $[-E_G,E_G]$, with $E_G\ge E+\Omega_W$, so that Dyson's equation is pointwise, and $\chi$ and $\tilde W$ share one bosonic family, which encloses the pole of the Bose function at the origin and no other. On a finite lattice the pairs with $\varepsilon_{q+Q}=\varepsilon_q$ contribute $f'(\varepsilon_q)$ to $\Pi_Q(i\nu_0)$ and nothing at $\nu_m\neq0$. The node sum $\chi_Q(0)=N_q^{-1}\sum_q\sum_jc_jG_q(z_j)G_{q+Q}(z_j)$ gives this Matsubara value, while a spectral representation of $\tilde W$ misses it.
+
+Each forward step has one condition, the one of \eqref{eq:contour_w}: the contours of its inputs lie below the point where the contour of its output crosses the imaginary axis. With $H(C)$ the height of a contour $C$ and $p(C)$ the height of its crossing, the bubble needs $H(C_\lambda)<p(C_\mu)$, and the self-energy of Sec.~\ref{sec:gw_sigma}, computed on a contour $C_\Sigma$ of the fermionic family at a level $\lambda_\Sigma$, needs $\max[H(C_\lambda),H(C_\mu)]<p(C_\Sigma)$. Screening, Dyson's equation, exchange and density are pointwise operations or node sums and need no condition. Since $H(C)\ge p(C)$, the levels rise along $G\to\chi\to\Sigma$. In G0W0 this costs nothing: $\Sigma$ and $G$ are known on $C_\Sigma$, and their values at the Matsubara frequencies, or anywhere outside $C_\Sigma$, follow from the exterior Cauchy formula \eqref{eq:ext_cauchy}. In GW0 and scGW, $\Sigma$ must be brought down from $C_\Sigma$ to the contour $C_\lambda$ of $G$. Within a family this is the level multiplier \eqref{eq:multiplier}, which multiplies the mode $n$ by $e^{\alpha(\lambda_\Sigma-\lambda)n}$. If the forward steps give $\Sigma$ on $C_\Sigma$ to the accuracy $\varepsilon_{\rm fwd}$, the modes beyond $\ln(1/\varepsilon_{\rm fwd})/(\alpha\lambda_\Sigma)$ are below the forward error, and the step reaches
+\begin{equation}
+  \varepsilon_{\rm in}\approx\varepsilon_{\rm fwd}^{\,\lambda/\lambda_\Sigma}.
+  \label{eq:inward}
+\end{equation}
+The level ratio $\lambda_\Sigma/\lambda$ is therefore the price of the loop.
+
+On the dumbbells the top of a contour lies above its crossing, $H(C_\lambda)>p(C_\lambda)$, and the ratio $H/p$ grows with $E$, so the chain needs a large level ratio. A second family has $H=p$. With $k=\tanh(\beta E/2)$, $k'^2=1-k^2$, and $K$ and $K'$ the complete elliptic integrals of parameters $k^2$ and $k'^2$, the map
+\begin{equation}
+  z(\zeta)=\frac2\beta\operatorname{artanh}\Big[k\,\sn\Big(\frac K2(\zeta+1)\,\Big|\,k^2\Big)\Big]
+  \label{eq:strip_map}
+\end{equation}
+sends the strip $\zeta=\phi+i\tau\lambda$ of Sec.~\ref{sec:dumbbell}, with $\tau=2K'/K$, onto the plane strip $\lvert\Imag z\rvert<\pi/\beta$ cut along $[-E,E]$. The line $\lambda=0$ goes to the segment, and the line $\lambda=1$ to the lines $\Imag z=\pm\pi/\beta$, which pass through the first poles $\pm i\pi/\beta$ of $f$; for a bosonic family the same map with $\beta/2$ gives lines through the first poles $\pm2\pi i/\beta$ of the Bose function. The level curves of this map, the strip family, have their highest point on the imaginary axis, at
+\begin{equation}
+  H_\lambda=p_\lambda=\frac2\beta\arctan\big[k\,\operatorname{sc}(K'\lambda\,|\,k'^2)\big],
+  \label{eq:strip_height}
+\end{equation}
+with $\operatorname{sc}=\sn/\cn$, and their tips at $\pm(2/\beta)\operatorname{artanh}[k\operatorname{nd}(K'\lambda\,|\,k'^2)]$, with $\operatorname{nd}=1/\dn$. The decay rate $\alpha=\pi\tau/4$ of their modes is smaller than that of the dumbbells, so at equal level and accuracy they need more nodes, one or two bits in quantics form. For $\beta E\gtrsim15$, $k$ is so close to 1 that the elliptic functions must be evaluated through the complementary nome.
+
+\subsection{The self-energy}
+\label{sec:gw_sigma}
+
+The Bose function $n_B(s)=1/(e^{\beta s}-1)$ has the poles $i\nu_m$ with the residues $1/\beta$. Closing the bosonic sum in \eqref{eq:sigma_def} with it on a contour $C_\mu$ of the bosonic family around the support of $\tilde W$, which encloses the pole at $s=0$, and on the contour $C_\lambda$ of $G$, both counterclockwise, gives
+\begin{equation}
+  \begin{aligned}
+  \Sigma^{\rm c}_q(w)={}&\frac1{N_q}\sum_Q\Big[\frac1{2\pi i}\oint_{C_\mu}ds\,n_B(s)\,\tilde W_Q(s)\,G_{q-Q}(w-s)\\
+  &-\frac{\tilde W_Q(0)}{\beta}\,G_{q-Q}(w)\\
+  &+\frac1{2\pi i}\oint_{C_\lambda}dz\,[1-f(z)]\,G_{q-Q}(z)\,\tilde W_Q(w-z)\Big].
+  \end{aligned}
+  \label{eq:sigma_contour}
+\end{equation}
+The second term removes the residue of $n_B$ at the origin, with the Matsubara value $\tilde W_Q(0)$. The third collects the residues at the cut of $G_{q-Q}(i\omega_n-s)$, where $n_B(i\omega_n-z)=-[1-f(z)]$, and continues them to $w$. The formula holds when the shifted segments $w-[-\Omega_W,\Omega_W]$ lie outside $C_\lambda$ and $w-[-E_G,E_G]$ outside $C_\mu$, which on $C_\Sigma$ is the condition $\max[H(C_\lambda),H(C_\mu)]<p(C_\Sigma)$. Shrinking both contours as in \eqref{eq:shrink} gives, up to the static terms of a finite lattice, the spectral form
+\begin{equation}
+  \begin{aligned}
+  \Sigma^{\rm c}_q(w)={}&\frac1{N_q}\sum_Q\int d\varepsilon\int d\varepsilon'\,A_{q-Q}(\varepsilon)\,B_Q(\varepsilon')\\
+  &\times\frac{1-f(\varepsilon)+n_B(\varepsilon')}{w-\varepsilon-\varepsilon'},
+  \end{aligned}
+  \label{eq:sigma_spectral}
+\end{equation}
+with $B_Q(\varepsilon')=-\pi^{-1}\Imag\tilde W_Q(\varepsilon'+i0^+)$.
+
+The time representation \eqref{eq:laplace} with $x=w-\varepsilon-\varepsilon'$ turns \eqref{eq:sigma_spectral} into a product in time,
+\begin{equation}
+  \begin{aligned}
+  \Sigma^{\rm c}_q(w)={}&-\frac i{N_q}\sum_Q\int_0^{e^{i\gamma}\infty}dt\,e^{iwt}\\
+  &\times\big[\bar g^{\rm h}_{q-Q}(t)\,\bar u_Q(t)+\bar g_{q-Q}(t)\,\bar u^{\rm b}_Q(t)\big],
+  \end{aligned}
+  \label{eq:sigma_time}
+\end{equation}
+with $\bar g_q$ of \eqref{eq:gt_nodes} and the node sums
+\begin{equation}
+  \begin{aligned}
+  \bar g^{\rm h}_q(t)&=\sum_j(d_j-c_j)\,G_q(z_j)\,e^{-iz_jt},\\
+  \bar u_Q(t)&=\sum_kd^\mu_k\,\tilde W_Q(w_k)\,e^{-iw_kt},\\
+  \bar u^{\rm b}_Q(t)&=\sum_kd^\mu_k\,n_B(w_k)\,\tilde W_Q(w_k)\,e^{-iw_kt}-\frac{\tilde W_Q(0)}\beta,
+  \end{aligned}
+  \label{eq:sigma_nodes}
+\end{equation}
+where $d^\mu_k$ are the weights $d$ of $C_\mu$ and $1-f$ enters through $d_j-c_j$. The product is exact when $\Imag(we^{i\gamma})>(E_G+\Omega_W)\lvert\sin\gamma\rvert$, and by the argument of \eqref{eq:margin} it is stable when
+\begin{equation}
+  \begin{aligned}
+  \Imag(we^{i\gamma})&>H_\lambda(\gamma)+\Omega_W\lvert\sin\gamma\rvert,\\
+  \Imag(we^{i\gamma})&>H_\mu(\gamma)+E_G\lvert\sin\gamma\rvert,
+  \end{aligned}
+  \label{eq:sigma_margin}
+\end{equation}
+with $H_\lambda(\gamma)$ and $H_\mu(\gamma)$ the heights of $C_\lambda$ and $C_\mu$ in the direction $ie^{-i\gamma}$. Both products are taken at $+t$, so the self-energy has no reflected term. The argument of \eqref{eq:entire_bound} works here already at first order: $\Sigma^{\rm c}_q\simeq\Sigma_1/w$ at large $w$, with $\Sigma_1=N_q^{-1}\sum_Q\int_0^\infty d\varepsilon'\,B_Q(\varepsilon')[1+2n_B(\varepsilon')]>0$, so a formula entire in $w$ errs on $C_\Sigma$ by at least $2\pi\Sigma_1/L_\Sigma$, with $L_\Sigma$ the length of $C_\Sigma$, and the self-energy needs the partition of \eqref{eq:one_formula} as well. Its network is that of Fig.~\ref{fig:time_network} with two leaves per input, with the weights $d_j-c_j$ and $d_j$ for $G$ and $d^\mu_k$ and $d^\mu_kn_B(w_k)$ for $\tilde W$, a constant row $-\tilde W_Q(0)/\beta$ added to the second bosonic leaf, an adder that forms $(q-Q)+Q=q$, the two products summed on the time leg, and a Laplace train over eight directions. The diagonal directions serve the corners of flat contours, where the four of Sec.~\ref{sec:time} leave no margin.
+
+\subsection{Screening and Dyson's equation as trains}
+\label{sec:gw_reciprocal}
+
+Screening and Dyson's equation are reciprocals of a train $D$ over the points of a contour and the momenta, $D=1-v_Q\Pi_Q$ and $D=z-\varepsilon_q-\Sigma_q(z)$. The Newton iteration $x\leftarrow x(2-Dx)$ squares the residual $1-Dx$ at every step, so it converges from any start with $\lvert1-Dx_0\rvert<1$ at all points. The start $x_0=D^*/\max\lvert D\rvert^2$ satisfies this, and the number of iterations grows like the logarithm of $\max\lvert D\rvert/\min\lvert D\rvert$. Cross interpolation of $1/D$ through the point evaluation of the train needs no iterations. The zeros of $D$ lie on the real axis, at the poles of $W$ and the quasiparticle poles of $G$, so $1/D$ is analytic in the same region as $D$, and its bonds stay close to those of $D$. The reciprocal fails when $D$ has zeros near the contour, which happens for an attractive $v_Q$, where $1-v_Q\Pi_Q(0)$ can vanish, or when $W$ has poles outside the chosen segment; both show up in $\min\lvert D\rvert$ on the contour and in the sum rule of $\tilde W_Q$.
+
+\subsection{Tests and the order of the work}
+\label{sec:gw_tests}
+
+\begin{table*}[t]
+\caption{The G0W0 self-energy of the test model at all points of $C_\Sigma$, compared with its closed form. The chain of dumbbells uses the fermionic family $(3,\pi)$ for $G_0$, the bosonic family $(6.72,\pi/2)$ for $\chi$ and $\tilde W$, and the fermionic family $(10.22,\pi)$ for $\Sigma$; the strip chains use the strip family on the same segments with $\beta=\pi$ throughout. The margins are $p(C_\mu)-H(C_\lambda)$ and $p(C_\Sigma)-\max[H(C_\lambda),H(C_\mu)]$, and $\tilde W$ is the one computed from the bubble. The errors are the largest over all momenta and points relative to $\max\lvert\Sigma^{\rm c}\rvert$; the inward step brings $\Sigma$ from $C_\Sigma$ to the level of $G$ within the family of $\Sigma$.}
+\label{tab:gw}
+\centering\small
+\setlength{\tabcolsep}{6pt}
+\begin{tabular}{@{}lcccccc@{}}
+\toprule
+chain & levels of $G$, $\chi$, $\Sigma$ & margins & time points & error & without $-\tilde W_Q(0)/\beta$ & inward step \\
+\midrule
+dumbbells & 0.10, 0.14, 0.80 & 0.17, 0.15 & 4352 & $6.3\times10^{-14}$ & 0.64 & $7.2\times10^{-3}$ \\
+strip & 0.30, 0.45, 0.60 & 0.15, 0.15 & 9024 & $7.3\times10^{-14}$ & 0.20 & $4.8\times10^{-8}$ \\
+strip & 0.20, 0.30, 0.40 & 0.10, 0.10 & 12096 & $1.3\times10^{-14}$ & 0.18 & $9.4\times10^{-8}$ \\
+\bottomrule
+\end{tabular}
+\end{table*}
+
+Dense tests on the chain \eqref{eq:model} with $E=3$, $\beta=\pi$, $N_q=64$ and the interaction $v_Q=U+2U_1\cos Q$, $U=2$, $U_1=0.5$, confirm the pieces. The zeros of $1-v_Q\Pi_Q$ lie up to $\Omega_W=6.22$, just above the continuum edge $2E$, and the families are built on $[-3,3]$ for $G_0$, $[-6.72,6.72]$ for $\chi$ and $\tilde W$, and $[-10.22,10.22]$ for $\Sigma$. The closed form of G0W0 for this model, a sum over the poles of $\tilde W$ with the static terms, agrees with the direct Matsubara sum \eqref{eq:sigma_def} to ten digits, and Table~\ref{tab:gw} compares the self-energy from \eqref{eq:sigma_time} with it, for a chain of dumbbells and for two chains of the strip family. The self-energy is accurate to $10^{-13}$ in all three chains, its values at the Matsubara frequencies obtained from $C_\Sigma$ by the exterior Cauchy formula agree with the closed form to $2\times10^{-15}$, and without the static term the error is 18 to 64\,\%. The bubble and $\tilde W$ on $C_\mu$ are accurate to $10^{-13}$, and the density after Dyson's equation agrees with the Matsubara sum to $2\times10^{-15}$. The inward step follows \eqref{eq:inward} to within a factor of 2 above and 20 below: from level 0.8 to 0.1 of the dumbbell chain it gives $7\times10^{-3}$, while from 0.6 to 0.3 of the first strip chain it gives $5\times10^{-8}$. The Newton reciprocals converge in 9 to 16 iterations, with $\max\lvert D\rvert/\min\lvert D\rvert$ from 3 to 5 for the screening and from 23 to 37 for Dyson's equation. On the first strip chain the widest bond at $10^{-10}$ is 62 for $\Pi$ and for $\tilde W$, 63 for $\Sigma$ and 74 for $G$.
+
+The pieces can be built in the following order, each with its test.
+\begin{enumerate}
+  \item The geometry for general $E$ and $\beta$: the dumbbell and strip families, their heights, crossings and tips, and the choice of levels. Test: the node sum of $1/(z-a)$, the symmetries and the decay of the modes.
+  \item The self-energy network, dense and then as trains, reusing the bubble network: the two leaves per input, the convolution adder, the Laplace train over eight directions, the static term and the gauge. Test: the closed-form G0W0 to $10^{-13}$ and the Matsubara values by the exterior Cauchy formula. The time leg and the rank of the Laplace train set the cost; the compression of Appendix~\ref{app:kernel_time} reduces them to the ranks of a Tucker core, at the accuracy of its truncation.
+  \item Screening, Dyson's equation, exchange and chemical potential as trains, by Newton or cross interpolation. Test: the bonds of the reciprocals, their pointwise accuracy and the sum rule of $\tilde W$.
+  \item G0W0 at $N_q=1024$ against a Matsubara GW code: $\Sigma(i\omega_n)$, the density, the energies, and the spectral function of $\Sigma$ at the resolution set by $p(C_\Sigma)$.
+  \item GW0 with the inward step on the strip family at the level ratio 2: $\Sigma$ brought to the level of $G$ on the modes $n\le\ln(1/\varepsilon_{\rm fwd})/(\alpha\lambda_\Sigma)$, Dyson's equation there, and iteration. Test: a Matsubara GW0 code at the same $\beta$, and the convergence of $\rho$ and of $\Sigma(i\omega_n)$. The accuracy of the inward step and its accumulation over the iterations are the main risk.
+  \item scGW: the bubble from the dressed $G$, the support $E_G$ checked by the tail of the modes, and the poles of $W$ tracked by the sum rule of $\tilde W$. Test: a Matsubara scGW code, the particle number and the f-sum rule.
+\end{enumerate}
+The tests suggest the following choices.
+\begin{enumerate}
+  \item Use the strip family for the iterated schemes, and the dumbbells for the bubble and for G0W0, where the forward steps suffice.
+  \item For the bosonic dumbbells use $\beta/2$, the doubled family of Sec.~\ref{sec:contour}, whose ratio $H/p$ on $[-6,6]$ at level 0.2 is 1.7, against 3.2 at $\beta$; for the strip family use $\beta$.
+  \item Bring $\Sigma$ inward, not $G$: $\Sigma$ is smoother, and Dyson's equation at the lower level is pointwise.
+  \item Do not compress inside the loop. The inward step needs the forward accuracy of the diagonal core, which a Tucker core does not reach.
+  \item Keep the static terms of the finite lattice, at $Q=0$ and from degenerate pairs; the node sums include them.
+  \item Heights scale like $1/\beta$ while the frequencies do not, so the time legs and the ranks grow like $\beta$. Test $\beta=2\pi$ and $4\pi$ in step 4, before the loop.
+  \item Fix $E_G$ at the start with a padded segment, and widen it only when the tail of the modes exceeds the tolerance.
+  \item Use margins of about 0.15, eight directions and a gauge that shares the growth between the leaves and the Laplace train.
+\end{enumerate}
+
 \appendix
 
 \section{The Cauchy route}

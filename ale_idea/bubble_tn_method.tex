@@ -424,6 +424,13 @@ The bubble is the first step of a GW scheme in which every frequency-dependent q
 \subsection{The loop}
 \label{sec:gw_loop}
 
+\begin{figure}[t]
+  \centering
+  \includegraphics[width=\columnwidth]{gw_loop.pdf}
+  \caption{The GW loop on contours. The boxes are placed at the heights of their contours, which rise along $G\to\chi\to\Sigma$. Each forward step, the bubble and the self-energy, needs the condition written next to it, while screening and Dyson's equation are pointwise. In G0W0 the chain ends on $C_\Sigma$, and the values at the Matsubara frequencies follow from the exterior Cauchy formula \eqref{eq:ext_cauchy}. GW0 and scGW close the loop with the inward step \eqref{eq:inward} (dashed), whose accuracy is the forward accuracy raised to the level ratio.}
+  \label{fig:gw_loop}
+\end{figure}
+
 For electrons with two spin directions and an interaction $v_Q$, the polarization is $\Pi_Q=2\chi_Q$, with $\chi_Q$ the bubble \eqref{eq:bubble_def} of the current $G$, and the screened interaction and its screened part are
 \begin{equation}
   \begin{aligned}
@@ -440,7 +447,7 @@ The self-energy is $\Sigma_q(z)=\Sigma^{\rm H}+\Sigma^{\rm x}_q+\Sigma^{\rm c}_q
   \end{aligned}
   \label{eq:sigma_def}
 \end{equation}
-where $\rho_q=\sum_jc_jG_q(z_j)=\int d\varepsilon\,f(\varepsilon)A_q(\varepsilon)$ is the occupation, a node sum with the weights \eqref{eq:weights} that needs no convergence factor, and $\rho=(2/N_q)\sum_q\rho_q$ is the density. Dyson's equation $G_q(z)=1/[z-\varepsilon_q-\Sigma_q(z)]$, with $\varepsilon_q$ measured from the chemical potential, closes the loop, and the chemical potential is fixed by $\rho$. In G0W0 the chain $G_0\to\chi\to W\to\Sigma\to G$ runs once. In GW0 $W$ is kept and $\Sigma$ and $G$ are iterated, and in self-consistent GW (scGW) the bubble is recomputed from the dressed $G$ as well.
+where $\rho_q=\sum_jc_jG_q(z_j)=\int d\varepsilon\,f(\varepsilon)A_q(\varepsilon)$ is the occupation, a node sum with the weights \eqref{eq:weights} that needs no convergence factor, and $\rho=(2/N_q)\sum_q\rho_q$ is the density. Dyson's equation $G_q(z)=1/[z-\varepsilon_q-\Sigma_q(z)]$, with $\varepsilon_q$ measured from the chemical potential, closes the loop, and the chemical potential is fixed by $\rho$. In G0W0 the chain $G_0\to\chi\to W\to\Sigma\to G$ runs once. In GW0 $W$ is kept and $\Sigma$ and $G$ are iterated, and in self-consistent GW (scGW) the bubble is recomputed from the dressed $G$ as well (Fig.~\ref{fig:gw_loop}).
 
 \subsection{Supports and contours}
 \label{sec:gw_contours}
@@ -454,7 +461,14 @@ Each forward step has one condition, the one of \eqref{eq:contour_w}: the contou
 \end{equation}
 The level ratio $\lambda_\Sigma/\lambda$ is therefore the price of the loop.
 
-On the dumbbells the top of a contour lies above its crossing, $H(C_\lambda)>p(C_\lambda)$, and the ratio $H/p$ grows with $E$, so the chain needs a large level ratio. A second family has $H=p$. With $k=\tanh(\beta E/2)$, $k'^2=1-k^2$, and $K$ and $K'$ the complete elliptic integrals of parameters $k^2$ and $k'^2$, the map
+\begin{figure}[t]
+  \centering
+  \includegraphics[width=\columnwidth]{gw_families.pdf}
+  \caption{The dumbbells (a) and the strip family (b) for $E=3$ and $\beta=\pi$, at the levels $\lambda=0.1,\ldots,0.9$ (grey) with $\lambda=0.3$ in blue, the band $[-3,3]$ (black), the poles $\pm i$, $\pm3i$ of $f$ (crosses) and the level-1 curves (dotted): the imaginary axis beyond $\pm i$ for the dumbbells, the lines $\Imag z=\pm1$ for the strip family. The dots mark the highest points and the open circles the crossings of the imaginary axis. On the dumbbell at $\lambda=0.3$ the top lies at 1.8 times the crossing; on the strip family the two coincide, $H=p=0.30$.}
+  \label{fig:gw_families}
+\end{figure}
+
+On the dumbbells the top of a contour lies above its crossing, $H(C_\lambda)>p(C_\lambda)$, and the ratio $H/p$ grows with $E$, so the chain needs a large level ratio. A second family has $H=p$ (Fig.~\ref{fig:gw_families}). With $k=\tanh(\beta E/2)$, $k'^2=1-k^2$, and $K$ and $K'$ the complete elliptic integrals of parameters $k^2$ and $k'^2$, the map
 \begin{equation}
   z(\zeta)=\frac2\beta\operatorname{artanh}\Big[k\,\sn\Big(\frac K2(\zeta+1)\,\Big|\,k^2\Big)\Big]
   \label{eq:strip_map}
@@ -518,6 +532,20 @@ with $H_\lambda(\gamma)$ and $H_\mu(\gamma)$ the heights of $C_\lambda$ and $C_\
 \subsection{Screening and Dyson's equation as trains}
 \label{sec:gw_reciprocal}
 
+\begin{figure*}[t]
+  \centering
+  \includegraphics[width=\textwidth]{gw_chain.pdf}
+  \caption{The contours of the G0W0 test chains of Table~\ref{tab:gw}: $C_\lambda$ of $G$ (blue), $C_\mu$ of $\chi$ and $\tilde W$ (orange) and $C_\Sigma$ of $\Sigma$ (purple), with the band $[-3,3]$ (black), the poles $\pm i$ of $f$ (crosses), the crossings of the imaginary axis (open circles) and, where they lie in the frame, the highest points (dots). (a) Dumbbells at the levels 0.10, 0.14 and 0.80. $C_\Sigma$ crosses the imaginary axis at 0.95 but reaches the height 15.8 and $\lvert w\rvert=33$. (b) The dashed box of (a): the heights 0.26 and 0.80 of $C_\lambda$ and $C_\mu$ lie below the crossings 0.43 and 0.95 of $C_\mu$ and $C_\Sigma$. (c) The strip family at the levels 0.30, 0.45 and 0.60, between the lines $\Imag z=\pm1$ (dotted), where every top is a crossing. Panels (b) and (c) are stretched vertically.}
+  \label{fig:gw_chain}
+\end{figure*}
+
+\begin{figure}[t]
+  \centering
+  \includegraphics[width=\columnwidth]{gw_inward.pdf}
+  \caption{The error of the inward step against the level ratio $\lambda_\Sigma/\lambda$, for $\Sigma$ on the contours $C_\Sigma$ of Table~\ref{tab:gw} (symbols), and the rule \eqref{eq:inward} with the forward errors of the three chains (dashed). The dumbbell chain needs the ratio 8, where the step gives $7\times10^{-3}$; the strip chains need 2, where it gives $5\times10^{-8}$ and $9\times10^{-8}$.}
+  \label{fig:gw_inward}
+\end{figure}
+
 Screening and Dyson's equation are reciprocals of a train $D$ over the points of a contour and the momenta, $D=1-v_Q\Pi_Q$ and $D=z-\varepsilon_q-\Sigma_q(z)$. The Newton iteration $x\leftarrow x(2-Dx)$ squares the residual $1-Dx$ at every step, so it converges from any start with $\lvert1-Dx_0\rvert<1$ at all points. The start $x_0=D^*/\max\lvert D\rvert^2$ satisfies this, and the number of iterations grows like the logarithm of $\max\lvert D\rvert/\min\lvert D\rvert$. Cross interpolation of $1/D$ through the point evaluation of the train needs no iterations. The zeros of $D$ lie on the real axis, at the poles of $W$ and the quasiparticle poles of $G$, so $1/D$ is analytic in the same region as $D$, and its bonds stay close to those of $D$. The reciprocal fails when $D$ has zeros near the contour, which happens for an attractive $v_Q$, where $1-v_Q\Pi_Q(0)$ can vanish, or when $W$ has poles outside the chosen segment; both show up in $\min\lvert D\rvert$ on the contour and in the sum rule of $\tilde W_Q$.
 
 \subsection{Tests and the order of the work}
@@ -539,7 +567,7 @@ strip & 0.20, 0.30, 0.40 & 0.10, 0.10 & 12096 & $1.3\times10^{-14}$ & 0.18 & $9.
 \end{tabular}
 \end{table*}
 
-Dense tests on the chain \eqref{eq:model} with $E=3$, $\beta=\pi$, $N_q=64$ and the interaction $v_Q=U+2U_1\cos Q$, $U=2$, $U_1=0.5$, confirm the pieces. The zeros of $1-v_Q\Pi_Q$ lie up to $\Omega_W=6.22$, just above the continuum edge $2E$, and the families are built on $[-3,3]$ for $G_0$, $[-6.72,6.72]$ for $\chi$ and $\tilde W$, and $[-10.22,10.22]$ for $\Sigma$. The closed form of G0W0 for this model, a sum over the poles of $\tilde W$ with the static terms, agrees with the direct Matsubara sum \eqref{eq:sigma_def} to ten digits, and Table~\ref{tab:gw} compares the self-energy from \eqref{eq:sigma_time} with it, for a chain of dumbbells and for two chains of the strip family. The self-energy is accurate to $10^{-13}$ in all three chains, its values at the Matsubara frequencies obtained from $C_\Sigma$ by the exterior Cauchy formula agree with the closed form to $2\times10^{-15}$, and without the static term the error is 18 to 64\,\%. The bubble and $\tilde W$ on $C_\mu$ are accurate to $10^{-13}$, and the density after Dyson's equation agrees with the Matsubara sum to $2\times10^{-15}$. The inward step follows \eqref{eq:inward} to within a factor of 2 above and 20 below: from level 0.8 to 0.1 of the dumbbell chain it gives $7\times10^{-3}$, while from 0.6 to 0.3 of the first strip chain it gives $5\times10^{-8}$. The Newton reciprocals converge in 9 to 16 iterations, with $\max\lvert D\rvert/\min\lvert D\rvert$ from 3 to 5 for the screening and from 23 to 37 for Dyson's equation. On the first strip chain the widest bond at $10^{-10}$ is 62 for $\Pi$ and for $\tilde W$, 63 for $\Sigma$ and 74 for $G$.
+Dense tests on the chain \eqref{eq:model} with $E=3$, $\beta=\pi$, $N_q=64$ and the interaction $v_Q=U+2U_1\cos Q$, $U=2$, $U_1=0.5$, confirm the pieces. The zeros of $1-v_Q\Pi_Q$ lie up to $\Omega_W=6.22$, just above the continuum edge $2E$, and the families are built on $[-3,3]$ for $G_0$, $[-6.72,6.72]$ for $\chi$ and $\tilde W$, and $[-10.22,10.22]$ for $\Sigma$. The closed form of G0W0 for this model, a sum over the poles of $\tilde W$ with the static terms, agrees with the direct Matsubara sum \eqref{eq:sigma_def} to ten digits, and Table~\ref{tab:gw} compares the self-energy from \eqref{eq:sigma_time} with it, for a chain of dumbbells and for two chains of the strip family, whose contours Fig.~\ref{fig:gw_chain} shows. The self-energy is accurate to $10^{-13}$ in all three chains, its values at the Matsubara frequencies obtained from $C_\Sigma$ by the exterior Cauchy formula agree with the closed form to $2\times10^{-15}$, and without the static term the error is 18 to 64\,\%. The bubble and $\tilde W$ on $C_\mu$ are accurate to $10^{-13}$, and the density after Dyson's equation agrees with the Matsubara sum to $2\times10^{-15}$. The inward step follows \eqref{eq:inward} to within a factor of 2 above and 20 below (Fig.~\ref{fig:gw_inward}): from level 0.8 to 0.1 of the dumbbell chain it gives $7\times10^{-3}$, while from 0.6 to 0.3 of the first strip chain it gives $5\times10^{-8}$. The Newton reciprocals converge in 9 to 16 iterations, with $\max\lvert D\rvert/\min\lvert D\rvert$ from 3 to 5 for the screening and from 23 to 37 for Dyson's equation. On the first strip chain the widest bond at $10^{-10}$ is 62 for $\Pi$ and for $\tilde W$, 63 for $\Sigma$ and 74 for $G$.
 
 The pieces can be built in the following order, each with its test.
 \begin{enumerate}

@@ -257,7 +257,7 @@ In terms of levels this reads $\lambda<\Lambda(\mu,\beta)$, where $\Lambda(\mu,\
 \begin{figure*}[tp]
   \centering
   \includegraphics[width=\textwidth]{time_network.pdf}
-  \caption{The time-domain network, in the conventions of Fig.~\ref{fig:contraction} (red legs are contracted, bits most significant first). Upper branch: the input train $\hat g_{q,n}$ (blue), its $n$ legs contracted with the train $V^{(1)}_{n,p}$ (green), which carries the modes to the time points $t_p$ and contains the Fermi function through $c_j$; the result is $g_q(t_p)$, a train over the bits of $q$ with the time leg $p$. Lower branch: the same with $V^{(2)}$ (weights $d_m$, no $f$, opposite sign in the exponent), which gives $\bar g_{q'}(t_p)$. The adder (purple) sums $q$ and $q'$ with the transfer momentum $Q$ open. The two time legs meet at a copy tensor carrying the weights $\varpi_p$, the product in time, and the Laplace train $\Lambda_{p,k}=e^{iw_kt_p}$ (orange) sends the time leg to the output points of $C_\mu$ (bits of $k$). The term $Y_p(-Q)^*$ of \eqref{eq:time_nodes} is the same network read at $-Q$ and conjugated.}
+  \caption{The time-domain network, in the conventions of Fig.~\ref{fig:contraction} (red legs are contracted, bits most significant first). Upper branch: the input train $\hat g_{q,n}$ (blue), its $n$ legs contracted with the train $V^{(1)}_{n,p}$ (green), which carries the modes to the time points $t_p$ and contains the Fermi function through $c_j$; the result is $A_{q,p}$, the function $g_q(t_p)$ in the gauge of \eqref{eq:vandermonde}, a train over the bits of $q$ with the time leg $p$. Lower branch: the same with $V^{(2)}$ (weights $d_m$, no $f$, opposite sign in the exponent), which gives $B_{q',p}$, the function $\bar g_{q'}(t_p)$. The adder (purple) sums $q$ and $q'$ with the transfer momentum $Q$ open. The two time legs meet at a copy tensor carrying the weights $\varpi_p$, the product in time, and the Laplace train $\Lambda_{p,k}$ (orange) sends the time leg to the output points of $C_\mu$ (bits of $k$). The time leg runs over the rules of the four directions; the labels give the leading factors of the tensors \eqref{eq:vandermonde}, without the gauge and the partition. The network gives $X_Q(w_k)$, and $\chi_Q(w_k)$ of \eqref{eq:time_nodes} is $X_Q(w_k)$ plus the same train read at $-Q$ and $k+N/2$.}
   \label{fig:time_network}
 \end{figure*}
 
@@ -274,7 +274,7 @@ and \eqref{eq:shrink}, applied in each variable, gives
   \end{aligned}
   \label{eq:shrink2}
 \end{equation}
-for every $\Psi$ analytic in both variables inside and on $C_\lambda$. The right side depends on $\Psi$ only through its values on the band, and with $\Psi=\Psi_w$ and $q'=q+Q$, summed over $q$ and divided by $N_q$, it is the bubble \eqref{eq:spectral}. The Cauchy route of Appendix~\ref{app:cauchy} applies \eqref{eq:shrink2} to $\Psi_w$ itself, which requires $\Psi_w$ to be analytic inside $C_\lambda$, that is, the copies $C_\lambda\pm w$ outside $C_\lambda$, $\lambda'_{\min}>\lambda$ in \eqref{eq:lammin}; on the nodes $\Psi_w$ is then a dense tensor in $z_j$, $z_m$ and $w_k$, compressed in Appendix~\ref{sec:tucker}. The time route first writes $\Psi_w$ on the band as an integral over time of products of exponentials, one factor per variable, and applies \eqref{eq:shrink2} to each product, which is analytic inside $C_\lambda$ for every time.
+for every $\Psi$ analytic in both variables inside and on $C_\lambda$. The right side depends on $\Psi$ only through its values on the band, and with $\Psi=\Psi_w$ and $q'=q+Q$, summed over $q$ and divided by $N_q$, it is the bubble \eqref{eq:spectral}. The Cauchy route of Appendix~\ref{app:cauchy} applies \eqref{eq:shrink2} to $\Psi_w$ itself, which requires $\Psi_w$ to be analytic inside $C_\lambda$, that is, the copies $C_\lambda\pm w$ outside $C_\lambda$, $\lambda'_{\min}>\lambda$ in \eqref{eq:lammin}; on the nodes $\Psi_w$ is then a dense tensor in $z_j$, $z_m$ and $w_k$, compressed in Appendix~\ref{sec:tucker}. Appendix~\ref{app:kernel_time} obtains the compressed tensor from the time route, where this condition is not needed. The time route first writes $\Psi_w$ on the band as an integral over time of products of exponentials, one factor per variable, and applies \eqref{eq:shrink2} to each product, which is analytic inside $C_\lambda$ for every time.
 
 For complex $x$ and a direction $\gamma$ in the complex $t$ plane,
 \begin{equation}
@@ -296,12 +296,42 @@ On $C_\lambda$ the exponentials $e^{\pm ist}$ reach $e^{H_\lambda(\gamma)\lvert 
   \Imag(we^{i\gamma})>H_\lambda(\gamma)+E\lvert\sin\gamma\rvert,
   \label{eq:margin}
 \end{equation}
-that is, when $w$ lies beyond every point $\varepsilon+s$, with $\varepsilon\in[-E,E]$ and $s\in C_\lambda$, in the direction $ie^{-i\gamma}$. We call the difference of the two sides the margin. On the upper half of $C_\mu$ we use real time, $\gamma=0$, where \eqref{eq:margin} reads $\Imag w>H_\lambda$, and around the right tip imaginary time, $\gamma=\pi/2$, where it reads $\Real w>E+\omega_\lambda(1)$, with $\omega_\lambda(1)=E\operatorname{nc}(K'\lambda\,|\,\kappa'^2)$, $\operatorname{nc}=1/\cn$, the tip of $C_\lambda$ on the positive real axis; each is used where its margin is the larger. The lower half and the left tip follow from $\chi_Q(\bar w)=\chi_Q(w)^*$ and $\chi_Q(-w)=\chi_{-Q}(w)$. At the point $ip_\mu$ the margin of real time is $p_\mu-H_\lambda$, positive under the condition $\lambda<\Lambda(\mu,\beta)$ of \eqref{eq:contour_w}. The Cauchy route needs the stronger condition $\lambda'_{\min}>\lambda$. Where both margins are small, a direction between $0$ and $\pi/2$ can have a larger one.
+that is, when $w$ lies beyond every point $\varepsilon+s$, with $\varepsilon\in[-E,E]$ and $s\in C_\lambda$, in the direction $ie^{-i\gamma}$. We call the difference of the two sides the margin. Real time, $\gamma=0$ and $\gamma=\pi$, serves the upper and lower halves of $C_\mu$, where \eqref{eq:margin} reads $\Imag w>H_\lambda$ and $\Imag w<-H_\lambda$. Imaginary time, $\gamma=\pi/2$ and $\gamma=3\pi/2$, serves the regions around the right and left tips, where it reads $\Real w>E+\omega_\lambda(1)$ and $\Real w<-E-\omega_\lambda(1)$, with $\omega_\lambda(1)=E\operatorname{nc}(K'\lambda\,|\,\kappa'^2)$, $\operatorname{nc}=1/\cn$, the tip of $C_\lambda$ on the positive real axis. At the point $ip_\mu$ the margin of real time is $p_\mu-H_\lambda$, positive under the condition $\lambda<\Lambda(\mu,\beta)$ of \eqref{eq:contour_w}. The Cauchy route needs the stronger condition $\lambda'_{\min}>\lambda$.
+
+No single direction serves all of $C_\mu$, and neither does any discretization of \eqref{eq:time_bubble} whose times and weights do not depend on $w$. Such a discretization is an entire function $g(w)$, while $\chi_Q$ has its cut inside $C_\mu$. With $C_\mu$ traversed counterclockwise, $\oint_{C_\mu}dw\,w\,g(w)=0$, while $\oint_{C_\mu}dw\,w\,\chi_Q(w)=2\pi i\,c_2$, where
+\begin{equation}
+  \begin{aligned}
+  c_2={}&\frac1{N_q}\sum_q\int_{-E}^{E}d\varepsilon\int_{-E}^{E}d\varepsilon'\,A_q(\varepsilon)\,A_{q+Q}(\varepsilon')\\
+  &\times\big[f(\varepsilon)-f(\varepsilon')\big](\varepsilon'-\varepsilon)
+  \end{aligned}
+  \label{eq:c2}
+\end{equation}
+is the coefficient of $w^{-2}$ in the expansion of \eqref{eq:spectral} at large $w$. Since $f$ decreases and $A_q\ge0$, $c_2>0$ unless $\chi_Q$ vanishes, and
+\begin{equation}
+  \max_{w\in C_\mu}\lvert\chi_Q(w)-g(w)\rvert\ge\frac{2\pi c_2}{L_\mu R_\mu},
+  \label{eq:entire_bound}
+\end{equation}
+with $L_\mu$ the length of $C_\mu$ and $R_\mu=\max_{C_\mu}\lvert w\rvert$. The weights must therefore depend on the output point, and the direction of the time integral is the cheapest such dependence.
+
+Let $X_Q$ be the part of the bubble with $f(\varepsilon)$,
+\begin{equation}
+  X_Q(w)=\frac1{N_q}\sum_q\int_{-E}^{E}d\varepsilon\int_{-E}^{E}d\varepsilon'\,\frac{f(\varepsilon)\,A_q(\varepsilon)\,A_{q+Q}(\varepsilon')}{w+\varepsilon-\varepsilon'}.
+  \label{eq:xq}
+\end{equation}
+In the term of \eqref{eq:spectral} with $f(\varepsilon')$, the substitution $q\to q-Q$ together with $\varepsilon\leftrightarrow\varepsilon'$ gives $X_{-Q}(-w)$, so $\chi_Q(w)=X_Q(w)+X_{-Q}(-w)$. For every direction with $\Imag(we^{i\gamma})>2E\lvert\sin\gamma\rvert$, \eqref{eq:laplace} turns \eqref{eq:xq} into $X_Q(w)=-i\int_0^{e^{i\gamma}\infty}dt\,e^{iwt}\,Y_Q(t)$, with $Y_Q(t)=N_q^{-1}\sum_qg_q(t)\,\bar g_{q+Q}(t)$; \eqref{eq:time_bubble} is this formula applied to both terms with the same direction. Let $P_\gamma(w)$, $\gamma\in\{0,\pi/2,\pi,3\pi/2\}$, be a partition of unity on $C_\mu$, $\sum_\gamma P_\gamma(w)=1$, with $P_\gamma(w)=0$ wherever the margin of $\gamma$ is below a fixed $m_0>0$; it exists when every point of $C_\mu$ has a direction with a margin of at least $m_0$. Then
+\begin{equation}
+  \begin{aligned}
+  \chi_Q(w)&=X_Q(w)+X_{-Q}(-w),\\
+  X_Q(w)&=-i\sum_\gamma P_\gamma(w)\int_0^{e^{i\gamma}\infty}dt\,e^{iwt}\,Y_Q(t),
+  \end{aligned}
+  \label{eq:one_formula}
+\end{equation}
+at every point of $C_\mu$, with one fixed set of directions. Each direction is used only where \eqref{eq:laplace} converges, so \eqref{eq:one_formula} is exact, and only where its margin is at least $m_0$, so the rounding error of each term is of the order of the machine precision divided by $m_0$. By \eqref{eq:xq}, $X_Q$ is analytic off $[-2E,2E]$, like $\chi_Q$, and every direction gives the same function where it is used, so the partition changes only how $X_Q$ is computed.
 
 \subsection{The time domain on the nodes}
 \label{sec:quadrature}
 
-The real-time functions $g_q$ and $\bar g_q$ are integrals over $C_\lambda$. Parametrize $C_\lambda$ by $\phi$: $z=\omega_\lambda(\phi)$, $dz=J_\lambda(\phi)\,d\phi$. The parametrization is clockwise, so for any $F$ analytic near the contour
+The time functions $g_q$ and $\bar g_q$ are integrals over $C_\lambda$. Parametrize $C_\lambda$ by $\phi$: $z=\omega_\lambda(\phi)$, $dz=J_\lambda(\phi)\,d\phi$. The parametrization is clockwise, so for any $F$ analytic near the contour
 \begin{equation}
   \frac1{2\pi i}\oint_{C_\lambda}F(z)\,dz=-\frac1{2\pi i}\int_{-1}^{7}d\phi\;J_\lambda(\phi)\,F\big(\omega_\lambda(\phi)\big).
 \end{equation}
@@ -315,23 +345,15 @@ The integrand is 8-periodic in $\phi$, and the trapezoidal rule on the uniform g
 \end{equation}
 For every $F$ that is analytic outside $C_\lambda$ and $O(z^{-2})$ at infinity, the residue theorem between $C_\lambda$ and a large circle, as in Sec.~\ref{sec:contour}, gives $\sum_jc_jF(z_j)\approx\beta^{-1}\sum_nF(i\omega_n)$: the $N$ nodes with the weights $c_j$ replace the Matsubara frequencies. Without the Fermi function the rule reads $\frac1{2\pi i}\oint_{C_\lambda}F\,dz\approx\sum_md_m\,F(z_m)$. The $c_j$ depend on $j$, $\lambda$ and $\beta$ only, never on $w$, $q$ or $G$, and the Fermi function is evaluated only at the nodes of $C_\lambda$. Both sets of weights are smooth in $\phi_j$ (rank 6 to 8 as quantics tensor trains, Appendix~\ref{sec:qtt}). The quadrature error falls exponentially with $N$, like $e^{-\alpha Nd}$ \eqref{eq:rate}, where $d$ is the distance in level from $C_\lambda$ to the nearest singularity of the integrand (Appendix~\ref{app:trap}).
 
-The two rules applied to $g_q$ and $\bar g_q$ give the real-time functions from the data,
+The two rules applied to $g_q$ and $\bar g_q$ give the time functions from the data, at real or complex $t$,
 \begin{equation}
   \begin{aligned}
   g_q(t)&\approx\sum_jc_j\,G_q(z_j)\,e^{iz_jt},\\
-  \bar g_q(t)&\approx\sum_md_m\,G_q(z_m)\,e^{-iz_mt},
+  \bar g_q(t)&\approx\sum_md_m\,G_q(z_m)\,e^{-iz_mt}.
   \end{aligned}
   \label{eq:gt_nodes}
 \end{equation}
-and on the upper half of $C_\mu$ the real-time integral in \eqref{eq:time_bubble} is replaced by a rule $\int_0^\infty dt\,h(t)\approx\sum_p\varpi_p\,h(t_p)$ with $N_t$ points, for instance the geometric grid $t_p=t_{\min}\rho^p$, $p=0,\ldots,N_t-1$, with $\varpi_p=t_p\ln\rho$ (half at the two ends), the trapezoidal rule in $\ln t$. Then
-\begin{equation}
-  \begin{aligned}
-  \chi_Q(w_k)&\approx-i\sum_p\varpi_p\,e^{iw_kt_p}\big[Y_p(Q)-Y_p(-Q)^*\big],\\
-  Y_p(Q)&=\frac1{N_q}\sum_qg_q(t_p)\,\bar g_{q+Q}(t_p),
-  \end{aligned}
-  \label{eq:time_nodes}
-\end{equation}
-since for real $t$ the second product in \eqref{eq:time_bubble} is $Y_p(-Q)^*$. Around the right tip the same construction runs at the imaginary times $it_p$, where the second product is the first one at $-Q$ and at the times $-it_p$.
+For each of the four directions $\gamma_a$ the integral over $\tau=\lvert t\rvert$ in \eqref{eq:one_formula} is replaced by a rule $\int_0^{T_a}d\tau\,h(\tau)\approx\sum_p\varpi_p\,h(\tau_p)$. At the points where $P_{\gamma_a}(w_k)>0$ the integrand decays at least like $e^{-d_a\tau}$, with $d_a$ the smallest value of $\Imag(w_ke^{i\gamma_a})-2E\lvert\sin\gamma_a\rvert$ there, and $T_a$ is the time at which $e^{-d_aT_a}$ reaches the target accuracy. In real time the integrand oscillates with frequencies up to $\max_k\lvert\Real w_k\rvert+2E$, which Gauss-Legendre panels of equal length resolve. In imaginary time it is a sum of exponentials with rates between $d_a$ and $d_a+4E$, and the panels double in length from the origin. The time leg $p$ runs over the four rules, with the times $t_p=e^{i\gamma_p}\tau_p$.
 
 A function given on the $N$ nodes of $C_\lambda$ has the discrete Fourier representation
 \begin{equation}
@@ -343,24 +365,63 @@ A function given on the $N$ nodes of $C_\lambda$ has the discrete Fourier repres
 \end{equation}
 where $n$ runs over any $N$ consecutive integers (we use the two's-complement range $-N/2\le n<N/2$); both relations are exact on the grid. Since $e^{i\pi n\phi_j/4}=e^{-i\pi n/4}e^{2\pi inj/N}$, the coefficient $\hat g_{q,n}$ is $e^{i\pi n/4}/N$ times the standard FFT of the data.
 
-In these modes the real-time functions are linear in the data,
+In these modes the time functions are linear in the data. With a gauge $h_p$, for instance $h_p=H_\lambda(\gamma_p)$, the network is built from the tensors
 \begin{equation}
   \begin{aligned}
-  g_q(t_p)&=\sum_n\hat g_{q,n}\,V^{(1)}_{n,p},\\
-  \bar g_q(t_p)&=\sum_n\hat g_{q,n}\,V^{(2)}_{n,p},\\
-  V^{(1)}_{n,p}&=\sum_jc_j\,e^{i\pi n\phi_j/4}\,e^{iz_jt_p},\\
-  V^{(2)}_{n,p}&=\sum_md_m\,e^{i\pi n\phi_m/4}\,e^{-iz_mt_p},
+  V^{(1)}_{n,p}&=\sum_jc_j\,e^{i\pi n\phi_j/4}\,e^{iz_jt_p-h_p\tau_p},\\
+  V^{(2)}_{n,p}&=\sum_md_m\,e^{i\pi n\phi_m/4}\,e^{-iz_mt_p-h_p\tau_p},\\
+  \Lambda_{p,k}&=-i\,e^{i\gamma_p}\,P_{\gamma_p}(w_k)\,e^{iw_kt_p+2h_p\tau_p},
   \end{aligned}
   \label{eq:vandermonde}
 \end{equation}
-and only a window of modes $n$ matters, because the coefficients decay exponentially (Appendix~\ref{sec:decay}). The matrices $V^{(1)}$ and $V^{(2)}$ depend only on the geometry and the time grid. In the network of Fig.~\ref{fig:time_network} the input train $\hat g$ is contracted with $V^{(1)}$ and $V^{(2)}$, the adder forms $Y_p(Q)$, a copy tensor multiplies by $\varpi_p$, and the Laplace train $\Lambda_{p,k}=e^{iw_kt_p}$ sends the time leg to the output points $w_k$.
+in which \eqref{eq:one_formula} reads
+\begin{equation}
+  \begin{aligned}
+  A_{q,p}&=\sum_n\hat g_{q,n}V^{(1)}_{n,p},\qquad B_{q,p}=\sum_n\hat g_{q,n}V^{(2)}_{n,p},\\
+  Y_p(Q)&=\frac1{N_q}\sum_qA_{q,p}\,B_{q+Q,p},\\
+  X_Q(w_k)&=\sum_p\varpi_p\,\Lambda_{p,k}\,Y_p(Q),\\
+  \chi_Q(w_k)&=X_Q(w_k)+X_{-Q}(w_{k+N/2}),
+  \end{aligned}
+  \label{eq:time_nodes}
+\end{equation}
+since $-w_k=w_{k+N/2}$ by \eqref{eq:symmetries}. The gauge cancels between the leaves and $\Lambda$. With $h_p=H_\lambda(\gamma_p)$ every term of the node sums is at most $\max_j\lvert c_jG_q(z_j)\rvert$, the entries of $V^{(1)}$ and $V^{(2)}$ are at most $\sum_j\lvert c_j\rvert$ and $\sum_m\lvert d_m\rvert$, and $\lvert\Lambda_{p,k}\rvert\le1$ wherever $\Imag(w_ke^{i\gamma_p})\ge2H_\lambda(\gamma_p)$; where this fails on part of an arc, a smaller $h_p$ shares the remaining growth between the leaves and $\Lambda$. Since the leaves are bounded, the input $\hat g$ needs no weights $1/s_n$, unlike in the Cauchy route, and the modes with $s_n$ below the target accuracy can be dropped (Appendix~\ref{sec:decay}). The matrices $V^{(1)}$, $V^{(2)}$ and $\Lambda$ depend only on the geometry, the time rules and the partition. In the network of Fig.~\ref{fig:time_network} the input train $\hat g$ is contracted with $V^{(1)}$ and $V^{(2)}$, the adder forms $Y_p(Q)$, a copy tensor multiplies by $\varpi_p$, and the Laplace train $\Lambda_{p,k}$ sends the time leg to the output points $w_k$. The result is the train $X_Q(w_k)$. The second term of \eqref{eq:time_nodes} is the same train read at $-Q$ and $k+N/2$, that is, after the reflection $Q\to-Q$ of Appendix~\ref{sec:qtt} and a NOT on the most significant bit of $k$, and the two trains are added as in Appendix~\ref{app:sum}. The simplest partition takes $P_\gamma(w_k)=1$ for the direction with the largest margin at $w_k$ and $0$ for the others.
+
+\section{Tests}
+\label{sec:tests}
+
+\begin{table*}[t]
+\caption{The time network and the Cauchy route for the model \eqref{eq:model} with $\lambda=0.2$, $N=512$ and $N_q=1024$, compared with the Lindhard function at all points of $C_\mu$ and all transfer momenta. The error is $\max_{Q,k}\lvert\chi-\chi_{\rm exact}\rvert/\max_{Q,k}\lvert\chi_{\rm exact}\rvert$, and the largest entries of the trains are relative to $\max\lvert\chi_{\rm exact}\rvert$. The bonds are the largest bonds of TT-SVDs of the dense trains at $10^{-10}$ with the criterion \eqref{eq:trunc}; $A$, $B$ and $Y$ carry the time leg $p$ (time network) or a Tucker leg (Cauchy route) at their first site. Real time alone uses $\gamma=0$ on the upper half of $C_\mu$ and $\gamma=\pi$ on the lower half.}
+\label{tab:time}
+\centering\small
+\setlength{\tabcolsep}{6pt}
+\begin{tabular}{@{}lccccc@{}}
+\toprule
+ & \multicolumn{2}{c}{time network} & \multicolumn{2}{c}{Cauchy route} & real time alone \\
+ & $\mu=0.4$ & $\mu=0.25$ & $\mu=0.4$ & $\mu=0.25$ & $\mu=0.4$ \\
+\midrule
+time points or Tucker ranks & 1024 & 2048 & $(31,33,44)$ & $(67,70,103)$ & 512 \\
+smallest margin on $C_\mu$ & 0.63 & 0.11 & & & $-0.52$ \\
+error & $4.6\times10^{-14}$ & $1.3\times10^{-13}$ & $1.7\times10^{-7}$ & $5.3\times10^{-2}$ & 0.11 \\
+largest entry of $A$, $Y$ & 4.6, 2.3 & 3.5, 1.7 & 47, 0.93 & & \\
+rank of $\Lambda$ over $(p,k)$ & 176 & 257 & & & 24 \\
+largest bond of $A$, $B$, $Y$ & 70, 68, 55 & 102, 100, 68 & 46, 47, 40 & & \\
+largest bond of $\chi$ & 40 & 62 & 38 & & \\
+\bottomrule
+\end{tabular}
+\end{table*}
+
+We test the network on the model \eqref{eq:model} with $\lambda=0.2$, $N=512$ and $N_q=1024$, at $\mu=0.4$ and at $\mu=0.25$. The second value lies below $\mu_{\rm fwd}(0.2)=0.36$, so the copies $C_\lambda\pm w_k$ overlap $C_\lambda$ and the Cauchy route of Appendix~\ref{app:cauchy} fails, while $\lambda<\Lambda(\mu,\beta)$ still holds. The reference is the Lindhard function \eqref{eq:lindhard} at all 512 points of $C_\mu$ and all transfer momenta. The tensors are built densely in double precision. Each direction has 8 Gauss-Legendre panels of 32 points at $\mu=0.4$ and 16 panels at $\mu=0.25$, with $d_aT_a=30$, and the partition takes the direction with the largest margin. The gauge is $h_p=H_\lambda(\gamma_p)$ at $\mu=0.4$; at $\mu=0.25$, where $p_\mu<2H_\lambda$, it is lowered to $h_p=0.40$ in real time and $3.15$ in imaginary time. Table~\ref{tab:time} collects the results. Its bonds are those of TT-SVDs of the dense tensors, while Table~\ref{tab:steps} gives those of the recompressed trains of the Cauchy route.
+
+The time network gives the bubble to $4.6\times10^{-14}$ of its maximum at $\mu=0.4$ and $1.3\times10^{-13}$ at $\mu=0.25$, at every point of $C_\mu$, the tips included; where $\lvert\chi_Q\rvert$ exceeds $10^{-3}$ of its maximum, the relative error is below $10^{-11}$. The trains $A$, $B$, $Y$ and $X$ stay below five times the largest $\lvert\chi_Q\rvert$, and the entries of the leaves stay below 2 at $\mu=0.4$ and below 44 at $\mu=0.25$, while without the gauge the node sums reach $10^{39}$ and $10^{142}$. The Cauchy route gives $1.7\times10^{-7}$ at $\mu=0.4$, the accuracy of its kernel compressed at $10^{-8}$, and fails at $\mu=0.25$. Real time alone, $\gamma=0$ on the upper half and $\gamma=\pi$ on the lower half, is accurate on most of $C_\mu$ but errs by $0.11$ of the maximum at the tips, where the integrand does not decay, and more time points do not reduce this error. The bound \eqref{eq:entire_bound} quantifies why imaginary time is needed there. At $\mu=0.4$ and $Q=\pi$, $c_2=3.75$, $L_\mu=35.6$ and $R_\mu=7.49$, so any formula entire in $w$ errs by at least $0.088$, that is $41\,\%$ of $\max_k\lvert\chi_Q\rvert$; at the other transfer momenta tested and at $\mu=0.25$ the bound lies between 14 and $43\,\%$.
+
+The bonds of the result $\chi$ are those of the Cauchy route, 40 against 38 at $\mu=0.4$, since the two routes represent the same tensor. The intermediate trains carry the time leg and are larger: the Laplace train has rank 176 over $(p,k)$ at $\mu=0.4$, against the 44 output modes of the Cauchy route, and the largest bonds of $A$ and $Y$ are 70 and 55 against 46 and 40. The core, however, is diagonal: the time leg sits at the first site of $A$, $B$ and $Y$, where the Cauchy route carries its Tucker legs, and the adder step carries a leg of 1024 points instead of the leg $(a,c)$ of $B'$, of dimension $r_1r_3=1364$. No HOSVD and no Cauchy sums over the nodes are needed. With the input on the window $s_n\ge10^{-10}$, 131 modes, the error is $4.7\times10^{-14}$, and on $s_n\ge10^{-6}$, 78 modes, it is $4.6\times10^{-9}$ ($1.5\times10^{-8}$ at $\mu=0.25$), so the input window follows the target accuracy. A smooth partition, with weights proportional to the square of the margin above $m_0=0.3$ or $0.5$, gives the same accuracy with the longer windows $T_a\le57$ or $43$ and a Laplace train of rank 205 or 187.
 
 \appendix
 
 \section{The Cauchy route}
 \label{app:cauchy}
 
-In this appendix $G_{q\pm Q}$ at the shifted points $z\pm w$ is obtained from its values on $C_\lambda$ with Cauchy's formula, instead of the time representation of Sec.~\ref{sec:time}. This route covers all of $C_\mu$, its tips included, when the shifted points lie outside $C_\lambda$, that is $\lambda'_{\min}>\lambda$ in \eqref{eq:lammin}. Appendices~\ref{sec:qtt} to~\ref{sec:accuracy} build its tensor network and test it.
+In this appendix $G_{q\pm Q}$ at the shifted points $z\pm w$ is obtained from its values on $C_\lambda$ with Cauchy's formula, instead of the time representation of Sec.~\ref{sec:time}. This route covers all of $C_\mu$, its tips included, when the shifted points lie outside $C_\lambda$, that is $\lambda'_{\min}>\lambda$ in \eqref{eq:lammin}. Appendices~\ref{sec:qtt} to~\ref{sec:accuracy} build its tensor network and test it. Appendix~\ref{app:kernel_time} builds its kernel from the time route, which needs only $\lambda<\Lambda(\mu,\beta)$.
 
 Formula \eqref{eq:contour_w} needs $G_{q\pm Q}$ at the shifted points $z\pm w$, off the contour, while the data are the values of $G$ on the dumbbell $C_\lambda$, and the method evaluates $G$ only there. Cauchy's formula, the first equality in \eqref{eq:lehmann}, gives $G(x)$ at every $x$ outside $C_\lambda$. For $x$ \emph{inside} $C_\lambda$ the same integral gives $0$ instead of $G(x)$: then $s\mapsto G(s)/(x-s)$ is analytic outside $C_\lambda$ and $O(s^{-2})$, so its integral over $C_\lambda$ equals its integral over $C_R$, which vanishes. With $x=z\pm w$ in \eqref{eq:contour_w}, the bubble becomes a double integral over the dumbbell, in which $G$ enters only on $C_\lambda$:
 \begin{equation}
@@ -485,6 +546,18 @@ In dumbbell coordinates a Cauchy kernel from the band to a contour at level $\La
   \label{eq:ranklaw}
 \end{equation}
 for $\varepsilon=10^{-8}$ this gives $42$ and $31$ at $\mu=0.4$ (measured 44 and 31), and $84$ and $53$ at $\mu=0.2$ (measured 87 and 56). The prefactors are below 1 because the HOSVD measures the error in the Frobenius norm over the whole cloud, most of which lies far above level $\Lambda$; the sup-norm version (the number of poles needed to represent a Green function on $C_\Lambda$) is $\log(1/\varepsilon)/(\alpha\Lambda)$ within 1 to 3\,\%. The ranks therefore grow like $\log(1/\varepsilon)$ (about $+9$ per two decades for $(0.2,0.4)$ and $+16$ for $(0.1,0.2)$), like $1/\mu$, and roughly linearly with $\beta$ at fixed level, because at fixed level the whole dumbbell family moves toward the real axis as $T\to0$. They do not depend on $N$ or on $\lambda$.
+
+\subsection{The kernel from the time route}
+\label{app:kernel_time}
+
+The tensors \eqref{eq:vandermonde} give the kernel of this route in canonical form, with the time leg as its rank,
+\begin{equation}
+  K^{\rm t}_{n'nk}=\sum_p\varpi_p\,V^{(1)}_{n',p}\,V^{(2)}_{n,p}\,\Lambda_{p,k}.
+  \label{eq:kernel_time}
+\end{equation}
+By \eqref{eq:time_nodes}, $X_Q(w_k)=\sum_{n',n}P^+_Q(n',n)\,K^{\rm t}_{n'nk}$, which is the first term of the bubble in Appendix~\ref{sec:modes} with $K^{\rm t}_{n'nk}$ in place of $K_{n'n}(w_k)$, and the second term is $X_{-Q}(w_{k+N/2})$, read at $k+N/2$ as there. When the copies $C_\lambda\pm w_k$ lie outside $C_\lambda$, the two kernels agree up to the quadrature errors. When they overlap $C_\lambda$, $K_{n'n}(w_k)$ no longer gives the bubble, while $K^{\rm t}$ still does for every $G$ analytic off the band, because it comes from \eqref{eq:shrink2} applied to products of exponentials. Projected on the output modes with \eqref{eq:chihat} and weighted by $s_{n'}s_n$, $K^{\rm t}$ takes the place of $\widehat K$ in \eqref{eq:kernel_tucker}, and the network of Appendices~\ref{sec:qtt} to~\ref{sec:accuracy} runs unchanged on all of $C_\mu$ whenever $\lambda<\Lambda(\mu,\beta)$.
+
+For $N_q=64$ and $(\lambda,\mu)=(0.2,0.4)$, $K^{\rm t}$ agrees with $K_{n'n}(w_k)$ on the window of modes to $2.2\times10^{-11}$ of its largest entry, its HOSVD at $10^{-8}$ has the ranks $(31,33,44)$ of Appendix~\ref{sec:tucker}, and the network with this tree gives the bubble to $1.7\times10^{-7}$. For $(0.2,0.25)$, below $\mu_{\rm fwd}(0.2)$, the two kernels differ by $36\,\%$ of the largest entry and the tree of the Cauchy kernel gives the bubble only to $5.3\times10^{-2}$, while the tree of $K^{\rm t}$ has the ranks $(46,49,70)$ and gives $5.0\times10^{-7}$.
 
 \section{Quantics tensor trains}
 \label{sec:qtt}
@@ -758,7 +831,9 @@ A train is recompressed in two sweeps. (i)~A QR sweep from left to right: reshap
   \item Contract the core into $B$ before the adder. Correlating $A$ and $B$ first creates $M(Q;a,b)$, with a front leg of 1023; its zip-up swells to bonds of 600 to 2600, and capping them costs 3 to 13\,\% accuracy.
   \item Put $\ell$ on the same bits as $k$. The inverse DFT is then the square, QFT-type transform \eqref{eq:dft_bits}, with bond at most 11. Keeping only the 128 window modes on 7 bits gives a rectangular map with bond 32.
   \item Compute $Y^-$ by reflecting $Y^+$ (Appendix~\ref{sec:contraction}): one zip-up instead of two, 31\,s instead of 60\,s.
-  \item Choose $\lambda\lesssim\mu/2$, so that the copies $C_\lambda\pm w_k$ stay outside $C_\lambda$ ($\lambda'_{\min}>\lambda$, Sec.~\ref{sec:dumbbell_map}), keep the input modes with $s_n\ge10^{-8}$ (Appendix~\ref{sec:decay}), and set the tolerances to $10^{-8}$ for the kernel, $10^{-6}$ for the input, $10^{-10}$ for the leaves, $10^{-12}$ for the DFT and $10^{-9}$ for the recompression. The kernel ranks grow like $\log(1/\varepsilon)$ and like $1/\mu$ (and with $\beta$), as in \eqref{eq:ranklaw}. They do not grow with $N$ or $\lambda$, and the kernel may be built at a smaller $N$ than the data's (Appendix~\ref{sec:decay}).
+  \item In the Cauchy route, choose $\lambda\lesssim\mu/2$, so that the copies $C_\lambda\pm w_k$ stay outside $C_\lambda$ ($\lambda'_{\min}>\lambda$, Sec.~\ref{sec:dumbbell_map}), keep the input modes with $s_n\ge10^{-8}$ (Appendix~\ref{sec:decay}), and set the tolerances to $10^{-8}$ for the kernel, $10^{-6}$ for the input, $10^{-10}$ for the leaves, $10^{-12}$ for the DFT and $10^{-9}$ for the recompression. The kernel ranks grow like $\log(1/\varepsilon)$ and like $1/\mu$ (and with $\beta$), as in \eqref{eq:ranklaw}. They do not grow with $N$ or $\lambda$, and the kernel may be built at a smaller $N$ than the data's (Appendix~\ref{sec:decay}).
+  \item In the time network, put the four directions on one time leg. The second term of \eqref{eq:time_nodes} needs $Y$ at the negated times, which in real time is the complex conjugate of $Y$ and in imaginary time a separate grid, so filling part of $C_\mu$ with the symmetries $\chi_Q(\bar w)=\chi_Q(w)^*$ and $\chi_Q(-w)=\chi_{-Q}(w)$ saves at most one of the four grids. The symmetry maps of the output, $k\to N/2-k$ with complex conjugation and $k\to k+N/2$ with $Q\to-Q$, are exact MPOs of bond 2 and serve as checks.
+  \item Keep the direction fixed on each arc of $C_\mu$. The direction with the largest margin at each point raises the smallest margin from 0.11 to 0.22 at $(\lambda,\mu)=(0.2,0.25)$ and leaves it at 0.63 at $(0.2,0.4)$, but the leaves then depend on the output point: on a quarter of $C_\mu$ the leaf $V_{n,p,k}$ has rank 35 over $k$ at $10^{-10}$, and the time leg of that quarter grows from 512 to 8960.
 \end{enumerate}
 
 \end{document}

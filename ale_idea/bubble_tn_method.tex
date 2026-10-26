@@ -261,24 +261,42 @@ In terms of levels this reads $\lambda<\Lambda(\mu,\beta)$, where $\Lambda(\mu,\
   \label{fig:time_network}
 \end{figure*}
 
-The data are the values of $G$ on $C_\lambda$, while \eqref{eq:contour_w} needs $G_{q\pm Q}$ at the shifted points $z\pm w$, off the contour. A time representation of \eqref{eq:spectral} avoids them. Since $\varepsilon$ and $\varepsilon'$ are real,
+The data are the values of $G$ on $C_\lambda$, while \eqref{eq:contour_w} needs $G_{q\pm Q}$ at the shifted points $z\pm w$, off the contour. The spectral form \eqref{eq:spectral} is a bilinear form in the spectral functions with the kernel
 \begin{equation}
-  \frac1{w+\varepsilon-\varepsilon'}=
-  \begin{cases}
-  -i\displaystyle\int_0^\infty dt\,e^{i(w+\varepsilon-\varepsilon')t}, & \Imag w>0,\\[8pt]
-  i\displaystyle\int_0^\infty dt\,e^{-i(w+\varepsilon-\varepsilon')t}, & \Imag w<0.
-  \end{cases}
-  \label{eq:laplace}
+  \Psi_w(\varepsilon,\varepsilon')=\frac{f(\varepsilon)-f(\varepsilon')}{w+\varepsilon-\varepsilon'},
+  \label{eq:kernel_psi}
 \end{equation}
-Inserted into \eqref{eq:spectral} with $\Imag w>0$, the first line makes the integrals over $\varepsilon$ and $\varepsilon'$ factorize into the real-time Green functions $\bar g_q$ of \eqref{eq:gbar} and $g_q$. The term with $f(\varepsilon)$ gives $g_q(t)\,\bar g_{q+Q}(t)$, and the term with $f(\varepsilon')$ gives $\bar g_q(t)^*\,g_{q+Q}(t)^*$, so the bubble becomes a product in time,
+and \eqref{eq:shrink}, applied in each variable, gives
 \begin{equation}
   \begin{aligned}
-  \chi_Q(w)={}&-\frac{i}{N_q}\sum_q\int_0^\infty dt\,e^{iwt}\\
-  &\times\big[g_q(t)\,\bar g_{q+Q}(t)-\bar g_q(t)^*\,g_{q+Q}(t)^*\big],
+  &\frac1{(2\pi i)^2}\oint_{C_\lambda}dz\oint_{C_\lambda}ds\,G_q(z)\,G_{q'}(s)\,\Psi(z,s)\\
+  &\quad=\int_{-E}^{E}d\varepsilon\int_{-E}^{E}d\varepsilon'\,A_q(\varepsilon)\,A_{q'}(\varepsilon')\,\Psi(\varepsilon,\varepsilon')
+  \end{aligned}
+  \label{eq:shrink2}
+\end{equation}
+for every $\Psi$ analytic in both variables inside and on $C_\lambda$. The right side depends on $\Psi$ only through its values on the band, and with $\Psi=\Psi_w$ and $q'=q+Q$, summed over $q$ and divided by $N_q$, it is the bubble \eqref{eq:spectral}. The Cauchy route of Appendix~\ref{app:cauchy} applies \eqref{eq:shrink2} to $\Psi_w$ itself, which requires $\Psi_w$ to be analytic inside $C_\lambda$, that is, the copies $C_\lambda\pm w$ outside $C_\lambda$, $\lambda'_{\min}>\lambda$ in \eqref{eq:lammin}; on the nodes $\Psi_w$ is then a dense tensor in $z_j$, $z_m$ and $w_k$, compressed in Appendix~\ref{sec:tucker}. The time route first writes $\Psi_w$ on the band as an integral over time of products of exponentials, one factor per variable, and applies \eqref{eq:shrink2} to each product, which is analytic inside $C_\lambda$ for every time.
+
+For complex $x$ and a direction $\gamma$ in the complex $t$ plane,
+\begin{equation}
+  \frac1x=-i\int_0^{e^{i\gamma}\infty}dt\,e^{ixt},\qquad\Imag(xe^{i\gamma})>0,
+  \label{eq:laplace}
+\end{equation}
+where $t$ runs from $0$ to infinity along the half-line $\arg t=\gamma$; for $\gamma=0$ and $\gamma=\pi$ this is \eqref{eq:laplace_z}. With $x=w+\varepsilon-\varepsilon'$ the integrand $e^{iwt}\,e^{i\varepsilon t}\,e^{-i\varepsilon't}$ has one factor per variable, so in time the kernel is diagonal, a delta in $t$, which is the copy tensor of Fig.~\ref{fig:time_network}. Inserted into \eqref{eq:spectral}, \eqref{eq:laplace} makes the integrals over $\varepsilon$ and $\varepsilon'$ factorize into $\bar g_q$ of \eqref{eq:gbar} and $g_q$ at complex $t$, where their contour forms still hold. The term with $f(\varepsilon)$ gives $g_q(t)\,\bar g_{q+Q}(t)$, and the term with $f(\varepsilon')$ gives $\bar g_q(-t)\,g_{q+Q}(-t)$, so the bubble becomes a product in time,
+\begin{equation}
+  \begin{aligned}
+  \chi_Q(w)={}&-\frac{i}{N_q}\sum_q\int_0^{e^{i\gamma}\infty}dt\,e^{iwt}\\
+  &\times\big[g_q(t)\,\bar g_{q+Q}(t)-\bar g_q(-t)\,g_{q+Q}(-t)\big],
   \end{aligned}
   \label{eq:time_bubble}
 \end{equation}
-Since $\bar g_q$ and $g_q$ are integrals of the data over $C_\lambda$, $G$ is never needed off the contour. On the lower half of $C_\mu$ the second line of \eqref{eq:laplace} gives the same with all functions conjugated, $\chi_Q(w)=\chi_Q(\bar w)^*$. Near the tips of $C_\mu$, where $\Imag w\to0$, the time integral needs long times, and the contour sums for $g_q$ and $\bar g_q$, whose terms grow like $e^{H_\lambda t}$, lose accuracy; there the Cauchy route of Appendix~\ref{app:cauchy} applies.
+exact when $\Imag(we^{i\gamma})>2E\lvert\sin\gamma\rvert$, which makes $\Imag(xe^{i\gamma})>0$ for all $\varepsilon$ and $\varepsilon'$ in the band. For real $t$, $\bar g_q(-t)=\bar g_q(t)^*$ and $g_q(-t)=g_q(t)^*$, since $A_q$ and $f$ are real on the band. The functions $\bar g_q$ and $g_q$ are integrals of the data over $C_\lambda$, so $G$ is never needed off the contour.
+
+On $C_\lambda$ the exponentials $e^{\pm ist}$ reach $e^{H_\lambda(\gamma)\lvert t\rvert}$, where $H_\lambda(\gamma)=\max_{s\in C_\lambda}\Imag(se^{i\gamma})$ is the height of $C_\lambda$ in the direction $ie^{-i\gamma}$, while $\bar g_q$ and $g_q$ grow only like $e^{E\lvert\sin\gamma\rvert\lvert t\rvert}$, as on the band. The node sums for them therefore carry rounding errors of relative size $e^{(H_\lambda(\gamma)-E\lvert\sin\gamma\rvert)\lvert t\rvert}$ times the machine precision, and the factor $e^{iwt}$ damps these errors when
+\begin{equation}
+  \Imag(we^{i\gamma})>H_\lambda(\gamma)+E\lvert\sin\gamma\rvert,
+  \label{eq:margin}
+\end{equation}
+that is, when $w$ lies beyond every point $\varepsilon+s$, with $\varepsilon\in[-E,E]$ and $s\in C_\lambda$, in the direction $ie^{-i\gamma}$. We call the difference of the two sides the margin. On the upper half of $C_\mu$ we use real time, $\gamma=0$, where \eqref{eq:margin} reads $\Imag w>H_\lambda$, and around the right tip imaginary time, $\gamma=\pi/2$, where it reads $\Real w>E+\omega_\lambda(1)$, with $\omega_\lambda(1)=E\operatorname{nc}(K'\lambda\,|\,\kappa'^2)$, $\operatorname{nc}=1/\cn$, the tip of $C_\lambda$ on the positive real axis; each is used where its margin is the larger. The lower half and the left tip follow from $\chi_Q(\bar w)=\chi_Q(w)^*$ and $\chi_Q(-w)=\chi_{-Q}(w)$. At the point $ip_\mu$ the margin of real time is $p_\mu-H_\lambda$, positive under the condition $\lambda<\Lambda(\mu,\beta)$ of \eqref{eq:contour_w}. The Cauchy route needs the stronger condition $\lambda'_{\min}>\lambda$. Where both margins are small, a direction between $0$ and $\pi/2$ can have a larger one.
 
 \subsection{The time domain on the nodes}
 \label{sec:quadrature}
@@ -305,7 +323,7 @@ The two rules applied to $g_q$ and $\bar g_q$ give the real-time functions from 
   \end{aligned}
   \label{eq:gt_nodes}
 \end{equation}
-and the time integral in \eqref{eq:time_bubble} is replaced by a rule $\int_0^\infty dt\,h(t)\approx\sum_p\varpi_p\,h(t_p)$ with $N_t$ points, for instance the geometric grid $t_p=t_{\min}\rho^p$, $p=0,\ldots,N_t-1$, with $\varpi_p=t_p\ln\rho$ (half at the two ends), the trapezoidal rule in $\ln t$. Then
+and on the upper half of $C_\mu$ the real-time integral in \eqref{eq:time_bubble} is replaced by a rule $\int_0^\infty dt\,h(t)\approx\sum_p\varpi_p\,h(t_p)$ with $N_t$ points, for instance the geometric grid $t_p=t_{\min}\rho^p$, $p=0,\ldots,N_t-1$, with $\varpi_p=t_p\ln\rho$ (half at the two ends), the trapezoidal rule in $\ln t$. Then
 \begin{equation}
   \begin{aligned}
   \chi_Q(w_k)&\approx-i\sum_p\varpi_p\,e^{iw_kt_p}\big[Y_p(Q)-Y_p(-Q)^*\big],\\
@@ -313,7 +331,7 @@ and the time integral in \eqref{eq:time_bubble} is replaced by a rule $\int_0^\i
   \end{aligned}
   \label{eq:time_nodes}
 \end{equation}
-since the second product in \eqref{eq:time_bubble} is $Y_p(-Q)^*$.
+since for real $t$ the second product in \eqref{eq:time_bubble} is $Y_p(-Q)^*$. Around the right tip the same construction runs at the imaginary times $it_p$, where the second product is the first one at $-Q$ and at the times $-it_p$.
 
 A function given on the $N$ nodes of $C_\lambda$ has the discrete Fourier representation
 \begin{equation}

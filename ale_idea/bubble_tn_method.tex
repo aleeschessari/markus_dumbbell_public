@@ -559,6 +559,8 @@ By \eqref{eq:time_nodes}, $X_Q(w_k)=\sum_{n',n}P^+_Q(n',n)\,K^{\rm t}_{n'nk}$, w
 
 For $N_q=64$ and $(\lambda,\mu)=(0.2,0.4)$, $K^{\rm t}$ agrees with $K_{n'n}(w_k)$ on the window of modes to $2.2\times10^{-11}$ of its largest entry, its HOSVD at $10^{-8}$ has the ranks $(31,33,44)$ of Appendix~\ref{sec:tucker}, and the network with this tree gives the bubble to $1.7\times10^{-7}$. For $(0.2,0.25)$, below $\mu_{\rm fwd}(0.2)$, the two kernels differ by $36\,\%$ of the largest entry and the tree of the Cauchy kernel gives the bubble only to $5.3\times10^{-2}$, while the tree of $K^{\rm t}$ has the ranks $(46,49,70)$ and gives $5.0\times10^{-7}$.
 
+The canonical form also compresses the time leg of Sec.~\ref{sec:quadrature}. Let $U^{(3)}$ hold the leading left singular vectors of the unfolding of the weighted $K^{\rm t}$ over its output index $k$. Replacing $\Lambda$ by $\Lambda U^{(3)}U^{(3)\dagger}$ reduces the output leg to $r_3$ at the accuracy of the truncation: at $(0.2,0.4)$, $r_3=44$ and the error $1.6\times10^{-7}$ at $10^{-8}$, and $r_3=55$ and $2.1\times10^{-9}$ at $10^{-10}$; at $(0.2,0.25)$, 70 and $4.1\times10^{-7}$, and 88 and $7.1\times10^{-9}$. The time network can therefore trade its accuracy for the ranks of the Cauchy route.
+
 \section{Quantics tensor trains}
 \label{sec:qtt}
 

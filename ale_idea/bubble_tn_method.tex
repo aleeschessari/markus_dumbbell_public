@@ -254,13 +254,6 @@ In terms of levels this reads $\lambda<\Lambda(\mu,\beta)$, where $\Lambda(\mu,\
 \subsection{The bubble as a product in time}
 \label{sec:time}
 
-\begin{figure*}[tp]
-  \centering
-  \includegraphics[width=\textwidth]{time_network.pdf}
-  \caption{The time-domain network, in the conventions of Fig.~\ref{fig:contraction} (red legs are contracted, bits most significant first). Upper branch: the input train $\hat g_{q,n}$ (blue), its $n$ legs contracted with the train $V^{(1)}_{n,p}$ (green), which carries the modes to the time points $t_p$ and contains the Fermi function through $c_j$; the result is $A_{q,p}$, the function $g_q(t_p)$ in the gauge of \eqref{eq:vandermonde}, a train over the bits of $q$ with the time leg $p$. Lower branch: the same with $V^{(2)}$ (weights $d_m$, no $f$, opposite sign in the exponent), which gives $B_{q',p}$, the function $\bar g_{q'}(t_p)$. The adder (purple) sums $q$ and $q'$ with the transfer momentum $Q$ open. The two time legs meet at a copy tensor carrying the weights $\varpi_p$, the product in time, and the Laplace train $\Lambda_{p,k}$ (orange) sends the time leg to the output points of $C_\mu$ (bits of $k$). The time leg runs over the rules of the four directions; the labels give the leading factors of the tensors \eqref{eq:vandermonde}, without the gauge and the partition. The network gives $X_Q(w_k)$, and $\chi_Q(w_k)$ of \eqref{eq:time_nodes} is $X_Q(w_k)$ plus the same train read at $-Q$ and $k+N/2$.}
-  \label{fig:time_network}
-\end{figure*}
-
 The data are the values of $G$ on $C_\lambda$, while \eqref{eq:contour_w} needs $G_{q\pm Q}$ at the shifted points $z\pm w$, off the contour. The spectral form \eqref{eq:spectral} is a bilinear form in the spectral functions with the kernel
 \begin{equation}
   \Psi_w(\varepsilon,\varepsilon')=\frac{f(\varepsilon)-f(\varepsilon')}{w+\varepsilon-\varepsilon'},
@@ -276,12 +269,19 @@ and \eqref{eq:shrink}, applied in each variable, gives
 \end{equation}
 for every $\Psi$ analytic in both variables inside and on $C_\lambda$. The right side depends on $\Psi$ only through its values on the band, and with $\Psi=\Psi_w$ and $q'=q+Q$, summed over $q$ and divided by $N_q$, it is the bubble \eqref{eq:spectral}. The Cauchy route of Appendix~\ref{app:cauchy} applies \eqref{eq:shrink2} to $\Psi_w$ itself, which requires $\Psi_w$ to be analytic inside $C_\lambda$, that is, the copies $C_\lambda\pm w$ outside $C_\lambda$, $\lambda'_{\min}>\lambda$ in \eqref{eq:lammin}; on the nodes $\Psi_w$ is then a dense tensor in $z_j$, $z_m$ and $w_k$, compressed in Appendix~\ref{sec:tucker}. Appendix~\ref{app:kernel_time} obtains the compressed tensor from the time route, where this condition is not needed. The time route first writes $\Psi_w$ on the band as an integral over time of products of exponentials, one factor per variable, and applies \eqref{eq:shrink2} to each product, which is analytic inside $C_\lambda$ for every time.
 
+\begin{figure*}[t]
+  \centering
+  \includegraphics[width=0.82\textwidth]{laplace_geometry.pdf}
+  \caption{The geometry of the time representation \eqref{eq:laplace}, for $E=3$, $\beta=\pi$ and $\mu=0.4$. (a) The variable $x$. For the direction $\gamma$ the formula holds in the half-plane $\Imag(xe^{i\gamma})>0$, bounded by the line through the origin at the angle $-\gamma$: the real axis for real time (blue dashed) and the imaginary axis for imaginary time (orange dashed). In the bubble $x=w+\varepsilon-\varepsilon'$ fills the segment $w+[-2E,2E]$, drawn at the crossing $w=ip_\mu$ of $C_\mu$ (blue) and at its right tip (orange), with $C_\mu$ dashed. The lines through the origin that miss the first segment fill the blue double wedge, of half-angle $\arctan(p_\mu/2E)=0.19$, so real time works there. The second segment lies on the real axis, and the lines that miss it are all the others, best the imaginary axis. (b) The corresponding directions of $t$: within 0.19 of real time at the crossing (blue), anywhere in $(0,\pi)$ at the tip, with imaginary time in the middle (orange). All admissible directions give the same $1/x$.}
+  \label{fig:laplace_geometry}
+\end{figure*}
+
 For complex $x$ and a direction $\gamma$ in the complex $t$ plane,
 \begin{equation}
   \frac1x=-i\int_0^{e^{i\gamma}\infty}dt\,e^{ixt},\qquad\Imag(xe^{i\gamma})>0,
   \label{eq:laplace}
 \end{equation}
-where $t$ runs from $0$ to infinity along the half-line $\arg t=\gamma$; for $\gamma=0$ and $\gamma=\pi$ this is \eqref{eq:laplace_z}. With $x=w+\varepsilon-\varepsilon'$ the integrand $e^{iwt}\,e^{i\varepsilon t}\,e^{-i\varepsilon't}$ has one factor per variable, so in time the kernel is diagonal, a delta in $t$, which is the copy tensor of Fig.~\ref{fig:time_network}. Inserted into \eqref{eq:spectral}, \eqref{eq:laplace} makes the integrals over $\varepsilon$ and $\varepsilon'$ factorize into $\bar g_q$ of \eqref{eq:gbar} and $g_q$ at complex $t$, where their contour forms still hold. The term with $f(\varepsilon)$ gives $g_q(t)\,\bar g_{q+Q}(t)$, and the term with $f(\varepsilon')$ gives $\bar g_q(-t)\,g_{q+Q}(-t)$, so the bubble becomes a product in time,
+where $t$ runs from $0$ to infinity along the half-line $\arg t=\gamma$; for $\gamma=0$ and $\gamma=\pi$ this is \eqref{eq:laplace_z}. With $t=e^{i\gamma}\tau$, \eqref{eq:laplace} is the elementary integral of $e^{i(xe^{i\gamma})\tau}$ over $\tau>0$: the direction rotates $x$ by $e^{i\gamma}$ into the upper half-plane, so for a fixed $\gamma$ the formula holds in the half-plane of $x$ bounded by the line through the origin at the angle $-\gamma$ (Fig.~\ref{fig:laplace_geometry}). Since $e^{ixt}$ is entire in $t$, Cauchy's theorem on the sector between two admissible directions shows that they give the same $1/x$. The inverse relation is a residue: for real $t$, $(2\pi)^{-1}\int dx\,e^{-ixt}/x$ along a line above the origin is $-i\theta(t)$, since for $t>0$ the contour closes below and encloses the pole at $x=0$, and for $t<0$ it closes above and encloses nothing. With $x=w+\varepsilon-\varepsilon'$ the integrand $e^{iwt}\,e^{i\varepsilon t}\,e^{-i\varepsilon't}$ has one factor per variable, so in time the kernel is diagonal, a delta in $t$, which is the copy tensor of Fig.~\ref{fig:time_network}. Inserted into \eqref{eq:spectral}, \eqref{eq:laplace} makes the integrals over $\varepsilon$ and $\varepsilon'$ factorize into $\bar g_q$ of \eqref{eq:gbar} and $g_q$ at complex $t$, where their contour forms still hold. The term with $f(\varepsilon)$ gives $g_q(t)\,\bar g_{q+Q}(t)$, and the term with $f(\varepsilon')$ gives $\bar g_q(-t)\,g_{q+Q}(-t)$, so the bubble becomes a product in time,
 \begin{equation}
   \begin{aligned}
   \chi_Q(w)={}&-\frac{i}{N_q}\sum_q\int_0^{e^{i\gamma}\infty}dt\,e^{iwt}\\
@@ -289,14 +289,23 @@ where $t$ runs from $0$ to infinity along the half-line $\arg t=\gamma$; for $\g
   \end{aligned}
   \label{eq:time_bubble}
 \end{equation}
-exact when $\Imag(we^{i\gamma})>2E\lvert\sin\gamma\rvert$, which makes $\Imag(xe^{i\gamma})>0$ for all $\varepsilon$ and $\varepsilon'$ in the band. For real $t$, $\bar g_q(-t)=\bar g_q(t)^*$ and $g_q(-t)=g_q(t)^*$, since $A_q$ and $f$ are real on the band. The functions $\bar g_q$ and $g_q$ are integrals of the data over $C_\lambda$, so $G$ is never needed off the contour.
+exact when $\Imag(we^{i\gamma})>2E\lvert\sin\gamma\rvert$, that is, when the segment $w+[-2E,2E]$ of the values of $x$ lies in the half-plane of $\gamma$. For real $t$, $\bar g_q(-t)=\bar g_q(t)^*$ and $g_q(-t)=g_q(t)^*$, since $A_q$ and $f$ are real on the band. The functions $\bar g_q$ and $g_q$ are integrals of the data over $C_\lambda$, so $G$ is never needed off the contour.
+
+\begin{figure}[!htbp]
+  \centering
+  \includegraphics[width=\columnwidth]{margins.pdf}
+  \caption{The conditions of the time route for $\lambda=0.2$ and $\mu=0.4$ ($E=3$, $\beta=\pi$), at the crossing $w=ip_\mu$ with real time (a) and at the right tip of $C_\mu$ with imaginary time (b), with $C_\mu$ dashed. Shifted by $w$: the segment $w+[-2E,2E]$ (black), the set $w+[-E,E]+D_\lambda$ (orange), with $D_\lambda$ the region inside $C_\lambda$, and the set $w+D_\lambda+D_\lambda$ (grey). The dashed line bounds the half-plane of the direction, and its tinted side is excluded. Exact, stable and bounded mean that the black, the orange and the grey set lie in the half-plane; the margin of \eqref{eq:margin} is the distance of the orange set, 0.63 and 1.32, and the grey set lies at 0.11 and 1.16 (dotted). The vertical scale is stretched.}
+  \label{fig:margins}
+\end{figure}
 
 On $C_\lambda$ the exponentials $e^{\pm ist}$ reach $e^{H_\lambda(\gamma)\lvert t\rvert}$, where $H_\lambda(\gamma)=\max_{s\in C_\lambda}\Imag(se^{i\gamma})$ is the height of $C_\lambda$ in the direction $ie^{-i\gamma}$, while $\bar g_q$ and $g_q$ grow only like $e^{E\lvert\sin\gamma\rvert\lvert t\rvert}$, as on the band. The node sums for them therefore carry rounding errors of relative size $e^{(H_\lambda(\gamma)-E\lvert\sin\gamma\rvert)\lvert t\rvert}$ times the machine precision, and the factor $e^{iwt}$ damps these errors when
 \begin{equation}
   \Imag(we^{i\gamma})>H_\lambda(\gamma)+E\lvert\sin\gamma\rvert,
   \label{eq:margin}
 \end{equation}
-that is, when $w$ lies beyond every point $\varepsilon+s$, with $\varepsilon\in[-E,E]$ and $s\in C_\lambda$, in the direction $ie^{-i\gamma}$. We call the difference of the two sides the margin. Real time, $\gamma=0$ and $\gamma=\pi$, serves the upper and lower halves of $C_\mu$, where \eqref{eq:margin} reads $\Imag w>H_\lambda$ and $\Imag w<-H_\lambda$. Imaginary time, $\gamma=\pi/2$ and $\gamma=3\pi/2$, serves the regions around the right and left tips, where it reads $\Real w>E+\omega_\lambda(1)$ and $\Real w<-E-\omega_\lambda(1)$, with $\omega_\lambda(1)=E\operatorname{nc}(K'\lambda\,|\,\kappa'^2)$, $\operatorname{nc}=1/\cn$, the tip of $C_\lambda$ on the positive real axis. At the point $ip_\mu$ the margin of real time is $p_\mu-H_\lambda$, positive under the condition $\lambda<\Lambda(\mu,\beta)$ of \eqref{eq:contour_w}. The Cauchy route needs the stronger condition $\lambda'_{\min}>\lambda$.
+that is, when $w$ lies beyond every point $\varepsilon+s$, with $\varepsilon\in[-E,E]$ and $s\in C_\lambda$, in the direction $ie^{-i\gamma}$. We call the difference of the two sides the margin. Figure~\ref{fig:margins} shows the conditions as three nested sets, shifted by $w$: the segment $w+[-2E,2E]$ decides whether \eqref{eq:time_bubble} is exact, the set $w+[-E,E]+D_\lambda$, with $D_\lambda$ the region inside $C_\lambda$, whether its node sums are stable, with the margin as its distance from the line, and the set $w+D_\lambda+D_\lambda$ whether the gauge of Sec.~\ref{sec:quadrature} keeps every intermediate number bounded. Real time, $\gamma=0$ and $\gamma=\pi$, serves the upper and lower halves of $C_\mu$, where \eqref{eq:margin} reads $\Imag w>H_\lambda$ and $\Imag w<-H_\lambda$. Imaginary time, $\gamma=\pi/2$ and $\gamma=3\pi/2$, serves the regions around the right and left tips, where it reads $\Real w>E+\omega_\lambda(1)$ and $\Real w<-E-\omega_\lambda(1)$, with $\omega_\lambda(1)=E\operatorname{nc}(K'\lambda\,|\,\kappa'^2)$, $\operatorname{nc}=1/\cn$, the tip of $C_\lambda$ on the positive real axis. At the point $ip_\mu$ the margin of real time is $p_\mu-H_\lambda$, positive under the condition $\lambda<\Lambda(\mu,\beta)$ of \eqref{eq:contour_w}. The Cauchy route needs the stronger condition $\lambda'_{\min}>\lambda$.
+
+The spectral form is not needed to obtain \eqref{eq:time_bubble}. Inserting \eqref{eq:laplace} with $x=w+z-s$ directly into the double contour integral \eqref{eq:shrink2} with $\Psi=\Psi_w$ gives the same product, with the same contour forms of $\bar g_q$ and $g_q$, but only where every pair of points $z$, $s$ of $C_\lambda$ gives a decaying exponential, that is, where $w+D_\lambda+D_\lambda$ lies in the half-plane of $\gamma$; this also makes $\Psi_w$ analytic inside $C_\lambda$, as \eqref{eq:shrink2} requires. At the crossing $ip_\mu$ it is the condition $p_\mu>2H_\lambda$ of the Cauchy route. The detour through the spectral form proves \eqref{eq:time_bubble} under the weaker conditions on the segment and on $w+[-E,E]+D_\lambda$, and the second test of Sec.~\ref{sec:tests} lies between the two. There the products of the terms of the node sums grow faster than $e^{iwt}$ decays, the sums cancel down to their values on the band, and the gauge of Sec.~\ref{sec:quadrature} shares the growth between the leaves and the Laplace train.
 
 No single direction serves all of $C_\mu$, and neither does any discretization of \eqref{eq:time_bubble} whose times and weights do not depend on $w$. Such a discretization is an entire function $g(w)$, while $\chi_Q$ has its cut inside $C_\mu$. With $C_\mu$ traversed counterclockwise, $\oint_{C_\mu}dw\,w\,g(w)=0$, while $\oint_{C_\mu}dw\,w\,\chi_Q(w)=2\pi i\,c_2$, where
 \begin{equation}
@@ -364,6 +373,13 @@ A function given on the $N$ nodes of $C_\lambda$ has the discrete Fourier repres
   \label{eq:ghat}
 \end{equation}
 where $n$ runs over any $N$ consecutive integers (we use the two's-complement range $-N/2\le n<N/2$); both relations are exact on the grid. Since $e^{i\pi n\phi_j/4}=e^{-i\pi n/4}e^{2\pi inj/N}$, the coefficient $\hat g_{q,n}$ is $e^{i\pi n/4}/N$ times the standard FFT of the data.
+
+\begin{figure*}[tp]
+  \centering
+  \includegraphics[width=\textwidth]{time_network.pdf}
+  \caption{The time-domain network, in the conventions of Fig.~\ref{fig:contraction} (red legs are contracted, bits most significant first). Upper branch: the input train $\hat g_{q,n}$ (blue), its $n$ legs contracted with the train $V^{(1)}_{n,p}$ (green), which carries the modes to the time points $t_p$ and contains the Fermi function through $c_j$; the result is $A_{q,p}$, the function $g_q(t_p)$ in the gauge of \eqref{eq:vandermonde}, a train over the bits of $q$ with the time leg $p$. Lower branch: the same with $V^{(2)}$ (weights $d_m$, no $f$, opposite sign in the exponent), which gives $B_{q',p}$, the function $\bar g_{q'}(t_p)$. The adder (purple) sums $q$ and $q'$ with the transfer momentum $Q$ open. The two time legs meet at a copy tensor carrying the weights $\varpi_p$, the product in time, and the Laplace train $\Lambda_{p,k}$ (orange) sends the time leg to the output points of $C_\mu$ (bits of $k$). The time leg runs over the rules of the four directions; the labels give the leading factors of the tensors \eqref{eq:vandermonde}, without the gauge and the partition. The network gives $X_Q(w_k)$, and $\chi_Q(w_k)$ of \eqref{eq:time_nodes} is $X_Q(w_k)$ plus the same train read at $-Q$ and $k+N/2$.}
+  \label{fig:time_network}
+\end{figure*}
 
 In these modes the time functions are linear in the data. With a gauge $h_p$, for instance $h_p=H_\lambda(\gamma_p)$, the network is built from the tensors
 \begin{equation}

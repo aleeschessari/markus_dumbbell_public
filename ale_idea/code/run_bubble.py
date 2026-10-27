@@ -6,7 +6,7 @@
 G_q(z) = 1/(z - 3 cos q) is given on the dumbbell C_lam (lam = 0.2, N = 512 nodes) for N_q = 1024
 momenta; chi_Q is computed on the dumbbell C_mu (mu = 0.4) for all transfer momenta at once and
 compared with the Lindhard function (Eq. F3). The script prints the bonds of every step before and
-after recompression (Table III) and the error per transfer momentum (Table IV).
+after recompression (Table VI) and the error per transfer momentum (Table VII).
 """
 import argparse
 import time
@@ -40,7 +40,7 @@ def lindhard(eps_q, w):
 
 
 def report(step, raw_bonds, tt, seconds):
-    """One row of Table III: the bonds before and after recompression, and the time of the step."""
+    """One row of Table VI: the bonds before and after recompression, and the time of the step."""
     print(f'{step:28s} {seconds:6.1f} s\n    before {raw_bonds}\n    after  {qtt.bonds(tt)}', flush=True)
 
 
@@ -66,7 +66,7 @@ def main(run_subtractor):
     print(f'    ghat {qtt.bonds(ghat_tt)}\n    U1/s {qtt.bonds(leaf1)}\n    U2/s {qtt.bonds(leaf2)}'
           f'\n    U3   {qtt.bonds(leaf3)}\n    DFT  {[W.shape[3] for W in dft[:-1]]}')
 
-    # ---------------- the contraction (App. D, Table III) ---------------- #
+    # ---------------- the contraction (App. D, Table VI) ---------------- #
     tol = TOL['intermediates']
     start = time.perf_counter()
 
@@ -113,7 +113,7 @@ def main(run_subtractor):
     report('6  chi(Q;k)', raw, qtt.recompress(chi, tol), time.perf_counter() - t0)
     print(f'contraction: {time.perf_counter() - start:.1f} s')
 
-    # ---------------- accuracy (App. E, Table IV) ---------------- #
+    # ---------------- accuracy (App. E, Table VII) ---------------- #
     chi_dense = chi_from_train(chi, R, RQ)                          # [Q, k]
     exact = lindhard(eps_q, w)
     error = np.abs(chi_dense - exact)
